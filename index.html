@@ -2144,5 +2144,80 @@ function goToChapter(idx){
   window.addEventListener('resize', updateProgress);
   updateProgress();
 </script>
+
+<!-- ===== Ask Tread U (mock AI assistant · prototype) ===== -->
+<style>
+#atu-launch{position:fixed;right:22px;bottom:22px;z-index:9600;display:inline-flex;align-items:center;gap:8px;background:var(--yellow);color:var(--black);font:inherit;font-weight:700;font-size:14px;border:none;border-radius:999px;padding:12px 18px;cursor:pointer;box-shadow:var(--shadow);}
+#atu-launch:hover{filter:brightness(.96);}
+#atu-panel{position:fixed;right:22px;bottom:82px;z-index:9600;width:362px;max-width:calc(100vw - 32px);height:524px;max-height:calc(100vh - 130px);background:var(--white);border:1px solid var(--grey-2);border-radius:16px;box-shadow:var(--shadow);display:none;flex-direction:column;overflow:hidden;}
+#atu-panel.open{display:flex;}
+.atu-head{background:var(--black);color:var(--white);padding:13px 15px;display:flex;align-items:center;gap:10px;flex:0 0 auto;}
+.atu-head .m{height:22px;width:44px;color:var(--white);flex:0 0 auto;}
+.atu-head .t{font-weight:700;font-size:15px;line-height:1.15;}
+.atu-head .s{font-size:11px;color:#B9C6CD;font-weight:600;}
+.atu-head .x{margin-left:auto;background:none;border:none;color:#B9C6CD;font-size:22px;line-height:1;cursor:pointer;padding:0 2px;}
+.atu-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:var(--grey-1);}
+.atu-b{max-width:86%;padding:10px 13px;border-radius:14px;font-size:13.5px;line-height:1.5;}
+.atu-b.a{background:var(--white);border:1px solid var(--grey-2);color:var(--grey-8);align-self:flex-start;border-bottom-left-radius:4px;}
+.atu-b.u{background:var(--black);color:var(--white);align-self:flex-end;border-bottom-right-radius:4px;}
+.atu-b a.atu-lesson{color:var(--dark-orange);font-weight:700;text-decoration:none;display:inline-block;margin-top:7px;}
+.atu-b a.atu-lesson:hover{text-decoration:underline;}
+.atu-typing{font-size:12px;color:var(--grey-5);align-self:flex-start;padding:4px 4px;}
+.atu-chips{display:flex;flex-wrap:wrap;gap:6px;padding:2px 14px 8px;background:var(--grey-1);flex:0 0 auto;}
+.atu-chip{font:inherit;font-size:12px;font-weight:600;color:var(--grey-7);background:var(--white);border:1px solid var(--grey-2);border-radius:999px;padding:6px 11px;cursor:pointer;}
+.atu-chip:hover{border-color:var(--grey-4);}
+.atu-input{display:flex;gap:8px;padding:11px 14px;border-top:1px solid var(--grey-2);background:var(--white);flex:0 0 auto;}
+.atu-input input{flex:1;font:inherit;font-size:13.5px;color:var(--grey-8);border:1px solid var(--grey-2);border-radius:10px;padding:9px 12px;}
+.atu-input button{background:var(--yellow);color:var(--black);border:none;border-radius:10px;padding:0 15px;font-weight:700;font-size:13.5px;cursor:pointer;}
+.atu-foot{font-size:10.5px;color:var(--grey-5);text-align:center;padding:0 14px 10px;background:var(--white);flex:0 0 auto;}
+@media(max-width:520px){#atu-panel{right:12px;left:12px;width:auto;}#atu-launch{right:14px;bottom:14px;}}
+</style>
+<button id="atu-launch" type="button" aria-label="Ask Tread U">💬 Ask Tread U</button>
+<div id="atu-panel" role="dialog" aria-label="Ask Tread U assistant">
+  <div class="atu-head"><span class="m"><svg viewBox="0 0 280 140" aria-label="Tread"><use href="#tread-mark"/></svg></span><div><div class="t">Ask Tread U</div><div class="s">AI assistant · prototype</div></div><button class="x" id="atu-x" type="button" aria-label="Close">×</button></div>
+  <div class="atu-msgs" id="atu-msgs"></div>
+  <div class="atu-chips" id="atu-chips"></div>
+  <div class="atu-input"><input id="atu-in" type="text" placeholder="Ask about setup, dispatch, billing…" autocomplete="off"><button id="atu-send" type="button">Send</button></div>
+  <div class="atu-foot">Answers come from your Tread U training content · prototype, not a live model.</div>
+</div>
+<script>
+(function(){
+  var QA=[
+    {label:"How do I upload my data?",kw:["upload","import","master","load my data"],ch:1,a:"Data upload is your first step — Projects, Orders and Jobs are all built from it. Load each set (Users, Drivers, Customers, Vendors, Equipment Types, Equipment, Materials, Sites) by adding manually or downloading our template, filling it in, and uploading it. Heads up: add <b>Equipment Types before Equipment</b>, or ticket calcs break."},
+    {label:"Manual vs bulk upload?",kw:["manual","bulk","template","csv"],ch:1,a:"Either works for any data set. Add records manually with a quick form for a handful, or bulk-upload by downloading our template, filling it in the exact format, and uploading it — no column mapping needed."},
+    {label:"Project vs Order vs Job?",kw:["project","order","job","hierarchy","difference"],ch:0,a:"A <b>Project</b> is your recurring job (the container). An <b>Order</b> is one day's work under it and carries one material. Assigning a truck to an Order creates a <b>Job</b>, and <b>Dispatch</b> sends those Jobs to drivers — so it flows Projects → Orders → Jobs → Dispatch."},
+    {label:"How do I create a project?",kw:["create a project","new project","make a project","set up a project"],ch:1,a:"In Projects, click New Project, name it, choose the customer (you can't change it later), and add your materials and rates. Once it's saved you can build Orders against it."},
+    {label:"What are dispatch modes?",kw:["dispatch mode","loads","running","tons","quantity"],ch:2,a:"When you build an Order you choose how drivers are told the quantity: <b>Loads</b> (a set number each), <b>Running</b> (haul continuously), or <b>Tons</b> (a fixed tonnage). Pick the one that matches how you sell the work."},
+    {label:"How do I dispatch a truck?",kw:["assign","dispatch","send a","truck"],ch:2,a:"On the Order, assign a driver + truck — each assignment becomes a Job. Add as many trucks as you need, then hit Send: every Job goes to its driver by text + push."},
+    {label:"How do drivers use the app?",kw:["driver","mobile app","the app","cab"],ch:3,a:"Drivers download the Tread app, log in by SMS, accept and start jobs, add scale tickets and photos, and mark deliveries complete — with live tracking throughout."},
+    {label:"How do I approve a ticket?",kw:["approve","ticket","approval","sign-off","sign off"],ch:4,a:"Open the Approvals queue, review the scale ticket (net tons, rate, amount — our AI flags mismatches), and approve it for billing. You can also approve shift hours, job hours, and loads here."},
+    {label:"How do I get paid / settle?",kw:["settlement","settle","get paid","payable","receivable","invoice","billing"],ch:5,a:"In Approvals → Settlements, select your approved loads and create a settlement, then generate the PDF, email it, and mark it exported for accounting. Green means you get paid; red means you pay out."},
+    {label:"Where are my reports?",kw:["report","export","p&l","numbers","payroll","job cost"],ch:6,a:"The Reports area has P&L, driver payroll, payables, and job-cost reports. Pick one, run it, and export to CSV or PDF for your books."},
+    {label:"How do I onboard a vendor?",kw:["vendor","sub-hauler","subhauler","sub hauler","subcontractor"],ch:7,a:"Add vendors in Settings, then invite them — they set up their own trucks and drivers in the Tread app and receive the jobs you dispatch to them."}
+  ];
+  var CHN=["Start Your Engines","Laying the Groundwork","Rubber Meets the Road","In the Cab","The Sign-Off","Payday","By the Numbers","Onboard Your Vendors & Sub-Haulers","Endorsements","Cleared to Roll"];
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var panel=document.getElementById('atu-panel'),launch=document.getElementById('atu-launch'),msgs=document.getElementById('atu-msgs'),chips=document.getElementById('atu-chips'),input=document.getElementById('atu-in'),send=document.getElementById('atu-send');
+  var greeted=false;
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function bubble(html,cls){var d=document.createElement('div');d.className='atu-b '+cls;d.innerHTML=html;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;}
+  function lesson(ch){return ' <a class="atu-lesson" href="#ch-'+ch+'" data-ch="'+ch+'">📘 Open the lesson: '+CHN[ch]+' →</a>';}
+  function answerFor(text){var t=(' '+text.toLowerCase()+' ');var hit=null;for(var i=0;i<QA.length&&!hit;i++){for(var k=0;k<QA[i].kw.length;k++){if(t.indexOf(QA[i].kw[k])>=0){hit=QA[i];break;}}}
+    if(hit)return hit.a+lesson(hit.ch);
+    return "Great question — here's where to look. Tread U covers setup, dispatch, approvals, billing and reporting end to end. Try asking about uploading data, creating a project, dispatch modes, approvals, settlements, or reports."+lesson(0);}
+  function respond(text){var typ=document.createElement('div');typ.className='atu-typing';typ.textContent='Tread U is typing…';msgs.appendChild(typ);msgs.scrollTop=msgs.scrollHeight;
+    setTimeout(function(){typ.remove();bubble(answerFor(text),'a');},reduce?10:600);}
+  function ask(text){bubble(esc(text),'u');respond(text);}
+  function greet(){if(greeted)return;greeted=true;bubble("Hi! Ask me anything about getting set up on Tread — I'll point you to the right lesson.",'a');
+    QA.slice(0,5).forEach(function(q){var c=document.createElement('button');c.className='atu-chip';c.type='button';c.textContent=q.label;c.onclick=function(){ask(q.label);};chips.appendChild(c);});}
+  function openP(){panel.classList.add('open');greet();setTimeout(function(){input.focus();},60);}
+  function closeP(){panel.classList.remove('open');}
+  launch.onclick=function(){panel.classList.contains('open')?closeP():openP();};
+  document.getElementById('atu-x').onclick=closeP;
+  send.onclick=function(){var v=input.value.trim();if(!v)return;input.value='';ask(v);};
+  input.addEventListener('keydown',function(e){if(e.key==='Enter'){send.click();}});
+  msgs.addEventListener('click',function(e){var a=e.target.closest?e.target.closest('a.atu-lesson'):null;if(a){e.preventDefault();var ch=parseInt(a.getAttribute('data-ch'),10);if(typeof window.goToChapter==='function'){window.goToChapter(ch);}else{location.hash='#ch-'+ch;}closeP();}});
+})();
+</script>
 </body>
 </html>
