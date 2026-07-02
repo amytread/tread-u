@@ -2219,5 +2219,6 @@ function goToChapter(idx){
   msgs.addEventListener('click',function(e){var a=e.target.closest?e.target.closest('a.atu-lesson'):null;if(a){e.preventDefault();var ch=parseInt(a.getAttribute('data-ch'),10);if(typeof window.goToChapter==='function'){window.goToChapter(ch);}else{location.hash='#ch-'+ch;}closeP();}});
 })();
 </script>
+<script>(function(){function go(){try{var n=null,p=new URLSearchParams(location.search),c=p.get('c');if(c!==null&&/^\d+$/.test(c)){n=parseInt(c,10);}else{var m=(location.hash||'').match(/^#ch-(\d+)$/);if(m){n=parseInt(m[1],10);}}if(n!==null&&typeof window.goToChapter==='function'){window.goToChapter(n);}}catch(e){}}if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',go);}else{go();}})();</script>
 </body>
 </html>

@@ -1601,7 +1601,7 @@
 #tuflow .take{background:var(--white);border-radius:18px;box-shadow:var(--shadow);width:100%;max-width:440px;overflow:hidden;
   transform:scale(.95) translateY(8px);opacity:0;transition:.28s cubic-bezier(.2,.9,.3,1.2);}
 #tuflow .scrim.on .take{transform:none;opacity:1;}
-#tuflow .scrim.on .take.coach{position:absolute;left:50%;right:auto;bottom:16px;transform:translateX(-50%);margin:0;align-self:auto;width:min(420px,calc(100% - 32px));max-height:42%;overflow:auto;}
+#tuflow .scrim.on .take.coach{position:absolute;left:50%;right:auto;bottom:16px;transform:translateX(-50%);margin:0;align-self:auto;width:min(420px,calc(100% - 32px));max-height:42%;overflow:auto;}.take.intro{max-width:560px;max-height:calc(100% - 32px);overflow:auto;}.take.intro .vwrap{position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;background:var(--black);margin:8px 0 6px;}.take.intro .vwrap iframe,.take.intro .vwrap video{position:absolute;inset:0;width:100%;height:100%;border:0;}.take.intro .vsoon{padding:28px;text-align:center;background:var(--grey-1);border:1px dashed var(--grey-3);border-radius:12px;color:var(--grey-6);font-size:13px;font-weight:600;margin:8px 0 6px;}.take .learnlink{font-size:12.5px;font-weight:700;color:var(--dark-orange);text-decoration:none;white-space:nowrap;}.take .learnlink:hover{text-decoration:underline;}#du-video{display:none!important;}
 #tuflow .take .tk-nav{background:var(--black);padding:20px 24px 18px;color:var(--white);text-align:center;}
 #tuflow .take .tk-nav .logo{height:30px;margin:0 auto 4px;display:block;}
 #tuflow .take .tk-nav .logo svg{height:30px;width:156px;color:var(--white);}
@@ -1962,11 +1962,14 @@
   function doSkip(){ var s=STEPS[i]; clearHL(); skipMark(s); outcome[i]='skip'; updateChecklist(i+1); var wasLast=s.last, st=s.stage; if(i+1>=TOTAL){ hideTakeover(); updateRail(TOTAL,-1); if(wasLast)popStage(st,EARN[st]); setTimeout(showGrad,reduce?10:560); return; } i=i+1; showStep(i); if(wasLast)popStage(st,EARN[st]); }
   // per-stage "watch how" videos (Pages-hosted clips)
   var STAGEVID={projects:'v1-01-create-project-overview.mp4',dispatch:'v3-01-order-card-basics.mp4',approvals:'v6-03-approvals-page.mp4',settlements:'v6-04-bulk-settlements-pdf-export.mp4'};
-  Object.keys(STAGEVID).forEach(function(scr){ var sec=root.querySelector('.screen[data-screen="'+scr+'"]'); if(!sec)return; var d=document.createElement('details'); d.style.cssText='margin:0 0 14px;'; d.innerHTML='<summary style="cursor:pointer;font-size:12px;font-weight:700;color:var(--grey-6);">▶ Watch how</summary><div style="position:relative;padding-bottom:56.25%;height:0;border-radius:10px;overflow:hidden;background:var(--black);margin-top:8px;"><video controls preload="metadata" playsinline style="position:absolute;inset:0;width:100%;height:100%;"><source src="https://github.com/amytread/tread-u/releases/download/media-v1/'+STAGEVID[scr]+'" type="video/mp4"></video></div>'; var head=sec.querySelector('.schead'); if(head){ if(head.nextSibling){ sec.insertBefore(d,head.nextSibling); } else { sec.appendChild(d); } } else { sec.insertBefore(d,sec.firstChild); } });
+  var VID={0:{loom:'8e2c055ce4394ecab01293ba0ed291da'},1:{mp4:'v1-01-create-project-overview.mp4'},2:{mp4:'v3-01-order-card-basics.mp4'},3:{mp4:'v3-08-bulk-edit-duplicate-orders.mp4'},4:{mp4:'v4-01-driver-app-and-dispatch.mp4'},5:{mp4:'v6-03-approvals-page.mp4'},6:{mp4:'v6-04-bulk-settlements-pdf-export.mp4'},7:{soon:true}};
+  var LEARN={0:'./?c=1',1:'./?c=1',2:'./?c=2',3:'./?c=2',4:'./?c=2',5:'./?c=4',6:'./?c=5',7:'./?c=6'};
+  var VBASE='https://github.com/amytread/tread-u/releases/download/media-v1/';
+  function videoHTML(stage){ var v=VID[stage]; if(!v)return ''; if(v.loom)return '<div class="vwrap"><iframe src="https://www.loom.com/embed/'+v.loom+'" frameborder="0" allowfullscreen></iframe></div>'; if(v.mp4)return '<div class="vwrap"><video controls preload="metadata" playsinline><source src="'+VBASE+v.mp4+'" type="video/mp4"></video></div>'; if(v.soon)return '<div class="vsoon">▶ Walkthrough video coming soon</div>'; return ''; }
 
   // STEPS (22): each {stage, screen, nav, title, text, warn?, cta, target, act, last?, celebrate?}
   var STEPS=[
-    {stage:0,screen:'data',nav:'Settings',title:'Watch first: how Tread works',text:'Give this a quick watch, then we’ll load your data together.',cta:'I’ve watched it — continue',target:''},
+    {stage:0,intro:true,screen:'data',nav:'Settings',title:'Watch first — how Tread works',text:'A quick overview from Tim, then we’ll load your data together.',cta:'Start loading data',target:''},
     {stage:0,screen:'data',nav:'Settings',title:'Confirm your company hierarchy',text:'All master data lives at the parent level. Set your structure first.',cta:'Single company',target:'du-hier',act:function(){root.querySelectorAll('#du-hier span').forEach(function(x){x.classList.toggle('on',x.dataset.h==='single');});}},
     {stage:0,screen:'data',nav:'Settings',choice:true,title:'Add manually or bulk-upload?',text:'For every data set you can add records by hand, or bulk-upload with our template — download it, fill the exact format, upload (no column mapping). Pick your default; you can switch on any set.',target:''},
     {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-users-c',name:'Users',n:'12'},skip:{req:false},title:'Add your Users',text:'The people who log into Tread.',target:'du-users-c'},
@@ -1979,6 +1982,7 @@
     {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-site-c',name:'Sites',n:'8'},skip:{req:true,dep:'you can’t dispatch without pickup / drop-off sites'},title:'Add your Sites',text:'Jobsites & yards, with geofences.',target:'du-site-c'},
     {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-dept-c',name:'Departments',n:'✓'},skip:{req:false,dep:'optional — grouping for reporting'},title:'Add Departments (optional)',text:'Optional grouping for reporting & dispatch.',target:'du-dept-c'},
     {stage:0,screen:'data',nav:'Settings',summary:true,last:true,title:'Data loaded',text:'',cta:'Build your first project',target:''},
+    {stage:1,intro:true,screen:'projects',nav:'Projects',title:'Set up your first Project',text:'Watch how a Project is built, then create one — it’s your recurring job.',cta:'Start',target:''},
     {stage:1,screen:'projects',nav:'Projects',title:'Create your first project',text:'A Project is your recurring job. Start one.',cta:'New project',target:'btn-newproject',act:function(){el('proj-form').style.display='';}},
     {stage:1,screen:'projects',nav:'Projects',title:'Name the project',text:'Give it a clear name.',cta:'Add name',target:'pf-name',act:function(){fill('pf-name','Hwy 12 Base Course');}},
     {stage:1,screen:'projects',nav:'Projects',title:'Choose the customer',text:'Pick who this work is for.',warn:'Customer can’t be changed once the project is created.',cta:'Select customer',target:'pf-customer',act:function(){el('pf-warn').style.display='';fill('pf-customer','Outback Materials');}},
@@ -1986,24 +1990,30 @@
     {stage:1,screen:'projects',nav:'Projects',title:'Set the rate',text:'Set the rate for this material.',cta:'Set rate',target:'pf-rate',act:function(){fill('pf-rate','$13.00 / ton');}},
     {stage:1,screen:'projects',nav:'Projects',title:'Create the project',text:'Save it — now you can dispatch against it.',cta:'Create project',target:'pf-create',last:true,act:function(){el('proj-form').style.display='none';var r=el('proj-new');r.style.display='';r.classList.add('row-new');el('btn-neworder').style.display='';}},
 
+    {stage:2,intro:true,screen:'dispatch',nav:'Dispatch',title:'Build an Order',text:'See how daily Orders work, then create one for today.',cta:'Start',target:''},
     {stage:2,screen:'dispatch',nav:'Dispatch',title:'Create an order',text:'A project has many Orders — one per dispatch day. Each Order carries ONE material.',cta:'New order',target:'btn-neworder',act:function(){el('order-form').style.display='';}},
     {stage:2,screen:'dispatch',nav:'Dispatch',title:'Set the date',text:'When is this work happening?',cta:'Set date',target:'of-date',act:function(){fill('of-date','Today · Jul 2, 2026');}},
     {stage:2,screen:'dispatch',nav:'Dispatch',title:'Choose a dispatch mode',text:'Loads, Running, or Tons — how you tell drivers the quantity.',cta:'Choose Loads',target:'of-mode',act:function(){setmode('Loads');}},
     {stage:2,screen:'dispatch',nav:'Dispatch',title:'Set the quantity',text:'How much to haul.',cta:'Set 8 loads',target:'of-qty',act:function(){fill('of-qty','8 loads');}},
     {stage:2,screen:'dispatch',nav:'Dispatch',title:'Create the order',text:'It lands on the board — unassigned, ready for trucks.',cta:'Create order',target:'of-create',last:true,act:function(){el('order-form').style.display='none';var o=el('order-new');o.style.display='';o.classList.add('row-new');el('on-mode').textContent='Loads';el('on-qty').textContent='8 loads';}},
 
+    {stage:3,intro:true,screen:'dispatch',nav:'Dispatch',title:'Assign trucks (Jobs)',text:'Watch how assigning trucks creates Jobs, then stage a couple.',cta:'Start',target:''},
     {stage:3,screen:'dispatch',nav:'Dispatch',title:'Assign a truck',text:'Assigning a truck to the order creates a Job.',cta:'Assign truck',target:'btn-assign',act:function(){addJob('T-14 · Ramirez');el('order-new-foot').innerHTML='<button class="btn ghost" id="btn-assign" type="button">+ Assign another</button> <button class="btn yellow" id="btn-send" type="button">Send</button>';}},
     {stage:3,screen:'dispatch',nav:'Dispatch',title:'Add another truck',text:'Each truck you add is another Job under this Order.',cta:'Assign another',target:'btn-assign',last:true,act:function(){addJob('T-22 · Cole');}},
 
+    {stage:4,intro:true,screen:'dispatch',nav:'Dispatch',title:'Dispatch & the driver app',text:'See what the driver sees, then send the jobs.',cta:'Start',target:''},
     {stage:4,screen:'dispatch',nav:'Dispatch',title:'Dispatch the jobs',text:'Send fires each Job to its driver via text + push.',cta:'Send',target:'btn-send',last:true,celebrate:'truck',act:function(){root.querySelectorAll('#jobs .job').forEach(function(j){j.classList.add('sent');j.querySelector('.js').textContent='Sent';});var o=el('order-new');o.classList.remove('unassigned');o.classList.add('sent');el('order-new-foot').innerHTML='<span class="tag gn">✓ Dispatched · en route</span>';}},
 
+    {stage:5,intro:true,screen:'approvals',nav:'Approvals',title:'Approve tickets',text:'Watch the approvals flow, then approve a ticket.',cta:'Start',target:''},
     {stage:5,screen:'approvals',nav:'Approvals',title:'Open the ticket',text:'Tickets flow in from the field. Our AI flags weight/rate mismatches.',cta:'Open ticket',target:'tk-1',act:function(){el('tk-1').classList.add('open');}},
     {stage:5,screen:'approvals',nav:'Approvals',title:'Approve it',text:'Check the net tons and rate, then approve for billing.',cta:'Approve',target:'btn-approve',last:true,act:function(){el('tk-1').classList.add('approved');var b=el('btn-approve');if(b)b.style.display='none';}},
 
+    {stage:6,intro:true,screen:'settlements',nav:'Approvals',title:'Settlements & payables',text:'See how settlements + PDF export work, then build one.',cta:'Start',target:''},
     {stage:6,screen:'settlements',nav:'Approvals',title:'Select approved loads',text:'Pick the loads to settle.',cta:'Select loads',target:'settle-checks',act:function(){root.querySelectorAll('#settle-checks .cbx').forEach(function(c){c.classList.add('on');});}},
     {stage:6,screen:'settlements',nav:'Approvals',title:'Create the settlement',text:'Bundle them into one settlement.',cta:'Create settlement',target:'btn-settle',act:function(){el('pdf').classList.add('show');el('btn-export').style.display='';}},
     {stage:6,screen:'settlements',nav:'Approvals',title:'Generate & export',text:'Generate the PDF, email it, and mark it exported for accounting.',cta:'Mark exported',target:'btn-export',last:true,celebrate:'cash',act:function(){el('btn-export').textContent='✓ Exported';}},
 
+    {stage:7,intro:true,screen:'reports',nav:'Reports',title:'See your numbers',text:'Reporting walkthrough coming soon — for now, run a report.',cta:'Start',target:''},
     {stage:7,screen:'reports',nav:'Reports',title:'Pick a report',text:'Job Cost or P&L — your call.',cta:'Pick report',target:'rep-picker',act:function(){root.querySelectorAll('#rep-picker .pick').forEach(function(p,i2){p.classList.toggle('on',i2===0);});}},
     {stage:7,screen:'reports',nav:'Reports',title:'Run it',text:'See your loads, revenue, and cycle times.',cta:'Run',target:'btn-run',act:function(){root.querySelectorAll('#bars .fill').forEach(function(f){f.style.height=f.dataset.h;});}},
     {stage:7,screen:'reports',nav:'Reports',title:'Export your numbers',text:'Export to CSV or PDF for your books.',cta:'Export',target:'btn-repexport',last:true,act:function(){el('btn-repexport').textContent='✓ Exported';}}
@@ -2035,6 +2045,7 @@
   }
 
   function coach(s,idx){
+    if(s.intro){ scrim.className='scrim on'; take.className='take intro'; var lk=LEARN[s.stage]||'./'; take.innerHTML='<div class="tk-body"><div class="eyebrow">'+STAGES[s.stage]+'</div><h2 class="sm">'+s.title+'</h2>'+videoHTML(s.stage)+'<p>'+s.text+'</p><div class="acts"><button class="btn yellow" id="tk-cta" type="button">'+s.cta+' &rarr;</button><button class="btn ghost" id="tk-back2" type="button">&larr; Back</button><span class="grow"></span><a class="learnlink" href="'+lk+'" target="_blank" rel="noopener">📚 Learn more in Tread U →</a></div></div>'; el('tk-cta').onclick=advance; el('tk-back2').onclick=back; return; }
     scrim.className='scrim soft on'; take.className='take coach';
     if(s.choice){
       take.innerHTML='<div class="tk-body"><div class="eyebrow">'+STAGES[s.stage]+'</div><h2 class="sm">'+s.title+'</h2><p>'+s.text+'</p>'+
