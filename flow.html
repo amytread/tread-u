@@ -1960,10 +1960,10 @@
       <section class="screen" data-screen="data">
         <div class="schead"><h3>Settings · Master data</h3><span class="crumb">Load this before you build</span></div>
         <div class="sheet" id="du-video">
-          <h4>Watch first · how Tread works</h4>
-          <div class="tu-sub" style="margin-bottom:12px;">A quick overview from Tim — then we’ll load your data together.</div>
+          <h4>Watch first · uploading your data</h4>
+          <div class="tu-sub" style="margin-bottom:12px;">Tim walks through loading your data — then we’ll do it together.</div>
           <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:10px;overflow:hidden;background:var(--black);">
-            <iframe src="https://www.loom.com/embed/8e2c055ce4394ecab01293ba0ed291da" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+            <iframe src="https://www.loom.com/embed/93b29381538143e3a1dd4f2e53e2f75a" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
           </div>
         </div>
         <div class="sheet" id="du-hier-wrap">
@@ -1978,6 +1978,7 @@
               <tr><td>1 · Users</td><td id="du-users-c"><span class="tag gy">—</span></td><td class="duacts"><span class="tu-sub" style="font-size:11px;">+ Add&nbsp;·&nbsp;⬆ Template</span></td></tr>
               <tr><td>2 · Drivers</td><td id="du-drivers-c"><span class="tag gy">—</span></td><td class="duacts"><span class="tu-sub" style="font-size:11px;">+ Add&nbsp;·&nbsp;⬆ Template</span></td></tr>
               <tr><td>3 · <strong>Customers</strong></td><td id="du-cust-c"><span class="tag gy">—</span></td><td class="duacts"><button class="btn ghost dubtn" id="du-cust-add" type="button">+ Add</button><button class="btn ghost dubtn" id="du-cust-tpl" type="button">⬆ Template</button></td></tr>
+              <tr id="du-cust-bulk" style="display:none;"><td colspan="3" style="padding:0;"><div style="background:var(--grey-1);border:1px solid var(--grey-2);border-radius:0 0 10px 10px;padding:11px 13px;margin:-1px 2px 6px;"><div style="font-weight:700;font-size:12.5px;margin-bottom:3px;">⬆ Bulk upload · Customers</div><div class="tu-sub" style="margin-bottom:9px;">No column mapping — download the template, fill it in that exact format, then upload it back.</div><div class="matrow" style="gap:10px;"><button class="btn ghost" id="du-cust-dl" type="button">⬇ Download template</button><button class="btn yellow" id="du-cust-up" type="button">⬆ Upload filled template</button></div><div class="tu-sub" id="du-cust-bulk-note" style="margin-top:8px;">customers_template.csv</div></div></td></tr>
               <tr><td>4 · Vendors</td><td id="du-vend-c"><span class="tag gy">—</span></td><td class="duacts"><span class="tu-sub" style="font-size:11px;">+ Add&nbsp;·&nbsp;⬆ Template</span></td></tr>
               <tr><td>5 · <strong>Equipment Types</strong></td><td id="du-type-c"><span class="tag gy">—</span></td><td style="text-align:right;"><button class="btn ghost" id="du-type-add" type="button">Add type</button></td></tr>
               <tr><td>6 · Equipment</td><td id="du-equip-c"><span class="tag gy">—</span></td><td style="text-align:right;"><span class="tu-sub" id="du-equip-note">needs types first</span></td></tr>
@@ -1986,12 +1987,6 @@
               <tr><td>9 · Departments <span class="tu-sub">(optional)</span></td><td id="du-dept-c"><span class="tag gy">—</span></td><td style="text-align:right;"><span class="tu-sub">optional</span></td></tr>
             </tbody>
           </table>
-        </div>
-        <div class="sheet" id="du-cust-bulk" style="display:none;">
-          <h4>Bulk upload · Customers</h4>
-          <div class="tu-sub" style="margin-bottom:12px;">No column mapping — download our template, fill it out in that exact format, then upload it back.</div>
-          <div class="matrow" style="gap:10px;"><button class="btn ghost" id="du-cust-dl" type="button">⬇ Download template</button><button class="btn yellow" id="du-cust-up" type="button">⬆ Upload filled template</button></div>
-          <div class="tu-sub" id="du-cust-bulk-note" style="margin-top:10px;">customers_template.csv</div>
         </div>
         <div style="text-align:right;margin-top:14px;"><button class="btn yellow" id="du-finish" type="button">Finish setup → build a project</button></div>
       </section>
@@ -2110,14 +2105,14 @@
   function doSkip(){ var s=STEPS[i]; clearHL(); skipMark(s); outcome[i]='skip'; updateChecklist(i+1); var wasLast=s.last, st=s.stage; if(i+1>=TOTAL){ hideTakeover(); updateRail(TOTAL,-1); if(wasLast)popStage(st,EARN[st]); setTimeout(showGrad,reduce?10:560); return; } i=i+1; showStep(i); if(wasLast)popStage(st,EARN[st]); }
   // per-stage "watch how" videos (Pages-hosted clips)
   var STAGEVID={projects:'v1-01-create-project-overview.mp4',dispatch:'v3-01-order-card-basics.mp4',approvals:'v6-03-approvals-page.mp4',settlements:'v6-04-bulk-settlements-pdf-export.mp4'};
-  var VID={0:{loom:'8e2c055ce4394ecab01293ba0ed291da'},1:{mp4:'v1-01-create-project-overview.mp4'},2:{mp4:'v3-01-order-card-basics.mp4'},3:{mp4:'v3-08-bulk-edit-duplicate-orders.mp4'},4:{mp4:'v4-01-driver-app-and-dispatch.mp4'},5:{mp4:'v4-02-accept-start-live-tracking.mp4'},6:{mp4:'v6-03-approvals-page.mp4'},7:{mp4:'v6-04-bulk-settlements-pdf-export.mp4'},8:{soon:true}};
+  var VID={0:{loom:'93b29381538143e3a1dd4f2e53e2f75a'},1:{mp4:'v1-01-create-project-overview.mp4'},2:{mp4:'v3-01-order-card-basics.mp4'},3:{mp4:'v3-08-bulk-edit-duplicate-orders.mp4'},4:{mp4:'v4-01-driver-app-and-dispatch.mp4'},5:{mp4:'v4-02-accept-start-live-tracking.mp4'},6:{mp4:'v6-03-approvals-page.mp4'},7:{mp4:'v6-04-bulk-settlements-pdf-export.mp4'},8:{soon:true}};
   var LEARN={0:'./?c=1',1:'./?c=1',2:'./?c=2',3:'./?c=2',4:'./?c=2',5:'./?c=3',6:'./?c=4',7:'./?c=5',8:'./?c=6'};
   var VBASE='https://github.com/amytread/tread-u/releases/download/media-v1/';
   function videoHTML(stage){ var v=VID[stage]; if(!v)return ''; if(v.loom)return '<div class="vwrap"><iframe src="https://www.loom.com/embed/'+v.loom+'" frameborder="0" allowfullscreen></iframe></div>'; if(v.mp4)return '<div class="vwrap"><video controls preload="metadata" playsinline><source src="'+VBASE+v.mp4+'" type="video/mp4"></video></div>'; if(v.soon)return '<div class="vsoon">▶ Walkthrough video coming soon</div>'; return ''; }
 
   // STEPS (22): each {stage, screen, nav, title, text, warn?, cta, target, act, last?, celebrate?}
   var STEPS=[
-    {stage:0,intro:true,screen:'data',nav:'Settings',title:'Watch first — how Tread works',text:'A quick overview from Tim, then we’ll load your data together.',cta:'Start loading data',target:''},
+    {stage:0,intro:true,screen:'data',nav:'Settings',title:'Watch first — uploading your data',text:'Tim walks through loading your data, then we’ll do it together.',cta:'Start loading data',target:''},
     {stage:0,screen:'data',nav:'Settings',title:'Confirm your company hierarchy',text:'All master data lives at the parent level. Set your structure first.',cta:'Single company',target:'du-hier',act:function(){root.querySelectorAll('#du-hier span').forEach(function(x){x.classList.toggle('on',x.dataset.h==='single');});}},
     {stage:0,screen:'data',nav:'Settings',choice:true,title:'Add manually or bulk-upload?',text:'For every data set you can add records by hand, or bulk-upload with our template — download it, fill the exact format, upload (no column mapping). Pick your default; you can switch on any set.',target:''},
     {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-users-c',name:'Users',n:'12'},skip:{req:false},title:'Add your Users',text:'The people who log into Tread.',target:'du-users-c'},
