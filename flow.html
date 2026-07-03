@@ -1704,6 +1704,59 @@
 #ask-panel .ap-in input{flex:1;font:inherit;font-size:13px;border:1px solid var(--grey-2);border-radius:8px;padding:9px 11px;}
 #ask-panel .ap-in button{background:var(--yellow);color:var(--black);border:none;border-radius:8px;font-weight:800;padding:0 14px;cursor:pointer;}
 #ask-panel .ap-foot{font-size:10.5px;color:var(--grey-5);text-align:center;padding:6px 10px;background:var(--white);border-top:1px solid var(--grey-1);}
+/* ===== Horizon fidelity: nav extras + dispatch board ===== */
+#tuflow .nav .dispas{display:flex;flex-direction:column;line-height:1.15;text-align:right;flex:0 0 auto;}
+#tuflow .nav .dispas .dl{font-size:9px;font-weight:600;color:var(--grey-5);text-transform:uppercase;letter-spacing:.04em;}
+#tuflow .nav .dispas .dv{font-size:12px;font-weight:700;color:var(--black);white-space:nowrap;}
+#tuflow .nav .navhelp{width:21px;height:21px;border-radius:50%;border:1.5px solid var(--grey-3);color:var(--grey-6);display:grid;place-items:center;font-size:11px;font-weight:700;flex:0 0 auto;}
+#tuflow .nav .navuser{font-size:12px;font-weight:700;color:var(--grey-8);flex:0 0 auto;white-space:nowrap;}
+#tuflow .btn.sm{padding:6px 11px;font-size:12px;border-radius:7px;}
+#tuflow .disp-wrap{display:flex;gap:14px;align-items:flex-start;}
+#tuflow .disp-side{flex:0 0 190px;display:flex;flex-direction:column;gap:12px;}
+#tuflow .ds-card{background:var(--white);border:1px solid var(--grey-2);border-radius:10px;box-shadow:var(--shadow-sm);padding:12px;}
+#tuflow .ds-h{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--grey-5);margin-bottom:9px;}
+#tuflow .ds-grid{display:grid;grid-template-columns:1fr auto 1fr auto;gap:6px 8px;align-items:center;font-size:11px;}
+#tuflow .ds-grid span{color:var(--grey-6);}
+#tuflow .ds-grid b{color:var(--black);font-variant-numeric:tabular-nums;text-align:right;}
+#tuflow .ds-seg{display:flex;gap:4px;margin-bottom:8px;}
+#tuflow .ds-seg span{flex:1;text-align:center;font-size:12px;font-weight:600;color:var(--grey-6);padding:5px;border-radius:6px;background:var(--grey-1);}
+#tuflow .ds-seg span.on{background:var(--black);color:var(--white);}
+#tuflow .drow{display:flex;align-items:center;gap:8px;padding:7px 2px;border-top:1px solid var(--grey-1);}
+#tuflow .drow .fl{font-size:10px;font-weight:700;color:var(--grey-5);width:20px;flex:0 0 auto;}
+#tuflow .drow .dn{flex:1;font-size:12px;font-weight:600;color:var(--grey-8);display:flex;flex-direction:column;min-width:0;}
+#tuflow .drow .dn em{font-style:normal;font-size:10px;color:var(--grey-5);font-weight:500;}
+#tuflow .drow .tgl{width:26px;height:15px;border-radius:999px;background:var(--grey-3);position:relative;flex:0 0 auto;}
+#tuflow .drow .tgl.on{background:var(--btn-green);}
+#tuflow .drow .tgl::after{content:"";position:absolute;top:2px;left:2px;width:11px;height:11px;border-radius:50%;background:#fff;transition:.15s;}
+#tuflow .drow .tgl.on::after{left:13px;}
+#tuflow .disp-main{flex:1;min-width:0;}
+#tuflow .disp-bar{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap;}
+#tuflow .db-seg{display:flex;gap:2px;}
+#tuflow .db-seg span{font-size:13px;font-weight:700;color:var(--grey-5);padding:5px 10px;border-radius:7px;}
+#tuflow .db-seg span.on{color:var(--black);background:var(--grey-1);}
+#tuflow .db-date{font-size:14px;font-weight:700;color:var(--black);}
+#tuflow .disp-bar2{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+#tuflow .db-sort{font-size:11.5px;font-weight:600;color:var(--grey-6);}
+#tuflow .db-chips{display:flex;gap:5px;flex-wrap:wrap;}
+#tuflow .chip2{font-size:11px;font-weight:600;color:var(--grey-7);background:var(--white);border:1px solid var(--grey-2);border-radius:999px;padding:4px 9px;white-space:nowrap;}
+#tuflow .chip2.on{background:var(--grey-8);color:var(--white);border-color:var(--grey-8);}
+#tuflow .chip2.pw{background:rgba(255,170,19,.15);color:var(--dark-orange);border-color:rgba(255,170,19,.4);}
+#tuflow section[data-screen="dispatch"] .board{grid-template-columns:1fr;gap:12px;}
+#tuflow .ord-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px;}
+#tuflow .ord-top h4{margin:0;}
+#tuflow .ord-badges{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end;}
+#tuflow .statusdd{font-size:11px;font-weight:700;color:var(--dark-orange);background:rgba(255,170,19,.15);border:1px solid rgba(255,170,19,.4);border-radius:6px;padding:3px 8px;}
+#tuflow .statusdd.sent{color:var(--btn-green);background:rgba(0,161,26,.12);border-color:rgba(0,161,26,.35);}
+#tuflow .ord-ic{color:var(--grey-4);font-size:13px;}
+#tuflow .ord-f{font-size:11.5px;color:var(--grey-7);line-height:1.5;margin-bottom:2px;}
+#tuflow .ord-f b{color:var(--grey-8);font-weight:700;}
+#tuflow .ord-body{display:flex;gap:14px;align-items:flex-start;margin-top:10px;}
+#tuflow .ord-left{flex:1;min-width:0;}
+#tuflow .ord-stats{display:flex;gap:16px;flex:0 0 auto;border-left:1px solid var(--grey-1);padding-left:14px;}
+#tuflow .ord-stats>div{display:flex;flex-direction:column;gap:2px;text-align:center;}
+#tuflow .osk{font-size:9px;font-weight:700;color:var(--grey-4);text-transform:uppercase;letter-spacing:.03em;}
+#tuflow .osv{font-size:15px;font-weight:800;color:var(--black);}
+@media(max-width:860px){#tuflow .disp-side{display:none;}#tuflow .ord-body{flex-direction:column;}#tuflow .ord-stats{border-left:none;border-top:1px solid var(--grey-1);padding-left:0;padding-top:10px;}}
 </style>
 
 <div id="tuflow">
@@ -1733,6 +1786,9 @@
       <span class="mark"><svg viewBox="0 0 280 140" aria-label="Tread"><use href="#tread-mark"/></svg></span>
       <div class="items" id="navitems"></div>
       <span class="spacer"></span>
+      <span class="dispas"><span class="dl">Dispatch as</span><span class="dv">Outback Materials ▾</span></span>
+      <span class="navhelp">?</span>
+      <span class="navuser">Tread Admin</span>
       <span class="avatar">OM</span>
     </div>
 
@@ -1766,24 +1822,73 @@
 
       <!-- DISPATCH (orders + jobs) -->
       <section class="screen" data-screen="dispatch">
-        <div class="schead"><h3>Dispatch</h3><button class="btn yellow" id="btn-neworder" type="button" style="display:none;">+ New Order</button></div>
-        <div class="sheet" id="order-form" style="display:none;">
-          <h4>New order · Hwy 12 Base Course</h4>
-          <div class="field"><label>Date</label><div class="ctl empty" id="of-date" style="max-width:220px;">Select date…</div></div>
-          <div class="field"><label>Dispatch mode</label><div class="seg" id="of-mode"><span data-m="Loads">Loads</span><span data-m="Running">Running</span><span data-m="Tons">Tons</span></div>
-            <div class="tu-sub" style="margin-top:7px;">Loads = N loads each · Running = continuous cycles · Tons = fixed tonnage.</div></div>
-          <div class="field"><label>Quantity</label><div class="ctl empty" id="of-qty" style="max-width:180px;">e.g. 8 loads</div></div>
-          <div style="text-align:right;"><button class="btn yellow" id="of-create" type="button">Create order</button></div>
-        </div>
-        <div class="board" id="board">
-          <div class="order unassigned" id="order-new" style="display:none;">
-            <h4>Hwy 12 Base Course</h4>
-            <div class="meta">North Pit → Hwy 12 · <span id="on-mode">Loads</span> · <span id="on-qty">8 loads</span></div>
-            <div class="jobs" id="jobs"></div>
-            <div id="order-new-foot"><button class="btn yellow" id="btn-assign" type="button">Assign driver/truck</button></div>
+        <div class="disp-wrap">
+          <aside class="disp-side">
+            <div class="ds-card">
+              <div class="ds-h">Jul-2 · Status</div>
+              <div class="ds-grid">
+                <span>Unassigned</span><b>1</b><span>Accepted</span><b>0</b>
+                <span>Assigned</span><b>0</b><span>Loaded</span><b>0</b>
+                <span>Sent</span><b>0</b><span>Completed</span><b>0</b>
+              </div>
+            </div>
+            <div class="ds-card">
+              <div class="ds-seg"><span class="on">Driver</span><span>Vendor</span></div>
+              <div class="drow"><span class="fl">131</span><span class="dn">Amy Griffith<em>Super Dump</em></span><span class="tgl on"></span></div>
+              <div class="drow"><span class="fl">152</span><span class="dn">Bernadette D.<em>Side Dump</em></span><span class="tgl on"></span></div>
+              <div class="drow"><span class="fl">141</span><span class="dn">Christophe H.<em>End Dump</em></span><span class="tgl on"></span></div>
+              <div class="drow"><span class="fl">118</span><span class="dn">Clem Tread<em>Super Dump</em></span><span class="tgl"></span></div>
+            </div>
+          </aside>
+          <div class="disp-main">
+            <div class="disp-bar">
+              <div class="db-seg"><span class="on">Orders</span><span>Drivers</span></div>
+              <span class="db-date">Today, Sun Jul-2-2026</span>
+              <span class="spacer"></span>
+              <button class="btn ghost sm" type="button">↻ Refresh</button>
+              <button class="btn dark sm" type="button">＋ Quick Order</button>
+              <button class="btn yellow sm" id="btn-neworder" type="button" style="display:none;">＋ New Order</button>
+            </div>
+            <div class="disp-bar2">
+              <button class="btn green sm" type="button">✓ Send All Jobs</button>
+              <button class="btn ghost sm" type="button">Export Jobs</button>
+              <span class="db-sort">Created At ▾</span>
+              <span class="spacer"></span>
+              <span class="db-chips"><span class="chip2 on">External</span><span class="chip2">Filters</span><span class="chip2">Trucking</span><span class="chip2">Excavation</span><span class="chip2">More ···</span></span>
+            </div>
+            <div class="sheet" id="order-form" style="display:none;">
+              <h4>New order · Hwy 12 Base Course</h4>
+              <div class="field"><label>Date</label><div class="ctl empty" id="of-date" style="max-width:220px;">Select date…</div></div>
+              <div class="field"><label>Dispatch mode</label><div class="seg" id="of-mode"><span data-m="Loads">Loads</span><span data-m="Running">Running</span><span data-m="Tons">Tons</span></div>
+                <div class="tu-sub" style="margin-top:7px;">Loads = N loads each · Running = continuous cycles · Tons = fixed tonnage.</div></div>
+              <div class="field"><label>Quantity</label><div class="ctl empty" id="of-qty" style="max-width:180px;">e.g. 8 loads</div></div>
+              <div style="text-align:right;"><button class="btn yellow" id="of-create" type="button">Create order</button></div>
+            </div>
+            <div class="board" id="board">
+              <div class="order unassigned" id="order-new" style="display:none;">
+                <div class="ord-top"><h4>Hwy 12 Base Course</h4>
+                  <div class="ord-badges"><span class="chip2">Outback Materials</span><span class="chip2 pw">Prevailing Wage</span><span class="statusdd">Pending ▾</span><span class="ord-ic">✎</span><span class="ord-ic">⋯</span></div></div>
+                <div class="ord-f"><b>Customer:</b> Outback Materials • <b>Charge To:</b> Outback Materials • <b>Rate:</b> $13.00/ton • <b>Material:</b> 3/4" Base Rock • <b>Phase Code:</b> Code 1 • ORD-92941</div>
+                <div class="ord-f"><b>Start:</b> 7:00 AM Jul-2 • <b>Truck Type:</b> Super Dump • <b>Pickup:</b> North Pit • <b>Mode:</b> <span id="on-mode">Loads</span> • <b>Qty:</b> <span id="on-qty">8 loads</span></div>
+                <div class="ord-body">
+                  <div class="ord-left"><div class="jobs" id="jobs"></div><div id="order-new-foot"><button class="btn yellow" id="btn-assign" type="button">Assign driver/truck</button></div></div>
+                  <div class="ord-stats"><div><span class="osk">Trucks</span><span class="osv">2</span></div><div><span class="osk">Loads</span><span class="osv">8</span></div><div><span class="osk">Material</span><span class="osv">3/4"</span></div></div>
+                </div>
+              </div>
+              <div class="order sent">
+                <div class="ord-top"><h4>Shaw Ave Widening</h4><div class="ord-badges"><span class="chip2">Granite Const.</span><span class="statusdd sent">Sent ▾</span><span class="ord-ic">✎</span><span class="ord-ic">⋯</span></div></div>
+                <div class="ord-f"><b>Customer:</b> Granite Const. • <b>Rate:</b> $118.00/hr • <b>Material:</b> Aggregate • <b>Phase Code:</b> Code 2 • ORD-92938</div>
+                <div class="ord-f"><b>Start:</b> 6:30 AM Jul-2 • <b>Truck Type:</b> Transfer • <b>Pickup:</b> Quarry A • <b>Requestor:</b> Tom • <b>Foreman:</b> —</div>
+                <div class="ord-body"><div class="ord-left"><div class="jobs"><div class="job sent"><span class="jt">T-08 · Diaz</span><span class="js">Sent</span></div></div></div><div class="ord-stats"><div><span class="osk">Trucks</span><span class="osv">1</span></div><div><span class="osk">Loads</span><span class="osv">12</span></div><div><span class="osk">Material</span><span class="osv">Agg</span></div></div></div>
+              </div>
+              <div class="order sent">
+                <div class="ord-top"><h4>Riverside Overlay</h4><div class="ord-badges"><span class="chip2">City of Fresno</span><span class="statusdd sent">Sent ▾</span><span class="ord-ic">✎</span><span class="ord-ic">⋯</span></div></div>
+                <div class="ord-f"><b>Customer:</b> City of Fresno • <b>Rate:</b> $22.00/ton • <b>Material:</b> Asphalt • <b>Phase Code:</b> Code 5 • ORD-92930</div>
+                <div class="ord-f"><b>Start:</b> 5:00 AM Jul-2 • <b>Truck Type:</b> End Dump • <b>Pickup:</b> Plant 2 • <b>Requestor:</b> Tom • <b>Foreman:</b> Cruz</div>
+                <div class="ord-body"><div class="ord-left"><div class="jobs"><div class="job sent"><span class="jt">T-31 · Boyd</span><span class="js">Sent</span></div></div></div><div class="ord-stats"><div><span class="osk">Trucks</span><span class="osv">1</span></div><div><span class="osk">Tons</span><span class="osv">240</span></div><div><span class="osk">Material</span><span class="osv">AC</span></div></div></div>
+              </div>
+            </div>
           </div>
-          <div class="order sent"><h4>Shaw Ave Widening</h4><div class="meta">Quarry A → Shaw Ave · 12 loads</div><div class="jobs"><div class="job sent"><span class="jt">T-08 · Diaz</span><span class="js">Sent</span></div></div></div>
-          <div class="order sent"><h4>Riverside Overlay</h4><div class="meta">Plant 2 → Riverside · 240 tons</div><div class="jobs"><div class="job sent"><span class="jt">T-31 · Boyd</span><span class="js">Sent</span></div></div></div>
         </div>
       </section>
 
@@ -1896,6 +2001,48 @@
         <div class="schead"><h3 id="gen-title">Live Map</h3></div>
         <div class="panel" style="padding:40px;text-align:center;color:var(--grey-5);font-size:14px;">This area isn't part of the onboarding walkthrough.</div>
       </section>
+      <section class="screen" data-screen="driver">
+        <div class="schead"><h3>Driver app</h3><span class="crumb">What the driver sees on their phone</span></div>
+        <div style="display:flex;justify-content:center;padding:6px 0 30px;">
+          <div style="width:300px;border:9px solid var(--black);border-radius:30px;overflow:hidden;background:var(--white);box-shadow:var(--shadow);">
+            <div style="background:var(--black);color:#fff;padding:7px 14px;font-size:11px;display:flex;justify-content:space-between;"><span>9:41</span><span>Tread · Driver</span></div>
+            <div style="padding:14px;min-height:330px;">
+              <div style="font-size:11px;font-weight:700;color:var(--grey-5);text-transform:uppercase;letter-spacing:.05em;">Assigned</div>
+              <div style="border:1px solid var(--grey-2);border-radius:12px;padding:12px;margin-top:10px;box-shadow:var(--shadow-sm);">
+                <div style="font-weight:700;font-size:14px;">Hwy 12 Base Course · 3/4&quot; Base</div>
+                <div style="font-size:12px;color:var(--grey-6);margin:3px 0 8px;">Outback Materials · 8 loads · Torrey Pines</div>
+                <div style="font-size:12px;font-weight:700;">Status: <span id="dj-status" style="color:var(--dark-orange);">Assigned</span></div>
+                <div id="dj-tk" style="display:none;margin-top:8px;font-size:12px;background:var(--grey-1);border:1px dashed var(--grey-3);border-radius:8px;padding:8px;">🧾 Scale ticket #40231 · 24.5 tons <span style="color:var(--btn-green);font-weight:700;">✓ read by AI</span></div>
+                <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
+                  <button class="btn green" id="dj-accept" type="button" style="justify-content:center;">ACCEPT</button>
+                  <button class="btn yellow" id="dj-start" type="button" style="display:none;justify-content:center;">START</button>
+                  <button class="btn dark" id="dj-ticket" type="button" style="display:none;justify-content:center;">ADD TICKET</button>
+                  <button class="btn" id="dj-stop" type="button" style="display:none;justify-content:center;background:var(--btn-red,#EA1200);color:#fff;">STOP JOB</button>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex;justify-content:space-around;border-top:1px solid var(--grey-2);padding:8px 4px;font-size:8.5px;color:var(--grey-5);"><span>Assigned</span><span>Dispatch</span><span>Review</span><span>History</span><span>Live Map</span><span>Account</span></div>
+          </div>
+        </div>
+      </section>
+      <section class="screen" data-screen="foreman">
+        <div class="schead"><h3>Foreman app (optional)</h3><span class="crumb">Field sign-off from a phone</span></div>
+        <div style="display:flex;justify-content:center;padding:6px 0 30px;">
+          <div style="width:300px;border:9px solid var(--black);border-radius:30px;overflow:hidden;background:var(--white);box-shadow:var(--shadow);">
+            <div style="background:var(--black);color:#fff;padding:7px 14px;font-size:11px;display:flex;justify-content:space-between;"><span>9:41</span><span>Tread · Foreman</span></div>
+            <div style="padding:14px;min-height:330px;">
+              <div style="font-size:11px;font-weight:700;color:var(--grey-5);text-transform:uppercase;letter-spacing:.05em;">Today’s loads</div>
+              <div style="border:1px solid var(--grey-2);border-radius:12px;padding:12px;margin-top:10px;box-shadow:var(--shadow-sm);">
+                <div style="font-weight:700;font-size:14px;">T-14 · Ramirez</div>
+                <div style="font-size:12px;color:var(--grey-6);margin:3px 0 10px;">1 load delivered · 24.5 tons · 3/4&quot; Base</div>
+                <button class="btn green" id="fm-confirm" type="button" style="justify-content:center;width:100%;">Confirm load & hours</button>
+              </div>
+              <div style="font-size:11px;color:var(--grey-5);margin-top:10px;">Optional — only if a foreman signs off in the field.</div>
+            </div>
+            <div style="display:flex;justify-content:space-around;border-top:1px solid var(--grey-2);padding:8px 4px;font-size:8.5px;color:var(--grey-5);"><span>Orders</span><span>Approve</span><span>Account</span></div>
+          </div>
+        </div>
+      </section>
     </div>
 
     <!-- truck -->
@@ -1906,7 +2053,7 @@
 
     <!-- help + checklist -->
     <div class="check" id="check">
-      <div class="ch-h"><div class="t">Getting Started</div><div class="p" id="ch-p">0 of 8 complete</div><div class="track"><i id="ch-fill"></i></div></div>
+      <div class="ch-h"><div class="t">Getting Started</div><div class="p" id="ch-p">0 of 9 complete</div><div class="track"><i id="ch-fill"></i></div></div>
       <ul id="ch-list"></ul>
     </div>
     <button class="help" id="help" type="button"><svg><use href="#i-help"/></svg> Help</button>
@@ -1931,10 +2078,10 @@
   var root=document.getElementById('tuflow');
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function el(id){return document.getElementById(id);}
-  var NAV=['Projects','Dispatch','Approvals','Live Map','Reports','Sites','Settings'];
-  var STAGES=['Data','Project','Order','Jobs','Dispatch','Approve','Settle','Report'];
-  var CHECK=['Upload your data','Create your project','Build an order','Assign jobs (trucks)','Dispatch the jobs','Approve a ticket','Create a settlement','See your numbers'];
-  var EARN=['Data loaded','Project created','Order built','2 Jobs staged','Trucks rolling','Ticket approved','Settlement sent','Report exported'];
+  var NAV=['Projects','Dispatch','Assigned','Approvals','Live Map','Reports','Sites','Settings'];
+  var STAGES=['Data','Project','Order','Jobs','Dispatch','On the Job','Approve','Settle','Report'];
+  var CHECK=['Upload your data','Create your project','Build an order','Assign jobs (trucks)','Dispatch the jobs','Run the job in the field','Approve a ticket','Create a settlement','See your numbers'];
+  var EARN=['Data loaded','Project created','Order built','2 Jobs staged','Trucks rolling','Load delivered','Ticket approved','Settlement sent','Report exported'];
 
   // nav (display only) + checklist
   var ni=el('navitems'); NAV.forEach(function(n){var s=document.createElement('span');s.className='item';s.textContent=n;s.dataset.n=n;ni.appendChild(s);});
@@ -1953,6 +2100,7 @@
   function setmode(m){root.querySelectorAll('#of-mode span').forEach(function(x){x.classList.toggle('on',x.dataset.m===m);});}
   function addJob(t){var j=document.createElement('div');j.className='job';j.innerHTML='<span class="jt">'+t+'</span><span class="js">Assigned</span>';el('jobs').appendChild(j);}
   var INIT_FOOT=el('order-new-foot').innerHTML;
+  function setDj(t){var e=el('dj-status');if(e)e.textContent=t;}
   var method='manual', outcome=[];
   function ctaLabel(s){ if(s.dset){ return method==='bulk'?('⬆ Upload '+s.dset.name+' template'):('+ Add '+s.dset.name); } return s.cta; }
   function doAct(s){ if(s.act){ s.act(); } else if(s.dset){ var c=el(s.dset.cell); if(c)c.innerHTML='<span class="tag gn">'+s.dset.n+'</span>'; if(s.dset.also){ var nn=el(s.dset.also); if(nn)nn.textContent='from types'; } } }
@@ -1962,8 +2110,8 @@
   function doSkip(){ var s=STEPS[i]; clearHL(); skipMark(s); outcome[i]='skip'; updateChecklist(i+1); var wasLast=s.last, st=s.stage; if(i+1>=TOTAL){ hideTakeover(); updateRail(TOTAL,-1); if(wasLast)popStage(st,EARN[st]); setTimeout(showGrad,reduce?10:560); return; } i=i+1; showStep(i); if(wasLast)popStage(st,EARN[st]); }
   // per-stage "watch how" videos (Pages-hosted clips)
   var STAGEVID={projects:'v1-01-create-project-overview.mp4',dispatch:'v3-01-order-card-basics.mp4',approvals:'v6-03-approvals-page.mp4',settlements:'v6-04-bulk-settlements-pdf-export.mp4'};
-  var VID={0:{loom:'8e2c055ce4394ecab01293ba0ed291da'},1:{mp4:'v1-01-create-project-overview.mp4'},2:{mp4:'v3-01-order-card-basics.mp4'},3:{mp4:'v3-08-bulk-edit-duplicate-orders.mp4'},4:{mp4:'v4-01-driver-app-and-dispatch.mp4'},5:{mp4:'v6-03-approvals-page.mp4'},6:{mp4:'v6-04-bulk-settlements-pdf-export.mp4'},7:{soon:true}};
-  var LEARN={0:'./?c=1',1:'./?c=1',2:'./?c=2',3:'./?c=2',4:'./?c=2',5:'./?c=4',6:'./?c=5',7:'./?c=6'};
+  var VID={0:{loom:'8e2c055ce4394ecab01293ba0ed291da'},1:{mp4:'v1-01-create-project-overview.mp4'},2:{mp4:'v3-01-order-card-basics.mp4'},3:{mp4:'v3-08-bulk-edit-duplicate-orders.mp4'},4:{mp4:'v4-01-driver-app-and-dispatch.mp4'},5:{mp4:'v4-02-accept-start-live-tracking.mp4'},6:{mp4:'v6-03-approvals-page.mp4'},7:{mp4:'v6-04-bulk-settlements-pdf-export.mp4'},8:{soon:true}};
+  var LEARN={0:'./?c=1',1:'./?c=1',2:'./?c=2',3:'./?c=2',4:'./?c=2',5:'./?c=3',6:'./?c=4',7:'./?c=5',8:'./?c=6'};
   var VBASE='https://github.com/amytread/tread-u/releases/download/media-v1/';
   function videoHTML(stage){ var v=VID[stage]; if(!v)return ''; if(v.loom)return '<div class="vwrap"><iframe src="https://www.loom.com/embed/'+v.loom+'" frameborder="0" allowfullscreen></iframe></div>'; if(v.mp4)return '<div class="vwrap"><video controls preload="metadata" playsinline><source src="'+VBASE+v.mp4+'" type="video/mp4"></video></div>'; if(v.soon)return '<div class="vsoon">▶ Walkthrough video coming soon</div>'; return ''; }
 
@@ -2003,20 +2151,27 @@
 
     {stage:4,intro:true,screen:'dispatch',nav:'Dispatch',title:'Dispatch & the driver app',text:'See what the driver sees, then send the jobs.',cta:'Start',target:''},
     {stage:4,screen:'dispatch',nav:'Dispatch',title:'Dispatch the jobs',text:'Send fires each Job to its driver via text + push.',cta:'Send',target:'btn-send',last:true,celebrate:'truck',act:function(){root.querySelectorAll('#jobs .job').forEach(function(j){j.classList.add('sent');j.querySelector('.js').textContent='Sent';});var o=el('order-new');o.classList.remove('unassigned');o.classList.add('sent');el('order-new-foot').innerHTML='<span class="tag gn">✓ Dispatched · en route</span>';}},
+    {stage:5,intro:true,screen:'driver',nav:'Assigned',title:'On the job',text:'You sent the jobs — here’s what happens in the field, on the driver’s phone.',cta:'Start',target:''},
+    {stage:5,screen:'driver',nav:'Assigned',title:'Driver accepts the dispatch',text:'The job lands on the driver’s phone. Tap Accept.',cta:'Accept',target:'dj-accept',act:function(){setDj('Accepted');var st=el('dj-start');if(st)st.style.display='';var a=el('dj-accept');if(a)a.style.display='none';}},
+    {stage:5,screen:'driver',nav:'Assigned',title:'Start the job',text:'Starting turns on live tracking — you’ll watch the truck move.',cta:'Start job',target:'dj-start',act:function(){setDj('To pickup → Loaded');var t=el('dj-ticket');if(t)t.style.display='';var st=el('dj-start');if(st)st.style.display='none';}},
+    {stage:5,screen:'driver',nav:'Assigned',title:'Capture the scale ticket',text:'At the scale the driver snaps the ticket — AI reads it back to the office.',cta:'Add ticket',target:'dj-ticket',act:function(){var tk=el('dj-tk');if(tk)tk.style.display='';setDj('Loaded · ticket added');var t=el('dj-ticket');if(t)t.style.display='none';var sp=el('dj-stop');if(sp)sp.style.display='';}},
+    {stage:5,screen:'driver',nav:'Assigned',title:'Deliver & stop the job',text:'Unloaded at the drop-off — stop the job.',cta:'Stop job',target:'dj-stop',act:function(){setDj('Delivered · Completed');var sp=el('dj-stop');if(sp)sp.style.display='none';}},
+    {stage:5,screen:'foreman',nav:'Assigned',skip:{req:false,dep:'only if you use a foreman'},title:'Optional: foreman sign-off',text:'If a foreman is on site they can confirm the load / approve field hours from their phone. No foreman? Skip it.',cta:'Confirm load',target:'fm-confirm',act:function(){var b=el('fm-confirm');if(b){b.textContent='✓ Confirmed';b.classList.add('done');}}},
+    {stage:5,screen:'dispatch',nav:'Dispatch',title:'Watch & manage the job',text:'Back in Dispatch, open the job to see its status history, the loads/ticket data coming in, and the actions you can take after dispatch — track, edit, text the driver. The completed job now shows In Review, ready to approve.',cta:'Open the job',target:'order-new',last:true,act:function(){var o=el('order-new'); if(o){o.classList.add('review'); var f=el('order-new-foot'); if(f)f.innerHTML='<span class="tag" style="background:rgba(255,170,19,.16);color:var(--dark-orange);">● In Review</span> <span style="font-size:11px;color:var(--grey-5);">Actions ▾ · View · Track · Edit · Text driver</span>'; if(!el('jobdetail')){var d=document.createElement('div'); d.id='jobdetail'; d.style.cssText='margin-top:10px;border-top:1px solid var(--grey-2);padding-top:9px;font-size:12px;color:var(--grey-7);'; d.innerHTML='<div style="font-weight:700;color:var(--black);margin-bottom:5px;">Job history</div>Accepted 1:02p · To pickup 1:14p · Loaded 1:39p (24.5t) · Delivered 2:10p · <strong>In Review</strong>'; o.appendChild(d);} }}},
 
-    {stage:5,intro:true,screen:'approvals',nav:'Approvals',title:'Approve tickets',text:'Watch the approvals flow, then approve a ticket.',cta:'Start',target:''},
-    {stage:5,screen:'approvals',nav:'Approvals',title:'Open the ticket',text:'Tickets flow in from the field. Our AI flags weight/rate mismatches.',cta:'Open ticket',target:'tk-1',act:function(){el('tk-1').classList.add('open');}},
-    {stage:5,screen:'approvals',nav:'Approvals',title:'Approve it',text:'Check the net tons and rate, then approve for billing.',cta:'Approve',target:'btn-approve',last:true,act:function(){el('tk-1').classList.add('approved');var b=el('btn-approve');if(b)b.style.display='none';}},
+    {stage:6,intro:true,screen:'approvals',nav:'Approvals',title:'Approve tickets',text:'Watch the approvals flow, then approve a ticket.',cta:'Start',target:''},
+    {stage:6,screen:'approvals',nav:'Approvals',title:'Open the ticket',text:'Tickets flow in from the field. Our AI flags weight/rate mismatches.',cta:'Open ticket',target:'tk-1',act:function(){el('tk-1').classList.add('open');}},
+    {stage:6,screen:'approvals',nav:'Approvals',title:'Approve it',text:'Check the net tons and rate, then approve for billing.',cta:'Approve',target:'btn-approve',last:true,act:function(){el('tk-1').classList.add('approved');var b=el('btn-approve');if(b)b.style.display='none';}},
 
-    {stage:6,intro:true,screen:'settlements',nav:'Approvals',title:'Settlements & payables',text:'See how settlements + PDF export work, then build one.',cta:'Start',target:''},
-    {stage:6,screen:'settlements',nav:'Approvals',title:'Select approved loads',text:'Pick the loads to settle.',cta:'Select loads',target:'settle-checks',act:function(){root.querySelectorAll('#settle-checks .cbx').forEach(function(c){c.classList.add('on');});}},
-    {stage:6,screen:'settlements',nav:'Approvals',title:'Create the settlement',text:'Bundle them into one settlement.',cta:'Create settlement',target:'btn-settle',act:function(){el('pdf').classList.add('show');el('btn-export').style.display='';}},
-    {stage:6,screen:'settlements',nav:'Approvals',title:'Generate & export',text:'Generate the PDF, email it, and mark it exported for accounting.',cta:'Mark exported',target:'btn-export',last:true,celebrate:'cash',act:function(){el('btn-export').textContent='✓ Exported';}},
+    {stage:7,intro:true,screen:'settlements',nav:'Approvals',title:'Settlements & payables',text:'See how settlements + PDF export work, then build one.',cta:'Start',target:''},
+    {stage:7,screen:'settlements',nav:'Approvals',title:'Select approved loads',text:'Pick the loads to settle.',cta:'Select loads',target:'settle-checks',act:function(){root.querySelectorAll('#settle-checks .cbx').forEach(function(c){c.classList.add('on');});}},
+    {stage:7,screen:'settlements',nav:'Approvals',title:'Create the settlement',text:'Bundle them into one settlement.',cta:'Create settlement',target:'btn-settle',act:function(){el('pdf').classList.add('show');el('btn-export').style.display='';}},
+    {stage:7,screen:'settlements',nav:'Approvals',title:'Generate & export',text:'Generate the PDF, email it, and mark it exported for accounting.',cta:'Mark exported',target:'btn-export',last:true,celebrate:'cash',act:function(){el('btn-export').textContent='✓ Exported';}},
 
-    {stage:7,intro:true,screen:'reports',nav:'Reports',title:'See your numbers',text:'Reporting walkthrough coming soon — for now, run a report.',cta:'Start',target:''},
-    {stage:7,screen:'reports',nav:'Reports',title:'Pick a report',text:'Job Cost or P&L — your call.',cta:'Pick report',target:'rep-picker',act:function(){root.querySelectorAll('#rep-picker .pick').forEach(function(p,i2){p.classList.toggle('on',i2===0);});}},
-    {stage:7,screen:'reports',nav:'Reports',title:'Run it',text:'See your loads, revenue, and cycle times.',cta:'Run',target:'btn-run',act:function(){root.querySelectorAll('#bars .fill').forEach(function(f){f.style.height=f.dataset.h;});}},
-    {stage:7,screen:'reports',nav:'Reports',title:'Export your numbers',text:'Export to CSV or PDF for your books.',cta:'Export',target:'btn-repexport',last:true,act:function(){el('btn-repexport').textContent='✓ Exported';}}
+    {stage:8,intro:true,screen:'reports',nav:'Reports',title:'See your numbers',text:'Reporting walkthrough coming soon — for now, run a report.',cta:'Start',target:''},
+    {stage:8,screen:'reports',nav:'Reports',title:'Pick a report',text:'Job Cost or P&L — your call.',cta:'Pick report',target:'rep-picker',act:function(){root.querySelectorAll('#rep-picker .pick').forEach(function(p,i2){p.classList.toggle('on',i2===0);});}},
+    {stage:8,screen:'reports',nav:'Reports',title:'Run it',text:'See your loads, revenue, and cycle times.',cta:'Run',target:'btn-run',act:function(){root.querySelectorAll('#bars .fill').forEach(function(f){f.style.height=f.dataset.h;});}},
+    {stage:8,screen:'reports',nav:'Reports',title:'Export your numbers',text:'Export to CSV or PDF for your books.',cta:'Export',target:'btn-repexport',last:true,act:function(){el('btn-repexport').textContent='✓ Exported';}}
   ];
   var TOTAL=STEPS.length;
   var lastIdx={},cnt={},posInStage=[],stageSize={};
@@ -2137,6 +2292,11 @@
     root.querySelectorAll('#bars .fill').forEach(function(f){f.style.height='0';});
     root.querySelectorAll('#rep-picker .pick').forEach(function(p){p.classList.remove('on');});
     el('btn-repexport').textContent='Export CSV / PDF';
+    var _jd=el('jobdetail'); if(_jd)_jd.remove();
+    var _ds=el('dj-status'); if(_ds)_ds.textContent='Assigned';
+    ['dj-start','dj-ticket','dj-stop','dj-tk'].forEach(function(id){var e=el(id);if(e)e.style.display='none';});
+    var _da=el('dj-accept'); if(_da)_da.style.display='';
+    var _fm=el('fm-confirm'); if(_fm){_fm.textContent='Confirm load & hours';_fm.classList.remove('done');}
     updateChecklist(0);
   }
   function replay(n){ resetAll(); for(var k=0;k<n;k++){ if(outcome[k]==='skip'){ skipMark(STEPS[k]); } else { doAct(STEPS[k]); } } }
