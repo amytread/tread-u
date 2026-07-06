@@ -2362,27 +2362,27 @@
       form=document.getElementById('ask-form'), input=document.getElementById('ask-input'),
       xb=document.getElementById('ask-x');
   if(!fab||!panel) return;
-  var LESSON=' <a href="./" target="_blank" rel="noopener">📘 Open the full lesson in Tread U →</a>';
+  var CN=['Start Your Engines','Laying the Groundwork','Rubber Meets the Road','In the Cab','The Sign-Off','Payday','By the Numbers','Onboard Your Vendors & Sub-Haulers','Endorsements','Cleared to Roll'];
+  function L(c){return ' <a href="./?c='+c+'" target="_blank" rel="noopener">📘 Open the '+CN[c]+' lesson →</a>';}
   var QA=[
-    {k:['upload','import','master data','my data','load data'],a:'You can load data two ways: <b>add records manually</b> or <b>bulk-upload our template</b> (download it, fill it in the exact format, upload — no column mapping). Load in order (Users → Drivers → Customers → Vendors → Equipment Types → Equipment → Materials → Sites), and always do <b>Equipment Types before Equipment</b> or ticket calcs break.'+LESSON},
-    {k:['manual','bulk','template'],a:'Manual is best for a few records; bulk is best for many — download the template, fill it in exactly, and upload. Either way, each Settings panel should end up with a populated list.'+LESSON},
-    {k:['difference','vs','hierarchy','project','order','job'],a:'A <b>Project</b> is your recurring job (a container). An <b>Order</b> is one day\'s work under it and carries one material. Assigning a truck to an order creates a <b>Job</b> (per-truck), and <b>Dispatch</b> sends those Jobs to drivers.'+LESSON},
-    {k:['create a project','new project','make a project','set up a project'],a:'Go to Projects → New Project, name it, choose the customer (this can\'t change later), then add your materials + rates. Now you can build Orders against it.'+LESSON},
-    {k:['dispatch mode','loads','running','tons','quantity'],a:'Dispatch modes tell drivers the quantity: <b>Loads</b> (N loads each), <b>Running</b> (continuous cycles), or <b>Tons</b> (a fixed tonnage). Set it on the order.'+LESSON},
-    {k:['assign','dispatch','send','truck'],a:'On the order card, assign a driver+truck (each assignment is a Job), then hit <b>Send</b> — it fires the job to the driver via text + push.'+LESSON},
-    {k:['after','field','haul','tracking','what happens','driver do'],a:'After you send, the driver accepts and runs the haul while you watch it live (Accepted → Loaded → Delivered → Completed). They capture a scale ticket and submit hours, and the completed job lands "In Review" for approval.'+LESSON},
-    {k:['approve','ticket','review'],a:'In Approvals, open a ticket to check net tons and rate (our AI flags mismatches), then Approve it for billing.'+LESSON},
-    {k:['settlement','settle','get paid','payable','receivable','billing','invoice'],a:'In Settlements, select the approved loads, Create a settlement, then generate the PDF and mark it exported for accounting.'+LESSON},
-    {k:['report','numbers','p&l','export','job cost','payroll'],a:'In Reports, pick a report (Job Cost or P&L), run it, and export to CSV/PDF for your books.'+LESSON},
-    {k:['vendor','sub-hauler','subhauler','sub hauler','broker'],a:'Add vendors in Settings and invite them; they set up their own trucks + drivers, then you can dispatch Jobs straight to them.'+LESSON}
+    {k:['settlement','settle','get paid',' paid','payable','receivable','invoice','billing'],c:5,a:'To create a settlement: first approve the loads/tickets (The Sign-Off), then go to <b>Approvals → Settlements</b>, select the approved loads, click <b>Create settlement</b>, generate the PDF, email it, and mark it exported for accounting.'},
+    {k:['report','p&l','pnl','p and l','export','job cost','payroll','numbers'],c:6,a:'In <b>Reports</b>, pick a report (Job Cost or P&L), run it, and export to CSV/PDF for your books.'},
+    {k:['vendor','sub-hauler','subhauler','sub hauler','broker'],c:7,a:'Add vendors in <b>Settings</b> and invite them; they set up their own trucks + drivers, then you can dispatch Jobs straight to them.'},
+    {k:['approve','approval','ticket','sign-off','sign off','hours','foreman'],c:4,a:'In <b>Approvals</b>, open a ticket to check net tons and rate (our AI flags mismatches), then <b>Approve</b> it for billing.'},
+    {k:['driver','field','haul','tracking','accept','scale ticket','after i dispatch','after dispatch','what happens','mobile'],c:3,a:'After you send, the driver accepts and runs the haul while you watch it live (Accepted → Loaded → Delivered → Completed). They capture a scale ticket and submit hours, and the completed job lands "In Review" for approval.'},
+    {k:['create a project','create project','new project','make a project','set up a project','build a project'],c:1,a:'Go to <b>Projects → New Project</b>, name it, choose the customer (this can\'t change later), then add your materials + rates. Now you can build Orders against it.'},
+    {k:['upload','import','master data','load data','manual','bulk','template','my data','add data','enter data'],c:1,a:'You can load data two ways: <b>add records manually</b> or <b>bulk-upload our template</b> (download it, fill the exact format, upload — no column mapping). Load in order (Users → Drivers → Customers → Vendors → Equipment Types → Equipment → Materials → Sites), and always do <b>Equipment Types before Equipment</b> or ticket calcs break.'},
+    {k:['dispatch mode','loads','running','tons','quantity','how much'],c:2,a:'Dispatch modes tell drivers the quantity: <b>Loads</b> (N loads each), <b>Running</b> (continuous cycles), or <b>Tons</b> (a fixed tonnage). Set it on the order.'},
+    {k:['difference','vs ','project vs','what is','how tread','organized','the model','hierarchy','parent'],c:0,a:'A <b>Project</b> is your recurring job (a container). An <b>Order</b> is one day\'s work under it and carries one material. Assigning a truck to an order creates a <b>Job</b> (per-truck), and <b>Dispatch</b> sends those Jobs to drivers.'},
+    {k:['dispatch','assign','send','truck','order'],c:2,a:'On the order card, assign a driver+truck (each assignment is a <b>Job</b>), then hit <b>Send</b> — it fires the job to the driver via text + push.'}
   ];
-  var SUG=['How do I upload my data?','Project vs Order vs Job?','How do I dispatch?','What happens after I dispatch?','How do I get paid?'];
+  var SUG=['How do I create settlements?','How do I upload my data?','How do I dispatch?','How do I approve a ticket?','Project vs Order vs Job?'];
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function add(cls,html){var d=document.createElement('div');d.className='ap-msg '+cls;d.innerHTML=html;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;}
   function answer(q){var s=q.toLowerCase(),best=null;
     for(var i=0;i<QA.length&&!best;i++){for(var j=0;j<QA[i].k.length;j++){if(s.indexOf(QA[i].k[j])>=0){best=QA[i];break;}}}
     var t=add('bot','<i style="color:var(--grey-5)">Tread U is typing…</i>');
-    setTimeout(function(){t.innerHTML=best?best.a:'Great question — the best place to look is the matching course in Tread U.'+LESSON;msgs.scrollTop=msgs.scrollHeight;},reduce?10:600);}
+    setTimeout(function(){t.innerHTML=best?(best.a+L(best.c)):('I\'m not certain I have that exact one — here are the closest lessons:'+L(2)+L(4)+L(5));msgs.scrollTop=msgs.scrollHeight;},reduce?10:600);}
   function ask(q){add('me',q);answer(q);}
   SUG.forEach(function(s){var b=document.createElement('button');b.className='ap-chip';b.type='button';b.textContent=s;b.onclick=function(){ask(s);};chips.appendChild(b);});
   add('bot','Hi! I\'m your Tread U assistant. Ask me anything about getting set up on Tread — I\'ll point you to the right lesson.');
