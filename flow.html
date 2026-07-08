@@ -1798,23 +1798,38 @@
       <section class="screen" data-screen="projects">
         <div class="schead"><h3>Projects</h3><button class="btn yellow" id="btn-newproject" type="button">+ New Project</button></div>
         <div class="sheet" id="proj-form" style="display:none;">
-          <h4>New project</h4>
-          <div class="field"><label>Project name</label><div class="ctl empty" id="pf-name">Untitled project</div></div>
-          <div class="warn" id="pf-warn" style="display:none;">Customer can’t be changed once the project is created.</div>
-          <div class="field"><label>Customer</label><div class="ctl empty" id="pf-customer">Select a customer…</div></div>
-          <div class="field"><label>Materials &amp; rates</label>
-            <div id="pf-mat" class="matrow" style="display:none;"><div class="ctl">3/4" Base Rock</div><div class="ctl empty" id="pf-rate" style="max-width:150px;">Rate…</div></div>
-            <button class="btn ghost" id="pf-addmat" type="button" style="margin-top:7px;">+ Add material</button>
+          <div style="display:flex;align-items:center;justify-content:space-between;"><h4>Create Project</h4><span style="color:var(--grey-4);">✕</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:6px;">
+            <div>
+              <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--grey-5);margin-bottom:8px;">Project Details</div>
+              <div class="field"><label>Company</label><div class="ctl">Outback Materials</div></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div class="field"><label>Customer Account *</label><div class="ctl empty" id="pf-customer">Select a customer…</div></div><div class="field"><label>Project Name *</label><div class="ctl empty" id="pf-name">Untitled project</div></div></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div class="field"><label>Department</label><div class="ctl">Aggregates</div></div><div class="field"><label>Project External ID</label><div class="ctl empty">Optional</div></div></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div class="field"><label>Phase Name</label><div class="ctl empty">—</div></div><div class="field"><label>Phase Code</label><div class="ctl">Code 1</div></div></div>
+              <div class="warn" id="pf-warn" style="display:none;">Customer can’t be changed once the project is created.</div>
+              <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--grey-5);margin:14px 0 8px;">Materials</div>
+              <div id="pf-mat" class="matrow" style="display:none;"><div class="ctl">3/4" Base Rock</div><div class="ctl" style="max-width:80px;">Tons</div><div class="ctl empty" id="pf-rate" style="max-width:140px;">Rate…</div></div>
+              <button class="btn ghost" id="pf-addmat" type="button" style="margin-top:7px;">+ Add material rate</button>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--grey-5);margin-bottom:8px;">Location Details</div>
+              <div class="field"><label>Pick Up Site</label><div class="ctl">North Pit</div></div>
+              <div class="field"><label>Drop Off Site</label><div class="ctl">Torrey Pines Golf Course</div></div>
+              <div style="height:84px;border:1px solid var(--grey-2);border-radius:8px;background:var(--grey-1);display:grid;place-items:center;color:var(--grey-4);font-size:12px;">Map</div>
+              <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--grey-5);margin:14px 0 8px;">Order Defaults</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div class="field"><label>Charge to Account</label><div class="ctl">Outback Materials</div></div><div class="field"><label>Service Class</label><div class="ctl">Aggregate Haul</div></div></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div class="field"><label># Trucks</label><div class="ctl">2</div></div><div class="field"><label>Units</label><div class="ctl">Loads</div></div></div>
+            </div>
           </div>
-          <div style="text-align:right;"><button class="btn yellow" id="pf-create" type="button">Create project</button></div>
+          <div style="text-align:right;margin-top:12px;"><button class="btn ghost" type="button">Cancel</button> <button class="btn yellow" id="pf-create" type="button">Create</button></div>
         </div>
         <div class="panel">
           <table>
             <thead><tr><th>Project</th><th>Customer</th><th>Material</th><th>Status</th></tr></thead>
             <tbody>
-              <tr><td>Riverside Overlay</td><td>City of Fresno</td><td>Asphalt</td><td><span class="tag gy">Active</span></td></tr>
-              <tr><td>Shaw Ave Widening</td><td>Granite Const.</td><td>Aggregate</td><td><span class="tag gy">Active</span></td></tr>
-              <tr id="proj-new" style="display:none;"><td><strong>Hwy 12 Base Course</strong></td><td>Outback Materials</td><td>3/4" Base Rock</td><td><span class="tag gn">Active</span></td></tr>
+              <tr><td>Riverside Overlay<div style="font-size:11px;color:var(--grey-5);">Project Ext ID: PRJ-RIV-014</div></td><td>City of Fresno</td><td>Asphalt</td><td><span class="tag gy">Active ▾</span></td></tr>
+              <tr><td>Shaw Ave Widening<div style="font-size:11px;color:var(--grey-5);">Project Ext ID: PRJ-SHAW-009</div></td><td>Granite Const.</td><td>Aggregate</td><td><span class="tag gy">Active ▾</span></td></tr>
+              <tr id="proj-new" style="display:none;"><td><strong>Hwy 12 Base Course</strong><div style="font-size:11px;color:var(--grey-5);">Project Ext ID: PRJ-HWY12-001</div></td><td>Outback Materials</td><td>3/4" Base Rock</td><td><span class="tag gn">Active ▾</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -1894,14 +1909,16 @@
 
       <!-- APPROVALS -->
       <section class="screen" data-screen="approvals">
-        <div class="schead"><h3>Approvals</h3><span class="crumb">Tickets · 4 to review</span></div>
-        <div class="panel">
+        <div class="schead"><div style="display:flex;gap:16px;font-size:13px;font-weight:600;color:var(--grey-6);"><span>Approve Work</span><span style="color:var(--black);border-bottom:2px solid var(--yellow);padding-bottom:6px;">Approve Jobs</span><span>Payables</span><span>Receivables</span></div><button class="btn dark sm" type="button">Bulk Create Settlements ▾</button></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;"><span class="chip2 on">Unapproved Jobs</span><span class="chip2">Unapproved Payables</span><span class="chip2">Unapproved Receivables</span><span class="chip2">Duplicate Tickets</span></div>
+        <div class="panel" style="padding:0;">
+          <div style="padding:12px 14px;border-bottom:1px solid var(--grey-2);"><div style="font-weight:700;">Hwy 12 Base Course <span class="chip2 pw" style="margin-left:6px;">Prevailing Wage</span> <span class="chip2" style="margin-left:2px;">In Progress</span></div><div style="font-size:12px;color:var(--grey-6);margin-top:3px;">Customer: Outback Materials • Rate: $13.00/ton • Material: 3/4" Base Rock • ORD-92941 • 1/2 Delivered</div></div>
           <table>
-            <thead><tr><th>Ticket</th><th>Driver</th><th>Material</th><th>Net tons</th><th>Amount</th><th></th></tr></thead>
+            <thead><tr><th>Driver &amp; Truck</th><th>Status</th><th>Loads</th><th>Tickets</th><th>Receivables</th><th>Payables</th><th>Margin</th><th style="text-align:right;">Job Approval</th></tr></thead>
             <tbody>
-              <tr id="tk-1"><td>#40231</td><td>Ramirez</td><td>3/4" Base</td><td>24.5</td><td class="tk-amt">$318.50</td><td style="text-align:right;"><button class="btn green" id="btn-approve" type="button">Approve</button><span class="stamp">Approved</span></td></tr>
-              <tr><td>#40232</td><td>Cole</td><td>3/4" Base</td><td>23.8</td><td class="tk-amt">$309.40</td><td style="text-align:right;"><span class="tag yl">Pending</span></td></tr>
-              <tr><td>#40233</td><td>Diaz</td><td>Sand</td><td>17.2</td><td class="tk-amt">$206.40</td><td style="text-align:right;"><span class="tag yl">Pending</span></td></tr>
+              <tr><td>T-14 · Ramirez<div style="font-size:11px;color:var(--grey-5);">Super Dump</div></td><td><span class="tag gy">Assigned</span></td><td>0/4</td><td>0</td><td>$0.00</td><td>$0.00</td><td>$0.00</td><td style="text-align:right;"><span class="tag yl">Pending</span><div style="font-size:10px;color:var(--grey-4);">TRD-3037291</div></td></tr>
+              <tr id="tk-1"><td>T-22 · Cole<div style="font-size:11px;color:var(--grey-5);">Super Dump</div></td><td><span class="tag gn">Completed</span></td><td>4/4</td><td>1</td><td>$318.50</td><td>$95.00</td><td>$223.50</td><td style="text-align:right;"><button class="btn green" id="btn-approve" type="button">Approve</button><span class="stamp">Approved</span><div style="font-size:10px;color:var(--grey-4);">TRD-3037292</div></td></tr>
+              <tr><td>T-31 · Boyd<div style="font-size:11px;color:var(--grey-5);">End Dump</div></td><td><span class="tag gy">Created</span></td><td>0/4</td><td>0</td><td>$0.00</td><td>$0.00</td><td>$0.00</td><td style="text-align:right;"><span class="tag yl">Pending</span><div style="font-size:10px;color:var(--grey-4);">TRD-3037293</div></td></tr>
             </tbody>
           </table>
         </div>
@@ -1909,22 +1926,25 @@
 
       <!-- SETTLEMENTS -->
       <section class="screen" data-screen="settlements">
-        <div class="schead"><h3>Settlements</h3><span class="crumb">Approvals ▸ Receivables</span></div>
+        <div class="schead"><div style="display:flex;gap:16px;font-size:13px;font-weight:600;color:var(--grey-6);"><span>Approve Work</span><span>Approve Jobs</span><span>Payables</span><span style="color:var(--black);border-bottom:2px solid var(--yellow);padding-bottom:6px;">Receivables</span></div><div style="display:inline-flex;border:1px solid var(--grey-2);border-radius:8px;overflow:hidden;"><span style="padding:5px 12px;font-size:12px;color:var(--grey-6);">Invoices</span><span style="padding:5px 12px;font-size:12px;font-weight:600;background:var(--grey-1);">Settlements</span></div></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;"><span class="chip2 on">Pending</span><span class="chip2">Approved</span><span class="chip2">Done</span><span class="chip2">Void</span></div>
         <div class="panel" style="padding:16px 18px;">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px;">
-            <div><div style="font-size:13px;color:var(--grey-6);">Outback Materials · week of Jun 22</div><div style="font-size:15px;font-weight:700;">Approved, ready to settle</div></div>
+            <div><div style="font-size:13px;color:var(--grey-6);">Outback Materials · ORD-92941 · week of Jun 22</div><div style="font-size:15px;font-weight:700;">Approved, ready to settle</div></div>
             <button class="btn yellow" id="btn-settle" type="button">Create settlement</button>
           </div>
           <div id="settle-checks">
-            <div class="settle-row"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> #40231 · Ramirez · 24.5t <span class="amt">$318.50</span></div>
-            <div class="settle-row"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> #40232 · Cole · 23.8t <span class="amt">$309.40</span></div>
-            <div class="settle-row"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> #40233 · Diaz · 17.2t <span class="amt">$206.40</span></div>
+            <div class="settle-row"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> #40231 · Ramirez · 3/4" Base Rock · 24.5t <span class="amt">$318.50</span></div>
+            <div class="settle-row"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> #40232 · Cole · 3/4" Base Rock · 23.8t <span class="amt">$309.40</span></div>
+            <div class="settle-row"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> #40233 · Diaz · Sand · 17.2t <span class="amt">$206.40</span></div>
           </div>
           <div class="pdf" id="pdf"><div class="pdf-doc">
-            <div class="pd-h"><span><svg viewBox="0 0 280 140" aria-label="Tread"><use href="#tread-mark"/></svg></span><span style="font-size:11px;font-weight:700;color:var(--grey-5);">SETTLEMENT · #S-1042</span></div>
-            <div class="pdf-line"><span>#40231 · Ramirez · 24.5t</span><span>$318.50</span></div>
-            <div class="pdf-line"><span>#40232 · Cole · 23.8t</span><span>$309.40</span></div>
-            <div class="pdf-line"><span>#40233 · Diaz · 17.2t</span><span>$206.40</span></div>
+            <div class="pd-h"><span><svg viewBox="0 0 280 140" aria-label="Tread"><use href="#tread-mark"/></svg></span><span style="font-size:11px;font-weight:700;color:var(--grey-5);">SETTLEMENT · #S-1042 · Outback Materials</span></div>
+            <div style="display:grid;grid-template-columns:1.4fr .7fr .8fr .7fr .8fr;gap:6px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--grey-5);padding:2px 0;border-bottom:1px solid var(--grey-2);"><span>Truck · Material</span><span>Rate Type</span><span>Billing Qty</span><span>Rate</span><span style="text-align:right;">Total</span></div>
+            <div style="display:grid;grid-template-columns:1.4fr .7fr .8fr .7fr .8fr;gap:6px;font-size:12px;padding:5px 0;"><span>T-14 · 3/4" Base Rock</span><span>By Ton</span><span>24.5 t</span><span>$13.00</span><span style="text-align:right;">$318.50</span></div>
+            <div style="display:grid;grid-template-columns:1.4fr .7fr .8fr .7fr .8fr;gap:6px;font-size:12px;padding:5px 0;"><span>T-22 · 3/4" Base Rock</span><span>By Ton</span><span>23.8 t</span><span>$13.00</span><span style="text-align:right;">$309.40</span></div>
+            <div style="display:grid;grid-template-columns:1.4fr .7fr .8fr .7fr .8fr;gap:6px;font-size:12px;padding:5px 0;"><span>T-31 · Sand</span><span>By Ton</span><span>17.2 t</span><span>$12.00</span><span style="text-align:right;">$206.40</span></div>
+            <div style="font-size:11px;color:var(--grey-5);padding-top:6px;">Add Ons: none</div>
             <div class="pdf-total"><span>Total</span><span class="amt">$834.30</span></div>
           </div></div>
           <div style="text-align:right;margin-top:12px;"><button class="btn dark" id="btn-export" type="button" style="display:none;">Generate PDF · mark exported</button></div>
@@ -2106,7 +2126,7 @@
   // per-stage "watch how" videos (Pages-hosted clips)
   var STAGEVID={projects:'v1-01-create-project-overview.mp4',dispatch:'v3-01-order-card-basics.mp4',approvals:'v6-03-approvals-page.mp4',settlements:'v6-04-bulk-settlements-pdf-export.mp4'};
   var VID={0:{loom:'93b29381538143e3a1dd4f2e53e2f75a'},1:{mp4:'v1-01-create-project-overview.mp4'},2:{mp4:'v3-01-order-card-basics.mp4'},3:{mp4:'v3-08-bulk-edit-duplicate-orders.mp4'},4:{mp4:'v4-01-driver-app-and-dispatch.mp4'},5:{mp4:'v4-02-accept-start-live-tracking.mp4'},6:{mp4:'v6-03-approvals-page.mp4'},7:{mp4:'v6-04-bulk-settlements-pdf-export.mp4'},8:{soon:true}};
-  var LEARN={0:'./?c=1',1:'./?c=1',2:'./?c=2',3:'./?c=2',4:'./?c=2',5:'./?c=3',6:'./?c=4',7:'./?c=5',8:'./?c=6'};
+  var LEARN={0:'./?c=1&s=a-master-data',1:'./?c=1&s=a-build-project',2:'./?c=2&s=a-order-build',3:'./?c=2&s=a-assign-manage',4:'./?c=2&s=a-assign-manage',5:'./?c=3&s=a-run-job',6:'./?c=4&s=a-approvals',7:'./?c=5&s=a-build-settlements',8:'./?c=6&s=a-core-reports'};
   var VBASE='https://github.com/amytread/tread-u/releases/download/media-v1/';
   function videoHTML(stage){ var v=VID[stage]; if(!v)return ''; if(v.loom)return '<div class="vwrap"><iframe src="https://www.loom.com/embed/'+v.loom+'" frameborder="0" allowfullscreen></iframe></div>'; if(v.mp4)return '<div class="vwrap"><video controls preload="metadata" playsinline><source src="'+VBASE+v.mp4+'" type="video/mp4"></video></div>'; if(v.soon)return '<div class="vsoon">▶ Walkthrough video coming soon</div>'; return ''; }
 
