@@ -2182,8 +2182,8 @@
                 <div class="field"><label>Material</label><div class="ctl">3/4" Base Rock</div></div>
                 <div class="field"><label>Truck type</label><div class="ctl">Super Dump</div></div>
               </div>
-              <div class="field"><label>Dispatch mode</label><div class="seg" id="of-mode"><span data-m="Loads">Loads</span><span data-m="Running">Running</span><span data-m="Tons">Tons</span></div>
-                <div class="tu-sub" style="margin-top:7px;">Loads = N loads each · Running = continuous cycles · Tons = fixed tonnage.</div></div>
+              <div class="field" id="of-mode"><label style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--black);cursor:pointer;margin:0;"><input type="checkbox" id="of-running" style="width:16px;height:16px;accent-color:var(--yellow);margin:0;"> Running order</label>
+                <div class="tu-sub" style="margin-top:7px;">Leave unchecked for a fixed order (it ends after the last load is delivered). Check Running to keep drivers cycling until you stop the order.</div></div>
               <div class="field"><label>Quantity</label><div class="ctl empty" id="of-qty" style="max-width:180px;">e.g. 8 loads</div></div>
               <div style="text-align:right;"><button class="btn yellow" id="of-create" type="button">Create order</button></div>
             </div>
@@ -2198,7 +2198,7 @@
                   <div class="og-col"><div class="ogf"><b>Start:</b> 7:00 AM Thu Jul-09-2026</div><div class="ogf"><b>Requestor:</b> Tread Admin</div></div>
                   <div class="og-col"><div class="ogf"><b>Truck Type:</b> Super Dump</div><div class="ogf"><b>Foreman:</b> —</div></div>
                   <div class="og-col"><div class="ogf"><b>Pickup:</b> <span class="pin"></span>North Pit</div><div class="ogf"><b>Dropoff:</b> <span class="pin"></span>Hwy 12 Site</div></div>
-                  <div class="og-col"><div class="ogf"><b>Mode:</b> <span id="on-mode">Loads</span></div><div class="ogf"><b>Qty:</b> <span id="on-qty">8 loads</span></div></div>
+                  <div class="og-col"><div class="ogf"><b>Running:</b> <span id="on-mode">No</span></div><div class="ogf"><b>Qty:</b> <span id="on-qty">8 loads</span></div></div>
                 </div>
                 <div class="ord-body">
                   <div class="ord-left"><div class="jobs" id="jobs"></div><div id="order-new-foot"><button class="btn yellow" id="btn-assign" type="button">Assign driver/truck</button></div></div>
@@ -2607,12 +2607,6 @@
           </div>
         </div>
 
-        <div class="sheet" id="du-hier-wrap">
-          <h4>Company hierarchy</h4>
-          <div class="tu-sub" style="margin-bottom:10px;">All master data lives at the <strong>parent</strong> level. Confirm your structure before you load anything.</div>
-          <div class="seg" id="du-hier"><span data-h="single" class="on">Single company</span><span data-h="pc">Parent / child</span></div>
-          <div style="margin-top:10px;font-size:12.5px;color:var(--grey-6);line-height:1.5">Most teams use a <strong>single company</strong>. <span tabindex="0" title="Use Parent / child only when separate divisions have their own customers, rates, and books and never share data day to day. If dispatchers cross divisions or you share reporting across entities, a single company is simpler and recommended." style="text-decoration:underline dotted;cursor:help;color:var(--dark-orange);font-weight:600">When does parent/child make sense?</span> If you think you need it, reach out to <a href="mailto:success@tread.io" style="color:var(--dark-orange);font-weight:600">success@tread.io</a>.</div>
-        </div>
 
         <div class="tu-set">
           <aside class="tu-set-nav">
@@ -3008,7 +3002,6 @@
 
   function fill(id,txt){var e=el(id);if(e){e.textContent=txt;e.classList.remove('empty');}}
   function unfill(id,txt){var e=el(id);if(e){e.textContent=txt;e.classList.add('empty');}}
-  function setmode(m){root.querySelectorAll('#of-mode span').forEach(function(x){x.classList.toggle('on',x.dataset.m===m);});}
   function addJob(t){var j=document.createElement('div');j.className='job';j.innerHTML='<span class="jt">'+t+'</span><span class="js">Assigned</span>';el('jobs').appendChild(j);}
   var INIT_FOOT=el('order-new-foot').innerHTML;
   function setDj(t){var e=el('dj-status');if(e)e.textContent=t;}
@@ -3029,7 +3022,6 @@
   // STEPS (22): each {stage, screen, nav, title, text, warn?, cta, target, act, last?, celebrate?}
   var STEPS=[
     {stage:0,intro:true,screen:'data',nav:'Settings',title:'Watch first: uploading your data',text:'Tim walks through loading your data, then we’ll do it together.',cta:'Start loading data',target:''},
-    {stage:0,screen:'data',nav:'Settings',title:'Confirm your company hierarchy',text:'All master data lives at the parent level. Set your structure first.',cta:'Single company',target:'du-hier',act:function(){root.querySelectorAll('#du-hier span').forEach(function(x){x.classList.toggle('on',x.dataset.h==='single');});}},
     {stage:0,screen:'data',nav:'Settings',choice:true,title:'Add manually or bulk-upload?',text:'For every data set you can add records by hand, or bulk-upload with our template: download it, fill the exact format, upload (no column mapping). Pick your default; you can switch on any set.',target:''},
     {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-users-c',name:'Users',n:'12'},skip:{req:false},title:'Add your Users',text:'The people who log into Tread.',target:'du-users-c'},
     {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-drivers-c',name:'Drivers',n:'20'},skip:{req:true,dep:'you’ll need a driver to assign a Job'},title:'Add your Drivers',text:'Everyone who receives dispatches.',target:'du-drivers-c'},
@@ -3052,9 +3044,9 @@
     {stage:2,intro:true,screen:'dispatch',nav:'Dispatch',title:'Build an Order',text:'See how daily Orders work, then create one for today.',cta:'Start',target:''},
     {stage:2,screen:'dispatch',nav:'Dispatch',title:'Create an order',text:'A project has many Orders: one per dispatch day. Each Order carries ONE material.',cta:'New order',target:'btn-neworder',act:function(){el('order-form').style.display='';}},
     {stage:2,screen:'dispatch',nav:'Dispatch',title:'Set the date',text:'When is this work happening?',cta:'Set date',target:'of-date',act:function(){fill('of-date','Today · Jul 2, 2026');}},
-    {stage:2,screen:'dispatch',nav:'Dispatch',title:'Choose a dispatch mode',text:'Loads, Running, or Tons: how you tell drivers the quantity.<span style="display:block;margin-top:8px;font-size:12px;color:var(--grey-6);line-height:1.5"><strong>💡 Running vs. fixed:</strong> a <strong>Running</strong> order keeps drivers cycling and never auto-ends (stop it when the day’s done); a <strong>fixed</strong> Loads/Tons order auto-ends after the last load is delivered.</span>',cta:'Choose Loads',target:'of-mode',act:function(){setmode('Loads');}},
+    {stage:2,screen:'dispatch',nav:'Dispatch',title:'Running or fixed?',text:'By default an order is <strong>fixed</strong>: it ends automatically after the last load is delivered. Check <strong>Running</strong> to keep drivers cycling until you stop the order yourself.',cta:'Got it',target:'of-mode',act:function(){}},
     {stage:2,screen:'dispatch',nav:'Dispatch',title:'Set the quantity',text:'How much to haul.<span style="display:block;margin-top:8px;font-size:12px;color:var(--grey-6);line-height:1.5"><strong>💡 Target vs. billing unit:</strong> the unit you dispatch by can differ from the unit you bill by: e.g. schedule by <strong>load</strong> but charge by <strong>ton</strong>.</span>',cta:'Set 8 loads',target:'of-qty',act:function(){fill('of-qty','8 loads');}},
-    {stage:2,screen:'dispatch',nav:'Dispatch',title:'Create the order',text:'It lands on the board: unassigned, ready for trucks.<span style="display:block;margin-top:8px;font-size:12px;color:var(--grey-6);line-height:1.5"><strong>💡 Stagger:</strong> space out truck arrivals at the plant so they don’t all show up at once: set the stagger interval on the order.</span>',cta:'Create order',target:'of-create',last:true,act:function(){el('order-form').style.display='none';var o=el('order-new');o.style.display='';o.classList.add('row-new');el('on-mode').textContent='Loads';el('on-qty').textContent='8 loads';}},
+    {stage:2,screen:'dispatch',nav:'Dispatch',title:'Create the order',text:'It lands on the board: unassigned, ready for trucks.<span style="display:block;margin-top:8px;font-size:12px;color:var(--grey-6);line-height:1.5"><strong>💡 Stagger:</strong> space out truck arrivals at the plant so they don’t all show up at once: set the stagger interval on the order.</span>',cta:'Create order',target:'of-create',last:true,act:function(){el('order-form').style.display='none';var o=el('order-new');o.style.display='';o.classList.add('row-new');var _r=el('of-running');el('on-mode').textContent=(_r&&_r.checked)?'Yes':'No';el('on-qty').textContent='8 loads';}},
 
     {stage:3,intro:true,screen:'dispatch',nav:'Dispatch',title:'Assign trucks (Jobs)',text:'Watch how assigning trucks creates Jobs, then stage a couple.',cta:'Start',target:''},
     {stage:3,screen:'dispatch',nav:'Dispatch',title:'Assign a truck',text:'Assigning a truck to the order creates a Job.',cta:'Assign truck',target:'btn-assign',act:function(){addJob('T-14 · Ramirez');el('order-new-foot').innerHTML='<button class="btn ghost" id="btn-assign" type="button">+ Assign another</button> <button class="btn yellow" id="btn-send" type="button">Send</button>';}},
@@ -3182,7 +3174,6 @@
   function hideTakeover(){scrim.className='scrim';}
 
   function resetAll(){
-    root.querySelectorAll('#du-hier span').forEach(function(x){x.classList.remove('on');});
     if(el('du-cust-bulk'))el('du-cust-bulk').style.display='none';
     var _dl=el('du-cust-dl');if(_dl)_dl.textContent='⬇ Download template';
     var _bn=el('du-cust-bulk-note');if(_bn)_bn.textContent='customers_template.csv';
@@ -3194,7 +3185,7 @@
     el('proj-new').style.display='none'; el('proj-new').classList.remove('row-new');
     el('btn-neworder').style.display='none'; el('order-form').style.display='none';
     unfill('of-date','Select date…'); unfill('of-qty','e.g. 8 loads');
-    root.querySelectorAll('#of-mode span').forEach(function(x){x.classList.remove('on');});
+    var _ofr=el('of-running'); if(_ofr) _ofr.checked=false;
     var o=el('order-new'); o.style.display='none'; o.className='order unassigned';
     el('jobs').innerHTML=''; el('order-new-foot').innerHTML=INIT_FOOT;
     el('tk-1').classList.remove('open','approved'); var ap=el('btn-approve'); if(ap)ap.style.display='';
@@ -3288,7 +3279,7 @@
     {s:'a-run-job',k:['driver','field','haul','tracking','accept','scale ticket','after i dispatch','after dispatch','what happens','mobile'],c:3,a:'After you send, the driver accepts and runs the haul while you watch it live (Accepted → Loaded → Delivered → Completed). They capture a scale ticket and submit hours, and the completed job lands "In Review" for approval.'},
     {s:'a-build-project',k:['create a project','create project','new project','make a project','set up a project','build a project'],c:1,a:'Go to <b>Projects → New Project</b>, name it, choose the customer (this can\'t change later), then add your materials + rates. Now you can build Orders against it.'},
     {s:'a-master-data',k:['upload','import','master data','load data','manual','bulk','template','my data','add data','enter data'],c:1,a:'You can load data two ways: <b>add records manually</b> or <b>bulk-upload our template</b> (download it, fill the exact format, upload: no column mapping). Load in order (Users → Drivers → Customers → Vendors → Equipment Types → Equipment → Materials → Sites), and always do <b>Equipment Types before Equipment</b> or ticket calcs break.'},
-    {s:'a-order-build',k:['dispatch mode','loads','running','tons','quantity','how much'],c:2,a:'Dispatch modes tell drivers the quantity: <b>Loads</b> (N loads each), <b>Running</b> (continuous cycles), or <b>Tons</b> (a fixed tonnage). Set it on the order.'},
+    {s:'a-order-build',k:['running','fixed','order type','keep cycling','auto end','running order','stop the order','quantity','how much'],c:2,a:'By default an order is <b>fixed</b>: it ends automatically after the last load is delivered. Check the <b>Running</b> box on the order to keep drivers cycling until you stop it yourself. You set how much to haul with the material, units, and truck count.'},
     {s:'a-tread-model',k:['difference','vs ','project vs','what is','how tread','organized','the model','hierarchy','parent'],c:0,a:'A <b>Project</b> is your recurring job (a container). An <b>Order</b> is one day\'s work under it and carries one material. Assigning a truck to an order creates a <b>Job</b> (per-truck), and <b>Dispatch</b> sends those Jobs to drivers.'},
     {s:'a-assign-manage',k:['dispatch','assign','send','truck','order'],c:2,a:'On the order card, assign a driver+truck (each assignment is a <b>Job</b>), then hit <b>Send</b>: it fires the job to the driver via text + push.'}
   ];
