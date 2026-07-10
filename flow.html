@@ -1762,8 +1762,8 @@
 <div id="tuflow">
   <div class="tu-head">
     <div>
-      <div class="tu-title">Tread U — onboarding, start to finish</div>
-      <div class="tu-sub">Click <strong>Get Treading</strong> and follow the prompts. Each step guides a real task, then celebrates it — all the way to Road-Ready. &nbsp;<a href="./" style="color:var(--dark-orange);font-weight:700;text-decoration:none;">📚 More training at Tread U →</a></div>
+      <div class="tu-title">Tread U: onboarding, start to finish</div>
+      <div class="tu-sub">Click <strong>Get Treading</strong> and follow the prompts. Each step guides a real task, then celebrates it: all the way to Road-Ready. &nbsp;<a href="./" style="color:var(--dark-orange);font-weight:700;text-decoration:none;">📚 More training at Tread U →</a></div>
     </div>
     <span class="tu-proto">Prototype · sample data</span>
   </div>
@@ -1795,70 +1795,267 @@
     <!-- app body -->
     <div class="appbody">
       <!-- PROJECTS -->
+<style>
+/* screen-scoped styles for the Projects screen: prefixed so they can't collide */
+#tuflow section[data-screen="projects"] .ptoolbar{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
+#tuflow section[data-screen="projects"] .ptabs{display:inline-flex;gap:2px;}
+#tuflow section[data-screen="projects"] .ptab{font-size:13px;font-weight:700;color:var(--grey-5);padding:6px 12px;border-radius:7px;cursor:pointer;}
+#tuflow section[data-screen="projects"] .ptab.on{color:var(--black);background:var(--grey-1);}
+#tuflow section[data-screen="projects"] .ptoolbar .acts{display:flex;gap:8px;}
+#tuflow section[data-screen="projects"] .filterbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
+#tuflow section[data-screen="projects"] .fseg{display:inline-flex;border:1px solid var(--grey-2);border-radius:8px;overflow:hidden;background:var(--white);}
+#tuflow section[data-screen="projects"] .fseg span{font-size:12.5px;font-weight:600;color:var(--grey-6);padding:7px 13px;cursor:pointer;border-right:1px solid var(--grey-2);}
+#tuflow section[data-screen="projects"] .fseg span:last-child{border-right:none;}
+#tuflow section[data-screen="projects"] .fseg span.on{background:var(--black);color:var(--white);}
+#tuflow section[data-screen="projects"] .psearch{flex:1;min-width:150px;display:flex;align-items:center;gap:7px;background:var(--white);border:1px solid var(--grey-2);border-radius:8px;padding:7px 11px;color:var(--grey-4);font-size:13px;}
+#tuflow section[data-screen="projects"] .fbtn{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--grey-7);background:var(--white);border:1px solid var(--grey-2);border-radius:8px;padding:7px 12px;}
+
+/* list rows */
+#tuflow section[data-screen="projects"] .plist{display:flex;flex-direction:column;}
+#tuflow section[data-screen="projects"] .prow{display:grid;grid-template-columns:2.2fr 1.4fr 1.5fr 1fr auto;align-items:center;gap:14px;
+  background:var(--white);border:1px solid var(--grey-2);border-left:5px solid var(--yellow);border-radius:10px;
+  padding:12px 14px;margin-bottom:8px;box-shadow:var(--shadow-sm);}
+#tuflow section[data-screen="projects"] .pname{font-size:14px;font-weight:700;color:var(--black);}
+#tuflow section[data-screen="projects"] .pext{font-size:11px;color:var(--grey-5);margin-top:2px;}
+#tuflow section[data-screen="projects"] .pcust{font-size:13px;font-weight:700;color:var(--btn-green);}
+#tuflow section[data-screen="projects"] .pdates{font-size:12px;color:var(--grey-7);font-variant-numeric:tabular-nums;}
+#tuflow section[data-screen="projects"] .pdates .sub{font-size:10.5px;color:var(--grey-5);margin-top:2px;}
+#tuflow section[data-screen="projects"] .pco{font-size:12.5px;color:var(--grey-7);}
+#tuflow section[data-screen="projects"] .pright{display:flex;align-items:center;gap:10px;justify-self:end;}
+#tuflow section[data-screen="projects"] .pstat{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;
+  color:#2C6E8F;background:#EAF4FA;border:1px solid #BDDCEC;border-radius:7px;padding:4px 9px;}
+#tuflow section[data-screen="projects"] .pic{color:var(--grey-4);font-size:14px;}
+#tuflow section[data-screen="projects"] .pid{font-size:10px;color:var(--grey-4);font-variant-numeric:tabular-nums;white-space:nowrap;}
+
+/* create-project modal internals */
+#tuflow section[data-screen="projects"] .pf-x{color:var(--grey-4);cursor:pointer;font-size:15px;}
+#tuflow section[data-screen="projects"] .pf-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:4px;}
+#tuflow section[data-screen="projects"] .pf-sec{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--grey-5);margin:16px 0 9px;}
+#tuflow section[data-screen="projects"] .pf-sec:first-child{margin-top:0;}
+#tuflow section[data-screen="projects"] .g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+#tuflow section[data-screen="projects"] .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+#tuflow section[data-screen="projects"] .ctl.dd{justify-content:space-between;}
+#tuflow section[data-screen="projects"] .ctl.dd::after{content:"\25BE";color:var(--grey-4);font-size:10px;margin-left:8px;}
+#tuflow section[data-screen="projects"] .pf-link{display:inline-block;font-size:12px;font-weight:700;color:var(--dark-orange);text-decoration:none;margin-top:4px;}
+#tuflow section[data-screen="projects"] .maprect{height:96px;border:1px solid var(--grey-2);border-radius:8px;background:var(--grey-1);
+  display:grid;place-items:center;color:var(--grey-4);font-size:12px;font-weight:600;margin:2px 0 4px;}
+#tuflow section[data-screen="projects"] .chkrow{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--grey-8);margin-top:9px;}
+#tuflow section[data-screen="projects"] .taxchks{display:flex;flex-wrap:wrap;gap:16px;margin-top:6px;}
+@media(max-width:760px){#tuflow section[data-screen="projects"] .pf-cols{grid-template-columns:1fr;}
+  #tuflow section[data-screen="projects"] .prow{grid-template-columns:1fr;}
+  #tuflow section[data-screen="projects"] .pright{justify-self:start;}}
+</style>
       <section class="screen" data-screen="projects">
-        <div class="schead"><h3>Projects</h3><button class="btn yellow" id="btn-newproject" type="button">+ New Project</button></div>
+        <!-- page toolbar: Quotes / Projects tabs + New Quote / New Project -->
+        <div class="schead">
+          <div class="ptabs">
+            <span class="ptab">Quotes</span>
+            <span class="ptab on">Projects</span>
+          </div>
+          <div class="acts">
+            <button class="btn ghost" type="button">New Quote</button>
+            <button class="btn yellow" id="btn-newproject" type="button">New Project</button>
+          </div>
+        </div>
+
+        <!-- status filters + search -->
+        <div class="filterbar">
+          <div class="fseg">
+            <span class="on">Active</span>
+            <span>Completed</span>
+            <span>Inactive</span>
+            <span>Canceled</span>
+          </div>
+          <div class="psearch">Search</div>
+          <div class="fbtn">☰ Filters</div>
+        </div>
+
+        <!-- Create Project modal (revealed by the tour) -->
         <div class="sheet" id="proj-form" style="display:none;">
-          <div style="display:flex;align-items:center;justify-content:space-between;"><h4>Create Project</h4><span style="color:var(--grey-4);">✕</span></div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:6px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;"><h4>Create Project</h4><span class="pf-x">✕</span></div>
+          <div class="pf-cols">
+            <!-- LEFT column -->
             <div>
-              <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--grey-5);margin-bottom:8px;">Project Details</div>
+              <div class="pf-sec">Project Details</div>
               <div class="field"><label>Company</label><div class="ctl">Outback Materials</div></div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div class="field"><label>Customer Account *</label><div class="ctl empty" id="pf-customer">Select a customer…</div></div><div class="field"><label>Project Name *</label><div class="ctl empty" id="pf-name">Untitled project</div></div></div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div class="field"><label>Department</label><div class="ctl">Aggregates</div></div><div class="field"><label>Project External ID</label><div class="ctl empty">Optional</div></div></div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div class="field"><label>Phase Name</label><div class="ctl empty">—</div></div><div class="field"><label>Phase Code</label><div class="ctl">Code 1</div></div></div>
+              <div class="g2">
+                <div class="field"><label>Customer Account *</label><div class="ctl dd empty" id="pf-customer">Select a customer…</div></div>
+                <div class="field"><label>Project Name *</label><div class="ctl empty" id="pf-name">Untitled project</div></div>
+              </div>
+              <div class="g2">
+                <div class="field"><label>Department</label><div class="ctl dd">Aggregates</div></div>
+                <div class="field"><label>Project External ID</label><div class="ctl empty">Optional</div></div>
+              </div>
+              <div class="g2">
+                <div class="field"><label>Dispatch No.</label><div class="ctl empty">Optional</div></div>
+                <div class="field"><label>Order PO</label><div class="ctl empty">Optional</div></div>
+              </div>
+              <div class="g2">
+                <div class="field"><label>Phase Name</label><div class="ctl empty">, </div></div>
+                <div class="field"><label>Phase Code</label><div class="ctl dd empty">Select…</div></div>
+              </div>
+              <a class="pf-link" href="#" onclick="return false;">View / Bulk Add Phases</a>
               <div class="warn" id="pf-warn" style="display:none;">Customer can’t be changed once the project is created.</div>
-              <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--grey-5);margin:14px 0 8px;">Materials</div>
-              <div id="pf-mat" class="matrow" style="display:none;"><div class="ctl">3/4" Base Rock</div><div class="ctl" style="max-width:80px;">Tons</div><div class="ctl empty" id="pf-rate" style="max-width:140px;">Rate…</div></div>
-              <button class="btn ghost" id="pf-addmat" type="button" style="margin-top:7px;">+ Add material rate</button>
+
+              <div class="pf-sec">Date &amp; Time</div>
+              <div class="g2">
+                <div class="field"><label>Start Date</label><div class="ctl">06/14/2026</div></div>
+                <div class="field"><label>Start Time</label><div class="ctl">12:00 PM</div></div>
+              </div>
+              <div class="g2">
+                <div class="field"><label>End Date</label><div class="ctl empty">mm/dd/yyyy</div></div>
+                <div class="field"><label>End Time</label><div class="ctl empty">hh:mm --</div></div>
+              </div>
+
+              <div class="pf-sec">Materials</div>
+              <div class="g3">
+                <div class="field"><label>Material</label><div class="ctl dd">3/4" Base Rock</div></div>
+                <div class="field"><label>Total Quantity</label><div class="ctl empty">0</div></div>
+                <div class="field"><label>Unit *</label><div class="ctl dd">Tons</div></div>
+              </div>
+              <div class="pf-sec" style="margin-top:6px;">Material Rates</div>
+              <div id="pf-mat" class="matrow" style="display:none;">
+                <div class="ctl dd">North Pit</div>
+                <div class="ctl" style="max-width:110px;">Buy $11.00</div>
+                <div class="ctl empty" id="pf-rate" style="max-width:150px;">Rate…</div>
+              </div>
+              <button class="btn ghost" id="pf-addmat" type="button" style="margin-top:7px;">+ Add Material Rate</button>
+              <div><a class="pf-link" href="#" onclick="return false;">+ Add Material</a></div>
             </div>
+
+            <!-- RIGHT column -->
             <div>
-              <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--grey-5);margin-bottom:8px;">Location Details</div>
-              <div class="field"><label>Pick Up Site</label><div class="ctl">North Pit</div></div>
-              <div class="field"><label>Drop Off Site</label><div class="ctl">Torrey Pines Golf Course</div></div>
-              <div style="height:84px;border:1px solid var(--grey-2);border-radius:8px;background:var(--grey-1);display:grid;place-items:center;color:var(--grey-4);font-size:12px;">Map</div>
-              <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--grey-5);margin:14px 0 8px;">Order Defaults</div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div class="field"><label>Charge to Account</label><div class="ctl">Outback Materials</div></div><div class="field"><label>Service Class</label><div class="ctl">Aggregate Haul</div></div></div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div class="field"><label># Trucks</label><div class="ctl">2</div></div><div class="field"><label>Units</label><div class="ctl">Loads</div></div></div>
+              <div class="pf-sec">Location Details</div>
+              <div class="field"><label>Pick Up Site</label><div class="ctl dd">North Pit</div></div>
+              <div class="field"><label>Drop Off Site</label><div class="ctl dd">Torrey Pines Golf Course</div></div>
+              <div class="maprect">Choose Location First</div>
+              <a class="pf-link" href="#" onclick="return false;">+ Add Pick Up Site Contact</a><br>
+              <a class="pf-link" href="#" onclick="return false;">+ Add Drop Off Site Contact</a>
+
+              <div class="pf-sec">Order Defaults</div>
+              <div class="g2">
+                <div class="field"><label>Charge to Account</label><div class="ctl dd">Outback Materials</div></div>
+                <div class="field"><label>Service Class</label><div class="ctl dd">Aggregate Haul</div></div>
+              </div>
+              <div class="g2">
+                <div class="field"><label>Ordered Quantity</label><div class="ctl empty">0</div></div>
+                <div class="field"><label>Unit</label><div class="ctl dd">Loads</div></div>
+              </div>
+              <div class="pf-sec" style="font-weight:700;color:var(--grey-6);">Trucks</div>
+              <div class="g3">
+                <div class="field"><label>Number of Trucks</label><div class="ctl">2</div></div>
+                <div class="field"><label>Units</label><div class="ctl dd">Loads</div></div>
+                <div class="field"><label>Quantity</label><div class="ctl empty">0</div></div>
+              </div>
+              <div class="g3">
+                <div class="field"><label>Truck Type</label><div class="ctl dd empty">Select…</div></div>
+                <div class="field"><label>Units</label><div class="ctl dd empty">, </div></div>
+                <div class="field"><label>Truck Capacity</label><div class="ctl empty">0</div></div>
+              </div>
+              <div class="g2">
+                <div class="field"><label>Truck Time (Hrs)</label><div class="ctl empty">0</div></div>
+                <div class="field"><label>Ticket Chaser</label><div class="ctl dd empty">Select…</div></div>
+              </div>
+              <div class="chkrow"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Text drivers for missing tickets</div>
+              <div class="chkrow"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Default digital ticket view for drivers</div>
+
+              <div class="pf-sec">Tax</div>
+              <div class="g2">
+                <div class="field"><label>Tax Rate Schedule</label><div class="ctl dd empty">Select…</div></div>
+                <div class="field"><label>Tax Rate (%)</label><div class="ctl empty">0</div></div>
+              </div>
+              <div class="taxchks">
+                <span class="chkrow" style="margin-top:0;"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Freight &amp; FSC</span>
+                <span class="chkrow" style="margin-top:0;"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Material</span>
+                <span class="chkrow" style="margin-top:0;"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Add-ons</span>
+              </div>
+
+              <div class="pf-sec">Contacts</div>
+              <div class="field"><label>Assigned Foreman</label><div class="ctl dd empty">Select a foreman…</div></div>
+              <div class="field"><label>Collaborator</label><div class="ctl dd empty">Select…</div></div>
             </div>
           </div>
-          <div style="text-align:right;margin-top:12px;"><button class="btn ghost" type="button">Cancel</button> <button class="btn yellow" id="pf-create" type="button">Create</button></div>
+          <div style="text-align:right;margin-top:14px;"><button class="btn ghost" type="button">Cancel</button> <button class="btn yellow" id="pf-create" type="button">Create</button></div>
         </div>
-        <div class="panel">
-          <table>
-            <thead><tr><th>Project</th><th>Customer</th><th>Material</th><th>Status</th></tr></thead>
-            <tbody>
-              <tr><td>Riverside Overlay<div style="font-size:11px;color:var(--grey-5);">Project Ext ID: PRJ-RIV-014</div></td><td>City of Fresno</td><td>Asphalt</td><td><span class="tag gy">Active ▾</span></td></tr>
-              <tr><td>Shaw Ave Widening<div style="font-size:11px;color:var(--grey-5);">Project Ext ID: PRJ-SHAW-009</div></td><td>Granite Const.</td><td>Aggregate</td><td><span class="tag gy">Active ▾</span></td></tr>
-              <tr id="proj-new" style="display:none;"><td><strong>Hwy 12 Base Course</strong><div style="font-size:11px;color:var(--grey-5);">Project Ext ID: PRJ-HWY12-001</div></td><td>Outback Materials</td><td>3/4" Base Rock</td><td><span class="tag gn">Active ▾</span></td></tr>
-            </tbody>
-          </table>
+
+        <!-- Projects list -->
+        <div class="plist">
+          <div class="prow">
+            <div><div class="pname">Riverside Overlay</div><div class="pext">Project Ext ID: PRJ-RIV-014</div></div>
+            <div class="pcust">City of Fresno</div>
+            <div class="pdates">Jun 07 → Jun 09, 2026<div class="sub">Created Jun 05, 2026</div></div>
+            <div class="pco">Outback Materials</div>
+            <div class="pright"><span class="pstat">Active ▾</span><span class="pic">✎</span><span class="pic">⋯</span><span class="pid">PRJ-9814</span></div>
+          </div>
+          <div class="prow">
+            <div><div class="pname">Shaw Ave Widening</div><div class="pext">Project Ext ID: PRJ-SHAW-009</div></div>
+            <div class="pcust">Granite Const.</div>
+            <div class="pdates">Jun 03 → Jun 12, 2026<div class="sub">Created Jun 01, 2026</div></div>
+            <div class="pco">Outback Materials</div>
+            <div class="pright"><span class="pstat">Active ▾</span><span class="pic">✎</span><span class="pic">⋯</span><span class="pid">PRJ-9776</span></div>
+          </div>
+          <div class="prow" id="proj-new" style="display:none;">
+            <div><div class="pname">Hwy 12 Base Course</div><div class="pext">Project Ext ID: PRJ-HWY12-001</div></div>
+            <div class="pcust">Outback Materials</div>
+            <div class="pdates">Jun 14, 2026<div class="sub">Created just now</div></div>
+            <div class="pco">Outback Materials</div>
+            <div class="pright"><span class="pstat">Active ▾</span><span class="pic">✎</span><span class="pic">⋯</span><span class="pid">PRJ-9902</span></div>
+          </div>
         </div>
       </section>
 
       <!-- DISPATCH (orders + jobs) -->
+<style>
+/* screen-scoped styles for the Dispatch board: prefixed so they can't collide */
+#tuflow section[data-screen="dispatch"] .ds-stat2{display:flex;gap:10px;margin-bottom:11px;}
+#tuflow section[data-screen="dispatch"] .ds-stat2>div{flex:1;display:flex;flex-direction:column;gap:2px;}
+#tuflow section[data-screen="dispatch"] .ds-lab{font-size:10px;font-weight:700;color:var(--grey-5);text-transform:uppercase;letter-spacing:.03em;}
+#tuflow section[data-screen="dispatch"] .ds-big{font-size:17px;font-weight:800;color:var(--black);font-variant-numeric:tabular-nums;}
+#tuflow section[data-screen="dispatch"] .ds-showless{margin-top:9px;font-size:10.5px;font-weight:600;color:var(--dark-orange);text-align:center;}
+#tuflow section[data-screen="dispatch"] .ds-search{margin:8px 0;font-size:11px;color:var(--grey-4);background:var(--grey-1);border:1px solid var(--grey-2);border-radius:7px;padding:6px 9px;}
+#tuflow section[data-screen="dispatch"] .ds-drvbar{display:flex;align-items:center;gap:6px;margin-bottom:6px;}
+#tuflow section[data-screen="dispatch"] .ds-drvsel{flex:1;font-size:11px;font-weight:600;color:var(--grey-7);background:var(--white);border:1px solid var(--grey-2);border-radius:7px;padding:5px 8px;}
+#tuflow section[data-screen="dispatch"] .ds-arrows{font-size:11px;color:var(--grey-5);letter-spacing:2px;}
+#tuflow section[data-screen="dispatch"] .drow .dchip{font-size:9px;font-weight:700;color:var(--dark-orange);background:rgba(255,170,19,.15);border:1px solid rgba(255,170,19,.4);border-radius:4px;padding:1px 5px;align-self:flex-start;margin-top:2px;}
+#tuflow section[data-screen="dispatch"] .db-nav{display:flex;align-items:center;gap:7px;}
+#tuflow section[data-screen="dispatch"] .db-nav .navic{font-size:13px;color:var(--grey-5);}
+#tuflow section[data-screen="dispatch"] .ord-acc{font-size:10px;font-weight:700;color:var(--btn-green);white-space:nowrap;}
+#tuflow section[data-screen="dispatch"] .ord-acc .dim{color:var(--grey-4);}
+#tuflow section[data-screen="dispatch"] .of-row{display:flex;gap:12px;flex-wrap:wrap;}
+#tuflow section[data-screen="dispatch"] .of-row .field{flex:1;min-width:150px;}
+</style>
       <section class="screen" data-screen="dispatch">
         <div class="disp-wrap">
           <aside class="disp-side">
             <div class="ds-card">
-              <div class="ds-h">Jul-2 · Status</div>
+              <div class="ds-h">Jul-2-2026 · Status</div>
+              <div class="ds-stat2">
+                <div><span class="ds-lab">Accepted</span><b class="ds-big">0/8</b></div>
+                <div><span class="ds-lab">Available</span><b class="ds-big">119/119</b></div>
+              </div>
               <div class="ds-grid">
                 <span>Unassigned</span><b>1</b><span>Accepted</span><b>0</b>
-                <span>Assigned</span><b>0</b><span>Loaded</span><b>0</b>
-                <span>Sent</span><b>0</b><span>Completed</span><b>0</b>
+                <span>Assigned</span><b>0</b><span>En Route</span><b>0</b>
+                <span>Sent</span><b>0</b><span>Loaded</span><b>0</b>
+                <span>Rejected</span><b>0</b><span>Unloaded</span><b>0</b>
+                <span>Cancelled</span><b>0</b><span>Completed</span><b>0</b>
               </div>
+              <div class="ds-showless">Show Less</div>
             </div>
             <div class="ds-card">
               <div class="ds-seg"><span class="on">Driver</span><span>Vendor</span></div>
-              <div class="drow"><span class="fl">131</span><span class="dn">Amy Griffith<em>Super Dump</em></span><span class="tgl on"></span></div>
+              <div class="ds-search">🔍 Search</div>
+              <div class="ds-drvbar"><span class="ds-drvsel">All Drivers ▾</span><span class="ds-arrows">↑ ↓</span></div>
+              <div class="drow"><span class="fl">131</span><span class="dn">Amy Griffith<em>Super Dump Truck</em><span class="dchip">Tampa</span></span><span class="tgl on"></span></div>
               <div class="drow"><span class="fl">152</span><span class="dn">Bernadette D.<em>Side Dump</em></span><span class="tgl on"></span></div>
-              <div class="drow"><span class="fl">141</span><span class="dn">Christophe H.<em>End Dump</em></span><span class="tgl on"></span></div>
-              <div class="drow"><span class="fl">118</span><span class="dn">Clem Tread<em>Super Dump</em></span><span class="tgl"></span></div>
+              <div class="drow"><span class="fl">141</span><span class="dn">Christophe H.<em>End Dump Trailer</em></span><span class="tgl on"></span></div>
+              <div class="drow"><span class="fl">118</span><span class="dn">Clem Tread<em>Super Dump Truck</em></span><span class="tgl"></span></div>
             </div>
           </aside>
           <div class="disp-main">
             <div class="disp-bar">
               <div class="db-seg"><span class="on">Orders</span><span>Drivers</span></div>
-              <span class="db-date">Today, Sun Jul-2-2026</span>
+              <div class="db-nav"><span class="navic">←</span><span class="navic">→</span><span class="navic">📅</span><span class="db-date">Today, Sun Jul-2-2026</span></div>
               <span class="spacer"></span>
               <button class="btn ghost sm" type="button">↻ Refresh</button>
               <button class="btn dark sm" type="button">＋ Quick Order</button>
@@ -1869,11 +2066,15 @@
               <button class="btn ghost sm" type="button">Export Jobs</button>
               <span class="db-sort">Created At ▾</span>
               <span class="spacer"></span>
-              <span class="db-chips"><span class="chip2 on">External</span><span class="chip2">Filters</span><span class="chip2">Trucking</span><span class="chip2">Excavation</span><span class="chip2">More ···</span></span>
+              <span class="db-chips"><span class="chip2 on">External</span><span class="chip2">Orders 4</span><span class="chip2">Filters</span><span class="chip2">DMT · Tampa</span><span class="chip2">DMT · Standing</span><span class="chip2">DMT · Variable</span><span class="chip2">Trucking</span><span class="chip2">Excavation</span><span class="chip2">Heavy Haul</span><span class="chip2">More ···</span></span>
             </div>
             <div class="sheet" id="order-form" style="display:none;">
               <h4>New order · Hwy 12 Base Course</h4>
-              <div class="field"><label>Date</label><div class="ctl empty" id="of-date" style="max-width:220px;">Select date…</div></div>
+              <div class="of-row">
+                <div class="field"><label>Date</label><div class="ctl empty" id="of-date" style="max-width:220px;">Select date…</div></div>
+                <div class="field"><label>Material</label><div class="ctl">3/4" Base Rock</div></div>
+                <div class="field"><label>Truck type</label><div class="ctl">Super Dump</div></div>
+              </div>
               <div class="field"><label>Dispatch mode</label><div class="seg" id="of-mode"><span data-m="Loads">Loads</span><span data-m="Running">Running</span><span data-m="Tons">Tons</span></div>
                 <div class="tu-sub" style="margin-top:7px;">Loads = N loads each · Running = continuous cycles · Tons = fixed tonnage.</div></div>
               <div class="field"><label>Quantity</label><div class="ctl empty" id="of-qty" style="max-width:180px;">e.g. 8 loads</div></div>
@@ -1883,24 +2084,25 @@
               <div class="order unassigned" id="order-new" style="display:none;">
                 <div class="ord-top"><h4>Hwy 12 Base Course</h4>
                   <div class="ord-badges"><span class="chip2">Outback Materials</span><span class="chip2 pw">Prevailing Wage</span><span class="statusdd">Pending ▾</span><span class="ord-ic">✎</span><span class="ord-ic">⋯</span></div></div>
-                <div class="ord-f"><b>Customer:</b> Outback Materials • <b>Charge To:</b> Outback Materials • <b>Rate:</b> $13.00/ton • <b>Material:</b> 3/4" Base Rock • <b>Phase Code:</b> Code 1 • ORD-92941</div>
-                <div class="ord-f"><b>Start:</b> 7:00 AM Jul-2 • <b>Truck Type:</b> Super Dump • <b>Pickup:</b> North Pit • <b>Mode:</b> <span id="on-mode">Loads</span> • <b>Qty:</b> <span id="on-qty">8 loads</span></div>
+                <div class="ord-f"><b>Customer:</b> Outback Materials • <b>Charge To Account:</b> Outback Materials • <b>Customer Rate:</b> $13.00 Per Ton • <b>Material:</b> 3/4" Base Rock • <b>Project:</b> Hwy 12 Base Course • <b>Phase Code:</b> Code 1 • ORD-92941</div>
+                <div class="ord-f"><b>Start:</b> 7:00 AM Sun Jul-2-2026 • <b>Truck Type:</b> Super Dump • <b>Pickup:</b> 📍 North Pit • <b>Mode:</b> <span id="on-mode">Loads</span> • <b>Qty:</b> <span id="on-qty">8 loads</span></div>
+                <div class="ord-f"><b>Requestor:</b> Tread Admin • <b>Foreman:</b> , </div>
                 <div class="ord-body">
                   <div class="ord-left"><div class="jobs" id="jobs"></div><div id="order-new-foot"><button class="btn yellow" id="btn-assign" type="button">Assign driver/truck</button></div></div>
-                  <div class="ord-stats"><div><span class="osk">Trucks</span><span class="osv">2</span></div><div><span class="osk">Loads</span><span class="osv">8</span></div><div><span class="osk">Material</span><span class="osv">3/4"</span></div></div>
+                  <div class="ord-stats"><div><span class="osk">Trucks</span><span class="osv">2</span></div><div><span class="osk">Loads</span><span class="osv">8</span></div><div><span class="osk">Material Ordered</span><span class="osv">, </span></div><div><span class="osk">Accepted</span><span class="ord-acc">0<span class="dim"> / 2</span></span></div></div>
                 </div>
               </div>
               <div class="order sent">
-                <div class="ord-top"><h4>Shaw Ave Widening</h4><div class="ord-badges"><span class="chip2">Granite Const.</span><span class="statusdd sent">Sent ▾</span><span class="ord-ic">✎</span><span class="ord-ic">⋯</span></div></div>
-                <div class="ord-f"><b>Customer:</b> Granite Const. • <b>Rate:</b> $118.00/hr • <b>Material:</b> Aggregate • <b>Phase Code:</b> Code 2 • ORD-92938</div>
-                <div class="ord-f"><b>Start:</b> 6:30 AM Jul-2 • <b>Truck Type:</b> Transfer • <b>Pickup:</b> Quarry A • <b>Requestor:</b> Tom • <b>Foreman:</b> —</div>
-                <div class="ord-body"><div class="ord-left"><div class="jobs"><div class="job sent"><span class="jt">T-08 · Diaz</span><span class="js">Sent</span></div></div></div><div class="ord-stats"><div><span class="osk">Trucks</span><span class="osv">1</span></div><div><span class="osk">Loads</span><span class="osv">12</span></div><div><span class="osk">Material</span><span class="osv">Agg</span></div></div></div>
+                <div class="ord-top"><h4>Shaw Ave Widening</h4><div class="ord-badges"><span class="chip2">Granite Const.</span><span class="chip2">DMT · Standing</span><span class="statusdd sent">Sent ▾</span><span class="ord-ic">✎</span><span class="ord-ic">⋯</span></div></div>
+                <div class="ord-f"><b>Customer:</b> Granite Const. • <b>Charge To Account:</b> Granite Const. • <b>Customer Rate:</b> $118.00 Per Hour • <b>Material:</b> Aggregate • <b>Project:</b> Shaw Ave Widening • <b>Phase Code:</b> Code 2 • ORD-92938</div>
+                <div class="ord-f"><b>Start:</b> 6:30 AM Sun Jul-2-2026 • <b>Truck Type:</b> Transfer • <b>Pickup:</b> 📍 Quarry A • <b>Requestor:</b> Tom • <b>Foreman:</b> Foreman Coastal</div>
+                <div class="ord-body"><div class="ord-left"><div class="jobs"><div class="job sent"><span class="jt">T-08 · Diaz</span><span class="js">Sent</span></div></div></div><div class="ord-stats"><div><span class="osk">Trucks</span><span class="osv">1</span></div><div><span class="osk">Loads</span><span class="osv">12</span></div><div><span class="osk">Material Ordered</span><span class="osv">Agg</span></div><div><span class="osk">Accepted</span><span class="ord-acc">1<span class="dim"> / 1</span></span></div></div></div>
               </div>
               <div class="order sent">
-                <div class="ord-top"><h4>Riverside Overlay</h4><div class="ord-badges"><span class="chip2">City of Fresno</span><span class="statusdd sent">Sent ▾</span><span class="ord-ic">✎</span><span class="ord-ic">⋯</span></div></div>
-                <div class="ord-f"><b>Customer:</b> City of Fresno • <b>Rate:</b> $22.00/ton • <b>Material:</b> Asphalt • <b>Phase Code:</b> Code 5 • ORD-92930</div>
-                <div class="ord-f"><b>Start:</b> 5:00 AM Jul-2 • <b>Truck Type:</b> End Dump • <b>Pickup:</b> Plant 2 • <b>Requestor:</b> Tom • <b>Foreman:</b> Cruz</div>
-                <div class="ord-body"><div class="ord-left"><div class="jobs"><div class="job sent"><span class="jt">T-31 · Boyd</span><span class="js">Sent</span></div></div></div><div class="ord-stats"><div><span class="osk">Trucks</span><span class="osv">1</span></div><div><span class="osk">Tons</span><span class="osv">240</span></div><div><span class="osk">Material</span><span class="osv">AC</span></div></div></div>
+                <div class="ord-top"><h4>Riverside Overlay</h4><div class="ord-badges"><span class="chip2">City of Fresno</span><span class="chip2">DMT · Variable</span><span class="statusdd sent">Completed ▾</span><span class="ord-ic">✎</span><span class="ord-ic">⋯</span></div></div>
+                <div class="ord-f"><b>Customer:</b> City of Fresno • <b>Charge To Account:</b> City of Fresno • <b>Customer Rate:</b> $22.00 Per Ton • <b>Material:</b> Asphalt • <b>Project:</b> Riverside Overlay • <b>Phase Code:</b> Code 5 • ORD-92930</div>
+                <div class="ord-f"><b>Start:</b> 5:00 AM Sun Jul-2-2026 • <b>Truck Type:</b> End Dump • <b>Pickup:</b> 📍 Plant 2 • <b>Requestor:</b> Tom • <b>Foreman:</b> Cruz</div>
+                <div class="ord-body"><div class="ord-left"><div class="jobs"><div class="job sent"><span class="jt">T-31 · Boyd</span><span class="js">Sent</span></div></div></div><div class="ord-stats"><div><span class="osk">Trucks</span><span class="osv">1</span></div><div><span class="osk">Tons</span><span class="osv">240</span></div><div><span class="osk">Material Ordered</span><span class="osv">240 Ton</span></div><div><span class="osk">Accepted</span><span class="ord-acc">1<span class="dim"> / 1</span></span></div></div></div>
               </div>
             </div>
           </div>
@@ -1908,48 +2110,229 @@
       </section>
 
       <!-- APPROVALS -->
+
+      <!-- APPROVALS -->
+<style>
+/* screen-scoped styles for the Approvals / Receivables detail: prefixed so they cannot collide */
+#tuflow section[data-screen="approvals"] .odh{padding:12px 16px;border-bottom:1px solid var(--grey-2);}
+#tuflow section[data-screen="approvals"] .odh .ot{font-weight:700;font-size:14px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+#tuflow section[data-screen="approvals"] .odh .om{font-size:12px;color:var(--grey-6);margin-top:3px;}
+#tuflow section[data-screen="approvals"] .otabs{display:flex;gap:20px;padding:0 16px;border-bottom:1px solid var(--grey-2);font-size:13px;font-weight:600;color:var(--grey-6);overflow-x:auto;}
+#tuflow section[data-screen="approvals"] .otabs span{padding:11px 0;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-1px;}
+#tuflow section[data-screen="approvals"] .otabs span.on{color:var(--black);border-bottom-color:var(--yellow);}
+#tuflow section[data-screen="approvals"] .rgrid{display:grid;grid-template-columns:1fr 296px;gap:18px;padding:16px;}
+#tuflow section[data-screen="approvals"] .rchead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+#tuflow section[data-screen="approvals"] .rfields{display:flex;gap:22px;flex-wrap:wrap;align-items:flex-end;}
+#tuflow section[data-screen="approvals"] .fld label{display:block;font-size:11px;font-weight:600;color:var(--grey-6);margin-bottom:5px;}
+#tuflow section[data-screen="approvals"] .fld .box{min-width:150px;font-size:13px;font-weight:600;color:var(--black);background:var(--grey-1);border:1px solid var(--grey-2);border-radius:7px;padding:8px 11px;}
+#tuflow section[data-screen="approvals"] .fld .box.empty{color:var(--grey-4);font-weight:500;background:var(--white);}
+#tuflow section[data-screen="approvals"] .editpen{width:30px;height:30px;border:1px solid var(--grey-2);border-radius:7px;background:var(--white);color:var(--grey-6);display:inline-flex;align-items:center;justify-content:center;font-size:13px;}
+#tuflow section[data-screen="approvals"] .lihd{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13px;margin:4px 0 8px;}
+#tuflow section[data-screen="approvals"] .litable{overflow-x:auto;border:1px solid var(--grey-2);border-radius:10px;}
+#tuflow section[data-screen="approvals"] .litable table{min-width:720px;}
+#tuflow section[data-screen="approvals"] .litable th,#tuflow section[data-screen="approvals"] .litable td{white-space:nowrap;}
+#tuflow section[data-screen="approvals"] .litable td.num,#tuflow section[data-screen="approvals"] .litable th.num{text-align:right;font-variant-numeric:tabular-nums;}
+#tuflow section[data-screen="approvals"] .totbox{margin:12px 0 0 auto;width:260px;font-size:13px;}
+#tuflow section[data-screen="approvals"] .totbox .r{display:flex;justify-content:space-between;padding:6px 0;color:var(--grey-7);}
+#tuflow section[data-screen="approvals"] .totbox .r.tot{border-top:1px solid var(--grey-2);margin-top:4px;padding-top:9px;font-weight:800;color:var(--black);font-size:14px;}
+#tuflow section[data-screen="approvals"] .totbox .r .v{font-variant-numeric:tabular-nums;font-weight:700;color:var(--black);}
+#tuflow section[data-screen="approvals"] .mapcard{border:1px solid var(--grey-2);border-radius:10px;overflow:hidden;background:var(--grey-1);}
+#tuflow section[data-screen="approvals"] .mapcard .mlabel{font-size:11px;font-weight:600;color:var(--grey-6);padding:8px 10px 0;}
+#tuflow section[data-screen="approvals"] .mapface{position:relative;height:200px;background:#e8edf0;}
+#tuflow section[data-screen="approvals"] .mapface svg{position:absolute;inset:0;width:100%;height:100%;}
+#tuflow section[data-screen="approvals"] .mseg{position:absolute;top:9px;left:9px;display:inline-flex;background:var(--white);border:1px solid var(--grey-2);border-radius:7px;overflow:hidden;font-size:11px;font-weight:600;box-shadow:var(--shadow-sm);}
+#tuflow section[data-screen="approvals"] .mseg span{padding:5px 11px;color:var(--grey-6);}
+#tuflow section[data-screen="approvals"] .mseg span.on{background:var(--grey-1);color:var(--black);}
+#tuflow section[data-screen="approvals"] .mtools{position:absolute;top:9px;right:9px;display:flex;gap:5px;}
+#tuflow section[data-screen="approvals"] .mtools i{width:24px;height:24px;background:var(--white);border:1px solid var(--grey-2);border-radius:6px;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:12px;color:var(--grey-6);box-shadow:var(--shadow-sm);}
+#tuflow section[data-screen="approvals"] .mbtns{display:flex;gap:8px;padding:10px;}
+#tuflow section[data-screen="approvals"] .mbtns .btn{flex:1;justify-content:center;}
+@media (max-width:820px){#tuflow section[data-screen="approvals"] .rgrid{grid-template-columns:1fr;}}
+</style>
       <section class="screen" data-screen="approvals">
         <div class="schead"><div style="display:flex;gap:16px;font-size:13px;font-weight:600;color:var(--grey-6);"><span>Approve Work</span><span style="color:var(--black);border-bottom:2px solid var(--yellow);padding-bottom:6px;">Approve Jobs</span><span>Payables</span><span>Receivables</span></div><button class="btn dark sm" type="button">Bulk Create Settlements ▾</button></div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;"><span class="chip2 on">Unapproved Jobs</span><span class="chip2">Unapproved Payables</span><span class="chip2">Unapproved Receivables</span><span class="chip2">Duplicate Tickets</span></div>
         <div class="panel" style="padding:0;">
-          <div style="padding:12px 14px;border-bottom:1px solid var(--grey-2);"><div style="font-weight:700;">Hwy 12 Base Course <span class="chip2 pw" style="margin-left:6px;">Prevailing Wage</span> <span class="chip2" style="margin-left:2px;">In Progress</span></div><div style="font-size:12px;color:var(--grey-6);margin-top:3px;">Customer: Outback Materials • Rate: $13.00/ton • Material: 3/4" Base Rock • ORD-92941 • 1/2 Delivered</div></div>
-          <table>
-            <thead><tr><th>Driver &amp; Truck</th><th>Status</th><th>Loads</th><th>Tickets</th><th>Receivables</th><th>Payables</th><th>Margin</th><th style="text-align:right;">Job Approval</th></tr></thead>
-            <tbody>
-              <tr><td>T-14 · Ramirez<div style="font-size:11px;color:var(--grey-5);">Super Dump</div></td><td><span class="tag gy">Assigned</span></td><td>0/4</td><td>0</td><td>$0.00</td><td>$0.00</td><td>$0.00</td><td style="text-align:right;"><span class="tag yl">Pending</span><div style="font-size:10px;color:var(--grey-4);">TRD-3037291</div></td></tr>
-              <tr id="tk-1"><td>T-22 · Cole<div style="font-size:11px;color:var(--grey-5);">Super Dump</div></td><td><span class="tag gn">Completed</span></td><td>4/4</td><td>1</td><td>$318.50</td><td>$95.00</td><td>$223.50</td><td style="text-align:right;"><button class="btn green" id="btn-approve" type="button">Approve</button><span class="stamp">Approved</span><div style="font-size:10px;color:var(--grey-4);">TRD-3037292</div></td></tr>
-              <tr><td>T-31 · Boyd<div style="font-size:11px;color:var(--grey-5);">End Dump</div></td><td><span class="tag gy">Created</span></td><td>0/4</td><td>0</td><td>$0.00</td><td>$0.00</td><td>$0.00</td><td style="text-align:right;"><span class="tag yl">Pending</span><div style="font-size:10px;color:var(--grey-4);">TRD-3037293</div></td></tr>
-            </tbody>
-          </table>
+          <div class="odh">
+            <div class="ot">Hwy 12 Base Course <span class="chip2 pw">Prevailing Wage</span> <span class="chip2">In Progress</span></div>
+            <div class="om">Customer: Outback Materials • Charge To: Outback Materials • Customer Rate: $13.00/ton • Material: 3/4" Base Rock • ORD-92941 • 1/2 Delivered</div>
+          </div>
+          <div class="otabs">
+            <span>Overview</span><span>Loads</span><span>Job Details</span><span>Payables</span><span class="on">Receivables</span><span>All Files</span>
+          </div>
+          <div class="rgrid">
+            <div>
+              <div class="rchead">
+                <div class="rfields">
+                  <div class="fld"><label>Rate Card</label><div class="box empty">None selected</div></div>
+                  <div class="fld"><label>Customer Rate Type</label><div class="box">Ton</div></div>
+                  <div class="fld"><label>Customer Rate</label><div class="box">$13.00</div></div>
+                  <button class="editpen" type="button" aria-label="Edit rate">✎</button>
+                </div>
+                <button class="btn green" id="btn-approve" type="button">Approve</button>
+              </div>
+              <div class="lihd">Line Items <span class="editpen" aria-hidden="true" style="width:22px;height:22px;font-size:11px;">✎</span></div>
+              <div class="litable">
+                <table>
+                  <thead><tr>
+                    <th>Line Item</th><th>Billed Start</th><th>Billed End</th><th>Break Time</th><th>Type</th><th>Unit</th><th class="num">Total Qty</th><th class="num">Rate</th><th class="num">Total</th>
+                  </tr></thead>
+                  <tbody>
+                    <tr id="tk-1">
+                      <td>Line item #1</td><td>1:14 pm</td><td>2:10 pm</td><td>0.00 hrs</td><td>Freight</td><td>Ton</td><td class="num">24.5</td><td class="num">$13.00</td><td class="num tk-amt">$318.50<span class="stamp">Approved</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="totbox">
+                <div class="r"><span>Subtotal</span><span class="v">$318.50</span></div>
+                <div class="r"><span>Add Ons</span><span class="v">$0.00</span></div>
+                <div class="r tot"><span>Total</span><span class="v">$318.50</span></div>
+              </div>
+            </div>
+            <div>
+              <div class="mapcard">
+                <div class="mlabel">Map</div>
+                <div class="mapface">
+                  <svg viewBox="0 0 296 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                    <rect x="0" y="0" width="296" height="200" fill="#e8edf0"/>
+                    <path d="M-10 60 L306 40" stroke="#cfd8dd" stroke-width="8" fill="none"/>
+                    <path d="M40 -10 L70 210" stroke="#cfd8dd" stroke-width="6" fill="none"/>
+                    <path d="M-10 150 L306 168" stroke="#dbe2e6" stroke-width="5" fill="none"/>
+                    <path d="M210 -10 L245 210" stroke="#dbe2e6" stroke-width="5" fill="none"/>
+                    <polygon points="95,55 205,48 232,120 150,160 78,128" fill="rgba(93,110,214,0.20)" stroke="#5d6ed6" stroke-width="2.5"/>
+                    <circle cx="150" cy="100" r="5" fill="#5d6ed6" stroke="#fff" stroke-width="2"/>
+                  </svg>
+                  <div class="mseg"><span class="on">Map</span><span>Satellite</span></div>
+                  <div class="mtools"><i aria-label="Layers">▨</i><i aria-label="Settings">⚙</i><i aria-label="Fullscreen">⤢</i></div>
+                </div>
+                <div class="mbtns">
+                  <button class="btn yellow sm" type="button">View Route History</button>
+                  <button class="btn yellow sm" type="button">Fullscreen View</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- SETTLEMENTS -->
+<style>
+/* screen-scoped styles for the settlements screen */
+#tuflow section[data-screen="settlements"] .subtabs{display:flex;gap:18px;font-size:13px;font-weight:600;color:var(--grey-5);}
+#tuflow section[data-screen="settlements"] .subtabs .t{padding-bottom:6px;}
+#tuflow section[data-screen="settlements"] .subtabs .t.on{color:var(--black);border-bottom:2px solid var(--yellow);}
+#tuflow section[data-screen="settlements"] .seg{display:inline-flex;border:1px solid var(--grey-2);border-radius:8px;overflow:hidden;}
+#tuflow section[data-screen="settlements"] .seg span{padding:5px 12px;font-size:12px;color:var(--grey-6);}
+#tuflow section[data-screen="settlements"] .seg span.on{font-weight:700;background:var(--grey-1);color:var(--black);}
+#tuflow section[data-screen="settlements"] .schead2{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
+#tuflow section[data-screen="settlements"] .stitle{font-size:13px;color:var(--grey-6);}
+#tuflow section[data-screen="settlements"] .stitle b{display:block;color:var(--black);font-size:15px;font-weight:700;margin-top:2px;}
+#tuflow section[data-screen="settlements"] .ratecard{display:flex;flex-wrap:wrap;gap:26px;background:var(--grey-1);border:1px solid var(--grey-2);border-radius:8px;padding:10px 14px;margin:12px 0 6px;}
+#tuflow section[data-screen="settlements"] .ratecard .k{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--grey-5);}
+#tuflow section[data-screen="settlements"] .ratecard .v{font-size:13px;font-weight:600;color:var(--black);margin-top:2px;}
+#tuflow section[data-screen="settlements"] .seclabel{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--grey-5);margin:16px 0 2px;}
+#tuflow section[data-screen="settlements"] .settle-row .meta{color:var(--grey-5);font-weight:400;}
+#tuflow section[data-screen="settlements"] .addon{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--grey-7);padding:7px 2px;border-top:1px dashed var(--grey-2);}
+#tuflow section[data-screen="settlements"] .addon .lbl b{color:var(--grey-8);}
+#tuflow section[data-screen="settlements"] .addon .pct{margin-left:auto;font-variant-numeric:tabular-nums;color:var(--grey-6);}
+#tuflow section[data-screen="settlements"] .addon .amt{width:88px;text-align:right;font-variant-numeric:tabular-nums;font-weight:600;}
+#tuflow section[data-screen="settlements"] .neg{color:var(--dark-orange);}
+#tuflow section[data-screen="settlements"] .totals{margin-left:auto;width:240px;margin-top:12px;}
+#tuflow section[data-screen="settlements"] .totals .tr{display:flex;justify-content:space-between;font-size:12.5px;color:var(--grey-7);padding:3px 0;font-variant-numeric:tabular-nums;}
+#tuflow section[data-screen="settlements"] .totals .tr.grand{font-size:14px;font-weight:800;color:var(--black);border-top:1px solid var(--grey-2);margin-top:4px;padding-top:7px;}
+#tuflow section[data-screen="settlements"] .pdf-meta{display:flex;gap:18px;font-size:10px;color:var(--grey-6);margin-bottom:12px;flex-wrap:wrap;}
+#tuflow section[data-screen="settlements"] .pdf-meta b{color:var(--grey-8);}
+#tuflow section[data-screen="settlements"] .pdf-grid{display:grid;grid-template-columns:1.5fr .95fr .7fr .65fr .8fr;gap:6px;align-items:baseline;}
+#tuflow section[data-screen="settlements"] .pdf-grid.head span{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--grey-5);border-bottom:1px solid var(--grey-2);padding-bottom:4px;}
+#tuflow section[data-screen="settlements"] .pdf-grid.row span{font-size:11.5px;color:var(--grey-8);padding:4px 0;font-variant-numeric:tabular-nums;}
+#tuflow section[data-screen="settlements"] .pdf-grid .r{text-align:right;}
+#tuflow section[data-screen="settlements"] .pdf-sub{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--grey-5);margin:10px 0 2px;}
+#tuflow section[data-screen="settlements"] .exp-wrap{display:flex;align-items:center;justify-content:flex-end;gap:12px;margin-top:14px;}
+#tuflow section[data-screen="settlements"] .exp-hint{font-size:11px;color:var(--grey-5);}
+</style>
       <section class="screen" data-screen="settlements">
-        <div class="schead"><div style="display:flex;gap:16px;font-size:13px;font-weight:600;color:var(--grey-6);"><span>Approve Work</span><span>Approve Jobs</span><span>Payables</span><span style="color:var(--black);border-bottom:2px solid var(--yellow);padding-bottom:6px;">Receivables</span></div><div style="display:inline-flex;border:1px solid var(--grey-2);border-radius:8px;overflow:hidden;"><span style="padding:5px 12px;font-size:12px;color:var(--grey-6);">Invoices</span><span style="padding:5px 12px;font-size:12px;font-weight:600;background:var(--grey-1);">Settlements</span></div></div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;"><span class="chip2 on">Pending</span><span class="chip2">Approved</span><span class="chip2">Done</span><span class="chip2">Void</span></div>
+        <div class="schead">
+          <div class="subtabs">
+            <span class="t">Approve Work</span>
+            <span class="t">Approve Jobs</span>
+            <span class="t">Payables</span>
+            <span class="t on">Receivables</span>
+          </div>
+          <div class="seg"><span>Invoices</span><span class="on">Settlements</span></div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;">
+          <span class="chip2 on">Pending</span>
+          <span class="chip2">Approved</span>
+          <span class="chip2">Done (Paid)</span>
+          <span class="chip2">Void</span>
+          <span style="margin-left:auto;font-size:11px;color:var(--grey-5);">Receivables · invoice billed to the customer</span>
+        </div>
+
         <div class="panel" style="padding:16px 18px;">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px;">
-            <div><div style="font-size:13px;color:var(--grey-6);">Outback Materials · ORD-92941 · week of Jun 22</div><div style="font-size:15px;font-weight:700;">Approved, ready to settle</div></div>
+          <div class="schead2">
+            <div class="stitle">ABC Construction Corp · ORD-929617 · week of Jun 14
+              <b>Approved, ready to settle</b>
+            </div>
             <button class="btn yellow" id="btn-settle" type="button">Create settlement</button>
           </div>
-          <div id="settle-checks">
-            <div class="settle-row"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> #40231 · Ramirez · 3/4" Base Rock · 24.5t <span class="amt">$318.50</span></div>
-            <div class="settle-row"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> #40232 · Cole · 3/4" Base Rock · 23.8t <span class="amt">$309.40</span></div>
-            <div class="settle-row"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> #40233 · Diaz · Sand · 17.2t <span class="amt">$206.40</span></div>
+
+          <div class="ratecard">
+            <div><div class="k">Rate Card</div><div class="v">Company default</div></div>
+            <div><div class="k">Customer Rate Type</div><div class="v">Per Hour</div></div>
+            <div><div class="k">Customer Rate</div><div class="v">$125.00</div></div>
           </div>
+
+          <div class="seclabel">Approved loads &amp; line items · ORD-929617</div>
+          <div id="settle-checks">
+            <div class="settle-row"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> 131 · Tri-Axle · 3/4 Class 2 <span class="meta">· Freight · Per Hour · 2.03</span> <span class="amt">$253.75</span></div>
+            <div class="settle-row"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> 131 · Tri-Axle · 3/4 Class 2 <span class="meta">· Material · Per Ton · 0.00 t</span> <span class="amt">$0.00</span></div>
+          </div>
+
+          <div class="seclabel">Add Ons</div>
+          <div class="addon"><span class="lbl"><b>Broker Fee</b> · % of Total</span><span class="pct">(10.0%)</span><span class="amt neg">−$25.38</span></div>
+          <div class="addon"><span class="lbl"><b>Lease Fee</b> · % of Total</span><span class="pct">16.0%</span><span class="amt">$45.68</span></div>
+          <div class="addon"><span class="lbl"><b>Dump Fee</b> · Each (Flat Rate)</span><span class="pct">1 × $225.00</span><span class="amt">$225.00</span></div>
+          <div style="margin-top:8px;"><button class="btn ghost sm" type="button">+ Add Fee</button></div>
+
+          <div class="totals">
+            <div class="tr"><span>Subtotal</span><span>$253.75</span></div>
+            <div class="tr"><span>Add Ons</span><span>$245.30</span></div>
+            <div class="tr grand"><span>Total</span><span>$499.05</span></div>
+          </div>
+
           <div class="pdf" id="pdf"><div class="pdf-doc">
-            <div class="pd-h"><span><svg viewBox="0 0 280 140" aria-label="Tread"><use href="#tread-mark"/></svg></span><span style="font-size:11px;font-weight:700;color:var(--grey-5);">SETTLEMENT · #S-1042 · Outback Materials</span></div>
-            <div style="display:grid;grid-template-columns:1.4fr .7fr .8fr .7fr .8fr;gap:6px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--grey-5);padding:2px 0;border-bottom:1px solid var(--grey-2);"><span>Truck · Material</span><span>Rate Type</span><span>Billing Qty</span><span>Rate</span><span style="text-align:right;">Total</span></div>
-            <div style="display:grid;grid-template-columns:1.4fr .7fr .8fr .7fr .8fr;gap:6px;font-size:12px;padding:5px 0;"><span>T-14 · 3/4" Base Rock</span><span>By Ton</span><span>24.5 t</span><span>$13.00</span><span style="text-align:right;">$318.50</span></div>
-            <div style="display:grid;grid-template-columns:1.4fr .7fr .8fr .7fr .8fr;gap:6px;font-size:12px;padding:5px 0;"><span>T-22 · 3/4" Base Rock</span><span>By Ton</span><span>23.8 t</span><span>$13.00</span><span style="text-align:right;">$309.40</span></div>
-            <div style="display:grid;grid-template-columns:1.4fr .7fr .8fr .7fr .8fr;gap:6px;font-size:12px;padding:5px 0;"><span>T-31 · Sand</span><span>By Ton</span><span>17.2 t</span><span>$12.00</span><span style="text-align:right;">$206.40</span></div>
-            <div style="font-size:11px;color:var(--grey-5);padding-top:6px;">Add Ons: none</div>
-            <div class="pdf-total"><span>Total</span><span class="amt">$834.30</span></div>
+            <div class="pd-h">
+              <span><svg viewBox="0 0 280 140" aria-label="Tread"><use href="#tread-mark"/></svg></span>
+              <span style="font-size:11px;font-weight:700;color:var(--grey-5);">SETTLEMENT · INV-10020</span>
+            </div>
+            <div class="pdf-meta">
+              <span>FOR <b>ABC Construction Corp</b></span>
+              <span>ORDERS <b>ORD-929617</b></span>
+              <span>DATE <b>6/14/2026</b></span>
+            </div>
+            <div class="pdf-grid head">
+              <span>Truck · Material</span><span>Rate Type</span><span>Billing Qty</span><span>Rate</span><span class="r">Total</span>
+            </div>
+            <div class="pdf-grid row"><span>131 · 3/4 Class 2</span><span>Freight · Per Hour</span><span>2.03</span><span>$125.00</span><span class="r">$253.75</span></div>
+            <div class="pdf-grid row"><span>131 · 3/4 Class 2</span><span>Material · Per Ton</span><span>0.00 t</span><span>$27.00</span><span class="r">$0.00</span></div>
+            <div class="pdf-sub">Add Ons</div>
+            <div class="pdf-grid row"><span>Broker Fee</span><span>% of Total</span><span>(10.0%)</span><span></span><span class="r neg">−$25.38</span></div>
+            <div class="pdf-grid row"><span>Lease Fee</span><span>% of Total</span><span>16.0%</span><span></span><span class="r">$45.68</span></div>
+            <div class="pdf-grid row"><span>Dump Fee</span><span>Each (Flat Rate)</span><span>1</span><span>$225.00</span><span class="r">$225.00</span></div>
+            <div class="pdf-line"><span>Subtotal</span><span>$253.75</span></div>
+            <div class="pdf-line"><span>Add Ons</span><span>$245.30</span></div>
+            <div class="pdf-total"><span>Total</span><span class="amt">$499.05</span></div>
           </div></div>
-          <div style="text-align:right;margin-top:12px;"><button class="btn dark" id="btn-export" type="button" style="display:none;">Generate PDF · mark exported</button></div>
+
+          <div class="exp-wrap">
+            <span class="exp-hint">Exports to QuickBooks, Sage, Vista, or PDF, then marks the settlement as exported.</span>
+            <button class="btn dark" id="btn-export" type="button" style="display:none;">Generate PDF · mark exported</button>
+          </div>
         </div>
       </section>
+
+      <!-- REPORTS -->
 
       <!-- REPORTS -->
       <section class="screen" data-screen="reports">
@@ -1981,30 +2364,30 @@
         <div class="schead"><h3>Settings · Master data</h3><span class="crumb">Load this before you build</span></div>
         <div class="sheet" id="du-video">
           <h4>Watch first · uploading your data</h4>
-          <div class="tu-sub" style="margin-bottom:12px;">Tim walks through loading your data — then we’ll do it together.</div>
+          <div class="tu-sub" style="margin-bottom:12px;">Tim walks through loading your data. Then we do it together.</div>
           <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:10px;overflow:hidden;background:var(--black);">
             <iframe src="https://www.loom.com/embed/93b29381538143e3a1dd4f2e53e2f75a" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
           </div>
         </div>
         <div class="sheet" id="du-hier-wrap">
           <h4>Company hierarchy</h4>
-          <div class="tu-sub" style="margin-bottom:10px;">All master data lives at the <strong>parent</strong> level — confirm your structure first.</div>
-          <div class="seg" id="du-hier"><span data-h="single">Single company</span><span data-h="pc">Parent / child</span></div><div style="margin-top:10px;font-size:12.5px;color:var(--grey-6);line-height:1.5">Most teams use a <strong>single company</strong>. <span tabindex="0" title="Use Parent / child only when data must stay separate between locations — e.g., separate driver rosters, users who should not see other locations' data, or billing done per location. Otherwise a single company is simpler and recommended." style="text-decoration:underline dotted;cursor:help;color:var(--dark-orange);font-weight:600">When does parent/child make sense?</span> If you think you need it, reach out to <a href="mailto:success@tread.io" style="color:var(--dark-orange);font-weight:600">success@tread.io</a>.</div>
+          <div class="tu-sub" style="margin-bottom:10px;">All master data lives at the <strong>parent</strong> level. Confirm your structure first.</div>
+          <div class="seg" id="du-hier"><span data-h="single" class="on">Single company</span><span data-h="pc">Parent / child</span></div><div style="margin-top:10px;font-size:12.5px;color:var(--grey-6);line-height:1.5">Most teams use a <strong>single company</strong>. <span tabindex="0" title="Use Parent / child only when separate divisions have their own customers, rates, and books and never share data day to day. If dispatchers cross divisions or you share reporting across entities, a single company is simpler and recommended." style="text-decoration:underline dotted;cursor:help;color:var(--dark-orange);font-weight:600">When does parent/child make sense?</span> If you think you need it, reach out to <a href="mailto:success@tread.io" style="color:var(--dark-orange);font-weight:600">success@tread.io</a>.</div>
         </div>
         <div class="panel">
           <table>
             <thead><tr><th>Master data set</th><th>Loaded</th><th></th></tr></thead>
             <tbody>
-              <tr><td>1 · Users</td><td id="du-users-c"><span class="tag gy">—</span></td><td class="duacts"><span class="tu-sub" style="font-size:11px;">+ Add&nbsp;·&nbsp;⬆ Template</span></td></tr>
-              <tr><td>2 · Drivers</td><td id="du-drivers-c"><span class="tag gy">—</span></td><td class="duacts"><span class="tu-sub" style="font-size:11px;">+ Add&nbsp;·&nbsp;⬆ Template</span></td></tr>
-              <tr><td>3 · <strong>Customers</strong></td><td id="du-cust-c"><span class="tag gy">—</span></td><td class="duacts"><button class="btn ghost dubtn" id="du-cust-add" type="button">+ Add</button><button class="btn ghost dubtn" id="du-cust-tpl" type="button">⬆ Template</button></td></tr>
-              <tr id="du-cust-bulk" style="display:none;"><td colspan="3" style="padding:0;"><div style="background:var(--grey-1);border:1px solid var(--grey-2);border-radius:0 0 10px 10px;padding:11px 13px;margin:-1px 2px 6px;"><div style="font-weight:700;font-size:12.5px;margin-bottom:3px;">⬆ Bulk upload · Customers</div><div class="tu-sub" style="margin-bottom:9px;">No column mapping — download the template, fill it in that exact format, then upload it back.</div><div class="matrow" style="gap:10px;"><button class="btn ghost" id="du-cust-dl" type="button">⬇ Download template</button><button class="btn yellow" id="du-cust-up" type="button">⬆ Upload filled template</button></div><div class="tu-sub" id="du-cust-bulk-note" style="margin-top:8px;">customers_template.csv</div></div></td></tr>
-              <tr><td>4 · Vendors</td><td id="du-vend-c"><span class="tag gy">—</span></td><td class="duacts"><span class="tu-sub" style="font-size:11px;">+ Add&nbsp;·&nbsp;⬆ Template</span></td></tr>
-              <tr><td>5 · <strong>Equipment Types</strong></td><td id="du-type-c"><span class="tag gy">—</span></td><td style="text-align:right;"><button class="btn ghost" id="du-type-add" type="button">Add type</button></td></tr>
-              <tr><td>6 · Equipment</td><td id="du-equip-c"><span class="tag gy">—</span></td><td style="text-align:right;"><span class="tu-sub" id="du-equip-note">needs types first</span></td></tr>
-              <tr><td>7 · Materials</td><td id="du-mat-c"><span class="tag gy">—</span></td><td class="duacts"><span class="tu-sub" style="font-size:11px;">+ Add&nbsp;·&nbsp;⬆ Template</span></td></tr>
-              <tr><td>8 · <strong>Sites</strong></td><td id="du-site-c"><span class="tag gy">—</span></td><td class="duacts"><button class="btn ghost dubtn" id="du-site-add" type="button">+ Add</button><button class="btn ghost dubtn" id="du-site-tpl" type="button">⬆ Template</button></td></tr>
-              <tr><td>9 · Departments <span class="tu-sub">(optional)</span></td><td id="du-dept-c"><span class="tag gy">—</span></td><td style="text-align:right;"><span class="tu-sub">optional</span></td></tr>
+              <tr><td>1 · Users</td><td id="du-users-c"><span class="tag gy">, </span></td><td class="duacts"><span class="tu-sub" style="font-size:11px;">+ Add&nbsp;·&nbsp;⬆ Template</span></td></tr>
+              <tr><td>2 · Drivers</td><td id="du-drivers-c"><span class="tag gy">, </span></td><td class="duacts"><span class="tu-sub" style="font-size:11px;">+ Add&nbsp;·&nbsp;⬆ Template</span></td></tr>
+              <tr><td>3 · <strong>Customers</strong></td><td id="du-cust-c"><span class="tag gy">, </span></td><td class="duacts"><button class="btn ghost dubtn" id="du-cust-add" type="button">+ Add</button><button class="btn ghost dubtn" id="du-cust-tpl" type="button">⬆ Template</button></td></tr>
+              <tr id="du-cust-bulk" style="display:none;"><td colspan="3" style="padding:0;"><div style="background:var(--grey-1);border:1px solid var(--grey-2);border-radius:0 0 10px 10px;padding:11px 13px;margin:-1px 2px 6px;"><div style="font-weight:700;font-size:12.5px;margin-bottom:3px;">⬆ Bulk upload · Customers</div><div class="tu-sub" style="margin-bottom:9px;">No column mapping. Download the template, fill it in that exact format, then upload it back.</div><div class="matrow" style="gap:10px;"><button class="btn ghost" id="du-cust-dl" type="button">⬇ Download template</button><button class="btn yellow" id="du-cust-up" type="button">⬆ Upload filled template</button></div><div class="tu-sub" id="du-cust-bulk-note" style="margin-top:8px;">customers_template.csv</div></div></td></tr>
+              <tr><td>4 · Vendors</td><td id="du-vend-c"><span class="tag gy">, </span></td><td class="duacts"><span class="tu-sub" style="font-size:11px;">+ Add&nbsp;·&nbsp;⬆ Template</span></td></tr>
+              <tr><td>5 · <strong>Equipment Types</strong> <span class="tu-sub" style="font-weight:400;">capacity &amp; UoM</span></td><td id="du-type-c"><span class="tag gy">, </span></td><td style="text-align:right;"><button class="btn ghost" id="du-type-add" type="button">Add type</button></td></tr>
+              <tr><td>6 · Equipment</td><td id="du-equip-c"><span class="tag gy">, </span></td><td style="text-align:right;"><span class="tu-sub" id="du-equip-note">needs types first</span></td></tr>
+              <tr><td>7 · Materials</td><td id="du-mat-c"><span class="tag gy">, </span></td><td class="duacts"><span class="tu-sub" style="font-size:11px;">+ Add&nbsp;·&nbsp;⬆ Template</span></td></tr>
+              <tr><td>8 · <strong>Sites</strong></td><td id="du-site-c"><span class="tag gy">, </span></td><td class="duacts"><button class="btn ghost dubtn" id="du-site-add" type="button">+ Add</button><button class="btn ghost dubtn" id="du-site-tpl" type="button">⬆ Template</button></td></tr>
+              <tr><td>9 · Departments <span class="tu-sub">(optional)</span></td><td id="du-dept-c"><span class="tag gy">, </span></td><td style="text-align:right;"><span class="tu-sub">optional</span></td></tr>
             </tbody>
           </table>
         </div>
@@ -2016,48 +2399,251 @@
         <div class="schead"><h3 id="gen-title">Live Map</h3></div>
         <div class="panel" style="padding:40px;text-align:center;color:var(--grey-5);font-size:14px;">This area isn't part of the onboarding walkthrough.</div>
       </section>
+<style>
+/* screen-scoped styles for the driver phone mock */
+#tuflow section[data-screen="driver"] .dvphone-wrap{display:flex;justify-content:center;padding:6px 0 30px;}
+#tuflow section[data-screen="driver"] .dvphone{width:300px;border:9px solid var(--black);border-radius:34px;overflow:hidden;background:var(--white);box-shadow:var(--shadow);}
+#tuflow section[data-screen="driver"] .dvstatus{background:var(--white);color:var(--black);padding:7px 18px 4px;font-size:12px;font-weight:600;display:flex;justify-content:space-between;align-items:center;}
+#tuflow section[data-screen="driver"] .dvstatus .dvsig{display:inline-flex;align-items:center;gap:5px;}
+#tuflow section[data-screen="driver"] .dvstatus .dvbatt{width:18px;height:9px;border:1px solid var(--black);border-radius:2px;position:relative;display:inline-block;}
+#tuflow section[data-screen="driver"] .dvstatus .dvbatt::after{content:"";position:absolute;left:1px;top:1px;bottom:1px;width:13px;background:var(--black);border-radius:1px;}
+#tuflow section[data-screen="driver"] .dvhdr{position:relative;display:flex;align-items:center;gap:7px;padding:7px 10px 9px;}
+#tuflow section[data-screen="driver"] .dvhdr-back{width:26px;height:26px;border-radius:50%;border:1px solid var(--grey-2);display:flex;align-items:center;justify-content:center;color:var(--black);flex-shrink:0;font-size:14px;font-weight:700;}
+#tuflow section[data-screen="driver"] .dvhdr-log{flex:1;background:var(--white);border:1px solid var(--grey-2);border-radius:20px;box-shadow:var(--shadow-sm);padding:5px 10px;display:flex;align-items:center;gap:7px;font-size:10.5px;line-height:1.2;}
+#tuflow section[data-screen="driver"] .dvpulse{width:9px;height:9px;border-radius:50%;background:var(--btn-green);flex-shrink:0;box-shadow:0 0 0 3px rgba(0,161,26,.18);}
+#tuflow section[data-screen="driver"] .dvhdr-log b{color:var(--black);}
+#tuflow section[data-screen="driver"] .dvhdr-log span{color:var(--grey-6);}
+#tuflow section[data-screen="driver"] .dvhdr-viewlog{background:var(--btn-blue);color:#fff;border-radius:16px;padding:5px 11px;font-size:10.5px;font-weight:700;flex-shrink:0;}
+#tuflow section[data-screen="driver"] .dvmap{height:82px;background:
+  linear-gradient(115deg,transparent 46%,var(--grey-2) 46%,var(--grey-2) 48%,transparent 48%),
+  linear-gradient(60deg,transparent 62%,var(--grey-2) 62%,var(--grey-2) 63.5%,transparent 63.5%),
+  linear-gradient(0deg,var(--grey-1),#E9F0F4);
+  position:relative;border-top:1px solid var(--grey-1);}
+#tuflow section[data-screen="driver"] .dvmap .dvpin{position:absolute;left:44%;top:44%;width:13px;height:13px;border-radius:50% 50% 50% 0;background:var(--btn-blue);transform:rotate(-45deg);box-shadow:var(--shadow-sm);}
+#tuflow section[data-screen="driver"] .dvhandle{width:34px;height:4px;border-radius:3px;background:var(--grey-3);margin:8px auto 0;}
+#tuflow section[data-screen="driver"] .dvtabs{display:flex;padding:8px 12px 0;gap:0;}
+#tuflow section[data-screen="driver"] .dvtab{flex:1;text-align:center;font-size:12px;font-weight:600;padding:8px 0;color:var(--grey-5);background:var(--grey-1);border:1px solid var(--grey-2);}
+#tuflow section[data-screen="driver"] .dvtab:first-child{border-radius:9px 0 0 9px;}
+#tuflow section[data-screen="driver"] .dvtab:last-child{border-radius:0 9px 9px 0;border-left:none;}
+#tuflow section[data-screen="driver"] .dvtab.active{color:var(--black);background:var(--white);box-shadow:var(--shadow-sm);}
+#tuflow section[data-screen="driver"] .dvbody{padding:12px 14px 10px;}
+#tuflow section[data-screen="driver"] .dvmeta{display:flex;justify-content:space-between;align-items:center;gap:8px;}
+#tuflow section[data-screen="driver"] .dvtime{border:1px solid var(--grey-2);border-radius:16px;padding:4px 11px;font-size:12px;font-weight:600;color:var(--black);}
+#tuflow section[data-screen="driver"] .dvstatuspill{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--btn-blue);color:var(--btn-blue);border-radius:16px;padding:4px 10px;font-size:12px;font-weight:700;background:var(--white);}
+#tuflow section[data-screen="driver"] .dvtitle{font-weight:700;font-size:16px;line-height:1.25;color:var(--black);margin:11px 0 7px;}
+#tuflow section[data-screen="driver"] .dvcharge{font-size:12px;color:var(--grey-6);margin-bottom:2px;}
+#tuflow section[data-screen="driver"] .dvcharge b{color:var(--btn-green);font-weight:700;}
+#tuflow section[data-screen="driver"] .dvcust{font-size:12px;color:var(--grey-6);}
+#tuflow section[data-screen="driver"] .dvcust b{color:var(--black);font-weight:700;}
+#tuflow section[data-screen="driver"] .dvtkwrap{margin-top:12px;border-top:1px solid var(--grey-2);padding-top:10px;}
+#tuflow section[data-screen="driver"] .dvtkwrap h4{font-size:14px;font-weight:700;color:var(--black);margin-bottom:8px;}
+#tuflow section[data-screen="driver"] .dvtkrow{display:flex;align-items:center;gap:9px;}
+#tuflow section[data-screen="driver"] .dvtknum{font-size:12px;font-weight:700;color:var(--grey-6);}
+#tuflow section[data-screen="driver"] .dvtkcam{width:34px;height:34px;border-radius:8px;background:var(--btn-blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+#tuflow section[data-screen="driver"] .dvtkmid{flex:1;line-height:1.3;}
+#tuflow section[data-screen="driver"] .dvtkmid .dvtkmat{font-size:12.5px;font-weight:700;color:var(--btn-blue);}
+#tuflow section[data-screen="driver"] .dvtkmid .dvtksub{font-size:11px;color:var(--grey-6);}
+#tuflow section[data-screen="driver"] .dvtkright{text-align:right;line-height:1.3;}
+#tuflow section[data-screen="driver"] .dvtkright .dvtkstat{font-size:11px;font-weight:700;color:var(--btn-blue);}
+#tuflow section[data-screen="driver"] .dvtkright .dvtkton{font-size:11px;color:var(--grey-6);}
+#tuflow section[data-screen="driver"] .dvbtns{display:flex;flex-direction:column;gap:9px;margin-top:14px;}
+#tuflow section[data-screen="driver"] .dvbtns .btn{width:100%;justify-content:center;font-size:13px;padding:11px 14px;}
+#tuflow section[data-screen="driver"] .dvbtns .btn.blue{background:var(--btn-blue);color:#fff;}
+#tuflow section[data-screen="driver"] .dvbtns .btn.red{background:var(--btn-red);color:#fff;}
+#tuflow section[data-screen="driver"] .dvnav{display:flex;justify-content:space-between;border-top:1px solid var(--grey-2);padding:8px 10px 9px;}
+#tuflow section[data-screen="driver"] .dvnav-item{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:8px;font-weight:600;color:var(--grey-5);flex:1;}
+#tuflow section[data-screen="driver"] .dvnav-item svg{width:17px;height:17px;stroke:var(--grey-5);fill:none;stroke-width:1.7;}
+#tuflow section[data-screen="driver"] .dvnav-item.active{color:var(--btn-blue);}
+#tuflow section[data-screen="driver"] .dvnav-item.active svg{stroke:var(--btn-blue);}
+</style>
       <section class="screen" data-screen="driver">
         <div class="schead"><h3>Driver app</h3><span class="crumb">What the driver sees on their phone</span></div>
-        <div style="display:flex;justify-content:center;padding:6px 0 30px;">
-          <div style="width:300px;border:9px solid var(--black);border-radius:30px;overflow:hidden;background:var(--white);box-shadow:var(--shadow);">
-            <div style="background:var(--black);color:#fff;padding:7px 14px;font-size:11px;display:flex;justify-content:space-between;"><span>9:41</span><span>Tread · Driver</span></div>
-            <div style="padding:14px;min-height:330px;">
-              <div style="font-size:11px;font-weight:700;color:var(--grey-5);text-transform:uppercase;letter-spacing:.05em;">Assigned</div>
-              <div style="border:1px solid var(--grey-2);border-radius:12px;padding:12px;margin-top:10px;box-shadow:var(--shadow-sm);">
-                <div style="font-weight:700;font-size:14px;">Hwy 12 Base Course · 3/4&quot; Base</div>
-                <div style="font-size:12px;color:var(--grey-6);margin:3px 0 8px;">Outback Materials · 8 loads · Torrey Pines</div>
-                <div style="font-size:12px;font-weight:700;">Status: <span id="dj-status" style="color:var(--dark-orange);">Assigned</span></div>
-                <div id="dj-tk" style="display:none;margin-top:8px;font-size:12px;background:var(--grey-1);border:1px dashed var(--grey-3);border-radius:8px;padding:8px;">🧾 Scale ticket #40231 · 24.5 tons <span style="color:var(--btn-green);font-weight:700;">✓ read by AI</span></div>
-                <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
-                  <button class="btn green" id="dj-accept" type="button" style="justify-content:center;">ACCEPT</button>
-                  <button class="btn yellow" id="dj-start" type="button" style="display:none;justify-content:center;">START</button>
-                  <button class="btn dark" id="dj-ticket" type="button" style="display:none;justify-content:center;">ADD TICKET</button>
-                  <button class="btn" id="dj-stop" type="button" style="display:none;justify-content:center;background:var(--btn-red,#EA1200);color:#fff;">STOP JOB</button>
+        <div class="dvphone-wrap">
+          <div class="dvphone">
+            <!-- iOS status bar (light) -->
+            <div class="dvstatus">
+              <span>9:41</span>
+              <span class="dvsig">
+                <svg width="15" height="10" viewBox="0 0 15 10" fill="var(--black)"><rect x="0" y="7" width="2.4" height="3"/><rect x="3.5" y="5" width="2.4" height="5"/><rect x="7" y="2.5" width="2.4" height="7.5"/><rect x="10.5" y="0" width="2.4" height="10"/></svg>
+                <svg width="14" height="10" viewBox="0 0 14 10" fill="var(--black)"><path d="M7 9.2 1 3.2a8.5 8.5 0 0 1 12 0Z" opacity=".35"/><path d="M7 9.2 3.4 5.6a5 5 0 0 1 7.2 0Z"/></svg>
+                <span class="dvbatt"></span>
+              </span>
+            </div>
+            <!-- Logging header -->
+            <div class="dvhdr">
+              <div class="dvhdr-back">&#8592;</div>
+              <div class="dvhdr-log"><span class="dvpulse"></span><span>Logged <b>0h 0m</b><br>Since 12:49 PM</span></div>
+              <div class="dvhdr-viewlog">View Log</div>
+            </div>
+            <div class="dvmap"><span class="dvpin"></span></div>
+            <div class="dvhandle"></div>
+            <!-- Info / Tickets tabs -->
+            <div class="dvtabs">
+              <div class="dvtab active">Info</div>
+              <div class="dvtab">Tickets 0/1</div>
+            </div>
+            <div class="dvbody">
+              <div class="dvmeta">
+                <span class="dvtime">1:00 PM Today</span>
+                <button class="dvstatuspill" type="button">
+                  <span id="dj-status">To Pickup</span>
+                  <svg width="9" height="6" viewBox="0 0 9 6" fill="none" stroke="var(--btn-blue)" stroke-width="1.6"><path d="M1 1l3.5 3.5L8 1"/></svg>
+                </button>
+              </div>
+              <div class="dvtitle">Testing Project with Prevailing Wage</div>
+              <div class="dvcharge">Charge to: <b>ABC Construction Corp</b></div>
+              <div class="dvcust">Customer: <b>ABC Construction Corp</b></div>
+
+              <!-- ticket row, revealed by the tour after Add Ticket -->
+              <div id="dj-tk" class="dvtkwrap" style="display:none;">
+                <h4>Tickets</h4>
+                <div class="dvtkrow">
+                  <span class="dvtknum">1</span>
+                  <span class="dvtkcam"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 7l1.5-2.5h5L16 7"/></svg></span>
+                  <div class="dvtkmid">
+                    <div class="dvtkmat">3/4 Class 2</div>
+                    <div class="dvtksub">Ticket Chaser read the photo</div>
+                  </div>
+                  <div class="dvtkright">
+                    <div class="dvtkstat">To Pickup</div>
+                    <div class="dvtkton">18.0 Tons</div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div style="display:flex;justify-content:space-around;border-top:1px solid var(--grey-2);padding:8px 4px;font-size:8.5px;color:var(--grey-5);"><span>Assigned</span><span>Dispatch</span><span>Review</span><span>History</span><span>Live Map</span><span>Account</span></div>
-          </div>
-        </div>
-      </section>
-      <section class="screen" data-screen="foreman">
-        <div class="schead"><h3>Foreman app (optional)</h3><span class="crumb">Field sign-off from a phone</span></div>
-        <div style="display:flex;justify-content:center;padding:6px 0 30px;">
-          <div style="width:300px;border:9px solid var(--black);border-radius:30px;overflow:hidden;background:var(--white);box-shadow:var(--shadow);">
-            <div style="background:var(--black);color:#fff;padding:7px 14px;font-size:11px;display:flex;justify-content:space-between;"><span>9:41</span><span>Tread · Foreman</span></div>
-            <div style="padding:14px;min-height:330px;">
-              <div style="font-size:11px;font-weight:700;color:var(--grey-5);text-transform:uppercase;letter-spacing:.05em;">Today’s loads</div>
-              <div style="border:1px solid var(--grey-2);border-radius:12px;padding:12px;margin-top:10px;box-shadow:var(--shadow-sm);">
-                <div style="font-weight:700;font-size:14px;">T-14 · Ramirez</div>
-                <div style="font-size:12px;color:var(--grey-6);margin:3px 0 10px;">1 load delivered · 24.5 tons · 3/4&quot; Base</div>
-                <button class="btn green" id="fm-confirm" type="button" style="justify-content:center;width:100%;">Confirm load & hours</button>
+
+              <!-- action buttons: revealed one at a time by the tour -->
+              <div class="dvbtns">
+                <button class="btn green" id="dj-accept" type="button">ACCEPT</button>
+                <button class="btn blue" id="dj-start" type="button" style="display:none;">START LOG</button>
+                <button class="btn yellow" id="dj-ticket" type="button" style="display:none;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--btn-yellow-text)" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>ADD TICKET</button>
+                <button class="btn red" id="dj-stop" type="button" style="display:none;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><rect x="9" y="9" width="6" height="6" rx="1" fill="#fff"/></svg>STOP JOB</button>
               </div>
-              <div style="font-size:11px;color:var(--grey-5);margin-top:10px;">Optional — only if a foreman signs off in the field.</div>
             </div>
-            <div style="display:flex;justify-content:space-around;border-top:1px solid var(--grey-2);padding:8px 4px;font-size:8.5px;color:var(--grey-5);"><span>Orders</span><span>Approve</span><span>Account</span></div>
+            <!-- bottom nav -->
+            <div class="dvnav">
+              <div class="dvnav-item active">
+                <svg viewBox="0 0 24 24"><path d="M2 7h11v8H2z"/><path d="M13 10h4l3 3v2h-7z"/><circle cx="6" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/></svg>Assigned
+              </div>
+              <div class="dvnav-item">
+                <svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 3h6v3H9z"/><path d="M8 11l2 2 4-4"/></svg>Dispatch
+              </div>
+              <div class="dvnav-item">
+                <svg viewBox="0 0 24 24"><path d="M3 13l4 4 7-9"/><path d="M11 15l3 2 7-9"/></svg>Review
+              </div>
+              <div class="dvnav-item">
+                <svg viewBox="0 0 24 24"><path d="M4 9a8 8 0 1 1-1 4"/><path d="M3 5v4h4"/><path d="M12 8v4l3 2"/></svg>History
+              </div>
+              <div class="dvnav-item">
+                <svg viewBox="0 0 24 24"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg>Live Map
+              </div>
+              <div class="dvnav-item">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3"/><path d="M6.5 18a5.5 5.5 0 0 1 11 0"/></svg>Account
+              </div>
+            </div>
           </div>
         </div>
       </section>
+<style>
+  /* screen-scoped: foreman */
+  #tuflow section[data-screen="foreman"] .fm-phone{
+    width:300px;border:9px solid var(--black);border-radius:34px;overflow:hidden;
+    background:var(--white);box-shadow:var(--shadow);
+  }
+  #tuflow section[data-screen="foreman"] .fm-status{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:8px 16px 4px;font-size:11px;font-weight:700;color:var(--black);
+  }
+  #tuflow section[data-screen="foreman"] .fm-status .fm-sig{
+    display:flex;gap:4px;align-items:center;font-size:10px;color:var(--grey-7);letter-spacing:.06em;
+  }
+  #tuflow section[data-screen="foreman"] .fm-tabs{
+    display:flex;border-bottom:1px solid var(--grey-2);
+  }
+  #tuflow section[data-screen="foreman"] .fm-tabs span{
+    flex:1;text-align:center;padding:9px 0 8px;font-size:11.5px;font-weight:600;
+    color:var(--grey-5);border-bottom:2px solid transparent;
+  }
+  #tuflow section[data-screen="foreman"] .fm-tabs span.on{
+    color:var(--black);font-weight:700;border-bottom-color:var(--yellow);
+  }
+  #tuflow section[data-screen="foreman"] .fm-body{padding:13px 13px 6px;min-height:300px;}
+  #tuflow section[data-screen="foreman"] .fm-eyebrow{
+    font-size:10.5px;font-weight:700;color:var(--grey-5);text-transform:uppercase;letter-spacing:.06em;
+    margin-bottom:8px;
+  }
+  #tuflow section[data-screen="foreman"] .fm-card{
+    border:1px solid var(--grey-2);border-radius:12px;padding:12px 12px 13px;box-shadow:var(--shadow-sm);
+  }
+  #tuflow section[data-screen="foreman"] .fm-carehead{
+    display:flex;justify-content:space-between;align-items:flex-start;gap:8px;
+  }
+  #tuflow section[data-screen="foreman"] .fm-driver{font-weight:700;font-size:14px;color:var(--black);}
+  #tuflow section[data-screen="foreman"] .fm-truck{font-size:11.5px;color:var(--grey-6);margin-top:2px;}
+  #tuflow section[data-screen="foreman"] .fm-pending{
+    font-size:10px;font-weight:700;color:var(--grey-7);background:var(--grey-1);
+    border:1px solid var(--grey-2);border-radius:20px;padding:3px 9px;white-space:nowrap;
+  }
+  #tuflow section[data-screen="foreman"] .fm-hours{
+    display:flex;align-items:center;justify-content:space-between;
+    margin:11px 0 3px;padding-top:10px;border-top:1px solid var(--grey-1);
+  }
+  #tuflow section[data-screen="foreman"] .fm-hours .fm-hlabel{font-size:11px;color:var(--grey-5);}
+  #tuflow section[data-screen="foreman"] .fm-hours .fm-hval{font-size:15px;font-weight:700;color:var(--black);}
+  #tuflow section[data-screen="foreman"] .fm-hours .fm-edit{
+    font-size:10.5px;font-weight:700;color:var(--btn-blue);letter-spacing:.03em;margin-left:8px;
+  }
+  #tuflow section[data-screen="foreman"] .fm-metrics{display:flex;gap:20px;margin:8px 0 13px;}
+  #tuflow section[data-screen="foreman"] .fm-metrics div span{display:block;}
+  #tuflow section[data-screen="foreman"] .fm-metrics .fm-mnum{font-size:15px;font-weight:700;color:var(--black);}
+  #tuflow section[data-screen="foreman"] .fm-metrics .fm-mlab{font-size:10.5px;color:var(--grey-5);margin-top:1px;}
+  #tuflow section[data-screen="foreman"] .fm-note{
+    font-size:10.5px;color:var(--grey-5);margin-top:9px;line-height:1.45;
+  }
+  #tuflow section[data-screen="foreman"] .fm-optional{
+    font-size:10.5px;color:var(--grey-5);margin-top:12px;
+  }
+  #tuflow section[data-screen="foreman"] .fm-nav{
+    display:flex;justify-content:space-around;border-top:1px solid var(--grey-2);
+    padding:8px 2px;font-size:8px;color:var(--grey-5);text-align:center;
+  }
+  #tuflow section[data-screen="foreman"] .fm-nav span{flex:1;}
+  #tuflow section[data-screen="foreman"] .fm-nav span.on{color:var(--btn-blue);font-weight:700;}
+</style>
+<section class="screen" data-screen="foreman">
+  <div class="schead"><h3>Foreman app (optional)</h3><span class="crumb">Field sign-off from a phone</span></div>
+  <div style="display:flex;justify-content:center;padding:6px 0 30px;">
+    <div class="fm-phone">
+      <div class="fm-status"><span>9:41</span><span class="fm-sig">LTE &#9679;&#9679;&#9679;&#9679; &#9646;&#9646;&#9646;</span></div>
+      <div class="fm-tabs"><span>Drive</span><span class="on">Foreman</span><span>Collaborator</span></div>
+      <div class="fm-body">
+        <div class="fm-eyebrow">Review &middot; pending approval</div>
+        <div class="fm-card">
+          <div class="fm-carehead">
+            <div>
+              <div class="fm-driver">Marco Coastal</div>
+              <div class="fm-truck">t31 &middot; Super Dump Truck</div>
+            </div>
+            <span class="fm-pending">Not approved</span>
+          </div>
+          <div class="fm-hours">
+            <div><span class="fm-hlabel">Time Logged</span><span class="fm-hval">8.5 hrs</span></div>
+            <span class="fm-edit">EDIT</span>
+          </div>
+          <div class="fm-metrics">
+            <div><span class="fm-mnum">3</span><span class="fm-mlab">Loads</span></div>
+            <div><span class="fm-mnum">3</span><span class="fm-mlab">Tickets</span></div>
+          </div>
+          <button class="btn green" id="fm-confirm" type="button" style="justify-content:center;width:100%;">Approve</button>
+          <div class="fm-note">Approving records a Field sign-off on this driver&rsquo;s hours.</div>
+        </div>
+        <div class="fm-optional">Optional. Only used if a foreman signs off in the field.</div>
+      </div>
+      <div class="fm-nav">
+        <span>Assigned</span><span>Dispatch</span><span class="on">Review</span><span>History</span><span>Live&nbsp;Map</span><span>Account</span>
+      </div>
+    </div>
+  </div>
+</section>
     </div>
 
     <!-- truck -->
@@ -2120,8 +2706,8 @@
   function ctaLabel(s){ if(s.dset){ return method==='bulk'?('⬆ Upload '+s.dset.name+' template'):('+ Add '+s.dset.name); } return s.cta; }
   function doAct(s){ if(s.act){ s.act(); } else if(s.dset){ var c=el(s.dset.cell); if(c)c.innerHTML='<span class="tag gn">'+s.dset.n+'</span>'; if(s.dset.also){ var nn=el(s.dset.also); if(nn)nn.textContent='from types'; } } }
   function skipMark(s){ if(s.dset){ var c=el(s.dset.cell); if(c)c.innerHTML='<span class="tag gy">Skipped</span>'; } }
-  function summaryText(){ var loaded=[],sk=[],rq=[]; STEPS.forEach(function(st,k){ if(st.dset){ if(outcome[k]==='skip'){ sk.push(st.dset.name); if(st.skip&&st.skip.req)rq.push(st.dset.name); } else { loaded.push(st.dset.name); } } }); var t='Loaded '+loaded.length+' of '+(loaded.length+sk.length)+' data sets.'; if(sk.length)t+=' Skipped: '+sk.join(', ')+'.'; if(rq.length)t+=' ⚠ You’ll need '+rq.join(', ')+' before you can build & dispatch — add anytime in Settings.'; else t+=' You’ve got everything the next steps need.'; t+='<span style="display:block;margin-top:10px;font-size:12px;color:var(--grey-6);line-height:1.5"><strong>💡 Also worth setting:</strong> <strong>Departments</strong> (account-level segmentation for filtering &amp; reporting), <strong>Service Classes</strong> (order-level work types), and trim your <strong>Units of Measure</strong> to the ones you use — Yards, Tons, Pounds, Loads, Hours.</span>'; return t; }
-  function skipCurrent(s){ if(s.skip&&s.skip.req){ take.innerHTML='<div class="tk-body"><div class="eyebrow" style="color:var(--dark-orange);">Heads up</div><h2 class="sm">Skip '+s.dset.name+'?</h2><p><strong>'+s.dset.name+'</strong> is needed — '+s.skip.dep+'.</p><div class="acts"><button class="btn yellow" id="tk-add" type="button">Add it &rarr;</button><button class="btn ghost" id="tk-skipy" type="button">Skip anyway</button></div></div>'; el('tk-add').onclick=advance; el('tk-skipy').onclick=doSkip; } else { doSkip(); } }
+  function summaryText(){ var loaded=[],sk=[],rq=[]; STEPS.forEach(function(st,k){ if(st.dset){ if(outcome[k]==='skip'){ sk.push(st.dset.name); if(st.skip&&st.skip.req)rq.push(st.dset.name); } else { loaded.push(st.dset.name); } } }); var t='Loaded '+loaded.length+' of '+(loaded.length+sk.length)+' data sets.'; if(sk.length)t+=' Skipped: '+sk.join(', ')+'.'; if(rq.length)t+=' ⚠ You’ll need '+rq.join(', ')+' before you can build & dispatch: add anytime in Settings.'; else t+=' You’ve got everything the next steps need.'; t+='<span style="display:block;margin-top:10px;font-size:12px;color:var(--grey-6);line-height:1.5"><strong>💡 Also worth setting:</strong> <strong>Departments</strong> (account-level segmentation for filtering &amp; reporting), <strong>Service Classes</strong> (order-level work types), and trim your <strong>Units of Measure</strong> to the ones you use: Yards, Tons, Pounds, Loads, Hours.</span>'; return t; }
+  function skipCurrent(s){ if(s.skip&&s.skip.req){ take.innerHTML='<div class="tk-body"><div class="eyebrow" style="color:var(--dark-orange);">Heads up</div><h2 class="sm">Skip '+s.dset.name+'?</h2><p><strong>'+s.dset.name+'</strong> is needed: '+s.skip.dep+'.</p><div class="acts"><button class="btn yellow" id="tk-add" type="button">Add it &rarr;</button><button class="btn ghost" id="tk-skipy" type="button">Skip anyway</button></div></div>'; el('tk-add').onclick=advance; el('tk-skipy').onclick=doSkip; } else { doSkip(); } }
   function doSkip(){ var s=STEPS[i]; clearHL(); skipMark(s); outcome[i]='skip'; updateChecklist(i+1); var wasLast=s.last, st=s.stage; if(i+1>=TOTAL){ hideTakeover(); updateRail(TOTAL,-1); if(wasLast)popStage(st,EARN[st]); setTimeout(showGrad,reduce?10:560); return; } i=i+1; showStep(i); if(wasLast)popStage(st,EARN[st]); }
   // per-stage "watch how" videos (Pages-hosted clips)
   var STAGEVID={projects:'v1-01-create-project-overview.mp4',dispatch:'v3-01-order-card-basics.mp4',approvals:'v6-03-approvals-page.mp4',settlements:'v6-04-bulk-settlements-pdf-export.mp4'};
@@ -2132,33 +2718,33 @@
 
   // STEPS (22): each {stage, screen, nav, title, text, warn?, cta, target, act, last?, celebrate?}
   var STEPS=[
-    {stage:0,intro:true,screen:'data',nav:'Settings',title:'Watch first — uploading your data',text:'Tim walks through loading your data, then we’ll do it together.',cta:'Start loading data',target:''},
+    {stage:0,intro:true,screen:'data',nav:'Settings',title:'Watch first: uploading your data',text:'Tim walks through loading your data, then we’ll do it together.',cta:'Start loading data',target:''},
     {stage:0,screen:'data',nav:'Settings',title:'Confirm your company hierarchy',text:'All master data lives at the parent level. Set your structure first.',cta:'Single company',target:'du-hier',act:function(){root.querySelectorAll('#du-hier span').forEach(function(x){x.classList.toggle('on',x.dataset.h==='single');});}},
-    {stage:0,screen:'data',nav:'Settings',choice:true,title:'Add manually or bulk-upload?',text:'For every data set you can add records by hand, or bulk-upload with our template — download it, fill the exact format, upload (no column mapping). Pick your default; you can switch on any set.',target:''},
+    {stage:0,screen:'data',nav:'Settings',choice:true,title:'Add manually or bulk-upload?',text:'For every data set you can add records by hand, or bulk-upload with our template: download it, fill the exact format, upload (no column mapping). Pick your default; you can switch on any set.',target:''},
     {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-users-c',name:'Users',n:'12'},skip:{req:false},title:'Add your Users',text:'The people who log into Tread.',target:'du-users-c'},
     {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-drivers-c',name:'Drivers',n:'20'},skip:{req:true,dep:'you’ll need a driver to assign a Job'},title:'Add your Drivers',text:'Everyone who receives dispatches.',target:'du-drivers-c'},
-    {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-cust-c',name:'Customers'},skip:{req:true,dep:'you’ll need a customer to create a Project'},title:'Add your Customers',text:'Who you bill. With bulk you download our template, fill it, and upload — no mapping.',target:'du-cust-c',act:function(){if(method==='bulk'){var b=el('du-cust-bulk');if(b)b.style.display='';}var c=el('du-cust-c');if(c)c.innerHTML='<span class="tag gn">42</span>';}},
-    {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-vend-c',name:'Vendors',n:'6'},skip:{req:false,dep:'only if you use sub-haulers'},title:'Add your Vendors',text:'Third-party hauling companies — optional.',target:'du-vend-c'},
-    {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-type-c',name:'Equipment Types',n:'3',also:'du-equip-note'},skip:{req:true,dep:'ticket calcs break without capacity & UoM on the type'},warn:'Equipment Types come BEFORE Equipment — capacity & unit-of-measure live on the type.',title:'Add your Equipment Types',text:'Truck/trailer classes that carry capacity & UoM.',target:'du-type-c'},
+    {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-cust-c',name:'Customers'},skip:{req:true,dep:'you’ll need a customer to create a Project'},title:'Add your Customers',text:'Who you bill. With bulk you download our template, fill it, and upload: no mapping.',target:'du-cust-c',act:function(){if(method==='bulk'){var b=el('du-cust-bulk');if(b)b.style.display='';}var c=el('du-cust-c');if(c)c.innerHTML='<span class="tag gn">42</span>';}},
+    {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-vend-c',name:'Vendors',n:'6'},skip:{req:false,dep:'only if you use sub-haulers'},title:'Add your Vendors',text:'Third-party hauling companies: optional.',target:'du-vend-c'},
+    {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-type-c',name:'Equipment Types',n:'3',also:'du-equip-note'},skip:{req:true,dep:'ticket calcs break without capacity & UoM on the type'},warn:'Equipment Types come BEFORE Equipment: capacity & unit-of-measure live on the type.',title:'Add your Equipment Types',text:'Truck/trailer classes that carry capacity & UoM.',target:'du-type-c'},
     {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-equip-c',name:'Equipment',n:'18'},skip:{req:true,dep:'you’ll need trucks to put on jobs'},title:'Add your Equipment',text:'Your trucks & trailers, each tied to a type.',target:'du-equip-c'},
     {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-mat-c',name:'Materials',n:'9'},skip:{req:true,dep:'an Order carries a material'},title:'Add your Materials',text:'What you haul; flag prevailing-wage items.',target:'du-mat-c'},
     {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-site-c',name:'Sites',n:'8'},skip:{req:true,dep:'you can’t dispatch without pickup / drop-off sites'},title:'Add your Sites',text:'Jobsites & yards, with geofences.',target:'du-site-c'},
-    {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-dept-c',name:'Departments',n:'✓'},skip:{req:false,dep:'optional — grouping for reporting'},title:'Add Departments (optional)',text:'Optional grouping for reporting & dispatch.',target:'du-dept-c'},
+    {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-dept-c',name:'Departments',n:'✓'},skip:{req:false,dep:'optional: grouping for reporting'},title:'Add Departments (optional)',text:'Optional grouping for reporting & dispatch.',target:'du-dept-c'},
     {stage:0,screen:'data',nav:'Settings',summary:true,last:true,title:'Data loaded',text:'',cta:'Build your first project',target:''},
-    {stage:1,intro:true,screen:'projects',nav:'Projects',title:'Set up your first Project',text:'Watch how a Project is built, then create one — it’s your recurring job.',cta:'Start',target:''},
+    {stage:1,intro:true,screen:'projects',nav:'Projects',title:'Set up your first Project',text:'Watch how a Project is built, then create one: it’s your recurring job.',cta:'Start',target:''},
     {stage:1,screen:'projects',nav:'Projects',title:'Create your first project',text:'A Project is your recurring job. Start one.',cta:'New project',target:'btn-newproject',act:function(){el('proj-form').style.display='';}},
     {stage:1,screen:'projects',nav:'Projects',title:'Name the project',text:'Give it a clear name.',cta:'Add name',target:'pf-name',act:function(){fill('pf-name','Hwy 12 Base Course');}},
     {stage:1,screen:'projects',nav:'Projects',title:'Choose the customer',text:'Pick who this work is for.',warn:'Customer can’t be changed once the project is created.',cta:'Select customer',target:'pf-customer',act:function(){el('pf-warn').style.display='';fill('pf-customer','Outback Materials');}},
     {stage:1,screen:'projects',nav:'Projects',title:'Add a material',text:'Projects carry the materials you haul.',cta:'Add material',target:'pf-addmat',act:function(){el('pf-mat').style.display='flex';}},
     {stage:1,screen:'projects',nav:'Projects',title:'Set the rate',text:'Set the rate for this material.',cta:'Set rate',target:'pf-rate',act:function(){fill('pf-rate','$13.00 / ton');}},
-    {stage:1,screen:'projects',nav:'Projects',title:'Create the project',text:'Save it — now you can dispatch against it.',cta:'Create project',target:'pf-create',last:true,act:function(){el('proj-form').style.display='none';var r=el('proj-new');r.style.display='';r.classList.add('row-new');el('btn-neworder').style.display='';}},
+    {stage:1,screen:'projects',nav:'Projects',title:'Create the project',text:'Save it: now you can dispatch against it.',cta:'Create project',target:'pf-create',last:true,act:function(){el('proj-form').style.display='none';var r=el('proj-new');r.style.display='';r.classList.add('row-new');el('btn-neworder').style.display='';}},
 
     {stage:2,intro:true,screen:'dispatch',nav:'Dispatch',title:'Build an Order',text:'See how daily Orders work, then create one for today.',cta:'Start',target:''},
-    {stage:2,screen:'dispatch',nav:'Dispatch',title:'Create an order',text:'A project has many Orders — one per dispatch day. Each Order carries ONE material.',cta:'New order',target:'btn-neworder',act:function(){el('order-form').style.display='';}},
+    {stage:2,screen:'dispatch',nav:'Dispatch',title:'Create an order',text:'A project has many Orders: one per dispatch day. Each Order carries ONE material.',cta:'New order',target:'btn-neworder',act:function(){el('order-form').style.display='';}},
     {stage:2,screen:'dispatch',nav:'Dispatch',title:'Set the date',text:'When is this work happening?',cta:'Set date',target:'of-date',act:function(){fill('of-date','Today · Jul 2, 2026');}},
-    {stage:2,screen:'dispatch',nav:'Dispatch',title:'Choose a dispatch mode',text:'Loads, Running, or Tons — how you tell drivers the quantity.<span style="display:block;margin-top:8px;font-size:12px;color:var(--grey-6);line-height:1.5"><strong>💡 Running vs. fixed:</strong> a <strong>Running</strong> order keeps drivers cycling and never auto-ends (stop it when the day’s done); a <strong>fixed</strong> Loads/Tons order auto-ends after the last load is delivered.</span>',cta:'Choose Loads',target:'of-mode',act:function(){setmode('Loads');}},
-    {stage:2,screen:'dispatch',nav:'Dispatch',title:'Set the quantity',text:'How much to haul.<span style="display:block;margin-top:8px;font-size:12px;color:var(--grey-6);line-height:1.5"><strong>💡 Target vs. billing unit:</strong> the unit you dispatch by can differ from the unit you bill by — e.g. schedule by <strong>load</strong> but charge by <strong>ton</strong>.</span>',cta:'Set 8 loads',target:'of-qty',act:function(){fill('of-qty','8 loads');}},
-    {stage:2,screen:'dispatch',nav:'Dispatch',title:'Create the order',text:'It lands on the board — unassigned, ready for trucks.<span style="display:block;margin-top:8px;font-size:12px;color:var(--grey-6);line-height:1.5"><strong>💡 Stagger:</strong> space out truck arrivals at the plant so they don’t all show up at once — set the stagger interval on the order.</span>',cta:'Create order',target:'of-create',last:true,act:function(){el('order-form').style.display='none';var o=el('order-new');o.style.display='';o.classList.add('row-new');el('on-mode').textContent='Loads';el('on-qty').textContent='8 loads';}},
+    {stage:2,screen:'dispatch',nav:'Dispatch',title:'Choose a dispatch mode',text:'Loads, Running, or Tons: how you tell drivers the quantity.<span style="display:block;margin-top:8px;font-size:12px;color:var(--grey-6);line-height:1.5"><strong>💡 Running vs. fixed:</strong> a <strong>Running</strong> order keeps drivers cycling and never auto-ends (stop it when the day’s done); a <strong>fixed</strong> Loads/Tons order auto-ends after the last load is delivered.</span>',cta:'Choose Loads',target:'of-mode',act:function(){setmode('Loads');}},
+    {stage:2,screen:'dispatch',nav:'Dispatch',title:'Set the quantity',text:'How much to haul.<span style="display:block;margin-top:8px;font-size:12px;color:var(--grey-6);line-height:1.5"><strong>💡 Target vs. billing unit:</strong> the unit you dispatch by can differ from the unit you bill by: e.g. schedule by <strong>load</strong> but charge by <strong>ton</strong>.</span>',cta:'Set 8 loads',target:'of-qty',act:function(){fill('of-qty','8 loads');}},
+    {stage:2,screen:'dispatch',nav:'Dispatch',title:'Create the order',text:'It lands on the board: unassigned, ready for trucks.<span style="display:block;margin-top:8px;font-size:12px;color:var(--grey-6);line-height:1.5"><strong>💡 Stagger:</strong> space out truck arrivals at the plant so they don’t all show up at once: set the stagger interval on the order.</span>',cta:'Create order',target:'of-create',last:true,act:function(){el('order-form').style.display='none';var o=el('order-new');o.style.display='';o.classList.add('row-new');el('on-mode').textContent='Loads';el('on-qty').textContent='8 loads';}},
 
     {stage:3,intro:true,screen:'dispatch',nav:'Dispatch',title:'Assign trucks (Jobs)',text:'Watch how assigning trucks creates Jobs, then stage a couple.',cta:'Start',target:''},
     {stage:3,screen:'dispatch',nav:'Dispatch',title:'Assign a truck',text:'Assigning a truck to the order creates a Job.',cta:'Assign truck',target:'btn-assign',act:function(){addJob('T-14 · Ramirez');el('order-new-foot').innerHTML='<button class="btn ghost" id="btn-assign" type="button">+ Assign another</button> <button class="btn yellow" id="btn-send" type="button">Send</button>';}},
@@ -2166,13 +2752,13 @@
 
     {stage:4,intro:true,screen:'dispatch',nav:'Dispatch',title:'Dispatch & the driver app',text:'See what the driver sees, then send the jobs.',cta:'Start',target:''},
     {stage:4,screen:'dispatch',nav:'Dispatch',title:'Dispatch the jobs',text:'Send fires each Job to its driver via text + push.',cta:'Send',target:'btn-send',last:true,celebrate:'truck',act:function(){root.querySelectorAll('#jobs .job').forEach(function(j){j.classList.add('sent');j.querySelector('.js').textContent='Sent';});var o=el('order-new');o.classList.remove('unassigned');o.classList.add('sent');el('order-new-foot').innerHTML='<span class="tag gn">✓ Dispatched · en route</span>';}},
-    {stage:5,intro:true,screen:'driver',nav:'Assigned',title:'On the job',text:'You sent the jobs — here’s what happens in the field, on the driver’s phone.',cta:'Start',target:''},
+    {stage:5,intro:true,screen:'driver',nav:'Assigned',title:'On the job',text:'You sent the jobs: here’s what happens in the field, on the driver’s phone.',cta:'Start',target:''},
     {stage:5,screen:'driver',nav:'Assigned',title:'Driver accepts the dispatch',text:'The job lands on the driver’s phone. Tap Accept.',cta:'Accept',target:'dj-accept',act:function(){setDj('Accepted');var st=el('dj-start');if(st)st.style.display='';var a=el('dj-accept');if(a)a.style.display='none';}},
-    {stage:5,screen:'driver',nav:'Assigned',title:'Start the job',text:'Starting turns on live tracking — you’ll watch the truck move.',cta:'Start job',target:'dj-start',act:function(){setDj('To pickup → Loaded');var t=el('dj-ticket');if(t)t.style.display='';var st=el('dj-start');if(st)st.style.display='none';}},
-    {stage:5,screen:'driver',nav:'Assigned',title:'Capture the scale ticket',text:'At the scale the driver snaps the ticket — AI reads it back to the office.',cta:'Add ticket',target:'dj-ticket',act:function(){var tk=el('dj-tk');if(tk)tk.style.display='';setDj('Loaded · ticket added');var t=el('dj-ticket');if(t)t.style.display='none';var sp=el('dj-stop');if(sp)sp.style.display='';}},
-    {stage:5,screen:'driver',nav:'Assigned',title:'Deliver & stop the job',text:'Unloaded at the drop-off — stop the job.',cta:'Stop job',target:'dj-stop',act:function(){setDj('Delivered · Completed');var sp=el('dj-stop');if(sp)sp.style.display='none';}},
+    {stage:5,screen:'driver',nav:'Assigned',title:'Start the job',text:'Starting turns on live tracking: you’ll watch the truck move.',cta:'Start job',target:'dj-start',act:function(){setDj('To pickup → Loaded');var t=el('dj-ticket');if(t)t.style.display='';var st=el('dj-start');if(st)st.style.display='none';}},
+    {stage:5,screen:'driver',nav:'Assigned',title:'Capture the scale ticket',text:'At the scale the driver snaps the ticket: AI reads it back to the office.',cta:'Add ticket',target:'dj-ticket',act:function(){var tk=el('dj-tk');if(tk)tk.style.display='';setDj('Loaded · ticket added');var t=el('dj-ticket');if(t)t.style.display='none';var sp=el('dj-stop');if(sp)sp.style.display='';}},
+    {stage:5,screen:'driver',nav:'Assigned',title:'Deliver & stop the job',text:'Unloaded at the drop-off: stop the job.',cta:'Stop job',target:'dj-stop',act:function(){setDj('Delivered · Completed');var sp=el('dj-stop');if(sp)sp.style.display='none';}},
     {stage:5,screen:'foreman',nav:'Assigned',skip:{req:false,dep:'only if you use a foreman'},title:'Optional: foreman sign-off',text:'If a foreman is on site they can confirm the load / approve field hours from their phone. No foreman? Skip it.',cta:'Confirm load',target:'fm-confirm',act:function(){var b=el('fm-confirm');if(b){b.textContent='✓ Confirmed';b.classList.add('done');}}},
-    {stage:5,screen:'dispatch',nav:'Dispatch',title:'Watch & manage the job',text:'Back in Dispatch, open the job to see its status history, the loads/ticket data coming in, and the actions you can take after dispatch — track, edit, text the driver. The completed job now shows In Review, ready to approve.',cta:'Open the job',target:'order-new',last:true,act:function(){var o=el('order-new'); if(o){o.classList.add('review'); var f=el('order-new-foot'); if(f)f.innerHTML='<span class="tag" style="background:rgba(255,170,19,.16);color:var(--dark-orange);">● In Review</span> <span style="font-size:11px;color:var(--grey-5);">Actions ▾ · View · Track · Edit · Text driver</span>'; if(!el('jobdetail')){var d=document.createElement('div'); d.id='jobdetail'; d.style.cssText='margin-top:10px;border-top:1px solid var(--grey-2);padding-top:9px;font-size:12px;color:var(--grey-7);'; d.innerHTML='<div style="font-weight:700;color:var(--black);margin-bottom:5px;">Job history</div>Accepted 1:02p · To pickup 1:14p · Loaded 1:39p (24.5t) · Delivered 2:10p · <strong>In Review</strong>'; o.appendChild(d);} }}},
+    {stage:5,screen:'dispatch',nav:'Dispatch',title:'Watch & manage the job',text:'Back in Dispatch, open the job to see its status history, the loads/ticket data coming in, and the actions you can take after dispatch: track, edit, text the driver. The completed job now shows In Review, ready to approve.',cta:'Open the job',target:'order-new',last:true,act:function(){var o=el('order-new'); if(o){o.classList.add('review'); var f=el('order-new-foot'); if(f)f.innerHTML='<span class="tag" style="background:rgba(255,170,19,.16);color:var(--dark-orange);">● In Review</span> <span style="font-size:11px;color:var(--grey-5);">Actions ▾ · View · Track · Edit · Text driver</span>'; if(!el('jobdetail')){var d=document.createElement('div'); d.id='jobdetail'; d.style.cssText='margin-top:10px;border-top:1px solid var(--grey-2);padding-top:9px;font-size:12px;color:var(--grey-7);'; d.innerHTML='<div style="font-weight:700;color:var(--black);margin-bottom:5px;">Job history</div>Accepted 1:02p · To pickup 1:14p · Loaded 1:39p (24.5t) · Delivered 2:10p · <strong>In Review</strong>'; o.appendChild(d);} }}},
 
     {stage:6,intro:true,screen:'approvals',nav:'Approvals',title:'Approve tickets',text:'Watch the approvals flow, then approve a ticket.',cta:'Start',target:''},
     {stage:6,screen:'approvals',nav:'Approvals',title:'Open the ticket',text:'Tickets flow in from the field. Our AI flags weight/rate mismatches.',cta:'Open ticket',target:'tk-1',act:function(){el('tk-1').classList.add('open');}},
@@ -2183,8 +2769,8 @@
     {stage:7,screen:'settlements',nav:'Approvals',title:'Create the settlement',text:'Bundle them into one settlement.',cta:'Create settlement',target:'btn-settle',act:function(){el('pdf').classList.add('show');el('btn-export').style.display='';}},
     {stage:7,screen:'settlements',nav:'Approvals',title:'Generate & export',text:'Generate the PDF, email it, and mark it exported for accounting.',cta:'Mark exported',target:'btn-export',last:true,celebrate:'cash',act:function(){el('btn-export').textContent='✓ Exported';}},
 
-    {stage:8,intro:true,screen:'reports',nav:'Reports',title:'See your numbers',text:'Reporting walkthrough coming soon — for now, run a report.',cta:'Start',target:''},
-    {stage:8,screen:'reports',nav:'Reports',title:'Pick a report',text:'Job Cost or P&L — your call.',cta:'Pick report',target:'rep-picker',act:function(){root.querySelectorAll('#rep-picker .pick').forEach(function(p,i2){p.classList.toggle('on',i2===0);});}},
+    {stage:8,intro:true,screen:'reports',nav:'Reports',title:'See your numbers',text:'Reporting walkthrough coming soon: for now, run a report.',cta:'Start',target:''},
+    {stage:8,screen:'reports',nav:'Reports',title:'Pick a report',text:'Job Cost or P&L: your call.',cta:'Pick report',target:'rep-picker',act:function(){root.querySelectorAll('#rep-picker .pick').forEach(function(p,i2){p.classList.toggle('on',i2===0);});}},
     {stage:8,screen:'reports',nav:'Reports',title:'Run it',text:'See your loads, revenue, and cycle times.',cta:'Run',target:'btn-run',act:function(){root.querySelectorAll('#bars .fill').forEach(function(f){f.style.height=f.dataset.h;});}},
     {stage:8,screen:'reports',nav:'Reports',title:'Export your numbers',text:'Export to CSV or PDF for your books.',cta:'Export',target:'btn-repexport',last:true,act:function(){el('btn-repexport').textContent='✓ Exported';}}
   ];
@@ -2254,7 +2840,7 @@
     take.innerHTML='<div class="tk-nav"><span class="logo"><svg viewBox="0 0 520 100" aria-label="Tread"><use href="#tread-logo-white"/></svg></span></div>'+
       '<div class="tk-body" style="text-align:center;"><div class="eyebrow">Welcome to Tread U</div>'+
       '<h2>Let’s get your team Road-Ready</h2>'+
-      '<p>We’ll start by loading your data, then walk the real flow — Project, Order, Jobs, Dispatch, and Approve, Settle, Report. One step at a time.</p>'+
+      '<p>We’ll start by loading your data, then walk the real flow: Project, Order, Jobs, Dispatch, and Approve, Settle, Report. One step at a time.</p>'+
       '<div class="acts" style="justify-content:center;"><button class="btn yellow big" id="tk-cta" type="button">Get Treading &rarr;</button></div></div>';
     el('tk-cta').onclick=advance;
     el('c-back').disabled=true;
@@ -2268,7 +2854,7 @@
     take.innerHTML='<div class="tk-body" style="text-align:center;">'+
       '<div class="eyebrow" style="color:var(--dark-orange);">Cleared to Roll</div>'+
       '<h2 class="sm">You’re Road-Ready 🏁</h2>'+
-      '<p>You ran the full loop — Project to paid. Your team is officially up and running on Tread.</p>'+
+      '<p>You ran the full loop: Project to paid. Your team is officially up and running on Tread.</p>'+
       '<div class="cert"><span class="cmark"><svg viewBox="0 0 280 140" aria-label="Tread"><use href="#tread-mark"/></svg></span>'+
       '<div class="ce">Road-Ready Operator</div><div class="cco">Outback Materials</div><div class="cst">Completed onboarding · Jul 2026</div>'+
       '<div class="badges"><span class="bdg">Dispatch</span><span class="bdg">Approvals</span><span class="bdg">Settlements</span><span class="bdg">Reporting</span></div></div>'+
@@ -2279,7 +2865,7 @@
     el('tk-share').onclick=function(){toast('Share link copied (sample)');};
     el('tk-replay').onclick=restart;
     el('c-back').disabled=false;
-    el('c-status').textContent='Onboarding complete — Road-Ready.';
+    el('c-status').textContent='Onboarding complete: Road-Ready.';
     if(!reduce){confetti();confetti(420);}
   }
 
@@ -2391,10 +2977,10 @@
     {s:'a-approvals',k:['approve','approval','ticket','sign-off','sign off','hours','foreman'],c:4,a:'In <b>Approvals</b>, open a ticket to check net tons and rate (our AI flags mismatches), then <b>Approve</b> it for billing.'},
     {s:'a-run-job',k:['driver','field','haul','tracking','accept','scale ticket','after i dispatch','after dispatch','what happens','mobile'],c:3,a:'After you send, the driver accepts and runs the haul while you watch it live (Accepted → Loaded → Delivered → Completed). They capture a scale ticket and submit hours, and the completed job lands "In Review" for approval.'},
     {s:'a-build-project',k:['create a project','create project','new project','make a project','set up a project','build a project'],c:1,a:'Go to <b>Projects → New Project</b>, name it, choose the customer (this can\'t change later), then add your materials + rates. Now you can build Orders against it.'},
-    {s:'a-master-data',k:['upload','import','master data','load data','manual','bulk','template','my data','add data','enter data'],c:1,a:'You can load data two ways: <b>add records manually</b> or <b>bulk-upload our template</b> (download it, fill the exact format, upload — no column mapping). Load in order (Users → Drivers → Customers → Vendors → Equipment Types → Equipment → Materials → Sites), and always do <b>Equipment Types before Equipment</b> or ticket calcs break.'},
+    {s:'a-master-data',k:['upload','import','master data','load data','manual','bulk','template','my data','add data','enter data'],c:1,a:'You can load data two ways: <b>add records manually</b> or <b>bulk-upload our template</b> (download it, fill the exact format, upload: no column mapping). Load in order (Users → Drivers → Customers → Vendors → Equipment Types → Equipment → Materials → Sites), and always do <b>Equipment Types before Equipment</b> or ticket calcs break.'},
     {s:'a-order-build',k:['dispatch mode','loads','running','tons','quantity','how much'],c:2,a:'Dispatch modes tell drivers the quantity: <b>Loads</b> (N loads each), <b>Running</b> (continuous cycles), or <b>Tons</b> (a fixed tonnage). Set it on the order.'},
     {s:'a-tread-model',k:['difference','vs ','project vs','what is','how tread','organized','the model','hierarchy','parent'],c:0,a:'A <b>Project</b> is your recurring job (a container). An <b>Order</b> is one day\'s work under it and carries one material. Assigning a truck to an order creates a <b>Job</b> (per-truck), and <b>Dispatch</b> sends those Jobs to drivers.'},
-    {s:'a-assign-manage',k:['dispatch','assign','send','truck','order'],c:2,a:'On the order card, assign a driver+truck (each assignment is a <b>Job</b>), then hit <b>Send</b> — it fires the job to the driver via text + push.'}
+    {s:'a-assign-manage',k:['dispatch','assign','send','truck','order'],c:2,a:'On the order card, assign a driver+truck (each assignment is a <b>Job</b>), then hit <b>Send</b>: it fires the job to the driver via text + push.'}
   ];
   var SUG=['How do I create settlements?','How do I upload my data?','How do I dispatch?','How do I approve a ticket?','Project vs Order vs Job?'];
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -2402,10 +2988,10 @@
   function answer(q){var s=q.toLowerCase(),best=null;
     for(var i=0;i<QA.length&&!best;i++){for(var j=0;j<QA[i].k.length;j++){if(s.indexOf(QA[i].k[j])>=0){best=QA[i];break;}}}
     var t=add('bot','<i style="color:var(--grey-5)">Tread U is typing…</i>');
-    setTimeout(function(){t.innerHTML=best?(best.a+L(best.c,best.s)):('I\'m not certain I have that exact one — here are the closest lessons:'+L(2,'a-order-build')+L(4,'a-approvals')+L(5,'a-build-settlements'));msgs.scrollTop=msgs.scrollHeight;},reduce?10:600);}
+    setTimeout(function(){t.innerHTML=best?(best.a+L(best.c,best.s)):('I\'m not certain I have that exact one: here are the closest lessons:'+L(2,'a-order-build')+L(4,'a-approvals')+L(5,'a-build-settlements'));msgs.scrollTop=msgs.scrollHeight;},reduce?10:600);}
   function ask(q){add('me',q);answer(q);}
   SUG.forEach(function(s){var b=document.createElement('button');b.className='ap-chip';b.type='button';b.textContent=s;b.onclick=function(){ask(s);};chips.appendChild(b);});
-  add('bot','Hi! I\'m your Tread U assistant. Ask me anything about getting set up on Tread — I\'ll point you to the right lesson.');
+  add('bot','Hi! I\'m your Tread U assistant. Ask me anything about getting set up on Tread: I\'ll point you to the right lesson.');
   fab.onclick=function(){panel.classList.toggle('open');if(panel.classList.contains('open')){input.focus();}};
   xb.onclick=function(){panel.classList.remove('open');};
   form.onsubmit=function(e){e.preventDefault();var v=input.value.trim();if(!v){return;}input.value='';ask(v);};
