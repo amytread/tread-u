@@ -1796,13 +1796,19 @@
     <div class="appbody">
       <!-- PROJECTS -->
 <style>
-/* screen-scoped styles for the Projects screen: prefixed so they can't collide */
-#tuflow section[data-screen="projects"] .ptoolbar{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
+/* Screen-scoped styles for the Projects screen. Every selector is prefixed
+   #tuflow section[data-screen="projects"] so it can't collide with other screens.
+   Self-contained: reproduces the classes this markup uses plus the new ones
+   (stats row, requestor line, company chip, corrected location fields). */
+
+/* page toolbar: Quotes / Projects tabs */
 #tuflow section[data-screen="projects"] .ptabs{display:inline-flex;gap:2px;}
 #tuflow section[data-screen="projects"] .ptab{font-size:13px;font-weight:700;color:var(--grey-5);padding:6px 12px;border-radius:7px;cursor:pointer;}
 #tuflow section[data-screen="projects"] .ptab.on{color:var(--black);background:var(--grey-1);}
-#tuflow section[data-screen="projects"] .ptoolbar .acts{display:flex;gap:8px;}
-#tuflow section[data-screen="projects"] .filterbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
+#tuflow section[data-screen="projects"] .acts{display:flex;gap:8px;}
+
+/* status filters + search */
+#tuflow section[data-screen="projects"] .filterbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
 #tuflow section[data-screen="projects"] .fseg{display:inline-flex;border:1px solid var(--grey-2);border-radius:8px;overflow:hidden;background:var(--white);}
 #tuflow section[data-screen="projects"] .fseg span{font-size:12.5px;font-weight:600;color:var(--grey-6);padding:7px 13px;cursor:pointer;border-right:1px solid var(--grey-2);}
 #tuflow section[data-screen="projects"] .fseg span:last-child{border-right:none;}
@@ -1810,40 +1816,80 @@
 #tuflow section[data-screen="projects"] .psearch{flex:1;min-width:150px;display:flex;align-items:center;gap:7px;background:var(--white);border:1px solid var(--grey-2);border-radius:8px;padding:7px 11px;color:var(--grey-4);font-size:13px;}
 #tuflow section[data-screen="projects"] .fbtn{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--grey-7);background:var(--white);border:1px solid var(--grey-2);border-radius:8px;padding:7px 12px;}
 
-/* list rows */
+/* project cards */
 #tuflow section[data-screen="projects"] .plist{display:flex;flex-direction:column;}
-#tuflow section[data-screen="projects"] .prow{display:grid;grid-template-columns:2.2fr 1.4fr 1.5fr 1fr auto;align-items:center;gap:14px;
-  background:var(--white);border:1px solid var(--grey-2);border-left:5px solid var(--yellow);border-radius:10px;
-  padding:12px 14px;margin-bottom:8px;box-shadow:var(--shadow-sm);}
-#tuflow section[data-screen="projects"] .pname{font-size:14px;font-weight:700;color:var(--black);}
-#tuflow section[data-screen="projects"] .pext{font-size:11px;color:var(--grey-5);margin-top:2px;}
-#tuflow section[data-screen="projects"] .pcust{font-size:13px;font-weight:700;color:var(--btn-green);}
-#tuflow section[data-screen="projects"] .pdates{font-size:12px;color:var(--grey-7);font-variant-numeric:tabular-nums;}
+#tuflow section[data-screen="projects"] .prow{display:block;background:var(--white);border:1px solid var(--grey-2);
+  border-left:5px solid #2C6E8F;border-radius:10px;padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow-sm);}
+#tuflow section[data-screen="projects"] .phead{display:grid;grid-template-columns:2fr 1.3fr 1.4fr auto;align-items:start;gap:14px;}
+#tuflow section[data-screen="projects"] .pname{font-size:15px;font-weight:700;color:var(--black);}
+#tuflow section[data-screen="projects"] .pext{font-size:11px;color:var(--grey-5);margin-top:3px;}
+#tuflow section[data-screen="projects"] .pcust{font-size:13px;font-weight:700;color:var(--btn-green);align-self:center;}
+#tuflow section[data-screen="projects"] .pdates{font-size:12.5px;color:var(--grey-7);font-variant-numeric:tabular-nums;align-self:center;}
+#tuflow section[data-screen="projects"] .pdates .cal{margin-right:5px;}
 #tuflow section[data-screen="projects"] .pdates .sub{font-size:10.5px;color:var(--grey-5);margin-top:2px;}
-#tuflow section[data-screen="projects"] .pco{font-size:12.5px;color:var(--grey-7);}
-#tuflow section[data-screen="projects"] .pright{display:flex;align-items:center;gap:10px;justify-self:end;}
+#tuflow section[data-screen="projects"] .pright{display:flex;align-items:center;gap:9px;justify-self:end;}
+#tuflow section[data-screen="projects"] .pcochip{max-width:104px;font-size:12px;color:var(--grey-7);background:var(--grey-1);border:1px solid var(--grey-2);
+  border-radius:7px;padding:5px 9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 #tuflow section[data-screen="projects"] .pstat{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;
-  color:#2C6E8F;background:#EAF4FA;border:1px solid #BDDCEC;border-radius:7px;padding:4px 9px;}
-#tuflow section[data-screen="projects"] .pic{color:var(--grey-4);font-size:14px;}
-#tuflow section[data-screen="projects"] .pid{font-size:10px;color:var(--grey-4);font-variant-numeric:tabular-nums;white-space:nowrap;}
+  color:#2C6E8F;background:#EAF4FA;border:1px solid #BDDCEC;border-radius:7px;padding:5px 9px;cursor:pointer;}
+#tuflow section[data-screen="projects"] .pic{color:var(--grey-4);font-size:15px;cursor:pointer;}
+#tuflow section[data-screen="projects"] .pic.hist{color:var(--dark-orange);}
+#tuflow section[data-screen="projects"] .pic.edit{color:var(--dark-orange);}
+#tuflow section[data-screen="projects"] .preq{text-align:right;font-size:11px;color:var(--grey-5);margin-top:6px;font-variant-numeric:tabular-nums;}
 
-/* create-project modal internals */
+/* stats strip */
+#tuflow section[data-screen="projects"] .pstats{display:grid;grid-template-columns:88px 168px 150px 1fr;gap:0;
+  align-items:center;margin-top:12px;padding-top:12px;border-top:1px solid var(--grey-2);}
+#tuflow section[data-screen="projects"] .stat{padding:0 16px;}
+#tuflow section[data-screen="projects"] .stat + .stat{border-left:1px solid var(--grey-2);}
+#tuflow section[data-screen="projects"] .statlab{display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.04em;color:var(--grey-5);}
+#tuflow section[data-screen="projects"] .statlab .si{color:#2C6E8F;font-size:11px;}
+#tuflow section[data-screen="projects"] .statval{font-size:19px;font-weight:700;color:var(--black);margin-top:4px;font-variant-numeric:tabular-nums;}
+#tuflow section[data-screen="projects"] .pdel .delrow{display:flex;align-items:baseline;gap:6px;margin-top:2px;}
+#tuflow section[data-screen="projects"] .pdel .delof{font-size:12px;color:var(--grey-5);font-weight:600;}
+#tuflow section[data-screen="projects"] .progwrap{display:flex;align-items:center;gap:10px;margin-top:8px;}
+#tuflow section[data-screen="projects"] .progbar{flex:1;height:6px;background:var(--grey-2);border-radius:999px;overflow:hidden;}
+#tuflow section[data-screen="projects"] .progfill{height:100%;background:var(--btn-green);border-radius:999px;}
+#tuflow section[data-screen="projects"] .progpct{font-size:11.5px;font-weight:700;color:var(--grey-6);}
+
+/* Create Project modal internals */
 #tuflow section[data-screen="projects"] .pf-x{color:var(--grey-4);cursor:pointer;font-size:15px;}
-#tuflow section[data-screen="projects"] .pf-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:4px;}
+#tuflow section[data-screen="projects"] .pf-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:4px;}
 #tuflow section[data-screen="projects"] .pf-sec{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--grey-5);margin:16px 0 9px;}
 #tuflow section[data-screen="projects"] .pf-sec:first-child{margin-top:0;}
 #tuflow section[data-screen="projects"] .g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 #tuflow section[data-screen="projects"] .g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+#tuflow section[data-screen="projects"] .g4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;}
 #tuflow section[data-screen="projects"] .ctl.dd{justify-content:space-between;}
 #tuflow section[data-screen="projects"] .ctl.dd::after{content:"\25BE";color:var(--grey-4);font-size:10px;margin-left:8px;}
 #tuflow section[data-screen="projects"] .pf-link{display:inline-block;font-size:12px;font-weight:700;color:var(--dark-orange);text-decoration:none;margin-top:4px;}
-#tuflow section[data-screen="projects"] .maprect{height:96px;border:1px solid var(--grey-2);border-radius:8px;background:var(--grey-1);
-  display:grid;place-items:center;color:var(--grey-4);font-size:12px;font-weight:600;margin:2px 0 4px;}
-#tuflow section[data-screen="projects"] .chkrow{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--grey-8);margin-top:9px;}
-#tuflow section[data-screen="projects"] .taxchks{display:flex;flex-wrap:wrap;gap:16px;margin-top:6px;}
-@media(max-width:760px){#tuflow section[data-screen="projects"] .pf-cols{grid-template-columns:1fr;}
-  #tuflow section[data-screen="projects"] .prow{grid-template-columns:1fr;}
-  #tuflow section[data-screen="projects"] .pright{justify-self:start;}}
+#tuflow section[data-screen="projects"] .loc-row{display:flex;align-items:flex-end;justify-content:space-between;gap:6px;}
+#tuflow section[data-screen="projects"] .loc-row .field{flex:1;margin-bottom:0;}
+#tuflow section[data-screen="projects"] .loc-row .coord{flex:0 0 120px;}
+#tuflow section[data-screen="projects"] .loc-plus{flex:0 0 38px;height:38px;border:1px solid var(--grey-2);background:var(--grey-1);
+  color:var(--grey-5);border-radius:8px;font-size:18px;cursor:pointer;}
+#tuflow section[data-screen="projects"] .loc-head{display:flex;align-items:center;justify-content:space-between;margin:12px 0 5px;}
+#tuflow section[data-screen="projects"] .loc-head label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--grey-5);}
+#tuflow section[data-screen="projects"] .maprect{position:relative;height:150px;border:1px solid var(--grey-2);border-radius:8px;background:var(--grey-1);
+  display:grid;place-items:center;color:var(--grey-6);font-size:15px;font-weight:600;margin:10px 0 4px;overflow:hidden;}
+#tuflow section[data-screen="projects"] .mapbar{position:absolute;top:8px;left:8px;display:inline-flex;background:var(--white);
+  border:1px solid var(--grey-2);border-radius:7px;overflow:hidden;font-size:11px;font-weight:600;}
+#tuflow section[data-screen="projects"] .mapbar span{padding:4px 10px;color:var(--grey-6);border-right:1px solid var(--grey-2);}
+#tuflow section[data-screen="projects"] .mapbar span:last-child{border-right:none;}
+#tuflow section[data-screen="projects"] .mapbar span.on{background:var(--grey-1);color:var(--black);}
+#tuflow section[data-screen="projects"] .matrow{display:flex;gap:8px;align-items:center;}
+#tuflow section[data-screen="projects"] .matrow .ctl{flex:1;}
+
+@media(max-width:820px){
+  #tuflow section[data-screen="projects"] .pf-cols{grid-template-columns:1fr;}
+  #tuflow section[data-screen="projects"] .phead{grid-template-columns:1fr;}
+  #tuflow section[data-screen="projects"] .pright{justify-self:start;}
+  #tuflow section[data-screen="projects"] .preq{text-align:left;}
+  #tuflow section[data-screen="projects"] .pstats{grid-template-columns:1fr 1fr;}
+  #tuflow section[data-screen="projects"] .stat{padding:8px 12px;}
+  #tuflow section[data-screen="projects"] .stat + .stat{border-left:none;}
+}
 </style>
       <section class="screen" data-screen="projects">
         <!-- page toolbar: Quotes / Projects tabs + New Quote / New Project -->
@@ -1866,20 +1912,20 @@
             <span>Inactive</span>
             <span>Canceled</span>
           </div>
-          <div class="psearch">Search</div>
-          <div class="fbtn">☰ Filters</div>
+          <div class="psearch">&#128269; Search</div>
+          <div class="fbtn">&#9776; Filters</div>
         </div>
 
-        <!-- Create Project modal (revealed by the tour) -->
+        <!-- Create Project modal (revealed in place by the tour so coach-marks can target its fields) -->
         <div class="sheet" id="proj-form" style="display:none;">
-          <div style="display:flex;align-items:center;justify-content:space-between;"><h4>Create Project</h4><span class="pf-x">✕</span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;"><h4>Create Project</h4><span class="pf-x">&#10005;</span></div>
           <div class="pf-cols">
-            <!-- LEFT column -->
+            <!-- LEFT column: Project Details -->
             <div>
               <div class="pf-sec">Project Details</div>
-              <div class="field"><label>Company</label><div class="ctl">Outback Materials</div></div>
+              <div class="field"><label>Company</label><div class="ctl dd">Outback Materials</div></div>
               <div class="g2">
-                <div class="field"><label>Customer Account *</label><div class="ctl dd empty" id="pf-customer">Select a customer…</div></div>
+                <div class="field"><label>Customer Account *</label><div class="ctl dd empty" id="pf-customer">Select a customer&hellip;</div></div>
                 <div class="field"><label>Project Name *</label><div class="ctl empty" id="pf-name">Untitled project</div></div>
               </div>
               <div class="g2">
@@ -1890,23 +1936,22 @@
                 <div class="field"><label>Dispatch No.</label><div class="ctl empty">Optional</div></div>
                 <div class="field"><label>Order PO</label><div class="ctl empty">Optional</div></div>
               </div>
-              <div class="g2">
-                <div class="field"><label>Phase Name</label><div class="ctl empty">, </div></div>
-                <div class="field"><label>Phase Code</label><div class="ctl dd empty">Select…</div></div>
-              </div>
               <a class="pf-link" href="#" onclick="return false;">View / Bulk Add Phases</a>
-              <div class="warn" id="pf-warn" style="display:none;">Customer can’t be changed once the project is created.</div>
+              <div class="g2">
+                <div class="field"><label>Phase Name</label><div class="ctl empty">&mdash;</div></div>
+                <div class="field"><label>Phase Code</label><div class="ctl dd empty">Select&hellip;</div></div>
+              </div>
+              <div class="warn" id="pf-warn" style="display:none;">Customer can&rsquo;t be changed once the project is created.</div>
 
               <div class="pf-sec">Date &amp; Time</div>
-              <div class="g2">
-                <div class="field"><label>Start Date</label><div class="ctl">06/14/2026</div></div>
-                <div class="field"><label>Start Time</label><div class="ctl">12:00 PM</div></div>
-              </div>
-              <div class="g2">
+              <div class="g4">
+                <div class="field"><label>Start Date</label><div class="ctl empty">mm/dd/yyyy</div></div>
+                <div class="field"><label>Start Time</label><div class="ctl empty">hh:mm</div></div>
                 <div class="field"><label>End Date</label><div class="ctl empty">mm/dd/yyyy</div></div>
-                <div class="field"><label>End Time</label><div class="ctl empty">hh:mm --</div></div>
+                <div class="field"><label>End Time</label><div class="ctl empty">hh:mm</div></div>
               </div>
 
+              <!-- Materials: required by the tour. Not visible in the reference modal frame (see flags). -->
               <div class="pf-sec">Materials</div>
               <div class="g3">
                 <div class="field"><label>Material</label><div class="ctl dd">3/4" Base Rock</div></div>
@@ -1917,62 +1962,33 @@
               <div id="pf-mat" class="matrow" style="display:none;">
                 <div class="ctl dd">North Pit</div>
                 <div class="ctl" style="max-width:110px;">Buy $11.00</div>
-                <div class="ctl empty" id="pf-rate" style="max-width:150px;">Rate…</div>
+                <div class="ctl empty" id="pf-rate" style="max-width:150px;">Rate&hellip;</div>
               </div>
               <button class="btn ghost" id="pf-addmat" type="button" style="margin-top:7px;">+ Add Material Rate</button>
               <div><a class="pf-link" href="#" onclick="return false;">+ Add Material</a></div>
             </div>
 
-            <!-- RIGHT column -->
+            <!-- RIGHT column: Location Details -->
             <div>
               <div class="pf-sec">Location Details</div>
-              <div class="field"><label>Pick Up Site</label><div class="ctl dd">North Pit</div></div>
-              <div class="field"><label>Drop Off Site</label><div class="ctl dd">Torrey Pines Golf Course</div></div>
-              <div class="maprect">Choose Location First</div>
+              <div class="loc-head"><label>Pick Up Site</label><a class="pf-link" href="#" onclick="return false;" style="margin-top:0;">Create New Site</a></div>
+              <div class="loc-row">
+                <div class="field"><div class="ctl dd empty">Select&hellip;</div></div>
+                <div class="field coord"><label>Coordinates</label><div class="ctl empty">e.g. 40.7128</div></div>
+                <button class="loc-plus" type="button">+</button>
+              </div>
+              <div class="loc-head"><label>Drop Off Site</label><a class="pf-link" href="#" onclick="return false;" style="margin-top:0;">Create New Site</a></div>
+              <div class="loc-row">
+                <div class="field"><div class="ctl dd empty">Select&hellip;</div></div>
+                <div class="field coord"><label>Coordinates</label><div class="ctl empty">e.g. 40.7128</div></div>
+                <button class="loc-plus" type="button">+</button>
+              </div>
+              <div class="maprect">
+                <div class="mapbar"><span class="on">Map</span><span>Satellite</span></div>
+                Choose Location First
+              </div>
               <a class="pf-link" href="#" onclick="return false;">+ Add Pick Up Site Contact</a><br>
               <a class="pf-link" href="#" onclick="return false;">+ Add Drop Off Site Contact</a>
-
-              <div class="pf-sec">Order Defaults</div>
-              <div class="g2">
-                <div class="field"><label>Charge to Account</label><div class="ctl dd">Outback Materials</div></div>
-                <div class="field"><label>Service Class</label><div class="ctl dd">Aggregate Haul</div></div>
-              </div>
-              <div class="g2">
-                <div class="field"><label>Ordered Quantity</label><div class="ctl empty">0</div></div>
-                <div class="field"><label>Unit</label><div class="ctl dd">Loads</div></div>
-              </div>
-              <div class="pf-sec" style="font-weight:700;color:var(--grey-6);">Trucks</div>
-              <div class="g3">
-                <div class="field"><label>Number of Trucks</label><div class="ctl">2</div></div>
-                <div class="field"><label>Units</label><div class="ctl dd">Loads</div></div>
-                <div class="field"><label>Quantity</label><div class="ctl empty">0</div></div>
-              </div>
-              <div class="g3">
-                <div class="field"><label>Truck Type</label><div class="ctl dd empty">Select…</div></div>
-                <div class="field"><label>Units</label><div class="ctl dd empty">, </div></div>
-                <div class="field"><label>Truck Capacity</label><div class="ctl empty">0</div></div>
-              </div>
-              <div class="g2">
-                <div class="field"><label>Truck Time (Hrs)</label><div class="ctl empty">0</div></div>
-                <div class="field"><label>Ticket Chaser</label><div class="ctl dd empty">Select…</div></div>
-              </div>
-              <div class="chkrow"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Text drivers for missing tickets</div>
-              <div class="chkrow"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Default digital ticket view for drivers</div>
-
-              <div class="pf-sec">Tax</div>
-              <div class="g2">
-                <div class="field"><label>Tax Rate Schedule</label><div class="ctl dd empty">Select…</div></div>
-                <div class="field"><label>Tax Rate (%)</label><div class="ctl empty">0</div></div>
-              </div>
-              <div class="taxchks">
-                <span class="chkrow" style="margin-top:0;"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Freight &amp; FSC</span>
-                <span class="chkrow" style="margin-top:0;"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Material</span>
-                <span class="chkrow" style="margin-top:0;"><span class="cbx"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.5"><path d="M3 8l3.5 3.5L13 5"/></svg></span> Add-ons</span>
-              </div>
-
-              <div class="pf-sec">Contacts</div>
-              <div class="field"><label>Assigned Foreman</label><div class="ctl dd empty">Select a foreman…</div></div>
-              <div class="field"><label>Collaborator</label><div class="ctl dd empty">Select…</div></div>
             </div>
           </div>
           <div style="text-align:right;margin-top:14px;"><button class="btn ghost" type="button">Cancel</button> <button class="btn yellow" id="pf-create" type="button">Create</button></div>
@@ -1980,93 +1996,184 @@
 
         <!-- Projects list -->
         <div class="plist">
+          <!-- card with a full stats strip -->
           <div class="prow">
-            <div><div class="pname">Riverside Overlay</div><div class="pext">Project Ext ID: PRJ-RIV-014</div></div>
-            <div class="pcust">City of Fresno</div>
-            <div class="pdates">Jun 07 → Jun 09, 2026<div class="sub">Created Jun 05, 2026</div></div>
-            <div class="pco">Outback Materials</div>
-            <div class="pright"><span class="pstat">Active ▾</span><span class="pic">✎</span><span class="pic">⋯</span><span class="pid">PRJ-9814</span></div>
+            <div class="phead">
+              <div class="pmain"><div class="pname">Riverside Overlay</div><div class="pext">Project Ext ID: PRJ-RIV-014</div></div>
+              <div class="pcust">City of Fresno</div>
+              <div class="pdates"><span class="cal">&#128197;</span>Jun-07-2026 &rarr; Jun-09-2026<div class="sub">Created at: Jun-05-2026</div></div>
+              <div class="pright">
+                <span class="pcochip">Outback Materials</span>
+                <span class="pstat">Active &#9662;</span>
+                <span class="pic hist" title="History">&#128336;</span>
+                <span class="pic edit" title="Edit">&#9998;</span>
+                <span class="pic" title="More">&#8943;</span>
+              </div>
+            </div>
+            <div class="preq">Requestor: Dana Whitfield &bull; PROJ-104112</div>
+            <div class="pstats">
+              <div class="stat"><div class="statlab">Orders</div><div class="statval">3</div></div>
+              <div class="stat"><div class="statlab"><span class="si">&#10003;</span> Completed Treads</div><div class="statval">2</div></div>
+              <div class="stat"><div class="statlab"><span class="si">&#9776;</span> Ticket Count</div><div class="statval">5</div></div>
+              <div class="stat pdel">
+                <div class="statlab">Delivered</div>
+                <div class="delrow"><span class="statval">312.40</span><span class="delof">/ 5,000 Ton</span></div>
+                <div class="progwrap"><div class="progbar"><div class="progfill" style="width:6%;"></div></div><span class="progpct">6%</span></div>
+              </div>
+            </div>
           </div>
+
+          <!-- card with no stats strip (project with no orders yet) -->
           <div class="prow">
-            <div><div class="pname">Shaw Ave Widening</div><div class="pext">Project Ext ID: PRJ-SHAW-009</div></div>
-            <div class="pcust">Granite Const.</div>
-            <div class="pdates">Jun 03 → Jun 12, 2026<div class="sub">Created Jun 01, 2026</div></div>
-            <div class="pco">Outback Materials</div>
-            <div class="pright"><span class="pstat">Active ▾</span><span class="pic">✎</span><span class="pic">⋯</span><span class="pid">PRJ-9776</span></div>
+            <div class="phead">
+              <div class="pmain"><div class="pname">Shaw Ave Widening</div><div class="pext">Project Ext ID: PRJ-SHAW-009</div></div>
+              <div class="pcust">Granite Const.</div>
+              <div class="pdates"><span class="cal">&#128197;</span>Jun-03-2026 &rarr; Jun-12-2026<div class="sub">Created at: Jun-01-2026</div></div>
+              <div class="pright">
+                <span class="pcochip">Outback Materials</span>
+                <span class="pstat">Active &#9662;</span>
+                <span class="pic hist" title="History">&#128336;</span>
+                <span class="pic edit" title="Edit">&#9998;</span>
+                <span class="pic" title="More">&#8943;</span>
+              </div>
+            </div>
+            <div class="preq">Requestor: Marco Reyes &bull; PROJ-103998</div>
           </div>
+
+          <!-- the project the tour creates (revealed on Create) -->
           <div class="prow" id="proj-new" style="display:none;">
-            <div><div class="pname">Hwy 12 Base Course</div><div class="pext">Project Ext ID: PRJ-HWY12-001</div></div>
-            <div class="pcust">Outback Materials</div>
-            <div class="pdates">Jun 14, 2026<div class="sub">Created just now</div></div>
-            <div class="pco">Outback Materials</div>
-            <div class="pright"><span class="pstat">Active ▾</span><span class="pic">✎</span><span class="pic">⋯</span><span class="pid">PRJ-9902</span></div>
+            <div class="phead">
+              <div class="pmain"><div class="pname">Hwy 12 Base Course</div><div class="pext">Project Ext ID: PRJ-HWY12-001</div></div>
+              <div class="pcust">Outback Materials</div>
+              <div class="pdates"><span class="cal">&#128197;</span>Jun-14-2026<div class="sub">Created at: just now</div></div>
+              <div class="pright">
+                <span class="pcochip">Outback Materials</span>
+                <span class="pstat">Active &#9662;</span>
+                <span class="pic hist" title="History">&#128336;</span>
+                <span class="pic edit" title="Edit">&#9998;</span>
+                <span class="pic" title="More">&#8943;</span>
+              </div>
+            </div>
+            <div class="preq">Requestor: Tread Admin &bull; PROJ-104233</div>
+            <div class="pstats">
+              <div class="stat"><div class="statlab">Orders</div><div class="statval">0</div></div>
+              <div class="stat"><div class="statlab"><span class="si">&#10003;</span> Completed Treads</div><div class="statval">0</div></div>
+              <div class="stat"><div class="statlab"><span class="si">&#9776;</span> Ticket Count</div><div class="statval">0</div></div>
+              <div class="stat pdel">
+                <div class="statlab">Delivered</div>
+                <div class="delrow"><span class="statval">0</span><span class="delof">Ton</span></div>
+                <div class="progwrap"><div class="progbar"><div class="progfill" style="width:0%;"></div></div><span class="progpct">0%</span></div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- DISPATCH (orders + jobs) -->
 <style>
-/* screen-scoped styles for the Dispatch board: prefixed so they can't collide */
+/* screen-scoped styles for the Dispatch board: every selector prefixed so it cannot collide */
 #tuflow section[data-screen="dispatch"] .ds-stat2{display:flex;gap:10px;margin-bottom:11px;}
 #tuflow section[data-screen="dispatch"] .ds-stat2>div{flex:1;display:flex;flex-direction:column;gap:2px;}
 #tuflow section[data-screen="dispatch"] .ds-lab{font-size:10px;font-weight:700;color:var(--grey-5);text-transform:uppercase;letter-spacing:.03em;}
 #tuflow section[data-screen="dispatch"] .ds-big{font-size:17px;font-weight:800;color:var(--black);font-variant-numeric:tabular-nums;}
+#tuflow section[data-screen="dispatch"] .ds-h{display:flex;align-items:center;justify-content:space-between;}
+#tuflow section[data-screen="dispatch"] .ds-collapse{color:var(--grey-4);font-size:11px;font-weight:700;border:1px solid var(--grey-2);border-radius:6px;line-height:16px;padding:0 6px;}
 #tuflow section[data-screen="dispatch"] .ds-showless{margin-top:9px;font-size:10.5px;font-weight:600;color:var(--dark-orange);text-align:center;}
 #tuflow section[data-screen="dispatch"] .ds-search{margin:8px 0;font-size:11px;color:var(--grey-4);background:var(--grey-1);border:1px solid var(--grey-2);border-radius:7px;padding:6px 9px;}
 #tuflow section[data-screen="dispatch"] .ds-drvbar{display:flex;align-items:center;gap:6px;margin-bottom:6px;}
 #tuflow section[data-screen="dispatch"] .ds-drvsel{flex:1;font-size:11px;font-weight:600;color:var(--grey-7);background:var(--white);border:1px solid var(--grey-2);border-radius:7px;padding:5px 8px;}
 #tuflow section[data-screen="dispatch"] .ds-arrows{font-size:11px;color:var(--grey-5);letter-spacing:2px;}
-#tuflow section[data-screen="dispatch"] .drow .dchip{font-size:9px;font-weight:700;color:var(--dark-orange);background:rgba(255,170,19,.15);border:1px solid rgba(255,170,19,.4);border-radius:4px;padding:1px 5px;align-self:flex-start;margin-top:2px;}
+#tuflow section[data-screen="dispatch"] .ds-sort{font-size:11px;font-weight:600;color:var(--grey-6);white-space:nowrap;}
+/* driver rows */
+#tuflow section[data-screen="dispatch"] .drow .dflag{color:#E5484D;font-size:12px;flex:0 0 auto;}
+#tuflow section[data-screen="dispatch"] .drow .dn .dnm{font-size:12px;font-weight:600;color:var(--grey-8);}
+#tuflow section[data-screen="dispatch"] .drow .dlink{color:#1F6FEB;font-weight:600;}
+#tuflow section[data-screen="dispatch"] .drow .dsig{color:var(--grey-4);font-size:12px;flex:0 0 auto;}
+#tuflow section[data-screen="dispatch"] .drow .tgl.tgl-y.on{background:var(--yellow);}
+/* main bars */
 #tuflow section[data-screen="dispatch"] .db-nav{display:flex;align-items:center;gap:7px;}
 #tuflow section[data-screen="dispatch"] .db-nav .navic{font-size:13px;color:var(--grey-5);}
-#tuflow section[data-screen="dispatch"] .ord-acc{font-size:10px;font-weight:700;color:var(--btn-green);white-space:nowrap;}
-#tuflow section[data-screen="dispatch"] .ord-acc .dim{color:var(--grey-4);}
+#tuflow section[data-screen="dispatch"] .db-tools{display:flex;align-items:center;gap:8px;}
+#tuflow section[data-screen="dispatch"] .oseg{display:inline-flex;border:1px solid var(--grey-2);border-radius:8px;overflow:hidden;}
+#tuflow section[data-screen="dispatch"] .oseg span{font-size:12px;font-weight:600;color:var(--grey-6);padding:6px 12px;display:flex;align-items:center;}
+#tuflow section[data-screen="dispatch"] .oseg span.on{background:var(--grey-1);color:var(--black);}
+#tuflow section[data-screen="dispatch"] .ct-badge{background:var(--grey-8);color:#fff;border-radius:999px;padding:0 6px;font-size:10px;line-height:16px;margin-left:6px;font-weight:700;}
+#tuflow section[data-screen="dispatch"] .ord-search{flex:1;min-width:170px;max-width:320px;font-size:12px;color:var(--grey-4);background:var(--white);border:1px solid var(--grey-2);border-radius:8px;padding:7px 10px;}
+/* order card additions */
+#tuflow section[data-screen="dispatch"] .ord-head{display:flex;align-items:flex-start;gap:9px;min-width:0;}
+#tuflow section[data-screen="dispatch"] .ord-head h4{font-size:14.5px;line-height:1.3;}
+#tuflow section[data-screen="dispatch"] .ord-check{width:15px;height:15px;border:1.5px solid var(--grey-3);border-radius:3px;flex:0 0 auto;margin-top:2px;}
+#tuflow section[data-screen="dispatch"] .cust{color:var(--btn-green);font-weight:700;}
+#tuflow section[data-screen="dispatch"] .statusdd.ip{color:#1F6FEB;background:rgba(31,111,235,.12);border-color:rgba(31,111,235,.35);}
+#tuflow section[data-screen="dispatch"] .ord-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px 16px;margin-top:8px;}
+#tuflow section[data-screen="dispatch"] .og-col{display:flex;flex-direction:column;gap:5px;min-width:0;}
+#tuflow section[data-screen="dispatch"] .ogf{font-size:11.5px;color:var(--grey-7);line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#tuflow section[data-screen="dispatch"] .ogf b{color:var(--grey-8);font-weight:700;}
+#tuflow section[data-screen="dispatch"] .pin{display:inline-block;width:11px;height:11px;background:var(--btn-green);clip-path:polygon(50% 0,100% 38%,82% 100%,18% 100%,0 38%);vertical-align:-1px;margin:0 2px 0 1px;}
+/* stat block on the right of a card */
+#tuflow section[data-screen="dispatch"] .dstats{display:flex;gap:20px;flex:0 0 auto;border-left:1px solid var(--grey-1);padding-left:16px;}
+#tuflow section[data-screen="dispatch"] .dstat{display:flex;flex-direction:column;gap:4px;min-width:72px;}
+#tuflow section[data-screen="dispatch"] .dstat .sk{font-size:9px;font-weight:700;color:var(--grey-4);text-transform:uppercase;letter-spacing:.03em;}
+#tuflow section[data-screen="dispatch"] .dstat .sv{font-size:14px;font-weight:800;color:var(--black);white-space:nowrap;}
+#tuflow section[data-screen="dispatch"] .dstat .sv.muted{color:var(--grey-4);font-weight:600;font-size:11.5px;}
+#tuflow section[data-screen="dispatch"] .dstat .sbar{height:3px;border-radius:2px;background:var(--grey-2);}
+#tuflow section[data-screen="dispatch"] .dstat .ssub{font-size:10px;font-weight:700;color:var(--grey-6);white-space:nowrap;}
+#tuflow section[data-screen="dispatch"] .dstat .chk{color:var(--btn-green);}
 #tuflow section[data-screen="dispatch"] .of-row{display:flex;gap:12px;flex-wrap:wrap;}
 #tuflow section[data-screen="dispatch"] .of-row .field{flex:1;min-width:150px;}
+@media(max-width:1100px){#tuflow section[data-screen="dispatch"] .ord-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:860px){#tuflow section[data-screen="dispatch"] .dstats{border-left:none;border-top:1px solid var(--grey-1);padding-left:0;padding-top:10px;}}
 </style>
       <section class="screen" data-screen="dispatch">
         <div class="disp-wrap">
           <aside class="disp-side">
             <div class="ds-card">
-              <div class="ds-h">Jul-2-2026 · Status</div>
+              <div class="ds-h">09-Jul-2026 Status<span class="ds-collapse">‹</span></div>
               <div class="ds-stat2">
-                <div><span class="ds-lab">Accepted</span><b class="ds-big">0/8</b></div>
-                <div><span class="ds-lab">Available</span><b class="ds-big">119/119</b></div>
+                <div><span class="ds-lab">Accepted</span><b class="ds-big">1/11</b></div>
+                <div><span class="ds-lab">Available</span><b class="ds-big">112/115</b></div>
               </div>
               <div class="ds-grid">
-                <span>Unassigned</span><b>1</b><span>Accepted</span><b>0</b>
+                <span>Unassigned</span><b>8</b><span>Accepted</span><b>0</b>
                 <span>Assigned</span><b>0</b><span>En Route</span><b>0</b>
-                <span>Sent</span><b>0</b><span>Loaded</span><b>0</b>
+                <span>Sent</span><b>2</b><span>Loaded</span><b>0</b>
                 <span>Rejected</span><b>0</b><span>Unloaded</span><b>0</b>
-                <span>Cancelled</span><b>0</b><span>Completed</span><b>0</b>
+                <span>Canceled</span><b>0</b><span>Completed</span><b>1</b>
               </div>
               <div class="ds-showless">Show Less</div>
             </div>
             <div class="ds-card">
               <div class="ds-seg"><span class="on">Driver</span><span>Vendor</span></div>
               <div class="ds-search">🔍 Search</div>
-              <div class="ds-drvbar"><span class="ds-drvsel">All Drivers ▾</span><span class="ds-arrows">↑ ↓</span></div>
-              <div class="drow"><span class="fl">131</span><span class="dn">Amy Griffith<em>Super Dump Truck</em><span class="dchip">Tampa</span></span><span class="tgl on"></span></div>
-              <div class="drow"><span class="fl">152</span><span class="dn">Bernadette D.<em>Side Dump</em></span><span class="tgl on"></span></div>
-              <div class="drow"><span class="fl">141</span><span class="dn">Christophe H.<em>End Dump Trailer</em></span><span class="tgl on"></span></div>
-              <div class="drow"><span class="fl">118</span><span class="dn">Clem Tread<em>Super Dump Truck</em></span><span class="tgl"></span></div>
+              <div class="ds-drvbar"><span class="ds-drvsel">All Drivers ▾</span><span class="ds-arrows">↑ ↓</span><span class="ds-sort">Driver ▾</span></div>
+              <div class="drow"><span class="dflag">⚑</span><span class="dn"><span class="dnm">t41 • <span class="dlink">Christophe Heyraud</span></span><em>End Dump Trailer</em></span><span class="dsig">⊘</span><span class="tgl tgl-y on"></span></div>
+              <div class="drow"><span class="dflag">⚑</span><span class="dn"><span class="dnm">t31 • <span class="dlink">Clem Tread</span></span><em>Super Dump Truck</em></span><span class="dsig">⊘</span><span class="tgl tgl-y on"></span></div>
             </div>
           </aside>
           <div class="disp-main">
             <div class="disp-bar">
               <div class="db-seg"><span class="on">Orders</span><span>Drivers</span></div>
-              <div class="db-nav"><span class="navic">←</span><span class="navic">→</span><span class="navic">📅</span><span class="db-date">Today, Sun Jul-2-2026</span></div>
               <span class="spacer"></span>
               <button class="btn ghost sm" type="button">↻ Refresh</button>
-              <button class="btn dark sm" type="button">＋ Quick Order</button>
+              <button class="btn dark sm" type="button">✦ Quick Order</button>
               <button class="btn yellow sm" id="btn-neworder" type="button" style="display:none;">＋ New Order</button>
             </div>
-            <div class="disp-bar2">
-              <button class="btn green sm" type="button">✓ Send All Jobs</button>
-              <button class="btn ghost sm" type="button">Export Jobs</button>
-              <span class="db-sort">Created At ▾</span>
+            <div class="disp-bar">
+              <div class="db-nav"><span class="navic">←</span><span class="navic">📅</span><span class="navic">→</span><span class="db-date">Today, Thu Jul-09-2026</span></div>
               <span class="spacer"></span>
-              <span class="db-chips"><span class="chip2 on">External</span><span class="chip2">Orders 4</span><span class="chip2">Filters</span><span class="chip2">DMT · Tampa</span><span class="chip2">DMT · Standing</span><span class="chip2">DMT · Variable</span><span class="chip2">Trucking</span><span class="chip2">Excavation</span><span class="chip2">Heavy Haul</span><span class="chip2">More ···</span></span>
+              <div class="db-tools">
+                <button class="btn green sm" type="button">➤ Send All Jobs</button>
+                <button class="btn ghost sm" type="button">Export Jobs</button>
+                <span class="ds-arrows">⇅</span>
+                <span class="ds-arrows">↓</span>
+                <span class="db-sort">Created At ▾</span>
+              </div>
+            </div>
+            <div class="disp-bar2">
+              <span class="oseg"><span class="on">External</span><span>Orders<b class="ct-badge">3</b></span></span>
+              <span class="ord-search">🔍 Search orders or filter by customer, driver…</span>
+              <span class="chip2">⌗ Filters</span>
+              <span class="db-chips"><span class="chip2">DMT · Tampa</span><span class="chip2">DMT · Standing</span><span class="chip2">DMT · Variable</span><span class="chip2">Trucking</span><span class="chip2">Excavation</span><span class="chip2">Heavy Haul</span><span class="chip2">··· More</span></span>
             </div>
             <div class="sheet" id="order-form" style="display:none;">
               <h4>New order · Hwy 12 Base Course</h4>
@@ -2082,27 +2189,87 @@
             </div>
             <div class="board" id="board">
               <div class="order unassigned" id="order-new" style="display:none;">
-                <div class="ord-top"><h4>Hwy 12 Base Course</h4>
-                  <div class="ord-badges"><span class="chip2">Outback Materials</span><span class="chip2 pw">Prevailing Wage</span><span class="statusdd">Pending ▾</span><span class="ord-ic">✎</span><span class="ord-ic">⋯</span></div></div>
-                <div class="ord-f"><b>Customer:</b> Outback Materials • <b>Charge To Account:</b> Outback Materials • <b>Customer Rate:</b> $13.00 Per Ton • <b>Material:</b> 3/4" Base Rock • <b>Project:</b> Hwy 12 Base Course • <b>Phase Code:</b> Code 1 • ORD-92941</div>
-                <div class="ord-f"><b>Start:</b> 7:00 AM Sun Jul-2-2026 • <b>Truck Type:</b> Super Dump • <b>Pickup:</b> 📍 North Pit • <b>Mode:</b> <span id="on-mode">Loads</span> • <b>Qty:</b> <span id="on-qty">8 loads</span></div>
-                <div class="ord-f"><b>Requestor:</b> Tread Admin • <b>Foreman:</b> , </div>
+                <div class="ord-top">
+                  <div class="ord-head"><span class="ord-check"></span><h4>Hwy 12 Base Course</h4></div>
+                  <div class="ord-badges"><span class="chip2">Outback Materials</span><span class="chip2 pw">Prevailing Wage</span><span class="statusdd">Pending ▾</span><span class="ord-ic">✎</span><span class="ord-ic">⋯</span></div>
+                </div>
+                <div class="ord-f"><b>Customer:</b> <span class="cust">Outback Materials</span> • <b>Material:</b> 3/4" Base Rock • <b>Project:</b> Hwy 12 Base Course • <b>Phase Code:</b> Code 1 • ORD-92941</div>
+                <div class="ord-grid">
+                  <div class="og-col"><div class="ogf"><b>Start:</b> 7:00 AM Thu Jul-09-2026</div><div class="ogf"><b>Requestor:</b> Tread Admin</div></div>
+                  <div class="og-col"><div class="ogf"><b>Truck Type:</b> Super Dump</div><div class="ogf"><b>Foreman:</b> —</div></div>
+                  <div class="og-col"><div class="ogf"><b>Pickup:</b> <span class="pin"></span>North Pit</div><div class="ogf"><b>Dropoff:</b> <span class="pin"></span>Hwy 12 Site</div></div>
+                  <div class="og-col"><div class="ogf"><b>Mode:</b> <span id="on-mode">Loads</span></div><div class="ogf"><b>Qty:</b> <span id="on-qty">8 loads</span></div></div>
+                </div>
                 <div class="ord-body">
                   <div class="ord-left"><div class="jobs" id="jobs"></div><div id="order-new-foot"><button class="btn yellow" id="btn-assign" type="button">Assign driver/truck</button></div></div>
-                  <div class="ord-stats"><div><span class="osk">Trucks</span><span class="osv">2</span></div><div><span class="osk">Loads</span><span class="osv">8</span></div><div><span class="osk">Material Ordered</span><span class="osv">, </span></div><div><span class="osk">Accepted</span><span class="ord-acc">0<span class="dim"> / 2</span></span></div></div>
+                  <div class="ord-stats"><div><span class="osk">Trucks</span><span class="osv">2</span></div><div><span class="osk">Loads</span><span class="osv">8</span></div><div><span class="osk">Material</span><span class="osv">3/4"</span></div></div>
                 </div>
               </div>
-              <div class="order sent">
-                <div class="ord-top"><h4>Shaw Ave Widening</h4><div class="ord-badges"><span class="chip2">Granite Const.</span><span class="chip2">DMT · Standing</span><span class="statusdd sent">Sent ▾</span><span class="ord-ic">✎</span><span class="ord-ic">⋯</span></div></div>
-                <div class="ord-f"><b>Customer:</b> Granite Const. • <b>Charge To Account:</b> Granite Const. • <b>Customer Rate:</b> $118.00 Per Hour • <b>Material:</b> Aggregate • <b>Project:</b> Shaw Ave Widening • <b>Phase Code:</b> Code 2 • ORD-92938</div>
-                <div class="ord-f"><b>Start:</b> 6:30 AM Sun Jul-2-2026 • <b>Truck Type:</b> Transfer • <b>Pickup:</b> 📍 Quarry A • <b>Requestor:</b> Tom • <b>Foreman:</b> Foreman Coastal</div>
-                <div class="ord-body"><div class="ord-left"><div class="jobs"><div class="job sent"><span class="jt">T-08 · Diaz</span><span class="js">Sent</span></div></div></div><div class="ord-stats"><div><span class="osk">Trucks</span><span class="osv">1</span></div><div><span class="osk">Loads</span><span class="osv">12</span></div><div><span class="osk">Material Ordered</span><span class="osv">Agg</span></div><div><span class="osk">Accepted</span><span class="ord-acc">1<span class="dim"> / 1</span></span></div></div></div>
+              <div class="order">
+                <div class="ord-top">
+                  <div class="ord-head"><span class="ord-check"></span><h4>Jul-09-26 Will Amen LLC Martin Marietta San Diego → Torrey Pines Golf Course</h4></div>
+                  <div class="ord-badges"><span class="chip2">Coastal Contracting</span><span class="statusdd">Pending ▾</span><span class="ord-ic">✎</span><span class="ord-ic">⋯</span></div>
+                </div>
+                <div class="ord-f"><b>Customer:</b> <span class="cust">Will Amen LLC</span> • ORD-997753</div>
+                <div class="ord-body">
+                  <div class="ord-left">
+                    <div class="ord-grid">
+                      <div class="og-col"><div class="ogf"><b>Start:</b> 11:00 AM Thu Jul-09-2026</div><div class="ogf"><b>Requestor:</b> Will Amen Coastal</div></div>
+                      <div class="og-col"><div class="ogf"><b>Truck Type:</b> Standard</div><div class="ogf"><b>Foreman:</b> Will Amen Coastal</div></div>
+                      <div class="og-col"><div class="ogf"><b>Pickup:</b> <span class="pin"></span>Martin Marietta</div><div class="ogf"><b>Dropoff:</b> <span class="pin"></span>Torrey Pines Golf Course</div></div>
+                      <div class="og-col"></div>
+                    </div>
+                  </div>
+                  <div class="dstats">
+                    <div class="dstat"><span class="sk">Trucks</span><span class="sv">3 Trucks</span><span class="sbar"></span><span class="ssub">0 / 3 Accepted</span></div>
+                    <div class="dstat"><span class="sk">Loads</span><span class="sv">Running</span><span class="sbar"></span><span class="ssub"><span class="chk">☑</span> 0</span></div>
+                    <div class="dstat"><span class="sk">Material Ordered</span><span class="sv muted">[No Material Qty]</span></div>
+                  </div>
+                </div>
               </div>
-              <div class="order sent">
-                <div class="ord-top"><h4>Riverside Overlay</h4><div class="ord-badges"><span class="chip2">City of Fresno</span><span class="chip2">DMT · Variable</span><span class="statusdd sent">Completed ▾</span><span class="ord-ic">✎</span><span class="ord-ic">⋯</span></div></div>
-                <div class="ord-f"><b>Customer:</b> City of Fresno • <b>Charge To Account:</b> City of Fresno • <b>Customer Rate:</b> $22.00 Per Ton • <b>Material:</b> Asphalt • <b>Project:</b> Riverside Overlay • <b>Phase Code:</b> Code 5 • ORD-92930</div>
-                <div class="ord-f"><b>Start:</b> 5:00 AM Sun Jul-2-2026 • <b>Truck Type:</b> End Dump • <b>Pickup:</b> 📍 Plant 2 • <b>Requestor:</b> Tom • <b>Foreman:</b> Cruz</div>
-                <div class="ord-body"><div class="ord-left"><div class="jobs"><div class="job sent"><span class="jt">T-31 · Boyd</span><span class="js">Sent</span></div></div></div><div class="ord-stats"><div><span class="osk">Trucks</span><span class="osv">1</span></div><div><span class="osk">Tons</span><span class="osv">240</span></div><div><span class="osk">Material Ordered</span><span class="osv">240 Ton</span></div><div><span class="osk">Accepted</span><span class="ord-acc">1<span class="dim"> / 1</span></span></div></div></div>
+              <div class="order">
+                <div class="ord-top">
+                  <div class="ord-head"><span class="ord-check"></span><h4>PO 9208 Job 1: Aggregate Import - Per Ton</h4></div>
+                  <div class="ord-badges"><span class="chip2">Trucking</span><span class="chip2">Coastal Contracting</span><span class="statusdd ip">In Progress ▾</span><span class="ord-ic">✎</span><span class="ord-ic">⋯</span></div>
+                </div>
+                <div class="ord-f"><b>Customer:</b> <span class="cust">Commercial Demo</span> • <b>Material:</b> Concrete Sand • <b>Project:</b> Job 1: Aggregate Import - Per Ton • <b>Phase Code:</b> 135.21 • <b>Project Ext ID:</b> PO 9208 • ORD-997456</div>
+                <div class="ord-body">
+                  <div class="ord-left">
+                    <div class="ord-grid">
+                      <div class="og-col"><div class="ogf"><b>Start:</b> 10:00 AM Thu Jul-09-2026</div><div class="ogf"><b>Requestor:</b> Tim Admin</div></div>
+                      <div class="og-col"><div class="ogf"><b>Truck Type:</b> Standard</div><div class="ogf"><b>Foreman:</b> Tim Foreman</div></div>
+                      <div class="og-col"><div class="ogf"><b>Pickup:</b> <span class="pin"></span>Hazie's Pit</div><div class="ogf"><b>Dropoff:</b> <span class="pin"></span>SF Ferry Building</div></div>
+                      <div class="og-col"><div class="ogf"><b>Driver:</b> Check in with Foreman</div></div>
+                    </div>
+                  </div>
+                  <div class="dstats">
+                    <div class="dstat"><span class="sk">Trucks</span><span class="sv">4 Trucks</span><span class="sbar"></span><span class="ssub">1 / 4 Accepted</span></div>
+                    <div class="dstat"><span class="sk">Loads</span><span class="sv">0 Load</span><span class="sbar"></span><span class="ssub"><span class="chk">☑</span> 1 • 50 Ton</span></div>
+                    <div class="dstat"><span class="sk">Material Ordered</span><span class="sv">200 Ton</span><span class="sbar"></span><span class="ssub">26.98 Ton</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="order">
+                <div class="ord-top">
+                  <div class="ord-head"><span class="ord-check"></span><h4>PO 9208 Job 1: Aggregate Import - Per Ton</h4></div>
+                  <div class="ord-badges"><span class="chip2">Trucking</span><span class="chip2">Coastal Contracting</span><span class="statusdd">Pending ▾</span><span class="ord-ic">✎</span><span class="ord-ic">⋯</span></div>
+                </div>
+                <div class="ord-f"><b>Customer:</b> <span class="cust">Commercial Demo</span> • <b>Material:</b> Concrete Sand • <b>Project:</b> Job 1: Aggregate Import - Per Ton • <b>Phase Code:</b> 135.21 • <b>Project Ext ID:</b> PO 9208 • ORD-997217</div>
+                <div class="ord-body">
+                  <div class="ord-left">
+                    <div class="ord-grid">
+                      <div class="og-col"><div class="ogf"><b>Start:</b> 9:00 AM Thu Jul-09-2026</div><div class="ogf"><b>Requestor:</b> Tim Admin</div></div>
+                      <div class="og-col"><div class="ogf"><b>Truck Type:</b> Standard</div><div class="ogf"><b>Foreman:</b> Tim Foreman</div></div>
+                      <div class="og-col"><div class="ogf"><b>Pickup:</b> <span class="pin"></span>Hazie's Pit</div><div class="ogf"><b>Dropoff:</b> <span class="pin"></span>SF Ferry Building</div></div>
+                      <div class="og-col"><div class="ogf"><b>Driver:</b> Check in with Foreman</div></div>
+                    </div>
+                  </div>
+                  <div class="dstats">
+                    <div class="dstat"><span class="sk">Trucks</span><span class="sv">4 Trucks</span><span class="sbar"></span><span class="ssub">0 / 4 Accepted</span></div>
+                    <div class="dstat"><span class="sk">Loads</span><span class="sv">0 Load</span><span class="sbar"></span><span class="ssub"><span class="chk">☑</span> 0</span></div>
+                    <div class="dstat"><span class="sk">Material Ordered</span><span class="sv">200 Ton</span></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2113,116 +2280,156 @@
 
       <!-- APPROVALS -->
 <style>
-/* screen-scoped styles for the Approvals / Receivables detail: prefixed so they cannot collide */
-#tuflow section[data-screen="approvals"] .odh{padding:12px 16px;border-bottom:1px solid var(--grey-2);}
-#tuflow section[data-screen="approvals"] .odh .ot{font-weight:700;font-size:14px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
-#tuflow section[data-screen="approvals"] .odh .om{font-size:12px;color:var(--grey-6);margin-top:3px;}
-#tuflow section[data-screen="approvals"] .otabs{display:flex;gap:20px;padding:0 16px;border-bottom:1px solid var(--grey-2);font-size:13px;font-weight:600;color:var(--grey-6);overflow-x:auto;}
-#tuflow section[data-screen="approvals"] .otabs span{padding:11px 0;white-space:nowrap;border-bottom:2px solid transparent;margin-bottom:-1px;}
-#tuflow section[data-screen="approvals"] .otabs span.on{color:var(--black);border-bottom-color:var(--yellow);}
-#tuflow section[data-screen="approvals"] .rgrid{display:grid;grid-template-columns:1fr 296px;gap:18px;padding:16px;}
-#tuflow section[data-screen="approvals"] .rchead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
-#tuflow section[data-screen="approvals"] .rfields{display:flex;gap:22px;flex-wrap:wrap;align-items:flex-end;}
-#tuflow section[data-screen="approvals"] .fld label{display:block;font-size:11px;font-weight:600;color:var(--grey-6);margin-bottom:5px;}
-#tuflow section[data-screen="approvals"] .fld .box{min-width:150px;font-size:13px;font-weight:600;color:var(--black);background:var(--grey-1);border:1px solid var(--grey-2);border-radius:7px;padding:8px 11px;}
-#tuflow section[data-screen="approvals"] .fld .box.empty{color:var(--grey-4);font-weight:500;background:var(--white);}
-#tuflow section[data-screen="approvals"] .editpen{width:30px;height:30px;border:1px solid var(--grey-2);border-radius:7px;background:var(--white);color:var(--grey-6);display:inline-flex;align-items:center;justify-content:center;font-size:13px;}
-#tuflow section[data-screen="approvals"] .lihd{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13px;margin:4px 0 8px;}
-#tuflow section[data-screen="approvals"] .litable{overflow-x:auto;border:1px solid var(--grey-2);border-radius:10px;}
-#tuflow section[data-screen="approvals"] .litable table{min-width:720px;}
-#tuflow section[data-screen="approvals"] .litable th,#tuflow section[data-screen="approvals"] .litable td{white-space:nowrap;}
-#tuflow section[data-screen="approvals"] .litable td.num,#tuflow section[data-screen="approvals"] .litable th.num{text-align:right;font-variant-numeric:tabular-nums;}
-#tuflow section[data-screen="approvals"] .totbox{margin:12px 0 0 auto;width:260px;font-size:13px;}
-#tuflow section[data-screen="approvals"] .totbox .r{display:flex;justify-content:space-between;padding:6px 0;color:var(--grey-7);}
-#tuflow section[data-screen="approvals"] .totbox .r.tot{border-top:1px solid var(--grey-2);margin-top:4px;padding-top:9px;font-weight:800;color:var(--black);font-size:14px;}
-#tuflow section[data-screen="approvals"] .totbox .r .v{font-variant-numeric:tabular-nums;font-weight:700;color:var(--black);}
-#tuflow section[data-screen="approvals"] .mapcard{border:1px solid var(--grey-2);border-radius:10px;overflow:hidden;background:var(--grey-1);}
-#tuflow section[data-screen="approvals"] .mapcard .mlabel{font-size:11px;font-weight:600;color:var(--grey-6);padding:8px 10px 0;}
-#tuflow section[data-screen="approvals"] .mapface{position:relative;height:200px;background:#e8edf0;}
-#tuflow section[data-screen="approvals"] .mapface svg{position:absolute;inset:0;width:100%;height:100%;}
-#tuflow section[data-screen="approvals"] .mseg{position:absolute;top:9px;left:9px;display:inline-flex;background:var(--white);border:1px solid var(--grey-2);border-radius:7px;overflow:hidden;font-size:11px;font-weight:600;box-shadow:var(--shadow-sm);}
-#tuflow section[data-screen="approvals"] .mseg span{padding:5px 11px;color:var(--grey-6);}
-#tuflow section[data-screen="approvals"] .mseg span.on{background:var(--grey-1);color:var(--black);}
-#tuflow section[data-screen="approvals"] .mtools{position:absolute;top:9px;right:9px;display:flex;gap:5px;}
-#tuflow section[data-screen="approvals"] .mtools i{width:24px;height:24px;background:var(--white);border:1px solid var(--grey-2);border-radius:6px;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:12px;color:var(--grey-6);box-shadow:var(--shadow-sm);}
-#tuflow section[data-screen="approvals"] .mbtns{display:flex;gap:8px;padding:10px;}
-#tuflow section[data-screen="approvals"] .mbtns .btn{flex:1;justify-content:center;}
-@media (max-width:820px){#tuflow section[data-screen="approvals"] .rgrid{grid-template-columns:1fr;}}
+/* ===== Approvals: Approve Work (work-shift) table ===== */
+#tuflow section[data-screen="approvals"] .aw-tabs{display:flex;gap:30px;border-bottom:1px solid var(--grey-2);margin-bottom:18px;}
+#tuflow section[data-screen="approvals"] .aw-tab{font-size:15px;font-weight:600;color:var(--grey-6);padding:2px 0 12px;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;}
+#tuflow section[data-screen="approvals"] .aw-tab.on{color:var(--black);font-weight:700;border-bottom-color:var(--yellow);}
+
+#tuflow section[data-screen="approvals"] .aw-datebar{display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap;}
+#tuflow section[data-screen="approvals"] .aw-navbtn{width:38px;height:38px;border:1px solid var(--grey-2);border-radius:8px;background:var(--white);color:var(--grey-8);display:inline-flex;align-items:center;justify-content:center;font-size:15px;flex:0 0 auto;}
+#tuflow section[data-screen="approvals"] .aw-dates{font-size:19px;font-weight:700;color:var(--black);letter-spacing:-.01em;margin-left:4px;}
+#tuflow section[data-screen="approvals"] .aw-filter{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--grey-8);background:var(--white);border:1px solid var(--grey-2);border-radius:8px;padding:9px 14px;}
+#tuflow section[data-screen="approvals"] .aw-sort{margin-left:auto;display:inline-flex;align-items:center;}
+#tuflow section[data-screen="approvals"] .aw-sortbtn{height:38px;padding:0 12px;border:1px solid var(--grey-2);background:var(--white);color:var(--grey-8);display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;}
+#tuflow section[data-screen="approvals"] .aw-sortbtn.ic{width:38px;justify-content:center;border-right:none;border-radius:8px 0 0 8px;font-size:15px;}
+#tuflow section[data-screen="approvals"] .aw-sortbtn.lbl{border-radius:0 8px 8px 0;}
+
+#tuflow section[data-screen="approvals"] .aw-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;flex-wrap:wrap;}
+#tuflow section[data-screen="approvals"] .aw-columns{display:inline-flex;align-items:center;gap:9px;font-size:15px;font-weight:700;color:var(--black);}
+#tuflow section[data-screen="approvals"] .aw-columns .ic{display:inline-flex;gap:2px;}
+#tuflow section[data-screen="approvals"] .aw-columns .ic i{width:3px;height:15px;background:var(--grey-7);border-radius:1px;display:block;}
+#tuflow section[data-screen="approvals"] .aw-search{display:inline-flex;align-items:center;gap:8px;min-width:300px;border:1px solid var(--grey-2);border-radius:8px;padding:9px 13px;color:var(--grey-4);font-size:14px;background:var(--white);}
+#tuflow section[data-screen="approvals"] .aw-search svg{width:15px;height:15px;color:var(--grey-5);flex:0 0 auto;}
+
+#tuflow section[data-screen="approvals"] .aw-scroll{overflow-x:auto;}
+#tuflow section[data-screen="approvals"] table{min-width:1040px;}
+#tuflow section[data-screen="approvals"] thead th{text-transform:none;letter-spacing:0;font-size:12.5px;font-weight:700;color:var(--grey-8);background:var(--grey-1);padding:12px 14px;white-space:nowrap;}
+#tuflow section[data-screen="approvals"] tbody td{padding:16px 14px;font-size:13.5px;white-space:nowrap;vertical-align:middle;}
+#tuflow section[data-screen="approvals"] .aw-chev{width:34px;color:var(--grey-4);font-size:13px;text-align:center;cursor:pointer;}
+#tuflow section[data-screen="approvals"] .aw-num{font-variant-numeric:tabular-nums;}
+#tuflow section[data-screen="approvals"] .aw-muted{color:var(--grey-4);}
+#tuflow section[data-screen="approvals"] .aw-status{padding-right:22px;}
+#tuflow section[data-screen="approvals"] .aw-status .btn{padding:8px 14px;}
+#tuflow section[data-screen="approvals"] .aw-pg{display:inline-flex;align-items:center;gap:12px;font-size:13px;font-weight:700;color:var(--grey-8);}
+#tuflow section[data-screen="approvals"] .aw-pg span{color:var(--grey-4);cursor:pointer;}
+#tuflow section[data-screen="approvals"] thead th.aw-pgcell{text-align:right;}
 </style>
+
       <section class="screen" data-screen="approvals">
-        <div class="schead"><div style="display:flex;gap:16px;font-size:13px;font-weight:600;color:var(--grey-6);"><span>Approve Work</span><span style="color:var(--black);border-bottom:2px solid var(--yellow);padding-bottom:6px;">Approve Jobs</span><span>Payables</span><span>Receivables</span></div><button class="btn dark sm" type="button">Bulk Create Settlements ▾</button></div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;"><span class="chip2 on">Unapproved Jobs</span><span class="chip2">Unapproved Payables</span><span class="chip2">Unapproved Receivables</span><span class="chip2">Duplicate Tickets</span></div>
-        <div class="panel" style="padding:0;">
-          <div class="odh">
-            <div class="ot">Hwy 12 Base Course <span class="chip2 pw">Prevailing Wage</span> <span class="chip2">In Progress</span></div>
-            <div class="om">Customer: Outback Materials • Charge To: Outback Materials • Customer Rate: $13.00/ton • Material: 3/4" Base Rock • ORD-92941 • 1/2 Delivered</div>
+        <div class="aw-tabs">
+          <span class="aw-tab on">Approve Work</span>
+          <span class="aw-tab">Approve Jobs</span>
+          <span class="aw-tab">Payables</span>
+          <span class="aw-tab">Receivables</span>
+        </div>
+
+        <div class="aw-datebar">
+          <button class="aw-navbtn" type="button" aria-label="Previous date">&#8592;</button>
+          <button class="aw-navbtn" type="button" aria-label="Pick date">&#128197;</button>
+          <button class="aw-navbtn" type="button" aria-label="Next date">&#8594;</button>
+          <span class="aw-dates">All Dates</span>
+          <button class="aw-filter" type="button"><span aria-hidden="true">&#9776;</span> Filters</button>
+          <span class="aw-sort">
+            <button class="aw-sortbtn ic" type="button" aria-label="Sort descending">&#8595;</button>
+            <button class="aw-sortbtn lbl" type="button">Date</button>
+          </span>
+        </div>
+
+        <div class="panel">
+          <div class="aw-toolbar">
+            <span class="aw-columns"><span class="ic" aria-hidden="true"><i></i><i></i><i></i></span> Columns</span>
+            <span class="aw-search">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              Search...
+            </span>
           </div>
-          <div class="otabs">
-            <span>Overview</span><span>Loads</span><span>Job Details</span><span>Payables</span><span class="on">Receivables</span><span>All Files</span>
-          </div>
-          <div class="rgrid">
-            <div>
-              <div class="rchead">
-                <div class="rfields">
-                  <div class="fld"><label>Rate Card</label><div class="box empty">None selected</div></div>
-                  <div class="fld"><label>Customer Rate Type</label><div class="box">Ton</div></div>
-                  <div class="fld"><label>Customer Rate</label><div class="box">$13.00</div></div>
-                  <button class="editpen" type="button" aria-label="Edit rate">✎</button>
-                </div>
-                <button class="btn green" id="btn-approve" type="button">Approve</button>
-              </div>
-              <div class="lihd">Line Items <span class="editpen" aria-hidden="true" style="width:22px;height:22px;font-size:11px;">✎</span></div>
-              <div class="litable">
-                <table>
-                  <thead><tr>
-                    <th>Line Item</th><th>Billed Start</th><th>Billed End</th><th>Break Time</th><th>Type</th><th>Unit</th><th class="num">Total Qty</th><th class="num">Rate</th><th class="num">Total</th>
-                  </tr></thead>
-                  <tbody>
-                    <tr id="tk-1">
-                      <td>Line item #1</td><td>1:14 pm</td><td>2:10 pm</td><td>0.00 hrs</td><td>Freight</td><td>Ton</td><td class="num">24.5</td><td class="num">$13.00</td><td class="num tk-amt">$318.50<span class="stamp">Approved</span></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="totbox">
-                <div class="r"><span>Subtotal</span><span class="v">$318.50</span></div>
-                <div class="r"><span>Add Ons</span><span class="v">$0.00</span></div>
-                <div class="r tot"><span>Total</span><span class="v">$318.50</span></div>
-              </div>
-            </div>
-            <div>
-              <div class="mapcard">
-                <div class="mlabel">Map</div>
-                <div class="mapface">
-                  <svg viewBox="0 0 296 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                    <rect x="0" y="0" width="296" height="200" fill="#e8edf0"/>
-                    <path d="M-10 60 L306 40" stroke="#cfd8dd" stroke-width="8" fill="none"/>
-                    <path d="M40 -10 L70 210" stroke="#cfd8dd" stroke-width="6" fill="none"/>
-                    <path d="M-10 150 L306 168" stroke="#dbe2e6" stroke-width="5" fill="none"/>
-                    <path d="M210 -10 L245 210" stroke="#dbe2e6" stroke-width="5" fill="none"/>
-                    <polygon points="95,55 205,48 232,120 150,160 78,128" fill="rgba(93,110,214,0.20)" stroke="#5d6ed6" stroke-width="2.5"/>
-                    <circle cx="150" cy="100" r="5" fill="#5d6ed6" stroke="#fff" stroke-width="2"/>
-                  </svg>
-                  <div class="mseg"><span class="on">Map</span><span>Satellite</span></div>
-                  <div class="mtools"><i aria-label="Layers">▨</i><i aria-label="Settings">⚙</i><i aria-label="Fullscreen">⤢</i></div>
-                </div>
-                <div class="mbtns">
-                  <button class="btn yellow sm" type="button">View Route History</button>
-                  <button class="btn yellow sm" type="button">Fullscreen View</button>
-                </div>
-              </div>
-            </div>
+          <div class="aw-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Date</th><th>Driver</th><th>Truck</th><th>Vendor</th>
+                  <th>Shift Start</th><th>Shift End</th><th>Break</th><th>Total Hrs</th>
+                  <th>Job Ct</th><th>Load Ct</th><th>Tickets</th><th>Material</th>
+                  <th>Shift Status</th>
+                  <th class="aw-pgcell"><span class="aw-pg"><span aria-label="Previous page">&#8249;</span> 1 <span aria-label="Next page">&#8250;</span></span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="tk-1">
+                  <td class="aw-chev" aria-label="Expand row">&#8250;</td>
+                  <td>Jul 9, 26</td><td>Will American</td><td>3452</td><td class="aw-muted">&ndash;</td>
+                  <td>10:47 AM</td><td>01:33 PM</td><td>0 min</td><td class="aw-num">2.75</td>
+                  <td class="aw-num">1</td><td class="aw-num">1</td><td class="aw-num">1</td><td class="aw-muted">&ndash;</td>
+                  <td class="aw-status"><button class="btn green" id="btn-approve" type="button">Approve Shift</button><span class="stamp">Approved</span></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="aw-chev" aria-label="Expand row">&#8250;</td>
+                  <td>Jul 8, 26</td><td>Julian Quinn</td><td class="aw-muted">&ndash;</td><td class="aw-muted">&ndash;</td>
+                  <td>01:40 PM</td><td>02:39 PM</td><td>0 min</td><td class="aw-num">8.00</td>
+                  <td class="aw-num">1</td><td class="aw-num">1</td><td class="aw-num">1</td><td class="aw-muted">&ndash;</td>
+                  <td class="aw-status"><button class="btn green" type="button">Approve Shift</button></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="aw-chev" aria-label="Expand row">&#8250;</td>
+                  <td>Jul 2, 26</td><td>Tim Driver</td><td class="aw-muted">&ndash;</td><td class="aw-muted">&ndash;</td>
+                  <td>12:18 PM</td><td>04:18 AM</td><td>0 min</td><td class="aw-num">16.00</td>
+                  <td class="aw-num">1</td><td class="aw-num">4</td><td class="aw-num">0</td><td class="aw-muted">&ndash;</td>
+                  <td class="aw-status"><button class="btn green" type="button">Approve Shift</button></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="aw-chev" aria-label="Expand row">&#8250;</td>
+                  <td>Jul 2, 26</td><td>Will American</td><td>3452</td><td class="aw-muted">&ndash;</td>
+                  <td>08:54 AM</td><td>08:59 AM</td><td>0 min</td><td class="aw-num">0.07</td>
+                  <td class="aw-num">1</td><td class="aw-num">2</td><td class="aw-num">1</td><td class="aw-muted">&ndash;</td>
+                  <td class="aw-status"><button class="btn green" type="button">Approve Shift</button></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="aw-chev" aria-label="Expand row">&#8250;</td>
+                  <td>Jul 2, 26</td><td>Julian Quinn</td><td class="aw-muted">&ndash;</td><td class="aw-muted">&ndash;</td>
+                  <td>01:15 PM</td><td>05:15 AM</td><td>0 min</td><td class="aw-num">16.00</td>
+                  <td class="aw-num">1</td><td class="aw-num">3</td><td class="aw-num">2</td><td class="aw-muted">&ndash;</td>
+                  <td class="aw-status"><button class="btn green" type="button">Approve Shift</button></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="aw-chev" aria-label="Expand row">&#8250;</td>
+                  <td>Jul 1, 26</td><td>Tim Driver</td><td class="aw-muted">&ndash;</td><td class="aw-muted">&ndash;</td>
+                  <td>09:33 PM</td><td>11:16 PM</td><td>0 min</td><td class="aw-num">1.72</td>
+                  <td class="aw-num">2</td><td class="aw-num">6</td><td class="aw-num">0</td><td class="aw-muted">&ndash;</td>
+                  <td class="aw-status"><button class="btn green" type="button">Approve Shift</button></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="aw-chev" aria-label="Expand row">&#8250;</td>
+                  <td>Jun 30, 26</td><td>Will American</td><td>3452</td><td class="aw-muted">&ndash;</td>
+                  <td>11:00 AM</td><td>11:18 AM</td><td>0 min</td><td class="aw-num">0.28</td>
+                  <td class="aw-num">1</td><td class="aw-num">3</td><td class="aw-num">2</td><td class="aw-muted">&ndash;</td>
+                  <td class="aw-status"><button class="btn green" type="button">Approve Shift</button></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
 
       <!-- SETTLEMENTS -->
+
+      <!-- SETTLEMENTS -->
 <style>
 /* screen-scoped styles for the settlements screen */
-#tuflow section[data-screen="settlements"] .subtabs{display:flex;gap:18px;font-size:13px;font-weight:600;color:var(--grey-5);}
-#tuflow section[data-screen="settlements"] .subtabs .t{padding-bottom:6px;}
-#tuflow section[data-screen="settlements"] .subtabs .t.on{color:var(--black);border-bottom:2px solid var(--yellow);}
-#tuflow section[data-screen="settlements"] .seg{display:inline-flex;border:1px solid var(--grey-2);border-radius:8px;overflow:hidden;}
+#tuflow section[data-screen="settlements"] .rcvbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--grey-2);margin-bottom:12px;}
+#tuflow section[data-screen="settlements"] .subtabs{display:flex;gap:20px;font-size:13px;font-weight:600;color:var(--grey-5);margin-bottom:-1px;}
+#tuflow section[data-screen="settlements"] .subtabs .t{padding-bottom:11px;border-bottom:2px solid transparent;}
+#tuflow section[data-screen="settlements"] .subtabs .t.on{color:var(--black);border-bottom-color:var(--yellow);}
+#tuflow section[data-screen="settlements"] .rvpage{font-size:11px;color:var(--grey-5);white-space:nowrap;padding-bottom:11px;font-variant-numeric:tabular-nums;}
+#tuflow section[data-screen="settlements"] .rvtools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;}
+#tuflow section[data-screen="settlements"] .seg{display:inline-flex;border:1px solid var(--grey-2);border-radius:8px;overflow:hidden;margin-right:4px;}
 #tuflow section[data-screen="settlements"] .seg span{padding:5px 12px;font-size:12px;color:var(--grey-6);}
 #tuflow section[data-screen="settlements"] .seg span.on{font-weight:700;background:var(--grey-1);color:var(--black);}
 #tuflow section[data-screen="settlements"] .schead2{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
@@ -2252,21 +2459,21 @@
 #tuflow section[data-screen="settlements"] .exp-hint{font-size:11px;color:var(--grey-5);}
 </style>
       <section class="screen" data-screen="settlements">
-        <div class="schead">
+        <div class="rcvbar">
           <div class="subtabs">
             <span class="t">Approve Work</span>
             <span class="t">Approve Jobs</span>
             <span class="t">Payables</span>
             <span class="t on">Receivables</span>
           </div>
-          <div class="seg"><span>Invoices</span><span class="on">Settlements</span></div>
+          <span class="rvpage">Today · Sun Jun 14, 2026</span>
         </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;">
+        <div class="rvtools">
+          <div class="seg"><span>Invoices</span><span class="on">Settlements</span></div>
           <span class="chip2 on">Pending</span>
           <span class="chip2">Approved</span>
           <span class="chip2">Done (Paid)</span>
           <span class="chip2">Void</span>
-          <span style="margin-left:auto;font-size:11px;color:var(--grey-5);">Receivables · invoice billed to the customer</span>
         </div>
 
         <div class="panel" style="padding:16px 18px;">
@@ -2326,11 +2533,13 @@
           </div></div>
 
           <div class="exp-wrap">
-            <span class="exp-hint">Exports to QuickBooks, Sage, Vista, or PDF, then marks the settlement as exported.</span>
+            <span class="exp-hint">Generates the PDF and marks the settlement exported for accounting.</span>
             <button class="btn dark" id="btn-export" type="button" style="display:none;">Generate PDF · mark exported</button>
           </div>
         </div>
       </section>
+
+      <!-- REPORTS -->
 
       <!-- REPORTS -->
 
@@ -2360,8 +2569,36 @@
       </section>
 
       <!-- DATA UPLOAD (Settings · master data) -->
+<style>
+/* screen-scoped: Settings master-data experience */
+#tuflow section[data-screen="data"] .tu-set{display:grid;grid-template-columns:236px 1fr;border:1px solid var(--grey-2);border-radius:12px;overflow:hidden;background:var(--white);box-shadow:var(--shadow-sm);}
+#tuflow section[data-screen="data"] .tu-set-nav{border-right:1px solid var(--grey-2);padding:14px 10px;background:var(--white);}
+#tuflow section[data-screen="data"] .tu-set-search{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--grey-5);background:var(--grey-1);border:1px solid var(--grey-2);border-radius:8px;padding:8px 11px;margin-bottom:12px;}
+#tuflow section[data-screen="data"] .tu-set-cat{font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--grey-5);padding:0 8px;margin:16px 0 6px;}
+#tuflow section[data-screen="data"] .tu-set-cat:first-of-type{margin-top:2px;}
+#tuflow section[data-screen="data"] .tu-set-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;font-size:13.5px;font-weight:600;color:var(--grey-8);cursor:pointer;}
+#tuflow section[data-screen="data"] .tu-set-item svg{width:16px;height:16px;flex:none;color:var(--grey-6);}
+#tuflow section[data-screen="data"] .tu-set-item .lbl{flex:1;white-space:nowrap;}
+#tuflow section[data-screen="data"] .tu-set-item:hover{background:var(--grey-1);}
+#tuflow section[data-screen="data"] .tu-set-item.active{background:var(--grey-1);font-weight:700;color:var(--black);}
+#tuflow section[data-screen="data"] .tu-set-item.active svg{color:var(--black);}
+#tuflow section[data-screen="data"] .tu-cnt .tag{min-width:22px;justify-content:center;}
+#tuflow section[data-screen="data"] .tu-qa{font:inherit;font-size:13px;font-weight:800;line-height:1;color:var(--grey-6);background:var(--white);border:1px solid var(--grey-2);border-radius:6px;padding:3px 7px;cursor:pointer;}
+#tuflow section[data-screen="data"] .tu-qa:hover{background:var(--grey-1);border-color:var(--grey-3);color:var(--black);}
+#tuflow section[data-screen="data"] .tu-set-note{font-size:11px;color:var(--grey-5);padding:2px 10px 4px 36px;}
+#tuflow section[data-screen="data"] .tu-set-main{padding:18px 20px;min-width:0;}
+#tuflow section[data-screen="data"] .tu-main-h{font-size:22px;font-weight:800;letter-spacing:-.01em;margin-bottom:12px;}
+#tuflow section[data-screen="data"] .tu-list-bar{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--grey-2);flex-wrap:wrap;}
+#tuflow section[data-screen="data"] .tu-cols{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;color:var(--grey-7);}
+#tuflow section[data-screen="data"] .tu-search{flex:1;min-width:120px;display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--grey-5);background:var(--white);border:1px solid var(--grey-2);border-radius:8px;padding:8px 11px;}
+#tuflow section[data-screen="data"] .tu-rowact{display:inline-flex;gap:6px;justify-content:flex-end;}
+#tuflow section[data-screen="data"] .tu-ic{width:27px;height:27px;display:inline-grid;place-items:center;border:1px solid var(--grey-2);border-radius:6px;background:var(--white);color:var(--grey-6);cursor:pointer;font-size:12px;}
+#tuflow section[data-screen="data"] .tu-ic:hover{background:var(--grey-1);color:var(--black);}
+#tuflow section[data-screen="data"] .tu-bulk{background:var(--grey-1);border-top:1px solid var(--grey-2);padding:13px 15px;}
+</style>
       <section class="screen" data-screen="data">
         <div class="schead"><h3>Settings · Master data</h3><span class="crumb">Load this before you build</span></div>
+
         <div class="sheet" id="du-video">
           <h4>Watch first · uploading your data</h4>
           <div class="tu-sub" style="margin-bottom:12px;">Tim walks through loading your data. Then we do it together.</div>
@@ -2369,30 +2606,103 @@
             <iframe src="https://www.loom.com/embed/93b29381538143e3a1dd4f2e53e2f75a" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
           </div>
         </div>
+
         <div class="sheet" id="du-hier-wrap">
           <h4>Company hierarchy</h4>
-          <div class="tu-sub" style="margin-bottom:10px;">All master data lives at the <strong>parent</strong> level. Confirm your structure first.</div>
-          <div class="seg" id="du-hier"><span data-h="single" class="on">Single company</span><span data-h="pc">Parent / child</span></div><div style="margin-top:10px;font-size:12.5px;color:var(--grey-6);line-height:1.5">Most teams use a <strong>single company</strong>. <span tabindex="0" title="Use Parent / child only when separate divisions have their own customers, rates, and books and never share data day to day. If dispatchers cross divisions or you share reporting across entities, a single company is simpler and recommended." style="text-decoration:underline dotted;cursor:help;color:var(--dark-orange);font-weight:600">When does parent/child make sense?</span> If you think you need it, reach out to <a href="mailto:success@tread.io" style="color:var(--dark-orange);font-weight:600">success@tread.io</a>.</div>
+          <div class="tu-sub" style="margin-bottom:10px;">All master data lives at the <strong>parent</strong> level. Confirm your structure before you load anything.</div>
+          <div class="seg" id="du-hier"><span data-h="single" class="on">Single company</span><span data-h="pc">Parent / child</span></div>
+          <div style="margin-top:10px;font-size:12.5px;color:var(--grey-6);line-height:1.5">Most teams use a <strong>single company</strong>. <span tabindex="0" title="Use Parent / child only when separate divisions have their own customers, rates, and books and never share data day to day. If dispatchers cross divisions or you share reporting across entities, a single company is simpler and recommended." style="text-decoration:underline dotted;cursor:help;color:var(--dark-orange);font-weight:600">When does parent/child make sense?</span> If you think you need it, reach out to <a href="mailto:success@tread.io" style="color:var(--dark-orange);font-weight:600">success@tread.io</a>.</div>
         </div>
-        <div class="panel">
-          <table>
-            <thead><tr><th>Master data set</th><th>Loaded</th><th></th></tr></thead>
-            <tbody>
-              <tr><td>1 · Users</td><td id="du-users-c"><span class="tag gy">, </span></td><td class="duacts"><span class="tu-sub" style="font-size:11px;">+ Add&nbsp;·&nbsp;⬆ Template</span></td></tr>
-              <tr><td>2 · Drivers</td><td id="du-drivers-c"><span class="tag gy">, </span></td><td class="duacts"><span class="tu-sub" style="font-size:11px;">+ Add&nbsp;·&nbsp;⬆ Template</span></td></tr>
-              <tr><td>3 · <strong>Customers</strong></td><td id="du-cust-c"><span class="tag gy">, </span></td><td class="duacts"><button class="btn ghost dubtn" id="du-cust-add" type="button">+ Add</button><button class="btn ghost dubtn" id="du-cust-tpl" type="button">⬆ Template</button></td></tr>
-              <tr id="du-cust-bulk" style="display:none;"><td colspan="3" style="padding:0;"><div style="background:var(--grey-1);border:1px solid var(--grey-2);border-radius:0 0 10px 10px;padding:11px 13px;margin:-1px 2px 6px;"><div style="font-weight:700;font-size:12.5px;margin-bottom:3px;">⬆ Bulk upload · Customers</div><div class="tu-sub" style="margin-bottom:9px;">No column mapping. Download the template, fill it in that exact format, then upload it back.</div><div class="matrow" style="gap:10px;"><button class="btn ghost" id="du-cust-dl" type="button">⬇ Download template</button><button class="btn yellow" id="du-cust-up" type="button">⬆ Upload filled template</button></div><div class="tu-sub" id="du-cust-bulk-note" style="margin-top:8px;">customers_template.csv</div></div></td></tr>
-              <tr><td>4 · Vendors</td><td id="du-vend-c"><span class="tag gy">, </span></td><td class="duacts"><span class="tu-sub" style="font-size:11px;">+ Add&nbsp;·&nbsp;⬆ Template</span></td></tr>
-              <tr><td>5 · <strong>Equipment Types</strong> <span class="tu-sub" style="font-weight:400;">capacity &amp; UoM</span></td><td id="du-type-c"><span class="tag gy">, </span></td><td style="text-align:right;"><button class="btn ghost" id="du-type-add" type="button">Add type</button></td></tr>
-              <tr><td>6 · Equipment</td><td id="du-equip-c"><span class="tag gy">, </span></td><td style="text-align:right;"><span class="tu-sub" id="du-equip-note">needs types first</span></td></tr>
-              <tr><td>7 · Materials</td><td id="du-mat-c"><span class="tag gy">, </span></td><td class="duacts"><span class="tu-sub" style="font-size:11px;">+ Add&nbsp;·&nbsp;⬆ Template</span></td></tr>
-              <tr><td>8 · <strong>Sites</strong></td><td id="du-site-c"><span class="tag gy">, </span></td><td class="duacts"><button class="btn ghost dubtn" id="du-site-add" type="button">+ Add</button><button class="btn ghost dubtn" id="du-site-tpl" type="button">⬆ Template</button></td></tr>
-              <tr><td>9 · Departments <span class="tu-sub">(optional)</span></td><td id="du-dept-c"><span class="tag gy">, </span></td><td style="text-align:right;"><span class="tu-sub">optional</span></td></tr>
-            </tbody>
-          </table>
+
+        <div class="tu-set">
+          <aside class="tu-set-nav">
+            <div class="tu-set-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Search settings</div>
+
+            <div class="tu-set-cat">Accounts</div>
+            <div class="tu-set-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c0-3 2.7-5 5.5-5s5.5 2 5.5 5"/><circle cx="17.5" cy="9" r="2.4"/><path d="M15.5 14.5c2.4.2 4 2 4 4.5"/></svg>
+              <span class="lbl">Users</span><span class="tu-cnt" id="du-users-c"><span class="tag gy">—</span></span>
+            </div>
+            <div class="tu-set-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="12" cy="10" r="2.2"/><path d="M8.5 16c.6-1.7 2-2.6 3.5-2.6S15 14.3 15.5 16"/></svg>
+              <span class="lbl">Drivers</span><span class="tu-cnt" id="du-drivers-c"><span class="tag gy">—</span></span>
+            </div>
+            <div class="tu-set-item active">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/></svg>
+              <span class="lbl">Customers</span><span class="tu-cnt" id="du-cust-c"><span class="tag gy">—</span></span>
+            </div>
+            <div class="tu-set-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9l1.5-4h13L20 9"/><path d="M4 9h16v10H4z"/><path d="M4 9c0 1.4 1 2.2 2 2.2S8 10.4 8 9c0 1.4 1 2.2 2 2.2S12 10.4 12 9c0 1.4 1 2.2 2 2.2S16 10.4 16 9c0 1.4 1 2.2 2 2.2S20 10.4 20 9"/></svg>
+              <span class="lbl">Vendors</span><span class="tu-cnt" id="du-vend-c"><span class="tag gy">—</span></span>
+            </div>
+
+            <div class="tu-set-cat">Data setup</div>
+            <div class="tu-set-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4-8 4-8-4z"/><path d="M4 12l8 4 8-4"/></svg>
+              <span class="lbl">Equipment Types</span><span class="tu-cnt" id="du-type-c"><span class="tag gy">—</span></span>
+              <button class="tu-qa" id="du-type-add" type="button" title="Add type">+</button>
+            </div>
+            <div class="tu-set-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/></svg>
+              <span class="lbl">Equipment</span><span class="tu-cnt" id="du-equip-c"><span class="tag gy">—</span></span>
+            </div>
+            <div class="tu-set-note" id="du-equip-note">needs types first</div>
+            <div class="tu-set-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8l8-4 8 4-8 4z"/><path d="M4 8v8l8 4 8-4V8"/></svg>
+              <span class="lbl">Materials</span><span class="tu-cnt" id="du-mat-c"><span class="tag gy">—</span></span>
+            </div>
+            <div class="tu-set-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.3 7-11a7 7 0 10-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+              <span class="lbl">Sites</span><span class="tu-cnt" id="du-site-c"><span class="tag gy">—</span></span>
+              <button class="tu-qa" id="du-site-tpl" type="button" title="Import sites" style="margin-right:4px;">&#8593;</button>
+              <button class="tu-qa" id="du-site-add" type="button" title="Add site">+</button>
+            </div>
+            <div class="tu-set-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg>
+              <span class="lbl">Departments</span><span class="tu-cnt" id="du-dept-c"><span class="tag gy">—</span></span>
+            </div>
+            <div class="tu-set-note">optional</div>
+          </aside>
+
+          <div class="tu-set-main">
+            <div class="tu-main-h">Customers</div>
+            <button class="btn ghost" type="button" style="margin-bottom:12px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M3 5h18l-7 8v5l-4 2v-7z"/></svg>Filters</button>
+
+            <div class="panel">
+              <div class="tu-list-bar">
+                <span class="tu-cols"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M6 4v16M12 4v16M18 4v16"/></svg>Columns</span>
+                <span class="tu-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>Search...</span>
+                <button class="btn ghost" id="du-cust-tpl" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M8 7l-3 3 3 3M16 17l3-3-3-3M5 10h9M10 14h9"/></svg>Import/Export</button>
+                <button class="btn yellow" id="du-cust-add" type="button">+ Create Customer</button>
+              </div>
+
+              <div class="tu-bulk" id="du-cust-bulk" style="display:none;">
+                <div style="font-weight:700;font-size:12.5px;margin-bottom:3px;">Bulk upload · Customers</div>
+                <div class="tu-sub" style="margin-bottom:9px;">No column mapping. Download the template, fill it in that exact format, then upload it back.</div>
+                <div class="matrow" style="gap:10px;">
+                  <button class="btn ghost" id="du-cust-dl" type="button">&#8595; Download template</button>
+                  <button class="btn yellow" id="du-cust-up" type="button">&#8593; Upload filled template</button>
+                </div>
+                <div class="tu-sub" id="du-cust-bulk-note" style="margin-top:8px;">customers_template.csv</div>
+              </div>
+
+              <table>
+                <thead><tr><th>Name</th><th>Primary contact</th><th>Phone</th><th>Email</th><th></th></tr></thead>
+                <tbody>
+                  <tr><td><strong>Harbor Ready Mix</strong></td><td>Dana Okafor</td><td>+1 555 0142</td><td>dispatch@harborrm.com</td><td class="duacts"><span class="tu-rowact"><button class="tu-ic" type="button" title="Edit">&#9998;</button><button class="tu-ic" type="button" title="Remove">&times;</button></span></td></tr>
+                  <tr><td><strong>Bayline Aggregates</strong></td><td>Reggie Voss</td><td>+1 555 0188</td><td>orders@bayline.co</td><td class="duacts"><span class="tu-rowact"><button class="tu-ic" type="button" title="Edit">&#9998;</button><button class="tu-ic" type="button" title="Remove">&times;</button></span></td></tr>
+                  <tr><td><strong>Coastal Paving Co.</strong></td><td>Mina Adler</td><td>+1 555 0209</td><td>billing@coastalpaving.com</td><td class="duacts"><span class="tu-rowact"><button class="tu-ic" type="button" title="Edit">&#9998;</button><button class="tu-ic" type="button" title="Remove">&times;</button></span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="tu-sub" style="margin-top:10px;">Two ways in: <strong>Create Customer</strong> adds one by hand. <strong>Import/Export</strong> bulk-loads many from the template. Same pattern for every data set in the sidebar.</div>
+          </div>
         </div>
-        <div style="text-align:right;margin-top:14px;"><button class="btn yellow" id="du-finish" type="button">Finish setup → build a project</button></div>
+
+        <div style="text-align:right;margin-top:14px;"><button class="btn yellow" id="du-finish" type="button">Finish setup &rarr; build a project</button></div>
       </section>
+
+      <!-- GENERIC (map/sites/settings) -->
 
       <!-- GENERIC (map/sites/settings) -->
       <section class="screen" data-screen="generic">
