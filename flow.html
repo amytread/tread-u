@@ -2599,13 +2599,6 @@
       <section class="screen" data-screen="data">
         <div class="schead"><h3>Settings · Master data</h3><span class="crumb">Load this before you build</span></div>
 
-        <div class="sheet" id="du-video">
-          <h4>Watch first · uploading your data</h4>
-          <div class="tu-sub" style="margin-bottom:12px;">Tim walks through loading your data. Then we do it together.</div>
-          <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:10px;overflow:hidden;background:var(--black);">
-            <iframe src="https://www.loom.com/embed/93b29381538143e3a1dd4f2e53e2f75a" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
-          </div>
-        </div>
 
 
         <div class="tu-set">
@@ -3014,14 +3007,14 @@
   function doSkip(){ var s=STEPS[i]; clearHL(); skipMark(s); outcome[i]='skip'; updateChecklist(i+1); var wasLast=s.last, st=s.stage; if(i+1>=TOTAL){ hideTakeover(); updateRail(TOTAL,-1); if(wasLast)popStage(st,EARN[st]); setTimeout(showGrad,reduce?10:560); return; } i=i+1; showStep(i); if(wasLast)popStage(st,EARN[st]); }
   // per-stage "watch how" videos (Pages-hosted clips)
   var STAGEVID={projects:'v1-01-create-project-overview.mp4',dispatch:'v3-01-order-card-basics.mp4',approvals:'v6-03-approvals-page.mp4',settlements:'v6-04-bulk-settlements-pdf-export.mp4'};
-  var VID={0:{loom:'93b29381538143e3a1dd4f2e53e2f75a'},1:{mp4:'v1-01-create-project-overview.mp4'},2:{mp4:'v3-01-order-card-basics.mp4'},3:{mp4:'v3-08-bulk-edit-duplicate-orders.mp4'},4:{mp4:'v4-01-driver-app-and-dispatch.mp4'},5:{mp4:'v4-02-accept-start-live-tracking.mp4'},6:{mp4:'v6-03-approvals-page.mp4'},7:{mp4:'v6-04-bulk-settlements-pdf-export.mp4'},8:{soon:true}};
+  var VID={0:{loom:'8e2c055ce4394ecab01293ba0ed291da'},1:{mp4:'v1-01-create-project-overview.mp4'},2:{mp4:'v3-01-order-card-basics.mp4'},3:{mp4:'v3-08-bulk-edit-duplicate-orders.mp4'},4:{mp4:'v4-01-driver-app-and-dispatch.mp4'},5:{mp4:'v4-02-accept-start-live-tracking.mp4'},6:{mp4:'v6-03-approvals-page.mp4'},7:{mp4:'v6-04-bulk-settlements-pdf-export.mp4'},8:{soon:true}};
   var LEARN={0:'./?c=1&s=a-master-data',1:'./?c=1&s=a-build-project',2:'./?c=2&s=a-order-build',3:'./?c=2&s=a-assign-manage',4:'./?c=2&s=a-assign-manage',5:'./?c=3&s=a-run-job',6:'./?c=4&s=a-approvals',7:'./?c=5&s=a-build-settlements',8:'./?c=6&s=a-core-reports'};
   var VBASE='https://github.com/amytread/tread-u/releases/download/media-v1/';
   function videoHTML(stage){ var v=VID[stage]; if(!v)return ''; if(v.loom)return '<div class="vwrap"><iframe src="https://www.loom.com/embed/'+v.loom+'" frameborder="0" allowfullscreen></iframe></div>'; if(v.mp4)return '<div class="vwrap"><video controls preload="metadata" playsinline><source src="'+VBASE+v.mp4+'" type="video/mp4"></video></div>'; if(v.soon)return '<div class="vsoon">▶ Walkthrough video coming soon</div>'; return ''; }
 
   // STEPS (22): each {stage, screen, nav, title, text, warn?, cta, target, act, last?, celebrate?}
   var STEPS=[
-    {stage:0,intro:true,screen:'data',nav:'Settings',title:'Watch first: uploading your data',text:'Tim walks through loading your data, then we’ll do it together.',cta:'Start loading data',target:''},
+    {stage:0,intro:true,screen:'data',nav:'Settings',title:'Watch first: how Tread works',text:'Tim walks through how Projects, Orders, and Jobs fit together. Then we’ll set up your data.',cta:'Start setup',target:''},
     {stage:0,screen:'data',nav:'Settings',choice:true,title:'Add manually or bulk-upload?',text:'For every data set you can add records by hand, or bulk-upload with our template: download it, fill the exact format, upload (no column mapping). Pick your default; you can switch on any set.',target:''},
     {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-users-c',name:'Users',n:'12'},skip:{req:false},title:'Add your Users',text:'The people who log into Tread.',target:'du-users-c'},
     {stage:0,screen:'data',nav:'Settings',dset:{cell:'du-drivers-c',name:'Drivers',n:'20'},skip:{req:true,dep:'you’ll need a driver to assign a Job'},title:'Add your Drivers',text:'Everyone who receives dispatches.',target:'du-drivers-c'},
