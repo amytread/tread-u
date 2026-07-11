@@ -75,8 +75,8 @@
   }
   #progress-bar .stops{position:absolute;inset:0;}
   /* each course = a load: muted while pending, bright + prominent once delivered */
-  #progress-bar .stop{position:absolute;top:50%;transform:translate(-50%,-42%);width:22px;height:18px;background:#3f484e;opacity:.5;clip-path:polygon(0% 100%, 9% 56%, 18% 70%, 27% 32%, 35% 50%, 45% 14%, 52% 2%, 59% 18%, 68% 40%, 76% 26%, 85% 54%, 93% 38%, 100% 100%);transition:all .35s ease;cursor:default;}
-  #progress-bar .stop.delivered{opacity:1;background:linear-gradient(180deg,#fff06b 0%,#ffe100 55%,#e6c400 100%);filter:drop-shadow(0 0 10px rgba(255,229,0,0.9));transform:translate(-50%,-48%) scale(1.42);}
+  #progress-bar .stop{position:absolute;top:50%;transform-origin:center bottom;transform:translate(-50%,-100%);width:12px;height:10px;background:#3f484e;opacity:.5;clip-path:polygon(0% 100%, 9% 56%, 18% 70%, 27% 32%, 35% 50%, 45% 14%, 52% 2%, 59% 18%, 68% 40%, 76% 26%, 85% 54%, 93% 38%, 100% 100%);transition:all .35s ease;cursor:default;}
+  #progress-bar .stop.delivered{opacity:1;background:linear-gradient(180deg,#fff06b 0%,#ffe100 55%,#e6c400 100%);filter:drop-shadow(0 0 9px rgba(255,229,0,0.9));transform:translate(-50%,-100%) scale(1.4);}
   /* dump bed tips up to dump the load, then lowers */
   #progress-bar .ptruck .bed{transform-box:fill-box;transform-origin:12% 100%;transition:transform .45s ease;}
   #progress-bar .ptruck.dumping .bed{transform:rotate(-30deg);}
