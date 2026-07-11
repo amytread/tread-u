@@ -61,18 +61,23 @@
   /* ============ PROGRESS BAR (below header, 15px) ============ */
   #progress-bar{
     position:fixed;top:56px;left:0;right:0;
-    height:15px;background:var(--deep-black);z-index:8800;
+    height:34px;background:var(--deep-black);z-index:8800;
     border-bottom:1px solid rgba(255,255,255,0.06);
     overflow:hidden;
   }
+  #progress-bar .road{position:absolute;left:0;right:0;top:50%;height:4px;transform:translateY(-50%);background:rgba(255,255,255,0.12);}
   #progress-bar .fill{
-    height:100%;width:0%;
+    position:absolute;left:0;top:50%;height:4px;width:0%;transform:translateY(-50%);
     background:var(--gradient-yellow);
-    transition:width .25s ease;
-    box-shadow:0 0 12px rgba(255,229,0,0.45);
+    transition:width .35s ease;
+    box-shadow:0 0 10px rgba(255,229,0,0.4);
   }
+  #progress-bar .stops{position:absolute;inset:0;}
+  #progress-bar .stop{position:absolute;top:50%;transform:translate(-50%,-50%);width:8px;height:8px;border-radius:2px;background:rgba(255,255,255,0.28);transition:background .3s ease;}
+  #progress-bar .stop.delivered{background:var(--yellow);box-shadow:0 0 7px rgba(255,229,0,0.55);}
+  #progress-bar .ptruck{position:absolute;top:50%;left:0;transform:translate(-60%,-50%);transition:left .4s cubic-bezier(.4,0,.2,1);z-index:2;filter:drop-shadow(0 1px 2px rgba(0,0,0,.4));}
   #progress-counter{
-    position:fixed;top:80px;right:18px;z-index:8801;
+    position:fixed;top:96px;right:18px;z-index:8801;
     display:flex;align-items:center;gap:8px;
     background:var(--white);border:1px solid var(--grey-2);
     border-radius:999px;
@@ -137,11 +142,11 @@
 
   /* ============ LAYOUT ============ */
   /* Sidebar is pinned to viewport-left; main has a matching left margin */
-  .app{padding-top:71px;min-height:100vh}
+  .app{padding-top:90px;min-height:100vh}
 
   /* ============ SIDEBAR (half-dark, pinned to viewport left) ============ */
   #sidebar{
-    position:fixed;top:71px;left:0;bottom:0;
+    position:fixed;top:90px;left:0;bottom:0;
     width:280px;z-index:6000;
     background:var(--deep-black);
     border-right:1px solid rgba(255,255,255,0.06);
@@ -1503,7 +1508,12 @@
   </a>
 </header>
 
-<div id="progress-bar"><div class="fill"></div></div>
+<div id="progress-bar" title="Each course is a load. Deliver them all to go Road-Ready.">
+  <div class="road"></div>
+  <div class="fill"></div>
+  <div class="stops"></div>
+  <div class="ptruck"><svg viewBox="0 0 120 60" width="38" height="19" aria-hidden="true"><path d="M6 12 L74 12 L66 40 L6 40 Z" fill="#FFE500" stroke="#132732" stroke-width="4" stroke-linejoin="round"/><path d="M76 20 L96 20 L108 34 L108 40 L76 40 Z" fill="#132732"/><rect x="82" y="24" width="15" height="10" rx="1" fill="#FFE500"/><rect x="4" y="39" width="106" height="5" fill="#132732"/><circle cx="30" cy="47" r="8" fill="#132732" stroke="#8a99a2" stroke-width="3"/><circle cx="92" cy="47" r="8" fill="#132732" stroke="#8a99a2" stroke-width="3"/></svg></div>
+</div>
 <div id="progress-counter">
   <span class="pc-dot"></span>
   <span class="pc-label">Course <span class="pc-ch">1</span> of 10</span>
@@ -4675,6 +4685,10 @@ function goToChapter(idx){
     const within = getScrollProgressInChapter();
     const pct = Math.round(((currentChapter + within) / TOTAL_CHAPTERS) * 100);
     document.querySelector('#progress-bar .fill').style.width = pct + '%';
+    var _pb=document.getElementById('progress-bar'), _stops=_pb.querySelector('.stops');
+    if(_stops && !_stops.children.length){ var _h=''; for(var _i=0;_i<TOTAL_CHAPTERS;_i++){ var _p=Math.min(98,((_i+1)/TOTAL_CHAPTERS)*100); _h+='<span class="stop" data-ch="'+_i+'" style="left:'+_p+'%"></span>'; } _stops.innerHTML=_h; }
+    var _tr=_pb.querySelector('.ptruck'); if(_tr){ _tr.style.left=Math.max(2,Math.min(99,pct))+'%'; }
+    if(_stops){ done.forEach(function(ch){ var st=_stops.querySelector('.stop[data-ch="'+ch+'"]'); if(st) st.classList.add('delivered'); }); }
     document.querySelector('#progress-counter .pc-ch').textContent = currentChapter + 1;
     document.querySelector('#progress-counter .pc-pct').textContent = pct + '%';
     if(within >= 0.97){ done.add(currentChapter); updateSidebar(); }
