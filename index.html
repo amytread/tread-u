@@ -304,6 +304,18 @@
     font-size:15px;color:var(--grey-7);margin-bottom:22px;
     line-height:1.55;max-width:640px;
   }
+  /* sub-section (h3) and sub-sub-section (h4) headings for organizing lesson text */
+  .section h3{
+    font-size:16.5px;font-weight:700;color:var(--black);
+    margin:38px 0 12px;padding-bottom:9px;border-bottom:1px solid var(--grey-2);
+    letter-spacing:-0.01em;
+  }
+  .section h4{
+    font-size:12.5px;font-weight:700;color:var(--dark-orange);
+    margin:24px 0 8px;text-transform:uppercase;letter-spacing:.05em;
+  }
+  .section p{margin-bottom:12px;line-height:1.6}
+  .section > ul,.section > ol{margin-bottom:16px}
 
   /* ============ CARDS ============ */
   .card{
@@ -1608,7 +1620,11 @@
 <h2>
 <span class="num">&#9733;</span>Why Tread</h2>
 <p class="section-lead">Dispatch, track, approve, and bill in one platform, with one source of truth.</p>
+
+<h3>The old way</h3>
 <p>Before Tread, a hauling day lives in phone calls, texts, paper tickets, and a spreadsheet someone updates at night.</p>
+
+<h3>The Tread way</h3>
 <p>Tread pulls all of that into one place. You do the work once, and it flows end to end:</p>
 <div class="card">
 <ol class="i-list">
@@ -1639,6 +1655,8 @@
 </li>
 </ol>
 </div>
+
+<h3>What you get</h3>
 <div class="benefits">
 <div class="benefit">
 <h4>
@@ -1665,6 +1683,8 @@
 <h2>
 <span class="num">1</span>The Tread model</h2>
 <p class="section-lead">Four layers stack on top of each other, and you will see them everywhere in Tread.</p>
+
+<h3>The four layers</h3>
 <p>Everything in Tread hangs off one hierarchy: Projects, then Orders, then Jobs, then Dispatch.</p>
 <div class="card">
 <ol class="i-list">
@@ -1690,12 +1710,15 @@
 </li>
 </ol>
 </div>
-<p>A few details worth holding onto:</p>
+
+<h3>Details worth holding onto</h3>
 <ul class="cb-learn">
 <li><strong>Projects can run long.</strong> A day, a week, or a year. They hold the customer, the load and dump sites, the materials, and the rates.</li>
 <li><strong>Reuse the project for repeat work.</strong> Same customer and site means daily orders attach underneath one project.</li>
 <li><strong>One order carries one material.</strong> If a day involves two materials, that is two orders.</li>
 </ul>
+
+<h3>See it in action</h3>
 <div style="margin-top:16px">
 <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:8px;overflow:hidden;background:#132732">
 <iframe src="https://www.loom.com/embed/8e2c055ce4394ecab01293ba0ed291da" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%">
@@ -1703,6 +1726,8 @@
 </div>
 <p style="font-size:12.5px;color:#697982;margin:8px 0 0">Tim&rsquo;s walkthrough: how Projects, Orders, and Jobs fit together.</p>
 </div>
+
+<h3>Common mistakes</h3>
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
@@ -1715,6 +1740,8 @@
 <h2>
 <span class="num">2</span>Your workspace</h2>
 <p class="section-lead">Horizon is the web app where you build the work and watch it happen.</p>
+
+<h3>The top nav</h3>
 <p>Most of your day lives in the Horizon web app. A horizontal nav across the top moves you between the main areas. You do not dig through menus. You pick the area you need and go.</p>
 <ul class="cb-learn">
 <li><strong>Projects:</strong> build and manage the work.</li>
@@ -1725,26 +1752,32 @@
 <li><strong>Sites:</strong> manage load and dump locations.</li>
 <li><strong>Settings:</strong> configure your company.</li>
 </ul>
-<p><strong>Live Map</strong> is where the day comes alive. It shows your trucks in real time as they move between load and dump sites. A dispatcher can see who is running, who is idle, and where a job stands without a single phone call.</p>
-<p>The <strong>&ldquo;? Help&rdquo; launcher</strong> sits in the corner of the app. Click it to search the help center or start a conversation with support without leaving your screen.</p>
-<div class="callout tip">
-<div class="c-icon">&#10003;</div>
-<div class="c-body">
-<strong>Pro tip</strong>
-<br>Keep Live Map open on a second screen during a busy shift. Watching trucks move is faster than calling drivers for status.</div>
-</div>
 <div class="callout info">
 <div class="c-icon">i</div>
 <div class="c-body">
 <strong>Good to know</strong>
 <br>What you see in the top nav depends on your role. A driver works from the mobile app, while dispatch, approvals, and billing live in the Horizon web app.</div>
 </div>
+
+<h3>Live Map</h3>
+<p><strong>Live Map</strong> is where the day comes alive. It shows your trucks in real time as they move between load and dump sites. A dispatcher can see who is running, who is idle, and where a job stands without a single phone call.</p>
+<div class="callout tip">
+<div class="c-icon">&#10003;</div>
+<div class="c-body">
+<strong>Pro tip</strong>
+<br>Keep Live Map open on a second screen during a busy shift. Watching trucks move is faster than calling drivers for status.</div>
+</div>
+
+<h3>The &ldquo;? Help&rdquo; launcher</h3>
+<p>The <strong>&ldquo;? Help&rdquo; launcher</strong> sits in the corner of the app. Click it to search the help center or start a conversation with support without leaving your screen.</p>
 </div>
 
 <div class="section">
 <h2>
 <span class="num">3</span>People &amp; ecosystem</h2>
 <p class="section-lead">Roles decide what each person can do, and shares connect you to your customers and vendors.</p>
+
+<h3>The seven roles</h3>
 <p>Tread has seven core roles:</p>
 <ul class="cb-learn">
 <li><strong>Company Admin:</strong> can do everything in the company.</li>
@@ -1761,6 +1794,8 @@
 <strong>Good to know</strong>
 <br>Admins can scope a role to specific sites or projects. Drivers never see customer billing rates.</div>
 </div>
+
+<h3>How you connect</h3>
 <p>Your company sits at the center as the hub that owns projects, orders, and dispatch. Three links connect you to everyone else. Break any link and the workflow it feeds stops.</p>
 <div class="card">
 <ol class="i-list">
@@ -1781,6 +1816,8 @@
 </li>
 </ol>
 </div>
+
+<h3>Common mistakes</h3>
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
@@ -1793,12 +1830,18 @@
 <h2>
 <span class="num">4</span>Getting help</h2>
 <p class="section-lead">You are never stuck. Help is one click away, and the common early mistakes are easy to sidestep.</p>
+
+<h3>Where to get help</h3>
 <p>When something is unclear, start with the &ldquo;? Help&rdquo; launcher in the app to search the help center or reach support.</p>
+
+<h3>Resources to bookmark</h3>
 <p>Two resources are worth bookmarking now:</p>
 <ul class="cb-learn">
 <li><strong>Glossary:</strong> defines every Tread term in one line, so words like job, load, ticket, and settlement never trip you up.</li>
 <li><strong>Common mistakes:</strong> collects the setup traps new teams hit, so you can avoid them before they cost you.</li>
 </ul>
+
+<h3>Common early mistakes</h3>
 <p>A few early traps show up again and again. Learn them now and you will save yourself a support ticket later.</p>
 <div class="card">
 <ol class="i-list">
@@ -1986,14 +2029,29 @@
 <h2>
 <span class="num">1</span>Master-data foundation</h2>
 <p class="section-lead">Master data is the roster of people, trucks, places, and products that every project, order, and invoice points back to. Load it first, and load it in order.</p>
+
+<figure style="margin:16px 0">
+<img src="https://github.com/amytread/tread-u/releases/download/media-v1/masterdata-annotated.jpg" alt="Master data in Settings" style="width:100%;border-radius:8px;border:1px solid var(--grey-2);display:block">
+<figcaption class="vp-cap">Master data lives in Settings. Load it before you build anything.</figcaption>
+</figure>
+<ul>
+<li><strong>1.</strong> Each master-data type (Users, Drivers, Customers, Vendors, and more) lives in the left Settings menu.</li>
+<li><strong>2.</strong> Import/Export: bulk-upload a whole set with our template (no column mapping).</li>
+<li><strong>3.</strong> Create: add a single record by hand.</li>
+</ul>
+
+<h3>What it is</h3>
 <p>Tread reads from nine master-data sets, and the order matters. Skipping ahead breaks references.</p>
-<p><strong>Why order matters:</strong> equipment types define capacity and unit of measure, so equipment cannot load until its types exist. Without that, ticket math and material tracking do not work.</p>
+
+<h3>Why the load order matters</h3>
+<p>Equipment types define capacity and unit of measure, so equipment cannot load until its types exist. Without that, ticket math and material tracking do not work.</p>
 <div class="callout info">
 <div class="c-icon">i</div>
 <div class="c-body">
 <strong>The load order</strong><br>Users &rarr; drivers &rarr; customers &rarr; vendors &rarr; equipment types &rarr; equipment &rarr; materials &rarr; sites &rarr; then departments, labels &amp; service classes.</div>
 </div>
-<p>Two rules save you rework later:</p>
+
+<h3>Two rules that save rework</h3>
 <ul>
 <li><strong>Load at the parent level:</strong> master data lives at the parent level of your company hierarchy, so confirm that hierarchy before you import anything.</li>
 <li><strong>Give every record a unique Ext. ID:</strong> match it to your accounting or HR system so invoices and settlements export cleanly back to the source.</li>
@@ -2008,6 +2066,8 @@
 <div class="c-body">
 <strong>The rule for the whole course</strong><br>You cannot build a project or dispatch an order until the master data it references already exists. Everything downstream inherits from here.</div>
 </div>
+
+<h3>How to load it, in order</h3>
 <div class="card">
 <ol class="i-list">
 <li><span class="i-num">1</span><span class="i-label"><strong>Confirm the hierarchy</strong> so master data loads at the parent level.</span></li>
@@ -2018,6 +2078,8 @@
 <li><span class="i-num">6</span><span class="i-label"><strong>Verify in Settings:</strong> spot-check three rows per set against your source export.</span></li>
 </ol>
 </div>
+
+<h3>Watch it done</h3>
 <figure style="margin:0">
 <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:8px;overflow:hidden;background:#132732">
 <iframe src="https://www.loom.com/embed/93b29381538143e3a1dd4f2e53e2f75a" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%">
@@ -2032,6 +2094,8 @@
 <div class="vid-links">
 <a class="link" href="https://docs.tread.ai/onboarding/import" target="_blank" rel="noopener">Full guide &rarr;</a>
 </div>
+
+<h3>What to watch for</h3>
 <div class="callout tip">
 <div class="c-icon">&#10003;</div>
 <div class="c-body">
@@ -2048,9 +2112,22 @@
 <h2>
 <span class="num">2</span>Build a Project</h2>
 <p class="section-lead">A project is the container for a scope of work for one customer. Build it once and its details cascade to every daily order underneath it.</p>
+
+<figure style="margin:16px 0">
+<img src="https://github.com/amytread/tread-u/releases/download/media-v1/createproject-annotated.jpg" alt="Create Project form" style="width:100%;border-radius:8px;border:1px solid var(--grey-2);display:block">
+<figcaption class="vp-cap">Creating a project.</figcaption>
+</figure>
+<ul>
+<li><strong>1.</strong> Project Details: name it and pick the Customer (required, and it locks once created).</li>
+<li><strong>2.</strong> Location Details: set the pickup and drop-off sites.</li>
+<li><strong>3.</strong> Create to save the project.</li>
+</ul>
+
+<h3>What it is</h3>
 <p>The product hierarchy runs Projects &rarr; Orders &rarr; Jobs &rarr; Dispatch.</p>
 <p>A project is a multi-day template that holds the customer, sites, materials, rates, and defaults. Each dispatch day becomes one daily order that inherits those settings, so you set things up here once instead of re-entering them every morning.</p>
-<p><strong>Three fields are required to create a project:</strong></p>
+
+<h3>The three required fields</h3>
 <ul>
 <li><strong>Customer:</strong> the party the work is for. This is the one that locks.</li>
 <li><strong>Project Name:</strong> something clear, such as "Taylor Stadium."</li>
@@ -2061,14 +2138,18 @@
 <div class="c-body">
 <strong>The Customer locks</strong><br>Once the project is created you cannot change the customer. Pick the wrong one and you have to create a new project or contact support, so select carefully before you save.</div>
 </div>
+
+<h3>Quotes vs. projects</h3>
 <p><strong>A quote is not a separate record.</strong> It is a project in a Quoted state. You build it exactly like a live project, and pricing pulls automatically from your project rates by lane, equipment type, and material.</p>
-<p>Quotes move by status:</p>
+<h4>Quotes move by status</h4>
 <ul>
 <li><strong>Draft:</strong> while you build it.</li>
 <li><strong>Quoted:</strong> once shared.</li>
 <li><strong>Lost:</strong> if declined.</li>
 <li><strong>Active:</strong> once accepted. Activating turns the same record into a live project with no data recreated.</li>
 </ul>
+
+<h3>How to build one</h3>
 <div class="card">
 <ol class="i-list">
 <li><span class="i-num">1</span><span class="i-label"><strong>Pick the Customer</strong> (existing or new). Confirm it, because it locks.</span></li>
@@ -2078,6 +2159,8 @@
 <li><span class="i-num">5</span><span class="i-label"><strong>Set the status and hand off to Dispatch,</strong> where each day rolls up as a daily order.</span></li>
 </ol>
 </div>
+
+<h3>Watch it done</h3>
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
 <source src="https://github.com/amytread/tread-u/releases/download/media-v1/v1-00-quotes-vs-projects.mp4" type="video/mp4">
@@ -2130,6 +2213,8 @@
 <div class="vid-links">
 <a class="link" href="https://docs.tread.ai/workflows/create-a-project" target="_blank" rel="noopener">Full guide &rarr;</a>
 </div>
+
+<h3>What to watch for</h3>
 <div class="callout info">
 <div class="c-icon">i</div>
 <div class="c-body">
@@ -2146,17 +2231,23 @@
 <h2>
 <span class="num">3</span>Accounting &amp; rates</h2>
 <p class="section-lead">This is where the money math lives: phase codes, materials and their prices, order defaults, tax and freight, and add-ons like fuel surcharge. Set it up once so invoices come out right.</p>
+
+<h3>Phase codes</h3>
 <p><strong>Phase codes</strong> are the job or PO codes your customer uses to organize a project.</p>
 <ul>
 <li><strong>Add them your way:</strong> one at a time, or bulk-paste two columns straight from Excel.</li>
 <li><strong>Link them to materials</strong> so the right code lands on each line item.</li>
 </ul>
+
+<h3>Materials</h3>
 <p><strong>Materials</strong> are the cargo you haul: sand, stone, asphalt, dirt. Each one carries a name, an accounting code, and a default unit of measure (tons, cubic yards, or loads).</p>
 <ul>
 <li><strong>One material per order,</strong> and each invoice line item maps to one material, so keep the list clean.</li>
 <li><strong>Confirm every UoM with billing</strong> before you rely on it.</li>
 <li><strong>Multiple prices per material:</strong> set per customer, per site, or globally, so the same product can price differently by context.</li>
 </ul>
+
+<h4>How rates resolve</h4>
 <p><strong>Rates resolve by precedence,</strong> from most to least specific:</p>
 <ol>
 <li>Manual override</li>
@@ -2165,6 +2256,8 @@
 <li>Account rate</li>
 <li>Default</li>
 </ol>
+
+<h3>The rest of the money math</h3>
 <p>A few more pieces round out the money math:</p>
 <ul>
 <li><strong>Order defaults</strong> (tonnage, truck count, unit type, vehicle specs) pre-fill each order.</li>
@@ -2177,6 +2270,8 @@
 <div class="c-body">
 <strong>Fuel surcharge needs all three parts</strong><br>FSC needs a price index, a schedule, and an application rule. Leave one out and the surcharge silently drops off every load.</div>
 </div>
+
+<h3>How to set it up</h3>
 <div class="card">
 <ol class="i-list">
 <li><span class="i-num">1</span><span class="i-label"><strong>Load phase codes</strong> and link them to materials.</span></li>
@@ -2186,6 +2281,8 @@
 <li><span class="i-num">5</span><span class="i-label"><strong>Preview the invoice lines</strong> before billing to catch anything misconfigured.</span></li>
 </ol>
 </div>
+
+<h3>Watch it done</h3>
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
 <source src="https://github.com/amytread/tread-u/releases/download/media-v1/v1-03-phase-codes.mp4" type="video/mp4">
@@ -2238,6 +2335,8 @@
 <div class="vid-links">
 <a class="link" href="https://docs.tread.ai/workflows/manage-rates" target="_blank" rel="noopener">Full guide &rarr;</a>
 </div>
+
+<h3>What to watch for</h3>
 <div class="callout info">
 <div class="c-icon">i</div>
 <div class="c-body">
@@ -2254,6 +2353,8 @@
 <h2>
 <span class="num">4</span>Sites &amp; geofences</h2>
 <p class="section-lead">Sites are your physical locations, and geofences are the virtual boundaries that turn a truck's GPS into arrival and departure events automatically.</p>
+
+<h3>What a site needs</h3>
 <p><strong>Every site needs three things:</strong></p>
 <ul>
 <li><strong>A name</strong> you will recognize on the board.</li>
@@ -2261,6 +2362,8 @@
 <li><strong>Latitude/longitude coordinates</strong> for the exact point.</li>
 </ul>
 <p>Tag a <strong>site type</strong> (plant, yard, or job site), because that type drives reporting and dispatch defaults. Set default pickup and drop-off sites on the project so they pre-populate on every order, and even a default site with no fixed drop-off still gets geofence tracking.</p>
+
+<h3>Geofence shapes</h3>
 <p><strong>Every site carries a geofence.</strong> You choose the shape:</p>
 <ul>
 <li><strong>Circle (the default):</strong> just needs a radius. Works well for pits and plants.</li>
@@ -2272,6 +2375,8 @@
 <div class="c-body">
 <strong>How tracking works</strong><br>When a truck crosses in, Tread logs an arrival. When it crosses out, the load closes and the cycle-time clock starts for the next one.</div>
 </div>
+
+<h3>Watch it done</h3>
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
 <source src="https://github.com/amytread/tread-u/releases/download/media-v1/v1-04-default-sites-geofences.mp4" type="video/mp4">
@@ -2285,6 +2390,8 @@
 <div class="vid-links">
 <a class="link" href="https://docs.tread.ai/concepts/sites-geofences" target="_blank" rel="noopener">Full guide &rarr;</a>
 </div>
+
+<h3>What to watch for</h3>
 <div class="callout tip">
 <div class="c-icon">&#10003;</div>
 <div class="c-body">
@@ -2301,7 +2408,10 @@
 <h2>
 <span class="num">5</span>Conditional setup</h2>
 <p class="section-lead">Some setup only applies to certain jobs. Turn on prevailing wage and set note visibility tiers when the work calls for it, and leave them off when it does not.</p>
+
+<h3>Prevailing wage</h3>
 <p><strong>Prevailing wage</strong> is a government-mandated pay system (base pay, fringe, and overtime rules) for public-works projects. It currently covers states like California, Nevada, Minnesota, and New York, plus federal Davis-Bacon work.</p>
+<h4>How to enable it</h4>
 <p><strong>Enabling it takes two separate steps that do not happen automatically:</strong></p>
 <div class="card">
 <ol class="i-list">
@@ -2309,6 +2419,7 @@
 <li><span class="i-num">2</span><span class="i-label"><strong>Flag each material</strong> as PW, separately. The project flag alone does not cover materials.</span></li>
 </ol>
 </div>
+<h4>Once it is on</h4>
 <p>A few things to know once it is on:</p>
 <ul>
 <li><strong>Classification follows the truck:</strong> when a driver switches trucks mid-shift, the rate changes with the equipment, not the person.</li>
@@ -2321,12 +2432,16 @@
 <div class="c-body">
 <strong>Common mistake</strong><br>Missing the material PW flag under-bills the job. Flagging the project alone does not cover the materials, so verify both flags are set.</div>
 </div>
+
+<h3>Note &amp; attachment visibility tiers</h3>
 <p><strong>Notes and attachments carry visibility tiers</strong> so the right people see the right thing: project, order, driver, and internal.</p>
 <ul>
 <li><strong>Internal notes</strong> stay with your team.</li>
 <li><strong>A rate attachment or driver-tier note</strong> is shared out to drivers.</li>
 </ul>
 <p>Set the tier deliberately so you never expose internal or pricing detail to a driver by accident.</p>
+
+<h3>Watch it done</h3>
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
 <source src="https://github.com/amytread/tread-u/releases/download/media-v1/v1-08-notes-and-attachments.mp4" type="video/mp4">
@@ -2353,6 +2468,8 @@
 <div class="vid-links">
 <a class="link" href="https://docs.tread.ai/specialized/prevailing-wage" target="_blank" rel="noopener">Full guide &rarr;</a>
 </div>
+
+<h3>What to watch for</h3>
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
@@ -2364,6 +2481,8 @@
 <h2>
 <span class="num">6</span>Segmentation &amp; units</h2>
 <p class="section-lead">Departments, service classes, and units of measure are how you slice, filter, and report on your work. All three are optional, so turn on only what your team actually uses.</p>
+
+<h3>Departments</h3>
 <p><strong>Departments</strong> are a company-level grouping you put on orders, projects, and equipment to segment your operation by division, yard, or region.</p>
 <ul>
 <li><strong>Best when</strong> your finance team already reports by division.</li>
@@ -2386,6 +2505,7 @@
 <li><strong>Cubic yards</strong> appear as "Yard."</li>
 <li><strong>Keep UoM consistent</strong> across materials and equipment so ticket math works.</li>
 </ul>
+<h3>What to watch for</h3>
 <div class="callout info">
 <div class="c-icon">i</div>
 <div class="c-body">
@@ -2483,6 +2603,8 @@
 <img src="https://github.com/amytread/tread-u/releases/download/media-v1/dispatch-annotated.jpg" alt="The Dispatch board in Tread, with four key areas highlighted" style="width:100%;border-radius:8px;border:1px solid var(--grey-2);display:block">
 <figcaption class="vp-cap">The real Dispatch board. The four highlighted areas are explained below.</figcaption>
 </figure>
+
+<h3>The four key areas</h3>
 <p>Here is what you are looking at:</p>
 <ul>
 <li><strong>Day status (1):</strong> a live count of every job by stage (Unassigned, Accepted, Sent, En Route, Loaded, Completed).</li>
@@ -2490,11 +2612,22 @@
 <li><strong>Order cards (3):</strong> one card per order, showing customer, material, pickup and dropoff, trucks, and status.</li>
 <li><strong>Drivers (4):</strong> your drivers and whether each one is available to dispatch.</li>
 </ul>
+
+<h4>How a job moves</h4>
 <div class="callout info">
 <div class="c-icon">i</div>
-<div class="c-body"><strong>How a job moves</strong><br>Accepted, then To Pickup, At Pickup, Loaded, To Dropoff, At Dropoff, Unloaded, In Review, and finally Completed. The status counts update as trucks move.</div>
+<div class="c-body"><strong>The status flow</strong><br>Accepted, then To Pickup, At Pickup, Loaded, To Dropoff, At Dropoff, Unloaded, In Review, and finally Completed. The status counts update as trucks move.</div>
 </div>
-<p>Orders that customers or vendors send you land in the <strong>Orders</strong> tab with Accept and Reject controls. Accept pulls an order onto your board so you can dispatch it. Reject sends it back. Search spans all dates.</p>
+
+<h3>Accept incoming orders</h3>
+<p>Orders that customers or vendors send you land in the <strong>Orders</strong> tab with Accept and Reject controls.</p>
+<ul>
+<li><strong>Accept:</strong> pulls an order onto your board so you can dispatch it.</li>
+<li><strong>Reject:</strong> sends it back.</li>
+<li><strong>Search:</strong> spans all dates.</li>
+</ul>
+
+<h3>See it in action</h3>
 <div class="card">
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
@@ -2511,6 +2644,7 @@
 </div>
 </div>
 <p style="color:var(--grey-7);line-height:1.6;margin:12px 0 0">A full tour of the Dispatch page: where orders live, how to move around, and where to accept incoming work.</p>
+
 <div class="card">
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
@@ -2527,6 +2661,8 @@
 </div>
 </div>
 <p style="color:var(--grey-7);line-height:1.6;margin:12px 0 0">How the multi-order view and summary stats give you the whole day at a glance.</p>
+
+<h3>Tips &amp; good to know</h3>
 <div class="callout tip">
 <div class="c-icon">&#10003;</div>
 <div class="c-body">
@@ -2545,12 +2681,16 @@
 <h2>
 <span class="num">2</span>Build &amp; send an order</h2>
 <p class="section-lead">Building an order is where you tell Tread what to haul, how much, and how the trucks should run.</p>
+
+<h3>What an order is</h3>
 <p>An order is one delivery assignment: one material, from one pickup to one dropoff.</p>
 <ul>
 <li><strong>The hierarchy:</strong> Projects, then Orders, then Jobs, then Dispatch.</li>
 <li><strong>One material each:</strong> a project can hold many orders, but every order carries a single material.</li>
 <li><strong>Set it on the order card:</strong> material, pickup and dropoff, quantity, units, and how the trucks run.</li>
 </ul>
+
+<h3>The three dispatch modes</h3>
 <p>How the order runs is set by three dispatch modes, driven by the <strong>Units</strong> and <strong>Running</strong> fields:</p>
 <div class="card">
 <ol class="i-list">
@@ -2559,12 +2699,16 @@
 <li><span class="i-num">3</span><span class="i-label"><strong>Tonnage.</strong> Set Units to Ton and enter the tons per truck. The order is measured by weight rather than by a load count.</span></li>
 </ol>
 </div>
+
+<h3>Truck type, capacity &amp; rates</h3>
 <p>Truck type and capacity feed the math behind the order:</p>
 <ul>
 <li><strong>Capacity:</strong> set in Settings. Tread uses it to auto-calculate quantities and cycles when there is no scale ticket.</li>
 <li><strong>Rates:</strong> a rate card auto-fills the pricing for the order.</li>
 <li><strong>Delivery estimate:</strong> calculated from the equipment capacity you selected.</li>
 </ul>
+
+<h3>See it in action</h3>
 <div class="card">
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
@@ -2580,6 +2724,7 @@
 </div>
 </div>
 <p style="color:var(--grey-7);line-height:1.6;margin:12px 0 0">The order card, field by field: what to fill in to create a valid order.</p>
+
 <div class="card">
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
@@ -2595,6 +2740,7 @@
 </div>
 </div>
 <p style="color:var(--grey-7);line-height:1.6;margin:12px 0 0">The three ways an order can run, shown side by side.</p>
+
 <div class="card">
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
@@ -2610,6 +2756,7 @@
 </div>
 </div>
 <p style="color:var(--grey-7);line-height:1.6;margin:12px 0 0">Where truck type and capacity come from and how they drive the quantity math.</p>
+
 <div class="card">
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
@@ -2625,6 +2772,8 @@
 </div>
 </div>
 <p style="color:var(--grey-7);line-height:1.6;margin:12px 0 0">How a rate card auto-fills pricing and how the delivery estimate is calculated.</p>
+
+<h3>Tips &amp; common mistakes</h3>
 <div class="callout info">
 <div class="c-icon">i</div>
 <div class="c-body">
@@ -2643,17 +2792,23 @@
 <h2>
 <span class="num">3</span>Assign &amp; manage</h2>
 <p class="section-lead">Once an order is built, you assign trucks to it, send those jobs to phones, and manage the changes that come up during the day.</p>
+
+<h3>Driver tab vs. Vendor tab</h3>
 <p>You assign a driver or vendor to each job row, then send it. The single most important choice is which tab you assign from:</p>
 <ul>
 <li><strong>Driver tab:</strong> your own drivers, and Owner-Operators you dispatch directly.</li>
 <li><strong>Vendor tab:</strong> hauling companies that sub-dispatch to their own drivers.</li>
 </ul>
+
+<h4>The three routing modes</h4>
 <p>That choice maps to three routing modes:</p>
 <ul>
 <li><strong>Regular:</strong> sends the load to your own drivers and company trucks. It appears on their phone immediately.</li>
 <li><strong>Hot:</strong> sends the load to an outside vendor's dispatcher, who picks which of their drivers accepts it. The driver name shows on your board only after acceptance.</li>
 <li><strong>Direct:</strong> assign straight to an Owner-Operator's driver, once they have shared that driver with you.</li>
 </ul>
+
+<h3>How to assign &amp; send</h3>
 <div class="card">
 <ol class="i-list">
 <li><span class="i-num">1</span><span class="i-label"><strong>Open the order</strong> and find the job row you want to fill.</span></li>
@@ -2662,14 +2817,19 @@
 <li><span class="i-num">4</span><span class="i-label"><strong>Send it.</strong> Click Send on the row, or Send All Jobs to push every pending assignment at once. The driver gets a push notification.</span></li>
 </ol>
 </div>
-<p>To move faster on repeat work:</p>
+
+<h3>Move faster on repeat work</h3>
 <ul>
 <li><strong>Duplicate:</strong> carries an order's driver assignments forward.</li>
 <li><strong>Copy-and-edit:</strong> tweak the details before you create the order.</li>
 <li><strong>Foreman:</strong> assign one to an order from mobile so they can see it in the field. A foreman sees the order but cannot dispatch trucks.</li>
 </ul>
+
+<h3>The Driver Schedule View</h3>
 <p>The <strong>Driver Schedule View</strong> flips the Orders view around. Each card represents an individual job for a driver, and truck-time can default from the order.</p>
 <p>It gives you a driver-by-driver, time-based picture that is easier to balance when you are running many trucks.</p>
+
+<h3>See it in action</h3>
 <div class="card">
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
@@ -2685,6 +2845,7 @@
 </div>
 </div>
 <p style="color:var(--grey-7);line-height:1.6;margin:12px 0 0">Assigning a foreman from the mobile app so they can follow the order on site.</p>
+
 <div class="card">
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
@@ -2700,6 +2861,7 @@
 </div>
 </div>
 <p style="color:var(--grey-7);line-height:1.6;margin:12px 0 0">Bulk edit and duplicate: the fast way to repeat and adjust orders mid-day.</p>
+
 <div class="card">
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
@@ -2716,6 +2878,8 @@
 </div>
 </div>
 <p style="color:var(--grey-7);line-height:1.6;margin:12px 0 0">The Driver Schedule View basics: cards as individual jobs, inverted from the Orders view.</p>
+
+<h3>Tips &amp; common mistakes</h3>
 <div class="callout tip">
 <div class="c-icon">&#10003;</div>
 <div class="c-body">
@@ -2734,6 +2898,8 @@
 <h2>
 <span class="num">4</span>AI &amp; tickets</h2>
 <p class="section-lead">Tickets are the proof each load happened. Tread makes them digital and uses AI to chase down the ones that are missing.</p>
+
+<h3>What a ticket captures</h3>
 <p>A ticket is a record of a load. Digital tickets replace paper, so nothing has to be scanned, faxed, or driven back to the office.</p>
 <p>Each ticket captures:</p>
 <ul>
@@ -2747,12 +2913,16 @@
 <strong>Good to know</strong>
 <br>You can let vendors split jobs so their portion of the work carries its own tickets.</div>
 </div>
+
+<h3>How tickets reach Tread</h3>
 <p>Tickets reach Tread three ways:</p>
 <ul>
 <li><strong>In the app:</strong> a driver or foreman photographs a paper ticket.</li>
 <li><strong>By text:</strong> a driver texts a photo to a Tread SMS number. Handy for drivers without the app.</li>
 <li><strong>By integration:</strong> a scale house, quarry, or plant sends the ticket automatically, with no driver action at all.</li>
 </ul>
+
+<h3>The Ticket Chaser</h3>
 <p>The <strong>Ticket Chaser</strong> is Tread's AI agent. It reads each ticket image and matches it to the dispatched load:</p>
 <ul>
 <li><strong>Extracts:</strong> the ticket number, weight, material, and times.</li>
@@ -2765,6 +2935,8 @@
 <strong>Where to turn it on</strong>
 <br>Enable the Ticket Chaser under Settings, then Agent Configurations.</div>
 </div>
+
+<h3>See it in action</h3>
 <div class="card">
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
@@ -2780,6 +2952,7 @@
 </div>
 </div>
 <p style="color:var(--grey-7);line-height:1.6;margin:12px 0 0">Digital tickets in action: paperless proof of delivery, straight into Tread.</p>
+
 <div class="card">
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
@@ -2795,6 +2968,8 @@
 </div>
 </div>
 <p style="color:var(--grey-7);line-height:1.6;margin:12px 0 0">The AI ticket chaser texting drivers to collect and verify a missing ticket.</p>
+
+<h3>Tips &amp; common mistakes</h3>
 <div class="callout tip">
 <div class="c-icon">&#10003;</div>
 <div class="c-body">
@@ -2814,7 +2989,8 @@
 <span class="num">5</span>Dispatch power features</h2>
 <p class="section-lead">These are the levers that separate a smooth dispatch from a chaotic one. Learn them once and you will reach for them every day.</p>
 
-<p id="a-running-vs-fixed"><strong>Running vs. fixed.</strong> How an order ends depends on its type.</p>
+<h3 id="a-running-vs-fixed">Running vs. fixed</h3>
+<p>How an order ends depends on its type.</p>
 <ul>
 <li><strong>Running:</strong> drivers keep cycling load after load until you stop them. It never auto-ends. Use it when you do not know the total up front (haul until the pile is gone).</li>
 <li><strong>Fixed load-count:</strong> auto-ends after the last load is dropped. Use it when the quantity is set.</li>
@@ -2826,14 +3002,16 @@
 <br>Running orders never auto-end. Stop the order when the work is done, or drivers will keep cycling.</div>
 </div>
 
-<p id="a-target-vs-billing"><strong>Schedule by load, charge by ton.</strong> Your dispatch target and your billing unit do not have to match.</p>
+<h3 id="a-target-vs-billing">Schedule by load, charge by ton</h3>
+<p>Your dispatch target and your billing unit do not have to match.</p>
 <ul>
 <li><strong>Track by load:</strong> simple for drivers.</li>
 <li><strong>Bill by ton:</strong> how you actually invoice.</li>
 <li><strong>How it works:</strong> set the order's target quantity in one unit and the rate in another. Tread keeps the two separate all the way through to billing.</li>
 </ul>
 
-<p id="a-stagger"><strong>Stagger.</strong> Stagger offsets your trucks so they do not all hit the plant or pickup at once.</p>
+<h3 id="a-stagger">Stagger</h3>
+<p>Stagger offsets your trucks so they do not all hit the plant or pickup at once.</p>
 <ul>
 <li><strong>Set an interval:</strong> for example 10 minutes. Tread spaces each truck's start by that gap.</li>
 <li><strong>The payoff:</strong> smoother load-out and no pile-up at the scale house.</li>
@@ -2845,7 +3023,8 @@
 <br>High-volume plants, or a single scale where simultaneous arrivals cause a backup.</div>
 </div>
 
-<p id="a-stacking-preloading"><strong>Stacking &amp; preloading.</strong> Line up work so drivers and dispatch flow without gaps.</p>
+<h3 id="a-stacking-preloading">Stacking &amp; preloading</h3>
+<p>Line up work so drivers and dispatch flow without gaps.</p>
 <ul>
 <li><strong>Stacking:</strong> chain sequential jobs for one driver across multiple orders. They finish one and roll straight into the next.</li>
 <li><strong>Preloading:</strong> stage tomorrow's driver assignments in advance, ready to send when the day starts.</li>
@@ -2868,7 +3047,8 @@
 </div>
 <p style="color:var(--grey-7);line-height:1.6;margin:12px 0 0">Stacking loads in the Driver Schedule View so one driver flows from job to job.</p>
 
-<p id="a-trd-number"><strong>The TRD job number.</strong> Every job (a truck's assignment) gets a unique, searchable TRD-#### ID.</p>
+<h3 id="a-trd-number">The TRD job number</h3>
+<p>Every job (a truck's assignment) gets a unique, searchable TRD-#### ID.</p>
 <p>Use it to jump straight to a specific truck's assignment: in search, on tickets, and whenever a driver or customer references a particular load.</p>
 <div class="callout tip">
 <div class="c-icon">&#10003;</div>
@@ -2950,6 +3130,9 @@
 <h2>
 <span class="num">1</span>Get the app</h2>
 <p class="section-lead">Everything a driver does happens on the phone, so step one is getting the Tread app installed and signed in.</p>
+
+<h3>How to sign in</h3>
+<p>There is no username or password. A driver installs the app and logs in with a texted code.</p>
 <div class="card">
 <ol class="i-list">
 <li><span class="i-num">1</span><span class="i-label"><strong>Download Tread</strong> from the App Store or Google Play.</span></li>
@@ -2958,13 +3141,17 @@
 <li><span class="i-num">4</span><span class="i-label"><strong>You are in.</strong> Your assigned jobs are right there.</span></li>
 </ol>
 </div>
-<p class="section-lead">Driver app vs. the web:</p>
+
+<h3>Driver app vs. the web</h3>
+<p>The driver app and the web version show the same jobs, built for two different seats.</p>
 <ul>
 <li><strong>Driver app:</strong> built for the cab. It shows your own work and nothing else: your assigned jobs, the pickup and drop-off, and the run controls to start and stop.</li>
 <li><strong>Web version:</strong> what dispatch and the office use, with the full board, maps, and reporting.</li>
 <li><strong>Same job, same view:</strong> your view mirrors dispatch, so you are both looking at the same thing.</li>
 <li><strong>One difference:</strong> the driver view hides the total truck count on a job, so you focus on your load.</li>
 </ul>
+
+<h3>See it in action</h3>
 <div class="card">
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
@@ -2980,10 +3167,12 @@
 </div>
 </div>
 <p class="vp-cap">Watch how a dispatch lands on the phone and what the driver sees.</p>
+
+<h3>Good to know</h3>
 <div class="callout info">
 <div class="c-icon">i</div>
 <div class="c-body">
-<strong>Good to know</strong>
+<strong>Dispatch reaches the phone two ways</strong>
 <br>When dispatch hits Send, it fires both a text and a push notification, so the driver gets the job even if the app is closed.</div>
 </div>
 <div class="callout tip">
@@ -2992,10 +3181,12 @@
 <strong>Pro tip</strong>
 <br>Drivers who work in Spanish can switch the app to Spanish under Settings, Idioma. That also changes the text-message templates, so login codes and alerts arrive in Spanish.</div>
 </div>
+
+<h3>Common mistakes</h3>
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
-<strong>Common mistake</strong>
+<strong>Login code never arrives</strong>
 <br>If the login code never shows up, the phone number in Tread usually does not match the SIM in the phone. Wait 60 seconds, request a resend, and confirm the number on the driver record matches the device.</div>
 </div>
 </div>
@@ -3004,18 +3195,24 @@
 <h2>
 <span class="num">2</span>Run a job</h2>
 <p class="section-lead">This is the core of the driver day: pick up the assigned job, start it, and let Tread track the run so dispatch can see you live.</p>
+
+<h3>Accept the job first</h3>
 <p>Assigned jobs land in your Assigned list. Open one to review the details, then accept it to lock it in.</p>
 <ul>
 <li><strong>Accept:</strong> locks the job in as yours.</li>
 <li><strong>Decline:</strong> sends it right back to dispatch so they can reassign.</li>
 <li><strong>Start:</strong> waits for when you actually roll.</li>
 </ul>
-<p class="section-lead">Starting a job turns on live GPS tracking, so dispatch sees your truck move on the map in real time.</p>
+
+<h3>Start turns on live tracking</h3>
+<p>Starting a job turns on live GPS tracking, so dispatch sees your truck move on the map in real time.</p>
 <ul>
 <li><strong>No check-in calls:</strong> nobody has to call to ask where you are.</li>
 <li><strong>Auto start/stop:</strong> geofences can auto-start when you enter the pickup area and auto-end when you leave the drop-off, if the job is set up that way.</li>
 <li><strong>Manual Start:</strong> always there as your backup.</li>
 </ul>
+
+<h4>The run, step by step</h4>
 <div class="card">
 <ol class="i-list">
 <li><span class="i-num">1</span><span class="i-label"><strong>Open the request</strong> from your Assigned list and review the pickup, drop-off, and material.</span></li>
@@ -3024,6 +3221,8 @@
 <li><span class="i-num">4</span><span class="i-label"><strong>Drive the run</strong> and let the map do the talking. No check-in calls needed.</span></li>
 </ol>
 </div>
+
+<h3>See it in action</h3>
 <div class="card">
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
@@ -3039,16 +3238,20 @@
 </div>
 </div>
 <p class="vp-cap">See the accept, start, and live-tracking flow end to end.</p>
+
+<h3>Good to know</h3>
 <div class="callout tip">
 <div class="c-icon">&#10003;</div>
 <div class="c-body">
 <strong>Pro tip</strong>
 <br>If you start before your scheduled time, Tread shows an early-start prompt so the start is intentional. On the dispatch map, a truck that is started but sitting still shows yellow, which is the cue for dispatch to check in.</div>
 </div>
+
+<h3>Common mistakes</h3>
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
-<strong>Common mistake</strong>
+<strong>Accept is not the same as Start</strong>
 <br>Accepting a job is not the same as starting it. Accept confirms the work is yours, but tracking only begins when you tap Start. Forgetting to start leaves you invisible on the map.</div>
 </div>
 </div>
@@ -3057,19 +3260,25 @@
 <h2>
 <span class="num">3</span>Tickets &amp; completion</h2>
 <p class="section-lead">Closing out a job means capturing your tickets, completing the job, and knowing exactly when to stop sharing your location.</p>
-<p class="section-lead">A ticket is your proof of the load. It records quantity, material, site, and time.</p>
+
+<h3>Capture the ticket</h3>
+<p>A ticket is your proof of the load. It records quantity, material, site, and time.</p>
 <ul>
 <li><strong>Snap a photo:</strong> the easiest way is to photograph the paper scale ticket right in the app.</li>
 <li><strong>Ticket Chaser reads it:</strong> it pulls out the ticket number and quantity and pre-fills the fields. You just confirm or fix what it read.</li>
 <li><strong>Text it in:</strong> you can also text a ticket photo to your Tread number if that is faster.</li>
 <li><strong>Never blocks billing:</strong> the office reviews every ticket before billing, so the OCR is there to save typing.</li>
 </ul>
-<p class="section-lead">When the work is done you complete the job, and many teams capture an e-signature as proof of work.</p>
+
+<h3>Complete and sign</h3>
+<p>When the work is done you complete the job, and many teams capture an e-signature as proof of work.</p>
 <ul>
 <li><strong>Where you sign:</strong> open the load, job, or shift, review the details, and sign right on the screen.</li>
 <li><strong>What Tread stamps:</strong> the time, your location, and your user ID.</li>
 <li><strong>Where it goes:</strong> attached to the record for billing and delivery confirmation.</li>
 </ul>
+
+<h4>Close-out, step by step</h4>
 <div class="card">
 <ol class="i-list">
 <li><span class="i-num">1</span><span class="i-label"><strong>Snap the ticket</strong> photo in the app. Ticket Chaser reads the number and quantity.</span></li>
@@ -3078,6 +3287,8 @@
 <li><span class="i-num">4</span><span class="i-label"><strong>Sign on screen</strong> if your team captures an e-signature. Tread stamps time, location, and your ID.</span></li>
 </ol>
 </div>
+
+<h3>See it in action</h3>
 <div class="card">
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
@@ -3093,16 +3304,20 @@
 </div>
 </div>
 <p class="vp-cap">Watch a ticket capture, job completion, and stop in one pass.</p>
+
+<h3>Stop Job vs. Stop Logging</h3>
 <div class="callout info">
 <div class="c-icon">i</div>
 <div class="c-body">
-<strong>Good to know</strong>
+<strong>Two separate actions</strong>
 <br>Stop Job ends the load you are running. Stop Logging is what turns off location sharing for your shift. They are two separate actions.</div>
 </div>
+
+<h3>Common mistakes</h3>
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
-<strong>Common mistake</strong>
+<strong>Stopping a job does not stop tracking</strong>
 <br>Stopping a job does not stop location sharing. A driver keeps sharing location until they Stop Logging. At the true end of the shift, remember to Stop Logging so the phone is not tracking on personal time.</div>
 </div>
 </div>
@@ -3111,7 +3326,9 @@
 <h2>
 <span class="num">4</span>In the field</h2>
 <p class="section-lead">Service drops out on real job sites. Tread is built to keep working when it does, and most snags have a quick fix you can do from the truck.</p>
-<p class="section-lead">Offline mode is automatic. If service drops, Tread keeps running and stores your work on the phone.</p>
+
+<h3>How offline mode works</h3>
+<p>Offline mode is automatic. If service drops, Tread keeps running and stores your work on the phone.</p>
 <ul>
 <li><strong>What it saves:</strong> location pings, time tracking, tickets, photos, and status changes.</li>
 <li><strong>You always know:</strong> a banner tells you that you are offline.</li>
@@ -3119,7 +3336,9 @@
 <li><strong>When you reconnect:</strong> everything syncs on its own, and signatures upload with their original timestamp.</li>
 <li><strong>The one catch:</strong> a new dispatch sent while you are offline will not appear until you reconnect.</li>
 </ul>
-<p class="section-lead">Most field problems are location or dispatch issues, and both have a fast fix.</p>
+
+<h3>Quick troubleshooting</h3>
+<p>Most field problems are location or dispatch issues, and both have a fast fix.</p>
 <div class="card">
 <ol class="i-list">
 <li><span class="i-num">1</span><span class="i-label"><strong>Location not tracking?</strong> Set Tread to Always and Precise on iPhone, or Unrestricted battery on Android.</span></li>
@@ -3127,6 +3346,8 @@
 <li><span class="i-num">3</span><span class="i-label"><strong>Still stuck?</strong> Send your admin your phone number and app version from Settings, About, plus a screenshot.</span></li>
 </ol>
 </div>
+
+<h3>See it in action</h3>
 <div class="card">
 <figure style="margin:0">
 <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:8px;overflow:hidden;background:#132732">
@@ -3143,16 +3364,20 @@
 </div>
 </div>
 <p class="vp-cap">Field crews are covered too: foremen can raise order requests from mobile using the mobile order form.</p>
+
+<h3>Good to know</h3>
 <div class="callout tip">
 <div class="c-icon">&#10003;</div>
 <div class="c-body">
 <strong>Pro tip</strong>
 <br>You do not have to babysit the connection. Keep working through a dead zone and let the app sync when you roll back into coverage.</div>
 </div>
+
+<h3>Common mistakes</h3>
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
-<strong>Common mistake</strong>
+<strong>Android battery optimization kills GPS</strong>
 <br>On Android, battery optimization can quietly kill background GPS. If a driver keeps dropping off the map, set Tread to Unrestricted and, on Samsung, remove it from the Sleeping apps list.</div>
 </div>
 </div>
@@ -3229,12 +3454,27 @@
 <span class="num">1</span>Approvals overview</h2>
 <p class="section-lead">Approvals are the gate between the field and the money. Nothing gets billed or paid until someone signs off here.</p>
 
+<figure style="margin:16px 0">
+<img src="https://github.com/amytread/tread-u/releases/download/media-v1/approvals-annotated.jpg" alt="Approvals screen" style="width:100%;border-radius:8px;border:1px solid var(--grey-2);display:block">
+<figcaption class="vp-cap">The Approvals screen.</figcaption>
+</figure>
+<ul>
+<li><strong>1.</strong> Four sub-tabs: Approve Work (driver shift hours), Approve Jobs (billable hours by job), Payables, and Receivables.</li>
+<li><strong>2.</strong> Each row shows the hours, loads, and tickets to review before you approve.</li>
+<li><strong>3.</strong> The green Approve button records the approval.</li>
+</ul>
+
+<h3>What gets approved</h3>
 <p>Every shift produces two kinds of records, and both must be approved before they can land in a settlement:</p>
 <ul>
 <li><strong>Timesheets:</strong> driver hours, from geofence data, the mobile app, driver input, or foreman entry.</li>
 <li><strong>Tickets:</strong> the loads that moved (load number, material, quantity, unit, load and dump times, and a photo).</li>
 </ul>
-<p>Unapproved data simply does not appear downstream.</p>
+<div class="callout warning">
+<div class="c-icon">!</div>
+<div class="c-body">
+<strong>Common mistake</strong><br>Unapproved data simply does not appear downstream. If a ticket or shift seems to be missing from a settlement, it was almost always never approved. Check approvals first before assuming the system dropped it.</div>
+</div>
 
 <h3>The two tracks</h3>
 <p>The single most important idea in this course: approvals run on two separate tracks. Keep them straight and everything else falls into place.</p>
@@ -3250,12 +3490,14 @@
 <strong>Good to know</strong><br>The two tracks can pull from the same day of work and still produce different numbers, because pay rules and bill rules are not the same. That is by design. Review each track on its own terms.</div>
 </div>
 
-<h3>Two places to approve</h3>
+<h3>Where you approve</h3>
 <p>You can approve from either place, with the same result. Use whichever fits your rhythm:</p>
 <ul>
 <li><strong>Dispatch page:</strong> approve inline as you watch the day unfold.</li>
 <li><strong>Approvals page:</strong> one focused screen to work through everything that is waiting.</li>
 </ul>
+
+<h4>See it in action</h4>
 <div class="card">
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
@@ -3272,15 +3514,11 @@
 </div>
 <p class="vp-cap">Watch the Approvals page tour to see where both tracks live and how the two approval spots line up.</p>
 
+<h4>How it fits the flow</h4>
 <div class="callout info">
 <div class="c-icon">i</div>
 <div class="c-body">
 <strong>Good to know</strong><br>The flow always runs the same direction: tickets and timesheets, then approvals, then settlement, then export. Approvals are the checkpoint that protects everything after them.</div>
-</div>
-<div class="callout warning">
-<div class="c-icon">!</div>
-<div class="c-body">
-<strong>Common mistake</strong><br>If a ticket or shift seems to be missing from a settlement, it was almost always never approved. Check approvals first before assuming the system dropped it.</div>
 </div>
 </div>
 
@@ -3289,6 +3527,7 @@
 <span class="num">2</span>Work/Shift track</h2>
 <p class="section-lead">This is the track that pays your drivers, so you review the hours they actually worked against the timesheet.</p>
 
+<h3>What it is</h3>
 <p>A timesheet is the record of a driver's shift: start time, end time, and total hours. Those hours can come from geofence data, the mobile app, the driver, or a foreman entry.</p>
 <ul>
 <li><strong>The one question:</strong> are these the hours we should pay?</li>
@@ -3304,6 +3543,8 @@
 <li><span class="i-num">4</span><span class="i-label"><strong>Approve the shift</strong> so the hours become eligible for settlement.</span></li>
 </ol>
 </div>
+
+<h4>See it in action</h4>
 <div class="card">
 <figure style="margin:0">
 <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:8px;overflow:hidden;background:#132732">
@@ -3321,6 +3562,7 @@
 </div>
 <p class="vp-cap">This walkthrough shows the shift-hours review end to end, including how to edit before you approve.</p>
 
+<h3>What to watch for</h3>
 <div class="callout tip">
 <div class="c-icon">&#10003;</div>
 <div class="c-body">
@@ -3338,6 +3580,7 @@
 <span class="num">3</span>Job track</h2>
 <p class="section-lead">This is the track you bill from, so you approve the billable hours and loads tied to each job.</p>
 
+<h3>What it is</h3>
 <p>On the job track you approve work by job, and where you use them, by phase code. Two terms to know:</p>
 <ul>
 <li><strong>Phase code:</strong> splits a job's hours into meaningful buckets so the right work bills against the right line.</li>
@@ -3358,6 +3601,8 @@
 <li><span class="i-num">4</span><span class="i-label"><strong>Approve the job hours and loads</strong> so they are ready for settlement and billing.</span></li>
 </ol>
 </div>
+
+<h4>See it in action</h4>
 <div class="card">
 <figure style="margin:0">
 <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:8px;overflow:hidden;background:#132732">
@@ -3391,6 +3636,7 @@
 </div>
 <p class="vp-cap">This clip covers approving loads and reconciling scale tickets on the job track.</p>
 
+<h3>What to watch for</h3>
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
@@ -3405,12 +3651,15 @@
 
 <h3>Foreman sign-off in the app</h3>
 <p>In the foreman app, sign-off lives in the <strong>Review</strong> tab. It lists the time logs for drivers assigned to the foreman's orders on a given date.</p>
-<p>Each row shows:</p>
+
+<h4>What each row shows</h4>
 <ul>
 <li><strong>Driver</strong> and hours logged</li>
 <li><strong>Approval status</strong></li>
 <li><strong>Loads requested</strong> and tickets added</li>
 </ul>
+
+<h4>What you can do</h4>
 <p>Tap a row for the detail: start time, end time, the timesheet image, and job data. From there the foreman can:</p>
 <ul>
 <li><strong>APPROVE:</strong> sign off on the hours as shown.</li>
@@ -3440,6 +3689,7 @@
 <li><strong>What it will not do:</strong> block an approval. It is informational, so its flags never stop you.</li>
 </ul>
 
+<h3>What to watch for</h3>
 <div class="callout tip">
 <div class="c-icon">&#10003;</div>
 <div class="c-body">
@@ -3524,7 +3774,9 @@
 <h2>
 <span class="num">1</span>Rates on a dispatch</h2>
 <p class="section-lead">Every dispatch carries money in two directions, and Tread colors them so you can tell at a glance which is which.</p>
-<p>Two numbers ride along with the work, and they are separate figures with separate rates. A dispatch almost always has both.</p>
+
+<h3>The two directions of money</h3>
+<p>Two numbers ride along with the work. They are separate figures with separate rates, and a dispatch almost always has both.</p>
 <ul>
 <li><strong>Receivable (green):</strong> what you bill the customer. Money coming to you.</li>
 <li><strong>Payable (red):</strong> what you pay the driver, vendor, or owner-operator who hauled it. Money going out.</li>
@@ -3535,16 +3787,22 @@
 <strong>Good to know</strong>
 <br>If a color is missing, the rate for that side has not resolved yet.</div>
 </div>
+
+<h3>What drives the rate</h3>
 <p>A rate is not one flat number. It is chosen by matching the dispatch against your rate cards.</p>
-<p><strong>Four dimensions narrow the match:</strong></p>
+<h4>Four dimensions narrow the match</h4>
 <ul>
 <li><strong>Pickup site</strong></li>
 <li><strong>Dropoff site</strong></li>
 <li><strong>Equipment type</strong></li>
 <li><strong>Material</strong></li>
 </ul>
-<p><strong>How the match resolves:</strong> the most specific match wins, then Tread falls back to the account rate card, and finally the company default.</p>
-<p><strong>Rates come in a few shapes:</strong> per hour, per ton, per load, or a flat fee. So the same truck can earn a different rate on a different lane, and that is expected.</p>
+<h4>How the match resolves</h4>
+<p>The most specific match wins, then Tread falls back to the account rate card, and finally the company default.</p>
+<h4>Rate shapes</h4>
+<p>Rates come in a few shapes: per hour, per ton, per load, or a flat fee. So the same truck can earn a different rate on a different lane, and that is expected.</p>
+
+<h3>See it in action</h3>
 <div class="card">
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
@@ -3560,6 +3818,8 @@
 </div>
 </div>
 <p class="vp-cap">Watch how the green receivable and red payable read on a live dispatch, and where the rate is pulled from.</p>
+
+<h3>Tips &amp; pitfalls</h3>
 <div class="callout tip">
 <div class="c-icon">&#10003;</div>
 <div class="c-body">
@@ -3578,17 +3838,24 @@
 <h2>
 <span class="num">2</span>Edit rates &amp; line items</h2>
 <p class="section-lead">Work in the field rarely matches the quote exactly, so you can correct rates and add line items after the dispatch runs.</p>
+
+<h3>Why edits happen</h3>
 <p>When a rate resolves wrong or a job picks up extra charges, you fix it on the dispatch after the fact. This is where the payable and billing sides truly split apart.</p>
+
+<h3>Payable vs. billing</h3>
 <ul>
 <li><strong>Payable rate:</strong> what the driver or vendor earns.</li>
 <li><strong>Billing rate:</strong> what the customer pays.</li>
 </ul>
 <p>The two are independent. You can raise the payable to cover a driver's standby without touching the customer invoice, or the reverse. Editing one side never moves the other.</p>
-<p><strong>Two things you can adjust:</strong></p>
+
+<h3>What you can adjust</h3>
 <ul>
 <li><strong>Line item:</strong> a single priced row (a material, an origin, a destination, a unit of measure, and a price).</li>
 <li><strong>Add-ons:</strong> extra lines on top, like tolls, demurrage, layover, or a truck commission. Add them to whichever side (receivable or payable) the charge belongs to.</li>
 </ul>
+
+<h3>How to make the edit</h3>
 <div class="card">
 <ol class="i-list">
 <li><span class="i-num">1</span><span class="i-label"><strong>Open the dispatch</strong> and find the rate section for the side you need, receivable or payable.</span></li>
@@ -3597,6 +3864,8 @@
 <li><span class="i-num">4</span><span class="i-label"><strong>Confirm the totals</strong> so the green and red figures reflect the real work before it settles.</span></li>
 </ol>
 </div>
+
+<h3>See it in action</h3>
 <div class="card">
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
@@ -3612,6 +3881,8 @@
 </div>
 </div>
 <p class="vp-cap">See a rate corrected and a line item added after dispatch, with the payable and billing sides staying separate.</p>
+
+<h3>Tips &amp; pitfalls</h3>
 <div class="callout info">
 <div class="c-icon">i</div>
 <div class="c-body">
@@ -3630,6 +3901,8 @@
 <h2>
 <span id="a-build-settlements" class="num">3</span>Build settlements</h2>
 <p class="section-lead">A settlement is the finalized batch of approved work, turned into something you can bill or pay.</p>
+
+<h3>What a settlement is</h3>
 <p>Once tickets and timesheets are approved, you roll them into a <strong>settlement</strong>: a finalized batch ready to bill or pay. There are two kinds, and they mirror the two colors from Module 1.</p>
 <ul>
 <li><strong>Receivable settlement (green):</strong> bills the customer. Applies customer rates, add-ons, fuel surcharge, and sales tax.</li>
@@ -3641,8 +3914,10 @@
 <strong>Good to know</strong>
 <br>Both kinds pull from the same approved tickets and timesheets.</div>
 </div>
+
+<h3>Add-ons and fuel surcharge</h3>
 <p>Add-ons and fuel surcharge fold in here.</p>
-<p><strong>Fuel surcharge (FSC) has three parts:</strong></p>
+<h4>Fuel surcharge (FSC) has three parts</h4>
 <ul>
 <li><strong>Price index:</strong> such as the DOE diesel average.</li>
 <li><strong>Schedule:</strong> maps fuel price bands to a percentage or per-mile rate.</li>
@@ -3654,12 +3929,16 @@
 <strong>Common mistake</strong>
 <br>If any one of the three FSC parts is missing, the surcharge silently drops off the invoice. Also note: commission applies to each line item, not to the total.</div>
 </div>
+
+<h3>Correcting a settlement</h3>
 <div class="callout info">
 <div class="c-icon">i</div>
 <div class="c-body">
 <strong>Good to know</strong>
 <br>Settlements cannot be edited once built. The only correction path is <strong>void and redo</strong>: void the settlement, fix the underlying ticket or rate, then re-settle. Plan for that so you do not send a bad invoice trying to patch one in place.</div>
 </div>
+
+<h3>See it in action</h3>
 <div class="card">
 <figure style="margin:0">
 <div style="position:relative;padding-bottom:56.25%;height:0;border-radius:8px;overflow:hidden;background:#132732">
@@ -3692,6 +3971,8 @@
 </div>
 </div>
 <p class="vp-cap">A closer look at building the payable and receivable sides, including add-ons and FSC.</p>
+
+<h3>Tips &amp; pitfalls</h3>
 <div class="callout tip">
 <div class="c-icon">&#10003;</div>
 <div class="c-body">
@@ -3710,6 +3991,8 @@
 <h2>
 <span class="num">4</span>Accounting handoff</h2>
 <p class="section-lead">The last mile turns a stack of settlements into invoices your accounting team can actually use.</p>
+
+<h3>How the handoff works</h3>
 <p>When settlements are built, you hand them off in a batch instead of one at a time.</p>
 <div class="callout info">
 <div class="c-icon">i</div>
@@ -3717,6 +4000,8 @@
 <strong>Good to know</strong>
 <br>The exported flag is your record that a settlement has already left the building.</div>
 </div>
+
+<h3>The four-step handoff</h3>
 <div class="card">
 <ol class="i-list">
 <li><span class="i-num">1</span><span class="i-label"><strong>Bulk-create settlements</strong> from your approved, batched work.</span></li>
@@ -3725,12 +4010,16 @@
 <li><span class="i-num">4</span><span class="i-label"><strong>Mark as exported</strong> so each settlement is logged as sent and cannot go out again.</span></li>
 </ol>
 </div>
+
+<h3>Where settlements go next</h3>
 <p>From there, settlements move into your accounting system.</p>
 <ul>
 <li><strong>Integrations:</strong> Tread can push to QuickBooks, Sage, Vista, Foundation, or Spectrum.</li>
 <li><strong>PDF statements:</strong> produced for partners who are not on a portal.</li>
 <li><strong>Scheduled push:</strong> once an integration is set up, settlements can push on a schedule with no manual export step.</li>
 </ul>
+
+<h3>See it in action</h3>
 <div class="card">
 <figure style="margin:0">
 <video controls preload="metadata" playsinline style="width:100%;border-radius:8px;display:block;background:#132732;aspect-ratio:16/9;">
@@ -3746,6 +4035,8 @@
 </div>
 </div>
 <p class="vp-cap">The whole handoff in one pass: bulk-create, PDF, email, and mark exported.</p>
+
+<h3>Tips &amp; pitfalls</h3>
 <div class="callout tip">
 <div class="c-icon">&#10003;</div>
 <div class="c-body">
@@ -3831,7 +4122,9 @@
 <h2>
 <span class="num">1</span><span id="a-core-reports">Core reports</span></h2>
 <p class="section-lead">The report library turns your raw dispatch, ticket, hour, and billing activity into the numbers your books run on.</p>
-<p>Open the report library from <strong>Reports</strong>. Reports are grouped by purpose so you can find the right one fast:</p>
+
+<h3>Where the reports live</h3>
+<p>Open the report library from <strong>Reports</strong>. Reports are grouped by purpose so you can find the right one fast.</p>
 <ul class="checklist">
 <li><span class="i-label"><strong>Operations:</strong> what happened in the field.</span></li>
 <li><span class="i-label"><strong>Billing:</strong> your P&amp;L view and customer invoicing.</span></li>
@@ -3839,10 +4132,18 @@
 <li><span class="i-label"><strong>Vendor Performance:</strong> vendor scorecards.</span></li>
 <li><span class="i-label"><strong>Compliance:</strong> the records you need on file.</span></li>
 </ul>
-<p>Payables and driver payroll come from the Billing and Pay reports. Job-level cost lives in the Billing and Operations slices.</p>
+
+<h4>Where each number comes from</h4>
+<ul class="checklist">
+<li><span class="i-label"><strong>Payables and driver payroll:</strong> the Billing and Pay reports.</span></li>
+<li><span class="i-label"><strong>Job-level cost:</strong> the Billing and Operations slices.</span></li>
+</ul>
+
 <h3>Build your own with OmniReports</h3>
 <p class="section-lead">When a standard report does not slice the data the way you need, OmniReports is Tread's custom report builder.</p>
-<p>Use it for repeatable custom views like billable versus non-billable hours, materials by service class, or vendor scorecards by region. Build it in five steps:</p>
+<p>Use it for repeatable custom views like billable versus non-billable hours, materials by service class, or vendor scorecards by region.</p>
+
+<h4>The five steps</h4>
 <div class="card">
 <ol class="i-list">
 <li><span class="i-num">1</span><span class="i-label"><strong>Filter first</strong> by date range, customer, project, department, driver, equipment, status, or label so you are looking at the right slice.</span></li>
@@ -3852,18 +4153,21 @@
 <li><span class="i-num">5</span><span class="i-label"><strong>Schedule</strong> recurring delivery (daily, weekly, or monthly) by email so the numbers land without anyone pulling them.</span></li>
 </ol>
 </div>
+
 <div class="callout tip">
 <div class="c-icon">&#10003;</div>
 <div class="c-body">
 <strong>Pro tip</strong>
 <br>Think of an OmniReport as a saved query. Build it once, drop it in the right category, and you never rebuild the same view again. Every report can export to CSV in one click.</div>
 </div>
+
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
 <strong>Common mistake</strong>
 <br>If a field you expect is missing, that is a role permission, not missing data. OmniReports respects role permissions, so check the user's access before you go hunting for a data problem. Still stuck? Email support@tread.io.</div>
 </div>
+
 <div class="vid-links">
 <a class="link" href="https://docs.tread.ai/concepts/omni-reports" target="_blank" rel="noopener">Full guide &rarr;</a>
 <span class="badge badge-coming coming">Walkthrough video coming soon</span>
@@ -3874,28 +4178,36 @@
 <h2>
 <span class="num">2</span>Exports</h2>
 <p class="section-lead">Getting tickets, hours, and loads out of Tread cleanly is what makes billing and payroll add up.</p>
+
+<h3>Pull an export</h3>
 <p>Pick a report, set the date range, and apply your filters (customer, project, department, or driver). Results show on the page, and the <strong>Download</strong> button gives you CSV or PDF.</p>
+
+<h4>Pick the right format</h4>
 <ul class="checklist">
 <li><span class="i-label"><strong>Choose CSV</strong> when the data is going into a system or a spreadsheet.</span></li>
 <li><span class="i-label"><strong>Choose PDF</strong> when a person needs to read or file it.</span></li>
 <li><span class="i-label"><strong>For CSV:</strong> turn on "Apply data formatting" and "Keep hidden columns hidden" so the file lands clean.</span></li>
 <li><span class="i-label"><strong>For PDF:</strong> Legal size in Landscape, tables expanded, filter values shown gives you a readable page.</span></li>
 </ul>
+
 <h3>Schedule instead of pulling by hand</h3>
 <p>Click <strong>Schedule</strong> at the bottom of a report to send it on a cadence (daily, weekly, or end-of-period) to a set of recipients in the format you choose.</p>
 <p>Tread marks settlements as exported once they go out. That is how you avoid billing or paying the same work twice.</p>
+
 <div class="callout info">
 <div class="c-icon">i</div>
 <div class="c-body">
 <strong>Good to know</strong>
 <br>The "exported" flag is your guardrail against duplicates. When a settlement is already marked exported, treat it as done. If something genuinely needs to change, create a new settlement rather than re-sending the old one.</div>
 </div>
+
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
 <strong>Common mistake</strong>
 <br>Do not export to Excel format. It is a static dump with no formulas and drifts out of sync, so use CSV instead. Also watch filter scope: an unfiltered multi-region report shows rolled-up totals that will not match what a single region expects.</div>
 </div>
+
 <div class="vid-links">
 <a class="link" href="https://docs.tread.ai/workflows/exports-reports" target="_blank" rel="noopener">Full guide &rarr;</a>
 <span class="badge badge-coming coming">Walkthrough video coming soon</span>
@@ -3906,13 +4218,15 @@
 <h2>
 <span class="num">3</span>Integrations</h2>
 <p class="section-lead">Once billing and settlements are approved in Tread, an integration carries them into your accounting system so your team works from one ledger.</p>
-<p>A few rules apply to every integration:</p>
+
+<h3>Rules that apply to every integration</h3>
 <ul class="checklist">
 <li><span class="i-label"><strong>Matches on external IDs:</strong> it does not create customers or vendors for you.</span></li>
 <li><span class="i-label"><strong>Tag your records first:</strong> the single most important setup step is tagging Tread customer and vendor records with their matching IDs.</span></li>
 <li><span class="i-label"><strong>Mostly one-way:</strong> most integrations are export-only (Tread pushes to the accounting system).</span></li>
 <li><span class="i-label"><strong>No auto-retry:</strong> CSV-based pushes do not retry if the accounting system is down, so confirm each batch landed.</span></li>
 </ul>
+
 <h3>Supported accounting systems</h3>
 <div class="card">
 <ul class="checklist">
@@ -3924,6 +4238,7 @@
 <li><span class="i-label"><strong>Agave:</strong> one connection reaching many backends (QuickBooks Online, Sage Intacct, NetSuite, Xero, and more). Approved customer settlements export as AR invoices and vendor settlements as AP bills. Driver settlements do not flow through Agave.</span></li>
 </ul>
 </div>
+
 <h3>Setup is the same shape every time</h3>
 <div class="card">
 <ol class="i-list">
@@ -3933,18 +4248,21 @@
 <li><span class="i-num">4</span><span class="i-label"><strong>Check the accounting system</strong> for import errors, since file-based errors show up there and not in Tread.</span></li>
 </ol>
 </div>
+
 <div class="callout tip">
 <div class="c-icon">&#10003;</div>
 <div class="c-body">
 <strong>Pro tip</strong>
 <br>Not sure which one to use? If your accounting system is on the Agave list (Sage Intacct, NetSuite, Xero, and others), Agave is the fastest single connection. Use the dedicated QuickBooks integration for QuickBooks, and the CSV integrations for Sage 300, Vista, and Foundation.</div>
 </div>
+
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
 <strong>Common mistake</strong>
 <br>Mismatched external IDs are the number one reason a push fails or a name does not link. Tag your customers and vendors correctly first, test with one settlement, and only then approve a full batch.</div>
 </div>
+
 <div class="vid-links">
 <a class="link" href="https://docs.tread.ai/integrations/quickbooks" target="_blank" rel="noopener">Full guide &rarr;</a>
 <span class="badge badge-coming coming">Walkthrough video coming soon</span>
@@ -3955,8 +4273,12 @@
 <h2>
 <span class="num">4</span>Your reporting rhythm</h2>
 <p class="section-lead">Reporting gets easy when it is a routine: a repeatable close where every number comes from a known place and nothing gets billed or paid twice.</p>
+
+<h3>How the cadence works</h3>
 <p>Build the cadence around your billing period. Through the week you review operations and clear exceptions. At close you run billing, payables, and driver pay in the same order every time, export or push each one, and confirm it landed.</p>
 <p>Schedule the standard reports and OmniReports you rely on. Most numbers then arrive on their own, so you spend your time checking rather than pulling.</p>
+
+<h3>The close, step by step</h3>
 <div class="card">
 <ol class="i-list">
 <li><span class="i-num">1</span><span class="i-label"><strong>Weekly:</strong> review operations and vendor scorecards, and clear ticket and hour exceptions while they are fresh.</span></li>
@@ -3966,18 +4288,21 @@
 <li><span class="i-num">5</span><span class="i-label"><strong>Confirm:</strong> each batch landed in the accounting system and check that settlements are marked exported before you close the period.</span></li>
 </ol>
 </div>
+
 <div class="callout info">
 <div class="c-icon">i</div>
 <div class="c-body">
 <strong>Good to know</strong>
 <br>Your accounting handoff is configured once (CSV to QuickBooks today, API integrations going forward). Bulk settlement export for driver pay lives in <strong>Payday</strong>.</div>
 </div>
+
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
 <strong>Common mistake</strong>
 <br>Scheduled pushes do not retry if your accounting system is down at send time. If an integration outage hits during close, the batch will not resend itself, so always verify the data arrived instead of assuming the schedule handled it.</div>
 </div>
+
 <div class="vid-links">
 <a class="link" href="https://docs.tread.ai/workflows/exports-reports" target="_blank" rel="noopener">Full guide &rarr;</a>
 <span class="badge badge-coming coming">Walkthrough video coming soon</span>
@@ -4758,13 +5083,19 @@
 <h2>
 <span class="num">1</span>Field specialties</h2>
 <p class="section-lead">These are the field workflows that only some operations run.</p>
+
+<h3>What it is</h3>
 <p>Turn one on when the way your trucks move in the real world stops matching a simple point-to-point haul.</p>
+
+<h4>When to turn these on</h4>
 <div class="callout info">
 <div class="c-icon">i</div>
 <div class="c-body">
 <strong>When to turn these on</strong>
 <br>You need none of these to dispatch a standard order. Reach for one only when your operation has the exact pattern it solves, and leave the rest off so your setup stays simple.</div>
 </div>
+
+<h3>The four field specialties</h3>
 <div class="card">
 <ol class="i-list">
 <li>
@@ -4785,6 +5116,8 @@
 </li>
 </ol>
 </div>
+
+<h3>Common mistakes</h3>
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
@@ -4802,13 +5135,19 @@
 <h2>
 <span class="num">2</span>Complex billing</h2>
 <p class="section-lead">These options handle the money side of jobs that do not bill as a single customer at a single rate.</p>
+
+<h3>What it is</h3>
 <p>Turn one on when your project structure or your legal structure is more layered than one order to one invoice.</p>
+
+<h4>The one rule</h4>
 <div class="callout tip">
 <div class="c-icon">&#10003;</div>
 <div class="c-body">
 <strong>Pro tip</strong>
 <br>Every billing elective shares one rule: get the structure right up front and the invoices follow. Tag work to the right party as it happens, and Tread keeps reporting clean at both the detail and the summary level.</div>
 </div>
+
+<h3>The four billing electives</h3>
 <div class="card">
 <ol class="i-list">
 <li>
@@ -4829,6 +5168,8 @@
 </li>
 </ol>
 </div>
+
+<h3>Prevailing wage details</h3>
 <div class="callout info">
 <div class="c-icon">i</div>
 <div class="c-body">
@@ -4840,6 +5181,8 @@
 </ul>
 </div>
 </div>
+
+<h3>Common mistakes</h3>
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
@@ -4852,12 +5195,16 @@
 <h2>
 <span class="num">3</span>Compliance &amp; docs</h2>
 <p class="section-lead">Compliance documents prove a driver or vendor is legal to be on a job, and Tread enforces it before dispatch so you are not tracking expirations by hand.</p>
+
+<h3>What it is</h3>
 <p>A compliance document is a file attached to a driver or vendor with an expiration date. Tread watches those dates and can block or warn on dispatch when a required doc is missing or expired.</p>
 <ul>
 <li><strong>What counts:</strong> DOT card, insurance certificate, CDL, drug screen, W-9.</li>
 <li><strong>Where it matters most:</strong> public-works, union, and large general-contractor jobs where you have to show the paperwork.</li>
 <li><strong>How it runs:</strong> set it up once in master data, then let the driver and vendor portals do the uploading.</li>
 </ul>
+
+<h3>How to set it up</h3>
 <div class="card">
 <ol class="i-list">
 <li>
@@ -4878,6 +5225,8 @@
 </li>
 </ol>
 </div>
+
+<h3>Common mistakes</h3>
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
@@ -4896,25 +5245,19 @@
 <h2>
 <span class="num">4</span>Once you’re live</h2>
 <p class="section-lead">Real jobs rarely run end to end exactly as dispatched, and Tread expects that.</p>
+
+<h3>What it is</h3>
 <p>This lesson is how you adjust the plan cleanly during the day.</p>
 <p>Most changes are edits to work already on the board: reassign a truck, add or cancel a load, split a job, or move work to a new site.</p>
+
+<h4>Who can change what</h4>
 <ul>
 <li><strong>Dispatchers</strong> make these in the web app.</li>
 <li><strong>Foremen</strong> can do the same for their assigned projects.</li>
 <li><strong>Drivers</strong> flag loads (wait, void, material mismatch) rather than reassigning themselves.</li>
 </ul>
-<div class="callout info">
-<div class="c-icon">i</div>
-<div class="c-body">
-<strong>Good to know</strong>
-<br>Every change is logged in order history, and billing pulls from the final state. You can adjust freely without corrupting the invoice.</div>
-</div>
-<div class="callout tip">
-<div class="c-icon">&#10003;</div>
-<div class="c-body">
-<strong>Pro tip</strong>
-<br>Two tools save time when a change touches many records at once. Bulk edit applies one change across a set of orders or dispatches. Duplicate copies an order so you can stand up a near-identical one (a repeat run, an added shift, an emergency order) without rebuilding it. Reach for these when you are repeating structure or reacting fast.</div>
-</div>
+
+<h3>How to make changes</h3>
 <div class="card">
 <ol class="i-list">
 <li>
@@ -4931,6 +5274,24 @@
 </li>
 </ol>
 </div>
+
+<h4>Bulk edit and duplicate</h4>
+<div class="callout tip">
+<div class="c-icon">&#10003;</div>
+<div class="c-body">
+<strong>Pro tip</strong>
+<br>Two tools save time when a change touches many records at once. Bulk edit applies one change across a set of orders or dispatches. Duplicate copies an order so you can stand up a near-identical one (a repeat run, an added shift, an emergency order) without rebuilding it. Reach for these when you are repeating structure or reacting fast.</div>
+</div>
+
+<h3>Good to know</h3>
+<div class="callout info">
+<div class="c-icon">i</div>
+<div class="c-body">
+<strong>Good to know</strong>
+<br>Every change is logged in order history, and billing pulls from the final state. You can adjust freely without corrupting the invoice.</div>
+</div>
+
+<h3>Common mistakes</h3>
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
@@ -5015,6 +5376,8 @@
 <h2>
 <span class="num">1</span>Go-live checklist</h2>
 <p class="section-lead">Before you switch the operation over to Tread for real, confirm the account is production-ready across data, rates, integrations, and agents.</p>
+
+<h3>What go-live means</h3>
 <p>Go-live is a readiness gate, not a date on the calendar. The launch only happens once every category is green.</p>
 <div class="callout info">
 <div class="c-icon">i</div>
@@ -5029,8 +5392,12 @@
 </ul>
 </div>
 </div>
+
+<h3>How to think about readiness</h3>
 <p>A useful way to think about it: everything a real load touches must already exist and be correct. The driver, the truck, the site geofence, the material, the customer rate, and the accounting connection are all set before the first ticket comes back from the field.</p>
 <p>Walk the list below with your admin and your CSM before anyone dispatches a paying job.</p>
+
+<h3>The checklist</h3>
 <div class="card">
 <p class="section-lead">Confirm every box before you flip live.</p>
 <ul class="checklist">
@@ -5045,6 +5412,8 @@
 <li><strong>Vendors and customer AP contacts notified</strong> of the go-live date at least one week ahead</li>
 </ul>
 </div>
+
+<h3>Good to know</h3>
 <div class="callout tip">
 <div class="c-icon">&#10003;</div>
 <div class="c-body">
@@ -5052,6 +5421,8 @@
 <p>Start with one site or one crew, run a live day, then roll the rest of the fleet on once it feels routine.</p>
 </div>
 </div>
+
+<h3>Common mistakes</h3>
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
@@ -5066,6 +5437,8 @@
 <h2>
 <span class="num">2</span>First live day</h2>
 <p class="section-lead">Your first real day is the whole loop in miniature: dispatch a job, capture the ticket, approve it, settle it, and pull the report, with someone watching each handoff.</p>
+
+<h3>The hierarchy that carries through</h3>
 <p>The hierarchy you have learned holds all the way through:</p>
 <ul>
 <li><strong>Project:</strong> the long-running container that holds the customer, sites, materials, and rates.</li>
@@ -5085,6 +5458,8 @@
 </ul>
 </div>
 </div>
+
+<h3>Run the loop, step by step</h3>
 <div class="card">
 <ol class="i-list">
 <li><span class="i-num">1</span><span class="i-label"><strong>Create the project and add the day’s order.</strong> The project carries the customer, site, material, and rates. The order is that day’s work against it.</span></li>
@@ -5095,6 +5470,8 @@
 <li><span class="i-num">6</span><span class="i-label"><strong>Pull the report.</strong> Review load counts and totals for the day so you can confirm the numbers before anything leaves the building.</span></li>
 </ol>
 </div>
+
+<h4>When a load does not auto-start</h4>
 <div class="callout info">
 <div class="c-icon">i</div>
 <div class="c-body">
@@ -5102,6 +5479,8 @@
 <p>If a load never auto-started, the cause is almost always the geofence: missing, too small a radius, or GPS location permission turned off on the phone. Fix the geofence rather than editing the load by hand.</p>
 </div>
 </div>
+
+<h3>Common mistakes</h3>
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
@@ -5116,6 +5495,8 @@
 <h2>
 <span class="num">3</span>Get certified</h2>
 <p class="section-lead">A short competency check per role confirms each person can run their part of the loop unaided, which is what earns the Road-Ready credential.</p>
+
+<h3>How certification works</h3>
 <p>Certification is a self-check, not an exam. Each key role answers a handful of questions out loud or on the phone with your CSM.</p>
 <div class="callout tip">
 <div class="c-icon">&#10003;</div>
@@ -5124,6 +5505,9 @@
 <p>If someone stumbles, that is exactly the gap to close before go-live. Run the checks below for your Dispatcher, Billing lead, and Drivers.</p>
 </div>
 </div>
+
+<h3>Role self-checks</h3>
+<h4>Dispatcher</h4>
 <div class="card">
 <p class="section-lead"><strong>Dispatcher self-check</strong></p>
 <ul class="checklist">
@@ -5133,6 +5517,7 @@
 <li>How do you add a driver correctly to work that is already running (restart the job rather than re-add mid-shift)?</li>
 </ul>
 </div>
+<h4>Billing</h4>
 <div class="card">
 <p class="section-lead"><strong>Billing self-check</strong></p>
 <ul class="checklist">
@@ -5143,6 +5528,7 @@
 <li>What do you do with a ticket the AI flags, given that AI ticket review is informational and not a gate?</li>
 </ul>
 </div>
+<h4>Driver</h4>
 <div class="card">
 <p class="section-lead"><strong>Driver self-check</strong></p>
 <ul class="checklist">
@@ -5152,6 +5538,8 @@
 <li>Who do you contact when a ticket looks wrong?</li>
 </ul>
 </div>
+
+<h3>Earning Road-Ready</h3>
 <div class="callout info">
 <div class="c-icon">i</div>
 <div class="c-body">
@@ -5167,6 +5555,8 @@ Confirm you have:
 <p>Your CSM confirms the credential and hands you off to ongoing support.</p>
 </div>
 </div>
+
+<h3>Common mistakes</h3>
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
@@ -5181,6 +5571,8 @@ Confirm you have:
 <h2>
 <span class="num">4</span>Ongoing success</h2>
 <p class="section-lead">Road-Ready is the start of self-serve. This lesson sets your handoff to in-app help, the signals that tell you it is working, and the rhythm for staying on track.</p>
+
+<h3>Handing off to self-serve help</h3>
 <p>Once you are certified, day-to-day questions go through the in-app <strong>? Help</strong> launcher instead of a direct line to your CSM. It is your fastest path to answers, and it keeps the whole team on one channel.</p>
 <div class="callout tip">
 <div class="c-icon">&#10003;</div>
@@ -5189,6 +5581,8 @@ Confirm you have:
 <p>Keep your single named escalation owner in place for the first two weeks so anything urgent still has a clear route.</p>
 </div>
 </div>
+
+<h3>Success signals to watch</h3>
 <p class="section-lead">Watch a few success signals rather than everything at once.</p>
 <ul>
 <li><strong>Tickets:</strong> should return from the field the same day.</li>
@@ -5203,6 +5597,8 @@ Confirm you have:
 <p>Plan for a billing lead to review agent output closely for the first five business days, then step back to sampling about 10 percent.</p>
 </div>
 </div>
+
+<h3>The check-in rhythm</h3>
 <div class="card">
 <p class="section-lead">The check-in rhythm.</p>
 <ul class="checklist">
@@ -5219,6 +5615,8 @@ Confirm you have:
 <p>Vendor pushback usually fades by week four. Customers who hold the line on digital tickets see zero churn, so resist the urge to fall back to paper when adoption feels slow.</p>
 </div>
 </div>
+
+<h3>Common mistakes</h3>
 <div class="callout warning">
 <div class="c-icon">!</div>
 <div class="c-body">
