@@ -61,23 +61,25 @@
   /* ============ PROGRESS BAR (below header, 15px) ============ */
   #progress-bar{
     position:fixed;top:56px;left:0;right:0;
-    height:34px;background:var(--deep-black);z-index:8800;
-    border-bottom:1px solid rgba(255,255,255,0.06);
+    height:46px;background:#242b31;z-index:8800;
+    border-bottom:2px solid #10161a;
     overflow:hidden;
   }
-  #progress-bar .road{position:absolute;left:0;right:0;top:50%;height:4px;transform:translateY(-50%);background:rgba(255,255,255,0.12);}
+  /* dashed center lane line of the road */
+  #progress-bar .road{position:absolute;left:0;right:0;top:50%;height:3px;transform:translateY(-50%);background:repeating-linear-gradient(90deg,var(--yellow) 0 20px,transparent 20px 38px);opacity:.5;}
+  /* subtle "road traveled" tint behind the truck */
   #progress-bar .fill{
-    position:absolute;left:0;top:50%;height:4px;width:0%;transform:translateY(-50%);
-    background:var(--gradient-yellow);
-    transition:width .35s ease;
-    box-shadow:0 0 10px rgba(255,229,0,0.4);
+    position:absolute;left:0;top:0;bottom:0;width:0%;
+    background:linear-gradient(90deg,rgba(255,229,0,.04),rgba(255,229,0,.15));
+    transition:width .5s ease;pointer-events:none;
   }
   #progress-bar .stops{position:absolute;inset:0;}
-  #progress-bar .stop{position:absolute;top:50%;transform:translate(-50%,-50%);width:8px;height:8px;border-radius:2px;background:rgba(255,255,255,0.28);transition:background .3s ease;}
-  #progress-bar .stop.delivered{background:var(--yellow);box-shadow:0 0 7px rgba(255,229,0,0.55);}
-  #progress-bar .ptruck{position:absolute;top:50%;left:0;transform:translate(-60%,-50%);transition:left .4s cubic-bezier(.4,0,.2,1);z-index:2;filter:drop-shadow(0 1px 2px rgba(0,0,0,.4));}
+  /* each course = a load (a material pile) dropped along the road */
+  #progress-bar .stop{position:absolute;top:50%;transform:translate(-50%,-40%);width:20px;height:13px;background:#4a555c;clip-path:polygon(0 100%,16% 46%,50% 0,84% 46%,100% 100%);transition:background .3s ease,filter .3s ease;cursor:default;}
+  #progress-bar .stop.delivered{background:var(--yellow);filter:drop-shadow(0 0 6px rgba(255,229,0,0.65));}
+  #progress-bar .ptruck{position:absolute;top:50%;left:0;transform:translate(-52%,-54%);transition:left .55s cubic-bezier(.34,1.15,.4,1);z-index:2;filter:drop-shadow(0 2px 3px rgba(0,0,0,.5));}
   #progress-counter{
-    position:fixed;top:96px;right:18px;z-index:8801;
+    position:fixed;top:108px;right:18px;z-index:8801;
     display:flex;align-items:center;gap:8px;
     background:var(--white);border:1px solid var(--grey-2);
     border-radius:999px;
@@ -142,11 +144,11 @@
 
   /* ============ LAYOUT ============ */
   /* Sidebar is pinned to viewport-left; main has a matching left margin */
-  .app{padding-top:90px;min-height:100vh}
+  .app{padding-top:102px;min-height:100vh}
 
   /* ============ SIDEBAR (half-dark, pinned to viewport left) ============ */
   #sidebar{
-    position:fixed;top:90px;left:0;bottom:0;
+    position:fixed;top:102px;left:0;bottom:0;
     width:280px;z-index:6000;
     background:var(--deep-black);
     border-right:1px solid rgba(255,255,255,0.06);
@@ -1490,7 +1492,7 @@
 <section class="print-toc print-only" aria-hidden="true">
   <div class="toc-eyebrow">Contents</div>
   <h2>Your courses</h2>
-  <ol class="toc-list"><li><a href="#ch-0"><span class="toc-num">00</span><span class="toc-title">Start Your Engines</span></a></li><li><a href="#ch-1"><span class="toc-num">01</span><span class="toc-title">Laying the Groundwork</span></a></li><li><a href="#ch-2"><span class="toc-num">02</span><span class="toc-title">Rubber Meets the Road</span></a></li><li><a href="#ch-3"><span class="toc-num">03</span><span class="toc-title">In the Cab</span></a></li><li><a href="#ch-4"><span class="toc-num">04</span><span class="toc-title">The Sign-Off</span></a></li><li><a href="#ch-5"><span class="toc-num">05</span><span class="toc-title">Payday</span></a></li><li><a href="#ch-6"><span class="toc-num">06</span><span class="toc-title">By the Numbers</span></a></li><li><a href="#ch-7"><span class="toc-num">07</span><span class="toc-title">Onboard Your Vendors &amp; Sub-Haulers</span></a></li><li><a href="#ch-8"><span class="toc-num">08</span><span class="toc-title">Endorsements</span></a></li><li><a href="#ch-9"><span class="toc-num">09</span><span class="toc-title">Cleared to Roll</span></a></li></ol>
+  <ol class="toc-list"><li><a href="#ch-0"><span class="toc-num">01</span><span class="toc-title">Start Your Engines</span></a></li><li><a href="#ch-1"><span class="toc-num">02</span><span class="toc-title">Laying the Groundwork</span></a></li><li><a href="#ch-2"><span class="toc-num">03</span><span class="toc-title">Rubber Meets the Road</span></a></li><li><a href="#ch-3"><span class="toc-num">04</span><span class="toc-title">In the Cab</span></a></li><li><a href="#ch-4"><span class="toc-num">05</span><span class="toc-title">The Sign-Off</span></a></li><li><a href="#ch-5"><span class="toc-num">06</span><span class="toc-title">Payday</span></a></li><li><a href="#ch-6"><span class="toc-num">07</span><span class="toc-title">By the Numbers</span></a></li><li><a href="#ch-7"><span class="toc-num">08</span><span class="toc-title">Onboard Your Vendors &amp; Sub-Haulers</span></a></li><li><a href="#ch-8"><span class="toc-num">09</span><span class="toc-title">Endorsements</span></a></li><li><a href="#ch-9"><span class="toc-num">10</span><span class="toc-title">Cleared to Roll</span></a></li></ol>
   <p class="toc-foot">For the latest version of this guide, contact your Tread CSM or email <strong>support@tread.io</strong>.</p>
 </section>
 
@@ -1512,7 +1514,7 @@
   <div class="road"></div>
   <div class="fill"></div>
   <div class="stops"></div>
-  <div class="ptruck"><svg viewBox="0 0 120 60" width="38" height="19" aria-hidden="true"><path d="M6 12 L74 12 L66 40 L6 40 Z" fill="#FFE500" stroke="#132732" stroke-width="4" stroke-linejoin="round"/><path d="M76 20 L96 20 L108 34 L108 40 L76 40 Z" fill="#132732"/><rect x="82" y="24" width="15" height="10" rx="1" fill="#FFE500"/><rect x="4" y="39" width="106" height="5" fill="#132732"/><circle cx="30" cy="47" r="8" fill="#132732" stroke="#8a99a2" stroke-width="3"/><circle cx="92" cy="47" r="8" fill="#132732" stroke="#8a99a2" stroke-width="3"/></svg></div>
+  <div class="ptruck"><svg viewBox="0 0 170 96" width="62" height="35" aria-hidden="true"><path d="M6 18 L96 18 L110 60 L6 60 Z" fill="#FFE500" stroke="#132732" stroke-width="6" stroke-linejoin="round"/><path d="M30 22 L36 56 M52 22 L60 56 M74 22 L84 56" stroke="#132732" stroke-width="4" fill="none"/><path d="M112 30 L138 30 L152 54 L152 60 L112 60 Z" fill="#132732"/><path d="M118 35 L134 35 L143 52 L118 52 Z" fill="#FFE500"/><rect x="6" y="60" width="146" height="7" fill="#132732"/><circle cx="44" cy="76" r="12" fill="#132732" stroke="#8a99a2" stroke-width="5"/><circle cx="72" cy="76" r="12" fill="#132732" stroke="#8a99a2" stroke-width="5"/><circle cx="132" cy="76" r="12" fill="#132732" stroke="#8a99a2" stroke-width="5"/><circle cx="44" cy="76" r="3.5" fill="#8a99a2"/><circle cx="72" cy="76" r="3.5" fill="#8a99a2"/><circle cx="132" cy="76" r="3.5" fill="#8a99a2"/></svg></div>
 </div>
 <div id="progress-counter">
   <span class="pc-dot"></span>
@@ -1526,7 +1528,7 @@
 <div class="app">
   <aside id="sidebar">
     <h4>Courses</h4>
-    <nav class="nav-list"><button class="nav-item active" data-ch="0" onclick="goToChapter(0)"><span class="ch-num">0</span><span class="ch-meta"><span class="ch-title">Start Your Engines</span><span class="ch-time">Everyone</span></span></button><button class="nav-item" data-ch="1" onclick="goToChapter(1)"><span class="ch-num">1</span><span class="ch-meta"><span class="ch-title">Laying the Groundwork</span><span class="ch-time">Admin</span></span></button><button class="nav-item" data-ch="2" onclick="goToChapter(2)"><span class="ch-num">2</span><span class="ch-meta"><span class="ch-title">Rubber Meets the Road</span><span class="ch-time">Dispatcher</span></span></button><button class="nav-item" data-ch="3" onclick="goToChapter(3)"><span class="ch-num">3</span><span class="ch-meta"><span class="ch-title">In the Cab</span><span class="ch-time">Drivers &amp; field</span></span></button><button class="nav-item" data-ch="4" onclick="goToChapter(4)"><span class="ch-num">4</span><span class="ch-meta"><span class="ch-title">The Sign-Off</span><span class="ch-time">Billing &amp; foreman</span></span></button><button class="nav-item" data-ch="5" onclick="goToChapter(5)"><span class="ch-num">5</span><span class="ch-meta"><span class="ch-title">Payday</span><span class="ch-time">Billing</span></span></button><button class="nav-item" data-ch="6" onclick="goToChapter(6)"><span class="ch-num">6</span><span class="ch-meta"><span class="ch-title">By the Numbers</span><span class="ch-time">Billing &amp; ops</span></span></button><button class="nav-item" data-ch="7" onclick="goToChapter(7)"><span class="ch-num">7</span><span class="ch-meta"><span class="ch-title">Onboard Your Vendors &amp; Sub-Haulers</span><span class="ch-time">Dispatcher</span></span></button><button class="nav-item" data-ch="8" onclick="goToChapter(8)"><span class="ch-num">8</span><span class="ch-meta"><span class="ch-title">Endorsements</span><span class="ch-time">Advanced</span></span></button><button class="nav-item" data-ch="9" onclick="goToChapter(9)"><span class="ch-num">9</span><span class="ch-meta"><span class="ch-title">Cleared to Roll</span><span class="ch-time">Everyone</span></span></button></nav>
+    <nav class="nav-list"><button class="nav-item active" data-ch="0" onclick="goToChapter(0)"><span class="ch-num">1</span><span class="ch-meta"><span class="ch-title">Start Your Engines</span><span class="ch-time">Everyone</span></span></button><button class="nav-item" data-ch="1" onclick="goToChapter(1)"><span class="ch-num">2</span><span class="ch-meta"><span class="ch-title">Laying the Groundwork</span><span class="ch-time">Admin</span></span></button><button class="nav-item" data-ch="2" onclick="goToChapter(2)"><span class="ch-num">3</span><span class="ch-meta"><span class="ch-title">Rubber Meets the Road</span><span class="ch-time">Dispatcher</span></span></button><button class="nav-item" data-ch="3" onclick="goToChapter(3)"><span class="ch-num">4</span><span class="ch-meta"><span class="ch-title">In the Cab</span><span class="ch-time">Drivers &amp; field</span></span></button><button class="nav-item" data-ch="4" onclick="goToChapter(4)"><span class="ch-num">5</span><span class="ch-meta"><span class="ch-title">The Sign-Off</span><span class="ch-time">Billing &amp; foreman</span></span></button><button class="nav-item" data-ch="5" onclick="goToChapter(5)"><span class="ch-num">6</span><span class="ch-meta"><span class="ch-title">Payday</span><span class="ch-time">Billing</span></span></button><button class="nav-item" data-ch="6" onclick="goToChapter(6)"><span class="ch-num">7</span><span class="ch-meta"><span class="ch-title">By the Numbers</span><span class="ch-time">Billing &amp; ops</span></span></button><button class="nav-item" data-ch="7" onclick="goToChapter(7)"><span class="ch-num">8</span><span class="ch-meta"><span class="ch-title">Onboard Your Vendors &amp; Sub-Haulers</span><span class="ch-time">Dispatcher</span></span></button><button class="nav-item" data-ch="8" onclick="goToChapter(8)"><span class="ch-num">9</span><span class="ch-meta"><span class="ch-title">Endorsements</span><span class="ch-time">Advanced</span></span></button><button class="nav-item" data-ch="9" onclick="goToChapter(9)"><span class="ch-num">10</span><span class="ch-meta"><span class="ch-title">Cleared to Roll</span><span class="ch-time">Everyone</span></span></button></nav>
   </aside>
   <main id="main">
 <section class="chapter active" data-ch="0" id="ch-0">
@@ -1755,63 +1757,63 @@
 <p class="section-lead">Nine short courses. Jump to any one, any time.</p>
 <div class="toc-grid">
 <button class="toc-card" onclick="goToChapter(1)">
-<span class="toc-num">1</span>
+<span class="toc-num">02</span>
 <span class="toc-meta">
 <span class="toc-title">Laying the Groundwork</span>
 <span class="toc-sub">Admin</span>
 </span>
 </button>
 <button class="toc-card" onclick="goToChapter(2)">
-<span class="toc-num">2</span>
+<span class="toc-num">03</span>
 <span class="toc-meta">
 <span class="toc-title">Rubber Meets the Road</span>
 <span class="toc-sub">Dispatcher</span>
 </span>
 </button>
 <button class="toc-card" onclick="goToChapter(3)">
-<span class="toc-num">3</span>
+<span class="toc-num">04</span>
 <span class="toc-meta">
 <span class="toc-title">In the Cab</span>
 <span class="toc-sub">Drivers &amp; field</span>
 </span>
 </button>
 <button class="toc-card" onclick="goToChapter(4)">
-<span class="toc-num">4</span>
+<span class="toc-num">05</span>
 <span class="toc-meta">
 <span class="toc-title">The Sign-Off</span>
 <span class="toc-sub">Billing &amp; foreman</span>
 </span>
 </button>
 <button class="toc-card" onclick="goToChapter(5)">
-<span class="toc-num">5</span>
+<span class="toc-num">06</span>
 <span class="toc-meta">
 <span class="toc-title">Payday</span>
 <span class="toc-sub">Billing</span>
 </span>
 </button>
 <button class="toc-card" onclick="goToChapter(6)">
-<span class="toc-num">6</span>
+<span class="toc-num">07</span>
 <span class="toc-meta">
 <span class="toc-title">By the Numbers</span>
 <span class="toc-sub">Billing &amp; ops</span>
 </span>
 </button>
 <button class="toc-card" onclick="goToChapter(7)">
-<span class="toc-num">7</span>
+<span class="toc-num">08</span>
 <span class="toc-meta">
 <span class="toc-title">Onboard Your Vendors &amp; Sub-Haulers</span>
 <span class="toc-sub">Dispatcher</span>
 </span>
 </button>
 <button class="toc-card" onclick="goToChapter(8)">
-<span class="toc-num">8</span>
+<span class="toc-num">09</span>
 <span class="toc-meta">
 <span class="toc-title">Endorsements</span>
 <span class="toc-sub">Advanced</span>
 </span>
 </button>
 <button class="toc-card" onclick="goToChapter(9)">
-<span class="toc-num">9</span>
+<span class="toc-num">10</span>
 <span class="toc-meta">
 <span class="toc-title">Cleared to Roll</span>
 <span class="toc-sub">Everyone</span>
@@ -3518,7 +3520,7 @@
 </button>
 </div>
 </section>
-<section class="chapter" data-ch="7" id="ch-7"><div class="ch-header"><div class="ch-eyebrow"><span class="dot"></span>Course 7</div><h1>Building the <span class="accent">convoy.</span></h1><p class="lead">Vendor &amp; sub-hauler onboarding: extend Tread to the outside carriers you rely on. Optional; schedule it only if you dispatch to vendors.</p></div><div class="section course-brief"><div class="callout info"><div class="c-body"><strong>Who should train on this</strong><br>Admin &amp; Dispatch: for customers who dispatch to vendors/sub-haulers.</div></div><h2><span class="num">★</span>What you’ll learn</h2><ul class="cb-learn"><li>Understand the connected ecosystem and how a vendor account relates to yours</li><li>Create or connect vendor accounts (via Tread ID) and add their drivers, trucks &amp; users</li><li>Enable direct dispatch and vendor job-splitting so vendors self-manage their fleet</li><li>Point vendors at their own self-serve guide</li></ul><div class="cb-mods"><div class="cb-mods-h">Modules in this course</div><div class="mod"><span class="mod-n">1</span><div class="mod-b"><span class="mod-t">The connected ecosystem</span><span class="mod-d">How a vendor account relates to yours.</span></div></div><div class="mod"><span class="mod-n">2</span><div class="mod-b"><span id="a-connect-vendor" class="mod-t">Connect a vendor</span><span class="mod-d">Create/connect via Tread ID; add their drivers, trucks &amp; users.</span></div></div><div class="mod"><span class="mod-n">3</span><div class="mod-b"><span class="mod-t">Dispatch to vendors</span><span class="mod-d">Enable direct dispatch and vendor job-splitting.</span></div></div><div class="mod"><span class="mod-n">4</span><div class="mod-b"><span class="mod-t">Hand them their guide</span><span class="mod-d">The vendor self-serve onboarding guide.</span></div></div></div></div><div class="section"><p class="section-lead">Everything you need to get your outside carriers and their drivers running on Tread: share these steps directly with your vendors and sub-haulers. It's all right here, no separate site to send them to.</p><div class="callout info"><div class="c-icon">i</div><div class="c-body"><strong>How to use this</strong><p>Walk a vendor through <em>Train your drivers</em> and <em>Set up trucks &amp; drivers</em> on their first call, then <em>Dispatch jobs</em> once their drivers are in. You can also send them this course directly.</p></div></div></div>
+<section class="chapter" data-ch="7" id="ch-7"><div class="ch-header"><div class="ch-eyebrow"><span class="dot"></span>Course 8</div><h1>Building the <span class="accent">convoy.</span></h1><p class="lead">Vendor &amp; sub-hauler onboarding: extend Tread to the outside carriers you rely on. Optional; schedule it only if you dispatch to vendors.</p></div><div class="section course-brief"><div class="callout info"><div class="c-body"><strong>Who should train on this</strong><br>Admin &amp; Dispatch: for customers who dispatch to vendors/sub-haulers.</div></div><h2><span class="num">★</span>What you’ll learn</h2><ul class="cb-learn"><li>Understand the connected ecosystem and how a vendor account relates to yours</li><li>Create or connect vendor accounts (via Tread ID) and add their drivers, trucks &amp; users</li><li>Enable direct dispatch and vendor job-splitting so vendors self-manage their fleet</li><li>Point vendors at their own self-serve guide</li></ul><div class="cb-mods"><div class="cb-mods-h">Modules in this course</div><div class="mod"><span class="mod-n">1</span><div class="mod-b"><span class="mod-t">The connected ecosystem</span><span class="mod-d">How a vendor account relates to yours.</span></div></div><div class="mod"><span class="mod-n">2</span><div class="mod-b"><span id="a-connect-vendor" class="mod-t">Connect a vendor</span><span class="mod-d">Create/connect via Tread ID; add their drivers, trucks &amp; users.</span></div></div><div class="mod"><span class="mod-n">3</span><div class="mod-b"><span class="mod-t">Dispatch to vendors</span><span class="mod-d">Enable direct dispatch and vendor job-splitting.</span></div></div><div class="mod"><span class="mod-n">4</span><div class="mod-b"><span class="mod-t">Hand them their guide</span><span class="mod-d">The vendor self-serve onboarding guide.</span></div></div></div></div><div class="section"><p class="section-lead">Everything you need to get your outside carriers and their drivers running on Tread: share these steps directly with your vendors and sub-haulers. It's all right here, no separate site to send them to.</p><div class="callout info"><div class="c-icon">i</div><div class="c-body"><strong>How to use this</strong><p>Walk a vendor through <em>Train your drivers</em> and <em>Set up trucks &amp; drivers</em> on their first call, then <em>Dispatch jobs</em> once their drivers are in. You can also send them this course directly.</p></div></div></div>
 <div class="section">
 <h2>
 <span class="num">1</span>The connected ecosystem</h2>
@@ -3689,28 +3691,28 @@
       <p class="section-lead">Jump to any chapter, anytime.</p>
       <div class="toc-grid">
         <button class="toc-card">
-          <span class="toc-num">1</span>
+          <span class="toc-num">02</span>
           <span class="toc-meta">
             <span class="toc-title">Train your drivers</span>
             <span class="toc-sub">App download, sign in, jobs, tickets</span>
           </span>
         </button>
         <button class="toc-card">
-          <span class="toc-num">2</span>
+          <span class="toc-num">03</span>
           <span class="toc-meta">
             <span class="toc-title">Setup trucks and drivers</span>
             <span class="toc-sub">Add trucks, drivers, dispatchers</span>
           </span>
         </button>
         <button class="toc-card">
-          <span class="toc-num">3</span>
+          <span class="toc-num">04</span>
           <span class="toc-meta">
             <span class="toc-title">Dispatch jobs</span>
             <span class="toc-sub">Accept, assign, send jobs</span>
           </span>
         </button>
         <button class="toc-card">
-          <span class="toc-num">4</span>
+          <span class="toc-num">05</span>
           <span class="toc-meta">
             <span class="toc-title">Help and support</span>
             <span class="toc-sub">Chat, help center, phone, email</span>
@@ -4686,7 +4688,7 @@ function goToChapter(idx){
     const pct = Math.round(((currentChapter + within) / TOTAL_CHAPTERS) * 100);
     document.querySelector('#progress-bar .fill').style.width = pct + '%';
     var _pb=document.getElementById('progress-bar'), _stops=_pb.querySelector('.stops');
-    if(_stops && !_stops.children.length){ var _h=''; for(var _i=0;_i<TOTAL_CHAPTERS;_i++){ var _p=Math.min(98,((_i+1)/TOTAL_CHAPTERS)*100); _h+='<span class="stop" data-ch="'+_i+'" style="left:'+_p+'%"></span>'; } _stops.innerHTML=_h; }
+    if(_stops && !_stops.children.length){ var _h=''; for(var _i=0;_i<TOTAL_CHAPTERS;_i++){ var _p=Math.min(98,((_i+1)/TOTAL_CHAPTERS)*100); var _te=document.querySelector('#sidebar .nav-item[data-ch="'+_i+'"] .ch-title'); var _nm=(_te?_te.textContent:('Course '+(_i+1))).replace(/"/g,''); _h+='<span class="stop" data-ch="'+_i+'" title="Course '+(_i+1)+': '+_nm+'" style="left:'+_p+'%"></span>'; } _stops.innerHTML=_h; }
     var _tr=_pb.querySelector('.ptruck'); if(_tr){ _tr.style.left=Math.max(2,Math.min(99,pct))+'%'; }
     if(_stops){ done.forEach(function(ch){ var st=_stops.querySelector('.stop[data-ch="'+ch+'"]'); if(st) st.classList.add('delivered'); }); }
     document.querySelector('#progress-counter .pc-ch').textContent = currentChapter + 1;
