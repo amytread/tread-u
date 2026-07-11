@@ -206,8 +206,16 @@
     padding:48px 56px 80px;
     max-width:880px;
   }
-  .chapter{display:none}
-  .chapter.active{display:block;animation:fadeIn .25s ease}
+  .chapter{display:block;scroll-margin-top:104px}
+  .chapter + .chapter{border-top:1px solid var(--grey-2);padding-top:8px;margin-top:8px}
+  .chapter.active{display:block}
+  /* keep-scrolling cue between courses (replaces the prev/next buttons) */
+  .scroll-cue{display:flex;flex-direction:column;align-items:center;gap:2px;margin-top:56px;padding-top:30px;border-top:1px dashed var(--grey-3);text-align:center;color:var(--grey-6)}
+  .scroll-cue .sc-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--grey-5)}
+  .scroll-cue .sc-next{font-size:16px;font-weight:700;color:var(--black)}
+  .scroll-cue .sc-arrow{margin-top:6px;font-size:20px;color:var(--dark-orange);animation:cueBounce 1.6s ease-in-out infinite}
+  .scroll-cue.end .sc-next{color:var(--dark-orange)}
+  @keyframes cueBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
   @keyframes fadeIn{
     from{opacity:0;transform:translateY(6px)}
     to{opacity:1;transform:translateY(0)}
@@ -1905,7 +1913,7 @@
 <div class="ch-header">
 <div class="ch-eyebrow">
 <span class="dot">
-</span>Course 1</div>
+</span>Course 2</div>
 <h1>Laying the <span class="accent">groundwork.</span>
 </h1>
 <p class="lead">Project &amp; account setup: master data, projects, phase codes, sites, materials, and rates. Get this right and everything downstream just works.</p>
@@ -2405,7 +2413,7 @@
 <div class="ch-header">
 <div class="ch-eyebrow">
 <span class="dot">
-</span>Course 2</div>
+</span>Course 3</div>
 <h1>Rubber meets the <span class="accent">road.</span>
 </h1>
 <p class="lead">Dispatch: build orders, choose how trucks run, review tickets, and send jobs. This is the daily heartbeat of Tread.</p>
@@ -2885,7 +2893,7 @@
 <div class="ch-header">
 <div class="ch-eyebrow">
 <span class="dot">
-</span>Course 3</div>
+</span>Course 4</div>
 <h1>The <span class="accent">haul.</span>
 </h1>
 <p class="lead">What your drivers see, accepting jobs, live tracking, adding tickets, and closing out. A quick tour so dispatch knows the driver experience cold.</p>
@@ -3164,7 +3172,7 @@
 <div class="ch-header">
 <div class="ch-eyebrow">
 <span class="dot">
-</span>Course 4</div>
+</span>Course 5</div>
 <h1>The <span class="accent">sign-off.</span>
 </h1>
 <p class="lead">Approvals turn field activity into billable, payable data. Shifts, job hours, loads, and tickets, reviewed once and trusted downstream.</p>
@@ -3459,7 +3467,7 @@
 <div class="ch-header">
 <div class="ch-eyebrow">
 <span class="dot">
-</span>Course 5</div>
+</span>Course 6</div>
 <h1>
 <span class="accent">Payday.</span>
 </h1>
@@ -3767,7 +3775,7 @@
 <div class="ch-header">
 <div class="ch-eyebrow">
 <span class="dot">
-</span>Course 6</div>
+</span>Course 7</div>
 <h1>By the <span class="accent">numbers.</span>
 </h1>
 <p class="lead">Reporting &amp; exports: see the whole operation and get clean data into your books. Dedicated video walkthroughs are in production.</p>
@@ -4694,7 +4702,7 @@
 <div class="ch-header">
 <div class="ch-eyebrow">
 <span class="dot">
-</span>Course 8</div>
+</span>Course 9</div>
 <h1>
 <span class="accent">Endorsements.</span>
 </h1>
@@ -4951,7 +4959,7 @@
 <div class="ch-header">
 <div class="ch-eyebrow">
 <span class="dot">
-</span>Course 9</div>
+</span>Course 10</div>
 <h1>Cleared to <span class="accent">roll.</span>
 </h1>
 <p class="lead">Go-live &amp; graduation. Flip the switch, check the boxes, and cross the line to Road-Ready.</p>
@@ -5250,44 +5258,52 @@ Confirm you have:
 function switchPane(btn,group){const wrap=btn.closest('.platform-toggle');wrap.querySelectorAll('button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const target=btn.dataset.pane;document.querySelectorAll('[data-pane^="'+group+'-"]').forEach(p=>p.classList.remove('active'));const pane=document.querySelector('[data-pane="'+group+'-'+target+'"]');if(pane)pane.classList.add('active');}
 function goToChapter(idx){
     if(idx < 0 || idx >= TOTAL_CHAPTERS) return;
-    document.querySelectorAll('.chapter').forEach(c => c.classList.remove('active'));
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
     const ch = document.querySelector('.chapter[data-ch="' + idx + '"]');
-    const nv = document.querySelector('.nav-item[data-ch="' + idx + '"]');
-    if(ch) ch.classList.add('active');
-    if(nv) nv.classList.add('active');
-    currentChapter = idx; visited.add(idx); updateSidebar();
-    window.scrollTo({top: 0, behavior: 'smooth'}); setTimeout(updateProgress, 50);
+    if(ch){ var y = ch.getBoundingClientRect().top + window.scrollY - 104; window.scrollTo({top: Math.max(0,y), behavior:'smooth'}); }
     if(window.innerWidth <= 960) closeSidebar();
   }
   function updateSidebar(){
     document.querySelectorAll('.nav-item').forEach(n => {
       const i = parseInt(n.dataset.ch, 10);
+      n.classList.toggle('active', i === currentChapter);
       n.classList.toggle('done', done.has(i) && i !== currentChapter);
       n.classList.toggle('visited', visited.has(i) && i !== currentChapter && !done.has(i));
     });
   }
-  function getScrollProgressInChapter(){
-    const ch = document.querySelector('.chapter.active'); if(!ch) return 0;
-    const rect = ch.getBoundingClientRect(); const chTop = rect.top + window.scrollY;
-    const scrollable = Math.max(1, ch.offsetHeight - window.innerHeight);
-    const scrolled = Math.max(0, window.scrollY - chTop);
-    return Math.max(0, Math.min(1, scrolled / scrollable));
-  }
   function updateProgress(){
-    const within = getScrollProgressInChapter();
+    var ref = window.scrollY + 120;
+    var cur = 0, within = 0;
+    document.querySelectorAll('.chapter').forEach(function(ch){
+      var top = ch.getBoundingClientRect().top + window.scrollY;
+      if(top <= ref){ cur = parseInt(ch.dataset.ch,10); within = Math.max(0, Math.min(1, (ref - top) / Math.max(1, ch.offsetHeight))); }
+      if(top + ch.offsetHeight < ref){ done.add(parseInt(ch.dataset.ch,10)); }
+    });
+    currentChapter = cur; visited.add(cur);
     const pct = Math.round(((currentChapter + within) / TOTAL_CHAPTERS) * 100);
     document.querySelector('#progress-bar .fill').style.width = pct + '%';
     var _pb=document.getElementById('progress-bar'), _stops=_pb.querySelector('.stops');
-    if(_stops && !_stops.children.length){ var _h=''; for(var _i=0;_i<TOTAL_CHAPTERS;_i++){ var _p=Math.min(98,((_i+1)/TOTAL_CHAPTERS)*100); var _te=document.querySelector('#sidebar .nav-item[data-ch="'+_i+'"] .ch-title'); var _nm=(_te?_te.textContent:('Course '+(_i+1))).replace(/"/g,''); _h+='<span class="stop" data-ch="'+_i+'" title="Course '+(_i+1)+': '+_nm+'" style="left:'+_p+'%"></span>'; } _stops.innerHTML=_h; }
+    if(_stops && !_stops.children.length){ var _h=''; for(var _i=0;_i<TOTAL_CHAPTERS;_i++){ var _p=Math.min(98,((_i+1)/TOTAL_CHAPTERS)*100); var _te=document.querySelector('#sidebar .nav-item[data-ch="'+_i+'"] .ch-time'); var _nm=(_te?_te.textContent:('Course '+(_i+1))).replace(/"/g,''); _h+='<span class="stop" data-ch="'+_i+'" title="Course '+(_i+1)+': '+_nm+'" style="left:'+_p+'%"></span>'; } _stops.innerHTML=_h; }
     var _tr=_pb.querySelector('.ptruck'); if(_tr){ _tr.style.left=Math.max(2,Math.min(99,pct))+'%'; }
     if(_stops){ done.forEach(function(ch){ var st=_stops.querySelector('.stop[data-ch="'+ch+'"]'); if(st) st.classList.add('delivered'); }); }
     if(done.size > (window._pbDone||0)){ var _tk2=_pb.querySelector('.ptruck'); if(_tk2){ _tk2.classList.add('dumping'); setTimeout(function(){ _tk2.classList.remove('dumping'); }, 1100); } }
     window._pbDone = done.size;
     document.querySelector('#progress-counter .pc-ch').textContent = currentChapter + 1;
     document.querySelector('#progress-counter .pc-pct').textContent = pct + '%';
-    if(within >= 0.97){ done.add(currentChapter); updateSidebar(); }
+    updateSidebar();
   }
+  /* replace the old prev/next buttons with keep-scrolling cues */
+  (function(){
+    document.querySelectorAll('.chapter').forEach(function(ch){
+      var idx=parseInt(ch.dataset.ch,10); var nav=ch.querySelector('.ch-nav'); if(!nav) return;
+      if(idx < TOTAL_CHAPTERS-1){
+        var t=document.querySelector('.nav-item[data-ch="'+(idx+1)+'"] .ch-time');
+        var nm=t?t.textContent:'the next course';
+        nav.className='scroll-cue'; nav.innerHTML='<span class="sc-label">Keep scrolling</span><span class="sc-next">Up next: '+nm+'</span><span class="sc-arrow">&#8595;</span>';
+      } else {
+        nav.className='scroll-cue end'; nav.innerHTML='<span class="sc-label">That is the whole road</span><span class="sc-next">You are Road-Ready &#127881;</span>';
+      }
+    });
+  })();
   function toggleSidebar(){ document.getElementById('sidebar').classList.toggle('open'); document.getElementById('sidebar-overlay').classList.toggle('open'); }
   function closeSidebar(){ document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebar-overlay').classList.remove('open'); }
   document.addEventListener('keydown', (e) => {
