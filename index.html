@@ -61,24 +61,25 @@
   /* ============ PROGRESS BAR (below header, 15px) ============ */
   #progress-bar{
     position:fixed;top:56px;left:0;right:0;
-    height:34px;z-index:8800;
-    background:linear-gradient(180deg,#2b343b 0%,#191f23 100%);
-    border-bottom:1px solid #0b0f12;
-    box-shadow:inset 0 -5px 9px rgba(0,0,0,0.22);
+    height:34px;z-index:8800;background:var(--deep-black);
+    border-bottom:1px solid rgba(255,255,255,0.06);
     overflow:hidden;
   }
-  /* sleek thin dashed center lane line */
-  #progress-bar .road{position:absolute;left:0;right:0;top:50%;height:2px;transform:translateY(-50%);background:repeating-linear-gradient(90deg,rgba(255,229,0,.85) 0 14px,transparent 14px 40px);opacity:.5;}
-  /* subtle "road traveled" tint behind the truck */
+  /* original sleek road: a clean thin line */
+  #progress-bar .road{position:absolute;left:0;right:0;top:50%;height:3px;transform:translateY(-50%);background:rgba(255,255,255,0.14);border-radius:2px;}
+  /* road traveled = yellow, behind the truck */
   #progress-bar .fill{
-    position:absolute;left:0;top:0;bottom:0;width:0%;
-    background:linear-gradient(90deg,rgba(255,229,0,.03),rgba(255,229,0,.12));
+    position:absolute;left:0;top:50%;height:3px;transform:translateY(-50%);width:0%;border-radius:2px;
+    background:var(--yellow);opacity:.75;
     transition:width .5s ease;pointer-events:none;
   }
   #progress-bar .stops{position:absolute;inset:0;}
   /* each course = a load: muted while pending, bright + prominent once delivered */
-  #progress-bar .stop{position:absolute;top:50%;transform:translate(-50%,-42%);width:18px;height:15px;background:#3f484e;opacity:.45;clip-path:polygon(0% 100%, 9% 56%, 18% 70%, 27% 32%, 35% 50%, 45% 14%, 52% 2%, 59% 18%, 68% 40%, 76% 26%, 85% 54%, 93% 38%, 100% 100%);transition:all .35s ease;cursor:default;}
-  #progress-bar .stop.delivered{opacity:1;background:linear-gradient(180deg,#ffe94d 0%,#f2d400 60%,#d9bf00 100%);filter:drop-shadow(0 0 8px rgba(255,229,0,0.75));transform:translate(-50%,-46%) scale(1.28);}
+  #progress-bar .stop{position:absolute;top:50%;transform:translate(-50%,-42%);width:22px;height:18px;background:#3f484e;opacity:.5;clip-path:polygon(0% 100%, 9% 56%, 18% 70%, 27% 32%, 35% 50%, 45% 14%, 52% 2%, 59% 18%, 68% 40%, 76% 26%, 85% 54%, 93% 38%, 100% 100%);transition:all .35s ease;cursor:default;}
+  #progress-bar .stop.delivered{opacity:1;background:linear-gradient(180deg,#fff06b 0%,#ffe100 55%,#e6c400 100%);filter:drop-shadow(0 0 10px rgba(255,229,0,0.9));transform:translate(-50%,-48%) scale(1.42);}
+  /* dump bed tips up to dump the load, then lowers */
+  #progress-bar .ptruck .bed{transform-box:fill-box;transform-origin:12% 100%;transition:transform .45s ease;}
+  #progress-bar .ptruck.dumping .bed{transform:rotate(-30deg);}
   #progress-bar .ptruck{position:absolute;top:50%;left:0;transform:translate(-52%,-54%);transition:left .55s cubic-bezier(.34,1.15,.4,1);z-index:2;filter:drop-shadow(0 2px 3px rgba(0,0,0,.5));}
   #progress-counter{
     position:fixed;top:96px;right:18px;z-index:8801;
@@ -1519,7 +1520,7 @@
   <div class="road"></div>
   <div class="fill"></div>
   <div class="stops"></div>
-  <div class="ptruck"><svg viewBox="0 0 150 72" width="42" height="20" aria-hidden="true"><path d="M6 16 L84 16 L94 46 L6 46 Z" fill="#FFE500"/><path d="M96 26 L114 26 L126 44 L126 50 L96 50 Z" fill="#132732"/><rect x="101" y="30" width="12" height="9" rx="1.5" fill="#FFE500"/><rect x="6" y="46" width="120" height="5" rx="2" fill="#132732"/><circle cx="36" cy="56" r="7.5" fill="#132732"/><circle cx="36" cy="56" r="2.6" fill="#FFE500"/><circle cx="106" cy="56" r="7.5" fill="#132732"/><circle cx="106" cy="56" r="2.6" fill="#FFE500"/></svg></div>
+  <div class="ptruck"><svg viewBox="0 0 150 72" width="42" height="20" aria-hidden="true"><rect x="6" y="46" width="122" height="5" rx="2" fill="#132732"/><path d="M100 24 L118 24 L131 44 L131 48 L100 48 Z" fill="#132732"/><rect x="105" y="28" width="12" height="10" rx="1.5" fill="#FFE500"/><g class="bed"><path d="M6 46 L6 20 L78 20 L88 8 L96 46 Z" fill="#FFE500" stroke="#0f2029" stroke-width="1.5" stroke-linejoin="round"/></g><circle cx="34" cy="57" r="9" fill="#132732"/><circle cx="34" cy="57" r="3" fill="#8a99a2"/><circle cx="108" cy="57" r="9" fill="#132732"/><circle cx="108" cy="57" r="3" fill="#8a99a2"/></svg></div>
 </div>
 <div id="progress-counter">
   <span class="pc-dot"></span>
@@ -5284,6 +5285,8 @@ function goToChapter(idx){
     if(_stops && !_stops.children.length){ var _h=''; for(var _i=0;_i<TOTAL_CHAPTERS;_i++){ var _p=Math.min(98,((_i+1)/TOTAL_CHAPTERS)*100); var _te=document.querySelector('#sidebar .nav-item[data-ch="'+_i+'"] .ch-title'); var _nm=(_te?_te.textContent:('Course '+(_i+1))).replace(/"/g,''); _h+='<span class="stop" data-ch="'+_i+'" title="Course '+(_i+1)+': '+_nm+'" style="left:'+_p+'%"></span>'; } _stops.innerHTML=_h; }
     var _tr=_pb.querySelector('.ptruck'); if(_tr){ _tr.style.left=Math.max(2,Math.min(99,pct))+'%'; }
     if(_stops){ done.forEach(function(ch){ var st=_stops.querySelector('.stop[data-ch="'+ch+'"]'); if(st) st.classList.add('delivered'); }); }
+    if(done.size > (window._pbDone||0)){ var _tk2=_pb.querySelector('.ptruck'); if(_tk2){ _tk2.classList.add('dumping'); setTimeout(function(){ _tk2.classList.remove('dumping'); }, 1100); } }
+    window._pbDone = done.size;
     document.querySelector('#progress-counter .pc-ch').textContent = currentChapter + 1;
     document.querySelector('#progress-counter .pc-pct').textContent = pct + '%';
     if(within >= 0.97){ done.add(currentChapter); updateSidebar(); }
