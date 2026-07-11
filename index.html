@@ -61,22 +61,24 @@
   /* ============ PROGRESS BAR (below header, 15px) ============ */
   #progress-bar{
     position:fixed;top:56px;left:0;right:0;
-    height:46px;background:#242b31;z-index:8800;
-    border-bottom:2px solid #10161a;
+    height:44px;z-index:8800;
+    background:linear-gradient(180deg,#2c353c 0%,#1a2024 100%);
+    border-bottom:1px solid #0b0f12;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.05), inset 0 -8px 14px rgba(0,0,0,0.28);
     overflow:hidden;
   }
-  /* dashed center lane line of the road */
-  #progress-bar .road{position:absolute;left:0;right:0;top:50%;height:3px;transform:translateY(-50%);background:repeating-linear-gradient(90deg,var(--yellow) 0 20px,transparent 20px 38px);opacity:.5;}
+  /* sleek dashed center lane line */
+  #progress-bar .road{position:absolute;left:0;right:0;top:50%;height:2px;transform:translateY(-50%);background:repeating-linear-gradient(90deg,rgba(255,229,0,.9) 0 16px,transparent 16px 42px);opacity:.55;}
   /* subtle "road traveled" tint behind the truck */
   #progress-bar .fill{
     position:absolute;left:0;top:0;bottom:0;width:0%;
-    background:linear-gradient(90deg,rgba(255,229,0,.04),rgba(255,229,0,.15));
+    background:linear-gradient(90deg,rgba(255,229,0,.03),rgba(255,229,0,.13));
     transition:width .5s ease;pointer-events:none;
   }
   #progress-bar .stops{position:absolute;inset:0;}
-  /* each course = a load (a material pile) dropped along the road */
-  #progress-bar .stop{position:absolute;top:50%;transform:translate(-50%,-40%);width:20px;height:13px;background:#4a555c;clip-path:polygon(0 100%,16% 46%,50% 0,84% 46%,100% 100%);transition:background .3s ease,filter .3s ease;cursor:default;}
-  #progress-bar .stop.delivered{background:var(--yellow);filter:drop-shadow(0 0 6px rgba(255,229,0,0.65));}
+  /* each course = a load: a rugged rock/gravel pile dropped along the road */
+  #progress-bar .stop{position:absolute;top:50%;transform:translate(-50%,-38%);width:24px;height:15px;background:linear-gradient(180deg,#5b666d 0%,#39424880 60%,#2f373c 100%);clip-path:polygon(0% 100%, 7% 66%, 17% 76%, 27% 46%, 37% 62%, 47% 30%, 55% 54%, 65% 40%, 76% 60%, 86% 44%, 94% 72%, 100% 100%);transition:background .3s ease,filter .3s ease;cursor:default;}
+  #progress-bar .stop.delivered{background:linear-gradient(180deg,#ffe94d 0%,#f2d400 60%,#d9bf00 100%);filter:drop-shadow(0 0 6px rgba(255,229,0,0.6));}
   #progress-bar .ptruck{position:absolute;top:50%;left:0;transform:translate(-52%,-54%);transition:left .55s cubic-bezier(.34,1.15,.4,1);z-index:2;filter:drop-shadow(0 2px 3px rgba(0,0,0,.5));}
   #progress-counter{
     position:fixed;top:108px;right:18px;z-index:8801;
@@ -742,7 +744,10 @@
   .ch-nav-btn .ch-name{
     font-size:15px;font-weight:600;color:var(--black);
   }
-  .ch-nav-btn.next{text-align:right;align-items:flex-end}
+  .ch-nav-btn.next{text-align:right;align-items:flex-end;background:var(--yellow);border-color:var(--yellow)}
+  .ch-nav-btn.next .dir{color:var(--deep-black);opacity:.65}
+  .ch-nav-btn.next .ch-name{color:var(--deep-black)}
+  .ch-nav-btn.next:hover{border-color:var(--yellow);box-shadow:0 4px 16px rgba(255,229,0,0.4)}
 
   /* ============ DOWNLOAD STRIP (last chapter) ============ */
   .dl-strip{
@@ -1492,7 +1497,7 @@
 <section class="print-toc print-only" aria-hidden="true">
   <div class="toc-eyebrow">Contents</div>
   <h2>Your courses</h2>
-  <ol class="toc-list"><li><a href="#ch-0"><span class="toc-num">01</span><span class="toc-title">Start Your Engines</span></a></li><li><a href="#ch-1"><span class="toc-num">02</span><span class="toc-title">Laying the Groundwork</span></a></li><li><a href="#ch-2"><span class="toc-num">03</span><span class="toc-title">Rubber Meets the Road</span></a></li><li><a href="#ch-3"><span class="toc-num">04</span><span class="toc-title">In the Cab</span></a></li><li><a href="#ch-4"><span class="toc-num">05</span><span class="toc-title">The Sign-Off</span></a></li><li><a href="#ch-5"><span class="toc-num">06</span><span class="toc-title">Payday</span></a></li><li><a href="#ch-6"><span class="toc-num">07</span><span class="toc-title">By the Numbers</span></a></li><li><a href="#ch-7"><span class="toc-num">08</span><span class="toc-title">Onboard Your Vendors &amp; Sub-Haulers</span></a></li><li><a href="#ch-8"><span class="toc-num">09</span><span class="toc-title">Endorsements</span></a></li><li><a href="#ch-9"><span class="toc-num">10</span><span class="toc-title">Cleared to Roll</span></a></li></ol>
+  <ol class="toc-list"><li><a href="#ch-0"><span class="toc-num">01</span><span class="toc-title">Start Your Engines</span></a></li><li><a href="#ch-1"><span class="toc-num">02</span><span class="toc-title">Laying the Groundwork</span></a></li><li><a href="#ch-2"><span class="toc-num">03</span><span class="toc-title">Rubber Meets the Road</span></a></li><li><a href="#ch-3"><span class="toc-num">04</span><span class="toc-title">The Haul</span></a></li><li><a href="#ch-4"><span class="toc-num">05</span><span class="toc-title">The Sign-Off</span></a></li><li><a href="#ch-5"><span class="toc-num">06</span><span class="toc-title">Payday</span></a></li><li><a href="#ch-6"><span class="toc-num">07</span><span class="toc-title">By the Numbers</span></a></li><li><a href="#ch-7"><span class="toc-num">08</span><span class="toc-title">Onboard Your Vendors &amp; Sub-Haulers</span></a></li><li><a href="#ch-8"><span class="toc-num">09</span><span class="toc-title">Endorsements</span></a></li><li><a href="#ch-9"><span class="toc-num">10</span><span class="toc-title">Cleared to Roll</span></a></li></ol>
   <p class="toc-foot">For the latest version of this guide, contact your Tread CSM or email <strong>support@tread.io</strong>.</p>
 </section>
 
@@ -1528,7 +1533,7 @@
 <div class="app">
   <aside id="sidebar">
     <h4>Courses</h4>
-    <nav class="nav-list"><button class="nav-item active" data-ch="0" onclick="goToChapter(0)"><span class="ch-num">1</span><span class="ch-meta"><span class="ch-title">Start Your Engines</span><span class="ch-time">Everyone</span></span></button><button class="nav-item" data-ch="1" onclick="goToChapter(1)"><span class="ch-num">2</span><span class="ch-meta"><span class="ch-title">Laying the Groundwork</span><span class="ch-time">Admin</span></span></button><button class="nav-item" data-ch="2" onclick="goToChapter(2)"><span class="ch-num">3</span><span class="ch-meta"><span class="ch-title">Rubber Meets the Road</span><span class="ch-time">Dispatcher</span></span></button><button class="nav-item" data-ch="3" onclick="goToChapter(3)"><span class="ch-num">4</span><span class="ch-meta"><span class="ch-title">In the Cab</span><span class="ch-time">Drivers &amp; field</span></span></button><button class="nav-item" data-ch="4" onclick="goToChapter(4)"><span class="ch-num">5</span><span class="ch-meta"><span class="ch-title">The Sign-Off</span><span class="ch-time">Billing &amp; foreman</span></span></button><button class="nav-item" data-ch="5" onclick="goToChapter(5)"><span class="ch-num">6</span><span class="ch-meta"><span class="ch-title">Payday</span><span class="ch-time">Billing</span></span></button><button class="nav-item" data-ch="6" onclick="goToChapter(6)"><span class="ch-num">7</span><span class="ch-meta"><span class="ch-title">By the Numbers</span><span class="ch-time">Billing &amp; ops</span></span></button><button class="nav-item" data-ch="7" onclick="goToChapter(7)"><span class="ch-num">8</span><span class="ch-meta"><span class="ch-title">Onboard Your Vendors &amp; Sub-Haulers</span><span class="ch-time">Dispatcher</span></span></button><button class="nav-item" data-ch="8" onclick="goToChapter(8)"><span class="ch-num">9</span><span class="ch-meta"><span class="ch-title">Endorsements</span><span class="ch-time">Advanced</span></span></button><button class="nav-item" data-ch="9" onclick="goToChapter(9)"><span class="ch-num">10</span><span class="ch-meta"><span class="ch-title">Cleared to Roll</span><span class="ch-time">Everyone</span></span></button></nav>
+    <nav class="nav-list"><button class="nav-item active" data-ch="0" onclick="goToChapter(0)"><span class="ch-num">1</span><span class="ch-meta"><span class="ch-title">Start Your Engines</span><span class="ch-time">Everyone</span></span></button><button class="nav-item" data-ch="1" onclick="goToChapter(1)"><span class="ch-num">2</span><span class="ch-meta"><span class="ch-title">Laying the Groundwork</span><span class="ch-time">Admin</span></span></button><button class="nav-item" data-ch="2" onclick="goToChapter(2)"><span class="ch-num">3</span><span class="ch-meta"><span class="ch-title">Rubber Meets the Road</span><span class="ch-time">Dispatcher</span></span></button><button class="nav-item" data-ch="3" onclick="goToChapter(3)"><span class="ch-num">4</span><span class="ch-meta"><span class="ch-title">The Haul</span><span class="ch-time">Drivers &amp; field</span></span></button><button class="nav-item" data-ch="4" onclick="goToChapter(4)"><span class="ch-num">5</span><span class="ch-meta"><span class="ch-title">The Sign-Off</span><span class="ch-time">Billing &amp; foreman</span></span></button><button class="nav-item" data-ch="5" onclick="goToChapter(5)"><span class="ch-num">6</span><span class="ch-meta"><span class="ch-title">Payday</span><span class="ch-time">Billing</span></span></button><button class="nav-item" data-ch="6" onclick="goToChapter(6)"><span class="ch-num">7</span><span class="ch-meta"><span class="ch-title">By the Numbers</span><span class="ch-time">Billing &amp; ops</span></span></button><button class="nav-item" data-ch="7" onclick="goToChapter(7)"><span class="ch-num">8</span><span class="ch-meta"><span class="ch-title">Onboard Your Vendors &amp; Sub-Haulers</span><span class="ch-time">Dispatcher</span></span></button><button class="nav-item" data-ch="8" onclick="goToChapter(8)"><span class="ch-num">9</span><span class="ch-meta"><span class="ch-title">Endorsements</span><span class="ch-time">Advanced</span></span></button><button class="nav-item" data-ch="9" onclick="goToChapter(9)"><span class="ch-num">10</span><span class="ch-meta"><span class="ch-title">Cleared to Roll</span><span class="ch-time">Everyone</span></span></button></nav>
   </aside>
   <main id="main">
 <section class="chapter active" data-ch="0" id="ch-0">
@@ -1773,7 +1778,7 @@
 <button class="toc-card" onclick="goToChapter(3)">
 <span class="toc-num">04</span>
 <span class="toc-meta">
-<span class="toc-title">In the Cab</span>
+<span class="toc-title">The Haul</span>
 <span class="toc-sub">Drivers &amp; field</span>
 </span>
 </button>
@@ -1828,7 +1833,7 @@
 <span class="ch-name">Start of guide</span>
 </button>
 <button class="ch-nav-btn next" onclick="goToChapter(1)">
-<span class="dir">Next course</span>
+<span class="dir">Continue learning</span>
 <span class="ch-name">Laying the Groundwork &rarr;</span>
 </button>
 </div>
@@ -2208,7 +2213,7 @@
 <span class="ch-name">&larr; Start Your Engines</span>
 </button>
 <button class="ch-nav-btn next" onclick="goToChapter(2)">
-<span class="dir">Next course</span>
+<span class="dir">Continue learning</span>
 <span class="ch-name">Rubber Meets the Road &rarr;</span>
 </button>
 </div>
@@ -2616,8 +2621,8 @@
 <span class="ch-name">&larr; Laying the Groundwork</span>
 </button>
 <button class="ch-nav-btn next" onclick="goToChapter(3)">
-<span class="dir">Next course</span>
-<span class="ch-name">In the Cab &rarr;</span>
+<span class="dir">Continue learning</span>
+<span class="ch-name">The Haul &rarr;</span>
 </button>
 </div>
 </section>
@@ -2626,7 +2631,7 @@
 <div class="ch-eyebrow">
 <span class="dot">
 </span>Course 3</div>
-<h1>In the <span class="accent">cab.</span>
+<h1>The <span class="accent">haul.</span>
 </h1>
 <p class="lead">What your drivers see, accepting jobs, live tracking, adding tickets, and closing out. A quick tour so dispatch knows the driver experience cold.</p>
 </div>
@@ -2854,7 +2859,7 @@
 <span class="ch-name">&larr; Rubber Meets the Road</span>
 </button>
 <button class="ch-nav-btn next" onclick="goToChapter(4)">
-<span class="dir">Next course</span>
+<span class="dir">Continue learning</span>
 <span class="ch-name">The Sign-Off &rarr;</span>
 </button>
 </div>
@@ -3080,10 +3085,10 @@
 <div class="ch-nav">
 <button class="ch-nav-btn" onclick="goToChapter(3)">
 <span class="dir">Previous course</span>
-<span class="ch-name">&larr; In the Cab</span>
+<span class="ch-name">&larr; The Haul</span>
 </button>
 <button class="ch-nav-btn next" onclick="goToChapter(5)">
-<span class="dir">Next course</span>
+<span class="dir">Continue learning</span>
 <span class="ch-name">Payday &rarr;</span>
 </button>
 </div>
@@ -3325,7 +3330,7 @@
 <span class="ch-name">&larr; The Sign-Off</span>
 </button>
 <button class="ch-nav-btn next" onclick="goToChapter(6)">
-<span class="dir">Next course</span>
+<span class="dir">Continue learning</span>
 <span class="ch-name">By the Numbers &rarr;</span>
 </button>
 </div>
@@ -3515,7 +3520,7 @@
 <span class="ch-name">&larr; Payday</span>
 </button>
 <button class="ch-nav-btn next" onclick="goToChapter(7)">
-<span class="dir">Next course</span>
+<span class="dir">Continue learning</span>
 <span class="ch-name">Onboard Your Vendors &amp; Sub-Haulers &rarr;</span>
 </button>
 </div>
@@ -4222,7 +4227,7 @@
       </div>
     </div>
 
-    <div class="ch-nav"><button class="ch-nav-btn" onclick="goToChapter(6)"><span class="dir">Previous course</span><span class="ch-name">&larr; By the Numbers</span></button><button class="ch-nav-btn next" onclick="goToChapter(8)"><span class="dir">Next course</span><span class="ch-name">Endorsements &rarr;</span></button></div></section>
+    <div class="ch-nav"><button class="ch-nav-btn" onclick="goToChapter(6)"><span class="dir">Previous course</span><span class="ch-name">&larr; By the Numbers</span></button><button class="ch-nav-btn next" onclick="goToChapter(8)"><span class="dir">Continue learning</span><span class="ch-name">Endorsements &rarr;</span></button></div></section>
 <section class="chapter" data-ch="8" id="ch-8">
 <div class="ch-header">
 <div class="ch-eyebrow">
@@ -4421,7 +4426,7 @@
 <span class="ch-name">&larr; Onboard Your Vendors &amp; Sub-Haulers</span>
 </button>
 <button class="ch-nav-btn next" onclick="goToChapter(9)">
-<span class="dir">Next course</span>
+<span class="dir">Continue learning</span>
 <span class="ch-name">Cleared to Roll &rarr;</span>
 </button>
 </div>
@@ -4759,7 +4764,7 @@ function goToChapter(idx){
     {label:"Project vs Order vs Job?",kw:["project vs","order vs","vs order","vs job","difference","hierarchy","what is","how tread","organized"],ch:0,sec:"a-tread-model",a:"A <b>Project</b> is your recurring job (the container). An <b>Order</b> is one day's work under it and carries one material. Assigning a truck to an Order creates a <b>Job</b>, and <b>Dispatch</b> sends those Jobs to drivers: so it flows Projects → Orders → Jobs → Dispatch."},
     {label:"How do I dispatch a truck?",kw:["dispatch","assign","send","truck","order"],ch:2,sec:"a-assign-manage",a:"On the Order, assign a driver + truck: each assignment becomes a Job. Add as many trucks as you need, then hit Send: every Job goes to its driver by text + push."}
   ];
-  var CHN=["Start Your Engines","Laying the Groundwork","Rubber Meets the Road","In the Cab","The Sign-Off","Payday","By the Numbers","Onboard Your Vendors & Sub-Haulers","Endorsements","Cleared to Roll"];
+  var CHN=["Start Your Engines","Laying the Groundwork","Rubber Meets the Road","The Haul","The Sign-Off","Payday","By the Numbers","Onboard Your Vendors & Sub-Haulers","Endorsements","Cleared to Roll"];
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var panel=document.getElementById('atu-panel'),launch=document.getElementById('atu-launch'),msgs=document.getElementById('atu-msgs'),chips=document.getElementById('atu-chips'),input=document.getElementById('atu-in'),send=document.getElementById('atu-send');
   var greeted=false;
