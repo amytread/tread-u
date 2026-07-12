@@ -140,6 +140,11 @@
     transform:translateY(-1px);text-decoration:none;
     background:rgba(255,255,255,0.10);
   }
+  #site-header .tour-btn{padding:5px 15px;}
+  #site-header .tour-play{font-size:11px;}
+  #site-header .tour-label{display:flex;flex-direction:column;line-height:1.12;text-align:left;}
+  #site-header .tour-main{font-size:13px;font-weight:600;}
+  #site-header .tour-sub{font-size:10px;font-weight:500;color:#9fb0b8;letter-spacing:.01em;}
   #site-header .menu-toggle{
     display:none;background:none;border:none;color:var(--white);
     font-size:22px;cursor:pointer;padding:6px 8px;
@@ -1533,7 +1538,11 @@
     <span class="badge">Tread U</span>
   </div>
   <a class="lang-btn tour-btn" href="./flow.html" title="Take the self-guided tour">
-    <span aria-hidden="true">&#9654;</span><span class="tour-label">Alternate route</span>
+    <span aria-hidden="true" class="tour-play">&#9654;</span>
+    <span class="tour-label">
+      <span class="tour-main">Alternate route</span>
+      <span class="tour-sub">Self-guided tour</span>
+    </span>
   </a>
   <a class="pdf-btn" href="https://docs.tread.ai" target="_blank" rel="noopener">
     <svg width="14" height="14"><use href="#i-download"/></svg>
@@ -1830,8 +1839,8 @@
 <h3>The &ldquo;? Help&rdquo; launcher</h3>
 <p>When something is unclear, start with the &ldquo;? Help&rdquo; launcher in the top-right of the app to search the help center or reach support.</p>
 <figure style="margin:16px 0">
-<img src="https://github.com/amytread/tread-u/releases/download/media-v1/help-launcher-annotated.jpg" alt="The question-mark Help launcher in the top-right of the Horizon top nav, with an arrow pointing to it" style="width:100%;max-width:520px;border-radius:8px;border:1px solid var(--grey-2);display:block">
-<figcaption class="vp-cap">The &ldquo;? Help&rdquo; launcher sits in the top-right of every page.</figcaption>
+<img src="https://github.com/amytread/tread-u/releases/download/media-v1/help-launcher-fullpage.jpg" alt="A full Horizon page with the question-mark Help launcher circled in the top-right of the top nav, and an arrow pointing to it" style="width:100%;border-radius:8px;border:1px solid var(--grey-2);display:block">
+<figcaption class="vp-cap">Look to the top-right of the top nav on any page. The &ldquo;? Help&rdquo; launcher sits between the &ldquo;Dispatch as&rdquo; menu and your name.</figcaption>
 </figure>
 
 <h3>Resources to bookmark</h3>
