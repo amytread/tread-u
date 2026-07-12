@@ -1806,11 +1806,12 @@
 </div>
 
 <h3>Who can see rates</h3>
-<p>Rates are visible only to roles that have the <strong>view Rates</strong> permission. Viewing rates and editing them are separate permissions, so a role can see a rate without being able to change it.</p>
+<p>Rate visibility is enforced on the server, so a role that cannot see rates never receives the values, on web or on mobile. Viewing rates and editing them are separate permissions, so a role can see a rate without being able to change it.</p>
 <ul>
-<li><strong>Company Admin and Biller</strong> see rates by default. The Biller owns approvals, invoices, settlements, and rates.</li>
-<li><strong>Dispatchers, Foremen, Reporting, and Viewers</strong> do not see rates unless an admin grants them the view Rates permission.</li>
-<li><strong>Drivers</strong> never see customer billing rates. A driver sees only their own pay rate, and only on their own jobs.</li>
+<li><strong>Company Admin, Biller, and Dispatcher</strong> can see rates. Editing rates stays with Admin and Biller.</li>
+<li><strong>Foreman</strong> sees the hauler rate only.</li>
+<li><strong>Driver</strong> sees their own pay rate only, and only on their own jobs.</li>
+<li><strong>Reporting and Viewer</strong> do not see rates. Use the Viewer role when you want read-only access with no rate values.</li>
 </ul>
 <h4>Which rates</h4>
 <p>Tread separates the money coming in from the money going out:</p>
